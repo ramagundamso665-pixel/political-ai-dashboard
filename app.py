@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from openai import OpenAI
 
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="client =st.secrets["OPENAI_API_KEY"])")
 
 st.set_page_config(layout="wide")
 st.markdown("""
