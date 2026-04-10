@@ -7,56 +7,60 @@ st.set_page_config(page_title="Mandate AI", layout="wide")
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
-# ---------- HEADER ----------
-st.markdown("""
-<h1 style='text-align:center;'>⚡ Mandate AI</h1>
-<p style='text-align:center;color:gray;'>AI-powered political intelligence</p>
-""", unsafe_allow_html=True)
-
-st.markdown("---")
+st.title("⚡ Mandate AI")
 
 # ---------- LOAD DATA ----------
 all_sheets = pd.read_excel("Book 13.xlsx", sheet_name=None)
 
 sheet_names = list(all_sheets.keys())
-selected_sheet = st.selectbox("📊 Select Data Sheet", sheet_names)
+selected_sheet = st.selectbox("Select Data Sheet", sheet_names)
 
 df = all_sheets[selected_sheet]
 
-# ---------- DASHBOARD ----------
-st.markdown("## 📊 Data Overview")
+st.dataframe(df)
 
-col1, col2, col3 = st.columns(3)
-
-col1.metric("Rows", df.shape[0])
-col2.metric("Columns", df.shape[1])
-col3.metric("Sheet", selected_sheet)
-
-st.dataframe(df, use_container_width=True)
-
-st.markdown("### 📈 Data Visualization")
-st.bar_chart(df.select_dtypes(include="number"))
-
-st.markdown("---")
-
-# ---------- AI SECTION ----------
-st.markdown("## 💬 Ask AI About Your Data")
-
-question = st.text_input("Ask anything from this data...")
+# ---------- USER QUESTION ----------
+question = st.text_input("Ask anything about your data...")
 
 if question:
-    data_context = df.head(100).to_string(index=False)  # limit for speed
+    data_context = df.head(100).to_string(index=False)
 
-    with st.spinner("Analyzing your data..."):
+    with st.spinner("Analyzing..."):
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": f"You are a political data analyst. Answer ONLY using the provided dataset: {selected_sheet}."},
-                {"role": "user", "content": f"Dataset:\n{data_context}\n\nQuestion: {question}"}
+                {
+                    "role": "system",
+                    "content": """
+You are a data analyst.
+
+Based on the user's question:
+1. Answer using the dataset
+2. Decide if a chart is needed
+3. If chart needed, say which type (bar/line) and which columns
+
+Respond in this format:
+ANSWER: <text>
+CHART: <yes/no>
+TYPE: <bar/line>
+COLUMNS: <column names>
+"""
+                },
+                {
+                    "role": "user",
+                    "content": f"DATA:\n{data_context}\n\nQUESTION: {question}"
+                }
             ]
         )
 
-        answer = response.choices[0].message.content
+    output = response.choices[0].message.content
+    st.write(output)
 
-    st.success("Answer:")
-    st.write(answer)
+    # ---------- SIMPLE PARSING ----------
+    if "CHART: yes" in output:
+        numeric_df = df.select_dtypes(include="number")
+
+        if "TYPE: line" in output:
+            st.line_chart(numeric_df)
+        else:
+            st.bar_chart(numeric_df)
