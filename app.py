@@ -1,74 +1,107 @@
 import streamlit as st
 from openai import OpenAI
-import streamlit as st
-from openai import OpenAI
+
+# ---------- CONFIG ----------
+st.set_page_config(page_title="Mandate AI", layout="wide")
+
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+
+# ---------- UI STYLE ----------
 st.markdown("""
 <style>
+
+/* Background */
 html, body, [class*="css"] {
-    background-color: #0b0f19;
+    background: linear-gradient(135deg, #0b0f19, #111827);
     color: white;
 }
 
+/* Main container */
 .block-container {
-    padding-top: 2rem;
-    max-width: 900px;
+    max-width: 1100px;
+    padding-top: 1.5rem;
 }
 
-h1 {
-    font-size: 42px !important;
+/* Glass effect */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Title */
+.title {
+    font-size: 36px;
     font-weight: 700;
-    text-align: center;
 }
 
-p {
-    text-align: center;
+/* Subtitle */
+.subtitle {
     color: #9ca3af;
+    font-size: 14px;
 }
 
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background-color: #0b0f19;
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Chat input */
 .stChatInput {
     border-radius: 20px;
 }
 
+/* Chat bubbles */
 .stChatMessage {
     border-radius: 12px;
     padding: 10px;
 }
+
 </style>
 """, unsafe_allow_html=True)
 
-# rest of your code continues...
-# ---------- CONFIG ----------
-col1, col2 = st.columns([1,5])
+# ---------- SIDEBAR ----------
+with st.sidebar:
+    st.markdown("## ⚡ Mandate AI")
+    st.markdown("### Chats")
 
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+
+    if st.button("➕ New Chat"):
+        st.session_state.messages = []
+
+# ---------- HEADER ----------
 st.markdown("""
-<h1>⚡ Mandate AI</h1>
-<p>AI-powered political intelligence</p>
+<div class="glass">
+    <div class="title">⚡ Mandate AI</div>
+    <div class="subtitle">AI-powered political intelligence</div>
+</div>
 """, unsafe_allow_html=True)
-st.markdown("---")
 
-# ---------- API ----------
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+st.markdown("<br>", unsafe_allow_html=True)
 
-# ---------- MEMORY ----------
+# ---------- CHAT ----------
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# ---------- SHOW CHAT ----------
+# Show messages
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# ---------- INPUT ----------
-prompt = st.chat_input("Type your message...")
+# Input
+prompt = st.chat_input("Ask about politics, governance, insights...")
 
 if prompt:
-    # user message
     st.session_state.messages.append({"role": "user", "content": prompt})
 
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # assistant response
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
