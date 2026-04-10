@@ -1,24 +1,21 @@
 import streamlit as st
 import pandas as pd
 from openai import OpenAI
+import json
 
 # ---------- CONFIG ----------
 st.set_page_config(page_title="Mandate AI")
-
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 st.title("⚡ Mandate AI")
 
-# ---------- LOAD ALL DATA (HIDDEN) ----------
+# ---------- LOAD DATA ----------
 all_sheets = pd.read_excel("Book 13.xlsx", sheet_name=None)
-
-# Combine all sheets into one dataframe
 df = pd.concat(all_sheets.values(), ignore_index=True)
 
-# ---------- USER INPUT ----------
+# ---------- INPUT ----------
 question = st.text_input("Ask anything about your data...")
 
-# ---------- AI LOGIC ----------
 if question:
     data_context = df.head(100).to_string(index=False)
 
@@ -28,19 +25,19 @@ if question:
             {
                 "role": "system",
                 "content": """
-You are a data analyst.
+You are a professional data analyst.
 
-Use ONLY the given dataset.
+Analyze the dataset and user's question.
 
-If the question requires visualization:
-Respond exactly like:
-CHART: yes
-TYPE: bar/line
+Respond ONLY in JSON format:
 
-Otherwise:
-CHART: no
-
-Also provide clear answer.
+{
+ "answer": "...",
+ "type": "text/chart/kpi",
+ "chart_type": "bar/line",
+ "columns": ["col1","col2"],
+ "kpi": {"name": "...", "value": "..."}
+}
 """
             },
             {
@@ -52,13 +49,26 @@ Also provide clear answer.
 
     output = response.choices[0].message.content
 
-    st.write(output)
+    try:
+        result = json.loads(output)
 
-    # ---------- AUTO CHART ----------
-    if "CHART: yes" in output:
-        numeric_df = df.select_dtypes(include="number")
+        st.write(result["answer"])
 
-        if "line" in output:
-            st.line_chart(numeric_df)
-        else:
-            st.bar_chart(numeric_df)
+        # ---------- KPI ----------
+        if result["type"] == "kpi":
+            st.metric(result["kpi"]["name"], result["kpi"]["value"])
+
+        # ---------- CHART ----------
+        elif result["type"] == "chart":
+            cols = result["columns"]
+
+            if len(cols) >= 2:
+                chart_df = df[cols]
+
+                if result["chart_type"] == "line":
+                    st.line_chart(chart_df)
+                else:
+                    st.bar_chart(chart_df)
+
+    except:
+        st.write(output)
