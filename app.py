@@ -8,8 +8,6 @@ st.title("⚡ Telangana Grid")
 # ---------- API ----------
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
-st.title("⚡ Telangana Grid")
-
 # ---------- MEMORY ----------
 if "messages" not in st.session_state:
     st.session_state.messages = []
