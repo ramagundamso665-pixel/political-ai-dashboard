@@ -99,12 +99,12 @@ if prompt := st.chat_input("Ask anything..."):
     with st.chat_message("user"):
         st.write(prompt)
 
+    # Auto chat name
     if st.session_state.current_chat not in st.session_state.chat_names:
         st.session_state.chat_names[st.session_state.current_chat] = prompt[:30]
 
-    # ---------- YOUR ORIGINAL LOGIC ----------
+    # ---------- SHEET DETECTION ----------
     sheet_descriptions = ""
-
     for name, df in all_sheets.items():
         cols = ", ".join(df.columns[:10])
         sheet_descriptions += f"\n{name}: {cols}"
@@ -115,15 +115,12 @@ if prompt := st.chat_input("Ask anything..."):
             {
                 "role": "system",
                 "content": f"""
-You are a data expert.
-
-Below are sheets with their column names:
+Sheets:
 {sheet_descriptions}
 
-User question: {prompt}
+Question: {prompt}
 
-Choose the MOST relevant sheet.
-Return ONLY the sheet name exactly.
+Return only best matching sheet name.
 """
             }
         ]
@@ -138,8 +135,12 @@ Return ONLY the sheet name exactly.
 
     df = all_sheets[selected_sheet]
 
+    # 🔥 FIX: convert numeric properly
+    df = df.apply(pd.to_numeric, errors='ignore')
+
     data_context = df.head(50).to_string(index=False)
 
+    # ---------- MAIN AI ----------
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
@@ -157,71 +158,13 @@ Return ONLY the sheet name exactly.
         st.write(f"📊 Using Sheet: {selected_sheet}")
         st.write(answer)
 
+        # ---------- VISUALIZATION ----------
         numeric_df = df.select_dtypes(include="number")
 
         if not numeric_df.empty:
-
-            # 🧠 AI decides visualization
-            viz_response = client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {
-                        "role": "system",
-                        "content": f"""
-Columns:
-{list(df.columns)}
-
-Question: {prompt}
-
-Reply:
-TYPE: bar/line/kpi
-COLUMNS: col1,col2
-"""
-                    }
-                ]
-            )
-
-            viz_text = viz_response.choices[0].message.content.lower()
-
-            chart_type = "bar"
-            selected_cols = numeric_df.columns[:2].tolist()
-
-            if "line" in viz_text:
-                chart_type = "line"
-            elif "kpi" in viz_text:
-                chart_type = "kpi"
-
-            if "columns:" in viz_text:
-                try:
-                    cols_part = viz_text.split("columns:")[1].strip()
-                    selected_cols = [c.strip() for c in cols_part.split(",") if c.strip() in df.columns]
-                except:
-                    pass
-
-            try:
-                chart_df = df[selected_cols]
-
-                if chart_type == "line":
-                    st.line_chart(chart_df)
-                elif chart_type == "kpi":
-                    col = selected_cols[0]
-                    st.metric(f"Top {col}", df[col].max())
-                else:
-                    st.bar_chart(chart_df)
-
-            except:
-                st.bar_chart(numeric_df)
-
-            # 🧠 Insight
-            insight = client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {"role": "system", "content": f"Give 1-line insight from data"}
-                ]
-            )
-
-            st.markdown("### 🧠 Insight")
-            st.write(insight.choices[0].message.content)
+            st.bar_chart(numeric_df)   # always show chart
+        else:
+            st.warning("No numeric data available for chart")
 
 # ---------- SAVE ----------
 save_chats(st.session_state.chats)
