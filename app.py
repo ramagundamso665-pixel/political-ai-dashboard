@@ -2,7 +2,8 @@ import streamlit as st
 from openai import OpenAI
 
 # ---------- CONFIG ----------
-st.set_page_config(page_title="AI Assistant", page_icon="🤖")
+st.set_page_config(page_title="Telangana Grid")
+st.title("⚡ Telangana Grid")
 
 # ---------- API ----------
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
