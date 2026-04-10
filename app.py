@@ -2,8 +2,14 @@ import streamlit as st
 from openai import OpenAI
 
 # ---------- CONFIG ----------
-st.set_page_config(page_title="Telangana Grid")
-st.title("⚡ Telangana Grid")
+col1, col2 = st.columns([1,5])
+
+with col1:
+    st.markdown("## ⚡")
+
+with col2:
+    st.markdown("## Mandate AI")
+    st.caption("AI-powered political intelligence")
 
 # ---------- API ----------
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
