@@ -77,7 +77,7 @@ with st.sidebar:
 
     for chat_id in st.session_state.chats:
         name = st.session_state.chat_names.get(chat_id, "New Chat")
-        if st.button(name):
+        if st.button(name, key=chat_id):  # ✅ FIXED
             st.session_state.current_chat = chat_id
 
 # ---------- LOAD DATA ----------
