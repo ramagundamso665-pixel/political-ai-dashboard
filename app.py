@@ -71,7 +71,6 @@ with st.sidebar:
 
     st.markdown("## ⚡ Mandate")
 
-    # ➕ New Chat
     if st.button("➕ New Chat"):
         chat_id = str(uuid.uuid4())
         st.session_state.chats[chat_id] = []
@@ -79,13 +78,11 @@ with st.sidebar:
 
     st.markdown("---")
 
-    # Chat list
     for chat_id in list(st.session_state.chats.keys()):
 
         col1, col2, col3 = st.columns([6,1,1])
         name = st.session_state.chat_names.get(chat_id, "New Chat")
 
-        # Highlight active chat
         if chat_id == st.session_state.current_chat:
             name = "👉 " + name
 
@@ -126,7 +123,6 @@ if prompt := st.chat_input("Ask anything..."):
     with st.chat_message("user"):
         st.write(prompt)
 
-    # Name chat
     if st.session_state.current_chat not in st.session_state.chat_names:
         st.session_state.chat_names[st.session_state.current_chat] = prompt[:30]
 
@@ -189,70 +185,21 @@ Return only best matching sheet name.
 
         if not numeric_df.empty:
 
-            # ---------- SMART VISUAL ----------
-            with st.spinner("📊 Building visualization..."):
-                viz_response = client.chat.completions.create(
-                    model="gpt-4o-mini",
-                    messages=[{
-                        "role": "system",
-                        "content": f"""
-Columns:
-{list(df.columns)}
+            safe_cols = numeric_df.columns[:2].tolist()
 
-Question: {prompt}
-
-Reply:
-TYPE: bar/line/kpi
-COLUMNS: col1,col2
-"""
-                    }]
-                )
-
-            viz_text = viz_response.choices[0].message.content.lower()
-
-            chart_type = "bar"
-            selected_cols = numeric_df.columns[:2].tolist()
-
-            if "line" in viz_text:
-                chart_type = "line"
-            elif "kpi" in viz_text:
-                chart_type = "kpi"
-
-            if "columns:" in viz_text:
-                try:
-                    cols_part = viz_text.split("columns:")[1].strip()
-                    selected_cols = [
-                        c.strip() for c in cols_part.split(",")
-                        if c.strip() in df.columns
-                    ]
-                except:
-                    pass
-
+            # Always show something
             try:
-                chart_df = df[selected_cols]
-
-                if chart_type == "line":
-                    st.line_chart(chart_df)
-                elif chart_type == "kpi":
-                    col = selected_cols[0]
-                    st.metric(f"Top {col}", df[col].max())
-                else:
-                    st.bar_chart(chart_df)
-
+                st.bar_chart(numeric_df[safe_cols])
             except:
                 st.bar_chart(numeric_df)
 
-            # ---------- INSIGHT ----------
-            insight = client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[{
-                    "role": "system",
-                    "content": f"Give short insight from this data: {list(df.columns)}"
-                }]
-            )
+            # KPI
+            col = safe_cols[0]
+            st.metric(f"Top {col}", df[col].max())
 
+            # Insight
             st.markdown("### 🧠 Insight")
-            st.write(insight.choices[0].message.content)
+            st.write(f"Highest value in {col} is {df[col].max()}")
 
         else:
             st.warning("No numeric data available")
