@@ -141,7 +141,7 @@ Return only best matching sheet name.
     df = all_sheets[selected_sheet]
 
     # ---------- FIX NUMERIC ----------
-    df = df.apply(pd.to_numeric, errors='ignore')
+   df = df.apply(lambda col: pd.to_numeric(col, errors='coerce'))
 
     data_context = df.head(50).to_string(index=False)
 
