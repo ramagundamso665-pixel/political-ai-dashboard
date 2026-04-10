@@ -77,7 +77,7 @@ with st.sidebar:
 
     for chat_id in st.session_state.chats:
         name = st.session_state.chat_names.get(chat_id, "New Chat")
-        if st.button(name, key=chat_id):   # ✅ FIXED ERROR HERE
+        if st.button(name, key=chat_id):
             st.session_state.current_chat = chat_id
 
 # ---------- LOAD DATA ----------
@@ -153,13 +153,39 @@ Return ONLY the sheet name exactly.
 
     messages.append({"role": "assistant", "content": answer})
 
+    # ---------- OUTPUT ----------
     with st.chat_message("assistant"):
         st.write(f"📊 Using Sheet: {selected_sheet}")
         st.write(answer)
 
         numeric_df = df.select_dtypes(include="number")
+
         if not numeric_df.empty:
-            st.bar_chart(numeric_df)
+
+            q = prompt.lower()
+
+            # 📊 BAR
+            if any(word in q for word in ["compare", "distribution", "by", "across"]):
+                st.bar_chart(numeric_df)
+
+            # 📈 LINE
+            elif any(word in q for word in ["trend", "over time", "growth", "increase"]):
+                st.line_chart(numeric_df)
+
+            # 📌 KPI
+            elif any(word in q for word in ["highest", "max", "top", "lowest", "min"]):
+                col = numeric_df.columns[0]
+                value = numeric_df[col].max()
+                st.metric(f"Top {col}", value)
+
+            # 📊 DEFAULT
+            else:
+                st.bar_chart(numeric_df)
+
+            # 🧠 INSIGHT
+            col = numeric_df.columns[0]
+            st.markdown("### 🧠 Insight")
+            st.write(f"Highest value in **{col}** is {numeric_df[col].max()}")
 
 # ---------- SAVE ----------
 save_chats(st.session_state.chats)
