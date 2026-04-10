@@ -160,32 +160,74 @@ Return ONLY the sheet name exactly.
 
         numeric_df = df.select_dtypes(include="number")
 
-        if not numeric_df.empty:
+if not numeric_df.empty:
 
-            q = prompt.lower()
+    # 🧠 AI decides visualization
+    viz_response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "system",
+                "content": f"""
+You are a data visualization expert.
 
-            # 📊 BAR
-            if any(word in q for word in ["compare", "distribution", "by", "across"]):
-                st.bar_chart(numeric_df)
+Columns available:
+{list(df.columns)}
 
-            # 📈 LINE
-            elif any(word in q for word in ["trend", "over time", "growth", "increase"]):
-                st.line_chart(numeric_df)
+User question: {prompt}
 
-            # 📌 KPI
-            elif any(word in q for word in ["highest", "max", "top", "lowest", "min"]):
-                col = numeric_df.columns[0]
-                value = numeric_df[col].max()
-                st.metric(f"Top {col}", value)
+Respond ONLY in this format:
 
-            # 📊 DEFAULT
-            else:
-                st.bar_chart(numeric_df)
+TYPE: bar/line/kpi
+COLUMNS: col1,col2
+"""
+            }
+        ]
+    )
 
-            # 🧠 INSIGHT
-            col = numeric_df.columns[0]
-            st.markdown("### 🧠 Insight")
-            st.write(f"Highest value in **{col}** is {numeric_df[col].max()}")
+    viz_text = viz_response.choices[0].message.content.lower()
 
+    chart_type = "bar"
+    selected_cols = numeric_df.columns[:2].tolist()
+
+    if "line" in viz_text:
+        chart_type = "line"
+    elif "kpi" in viz_text:
+        chart_type = "kpi"
+
+    if "columns:" in viz_text:
+        try:
+            cols_part = viz_text.split("columns:")[1].strip()
+            selected_cols = [c.strip() for c in cols_part.split(",") if c.strip() in df.columns]
+        except:
+            pass
+
+    try:
+        chart_df = df[selected_cols]
+
+        if chart_type == "line":
+            st.line_chart(chart_df)
+        elif chart_type == "kpi":
+            col = selected_cols[0]
+            st.metric(f"Top {col}", df[col].max())
+        else:
+            st.bar_chart(chart_df)
+
+    except:
+        st.bar_chart(numeric_df)
+
+    # 🧠 Insight
+    insight = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "system",
+                "content": f"Give a short insight from this data: {list(df.columns)}"
+            }
+        ]
+    )
+
+    st.markdown("### 🧠 Insight")
+    st.write(insight.choices[0].message.content)
 # ---------- SAVE ----------
 save_chats(st.session_state.chats)
