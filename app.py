@@ -10,18 +10,23 @@ st.set_page_config(page_title="People's Mandate AI", layout="wide")
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
-# ---------- SAVE / LOAD ----------
+# ---------- FILE ----------
 CHAT_FILE = "chat_store.json"
 
+# ---------- SAFE LOAD ----------
 def load_chats():
     if os.path.exists(CHAT_FILE):
-        with open(CHAT_FILE, "r") as f:
-            return json.load(f)
+        try:
+            with open(CHAT_FILE, "r") as f:
+                return json.load(f)
+        except:
+            return {}
     return {}
 
+# ---------- SAFE SAVE ----------
 def save_chats(chats):
     with open(CHAT_FILE, "w") as f:
-        json.dump(chats, f)
+        json.dump(chats, f, indent=2)
 
 # ---------- SESSION ----------
 if "chats" not in st.session_state:
@@ -135,12 +140,12 @@ Return only best matching sheet name.
 
     df = all_sheets[selected_sheet]
 
-    # 🔥 FIX: convert numeric properly
+    # ---------- FIX NUMERIC ----------
     df = df.apply(pd.to_numeric, errors='ignore')
 
     data_context = df.head(50).to_string(index=False)
 
-    # ---------- MAIN AI ----------
+    # ---------- AI RESPONSE ----------
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
@@ -158,11 +163,10 @@ Return only best matching sheet name.
         st.write(f"📊 Using Sheet: {selected_sheet}")
         st.write(answer)
 
-        # ---------- VISUALIZATION ----------
         numeric_df = df.select_dtypes(include="number")
 
         if not numeric_df.empty:
-            st.bar_chart(numeric_df)   # always show chart
+            st.bar_chart(numeric_df)
         else:
             st.warning("No numeric data available for chart")
 
