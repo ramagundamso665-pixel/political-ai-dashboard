@@ -1,62 +1,90 @@
 import streamlit as st
-import pandas as pd
 from openai import OpenAI
-
-# ---------- CONFIG ----------
-st.set_page_config(page_title="Mandate AI", layout="wide")
-
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-
-# ---------- HEADER ----------
+import streamlit as st
+from openai import OpenAI
 st.markdown("""
-<h1 style='text-align:center;'>⚡ Mandate AI</h1>
-<p style='text-align:center;color:gray;'>AI-powered political intelligence</p>
+<style>
+html, body, [class*="css"] {
+    background-color: #0b0f19;
+    color: white;
+}
+
+.block-container {
+    padding-top: 2rem;
+    max-width: 900px;
+}
+
+h1 {
+    font-size: 42px !important;
+    font-weight: 700;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    color: #9ca3af;
+}
+
+.stChatInput {
+    border-radius: 20px;
+}
+
+.stChatMessage {
+    border-radius: 12px;
+    padding: 10px;
+}
+</style>
 """, unsafe_allow_html=True)
 
+# rest of your code continues...
+# ---------- CONFIG ----------
+col1, col2 = st.columns([1,5])
+
+st.markdown("""
+<h1>⚡ Mandate AI</h1>
+<p>AI-powered political intelligence</p>
+""", unsafe_allow_html=True)
 st.markdown("---")
 
-# ---------- LOAD DATA ----------
-all_sheets = pd.read_excel("Book 13.xlsx", sheet_name=None)
+# ---------- API ----------
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
-sheet_names = list(all_sheets.keys())
-selected_sheet = st.selectbox("📊 Select Data Sheet", sheet_names)
+# ---------- MEMORY ----------
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
-df = all_sheets[selected_sheet]
+# ---------- SHOW CHAT ----------
+for msg in st.session_state.messages:
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"])
 
-# ---------- DASHBOARD ----------
-st.markdown("## 📊 Data Overview")
+# ---------- INPUT ----------
+prompt = st.chat_input("Type your message...")
 
-col1, col2, col3 = st.columns(3)
+if prompt:
+    # user message
+    st.session_state.messages.append({"role": "user", "content": prompt})
 
-col1.metric("Rows", df.shape[0])
-col2.metric("Columns", df.shape[1])
-col3.metric("Sheet", selected_sheet)
+    with st.chat_message("user"):
+        st.markdown(prompt)
 
-st.dataframe(df, use_container_width=True)
+    # assistant response
+    with st.chat_message("assistant"):
+        message_placeholder = st.empty()
+        full_response = ""
 
-st.markdown("### 📈 Data Visualization")
-st.bar_chart(df.select_dtypes(include="number"))
+        with st.spinner("Thinking..."):
+            stream = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=st.session_state.messages,
+                stream=True
+            )
 
-st.markdown("---")
+            for chunk in stream:
+                if chunk.choices[0].delta.content:
+                    full_response += chunk.choices[0].delta.content
+                    message_placeholder.markdown(full_response)
 
-# ---------- AI SECTION ----------
-st.markdown("## 💬 Ask AI About Your Data")
-
-question = st.text_input("Ask anything from this data...")
-
-if question:
-    data_context = df.head(100).to_string(index=False)  # limit for speed
-
-    with st.spinner("Analyzing your data..."):
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": f"You are a political data analyst. Answer ONLY using the provided dataset: {selected_sheet}."},
-                {"role": "user", "content": f"Dataset:\n{data_context}\n\nQuestion: {question}"}
-            ]
-        )
-
-        answer = response.choices[0].message.content
-
-    st.success("Answer:")
-    st.write(answer)
+    st.session_state.messages.append(
+        {"role": "assistant", "content": full_response}
+    )
