@@ -1,155 +1,83 @@
 import streamlit as st
 import pandas as pd
 from openai import OpenAI
-import uuid
-import json
-import os
-
-# ---------- CONFIG ----------
-st.set_page_config(page_title="People's Mandate AI", layout="wide")
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-CHAT_FILE = "chat_store.json"
 
-# ---------- SAFE LOAD ----------
-def load_chats():
-    if os.path.exists(CHAT_FILE):
-        try:
-            with open(CHAT_FILE, "r") as f:
-                return json.load(f)
-        except:
-            return {}
-    return {}
-
-# ---------- SAVE ----------
-def save_chats(chats):
-    with open(CHAT_FILE, "w") as f:
-        json.dump(chats, f, indent=2)
-
-# ---------- SESSION ----------
-if "chats" not in st.session_state:
-    st.session_state.chats = load_chats()
-
-if "chat_names" not in st.session_state:
-    st.session_state.chat_names = {}
-
-if "current_chat" not in st.session_state:
-    chat_id = str(uuid.uuid4())
-    st.session_state.chats[chat_id] = []
-    st.session_state.current_chat = chat_id
-
-# ---------- UI ----------
+st.set_page_config(layout="wide")
 st.markdown("""
 <style>
-html, body {
-    background: radial-gradient(circle at top, #111827, #020617);
+body {
+    background-color: #0e1117;
+}
+.stTextInput > div > div > input {
+    background-color: #1c1f26;
     color: white;
 }
-.glass {
-    background: rgba(255,255,255,0.05);
-    border-radius: 16px;
-    padding: 15px;
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.1);
+.stChatMessage {
+    border-radius: 10px;
+    padding: 10px;
 }
-button {
-    border-radius: 10px !important;
+h1 {
+    text-align: center;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# ---------- HEADER ----------
-st.markdown("""
-<div class="glass">
-<h1 style='text-align:center;'>⚡ People's Mandate AI</h1>
-<p style='text-align:center;color:gray;'>Political Intelligence Engine</p>
-</div>
-""", unsafe_allow_html=True)
+st.title("🤖 AI Political Assistant")
 
-# ---------- SIDEBAR ----------
-with st.sidebar:
-
-    st.markdown("## ⚡ Mandate")
-
-    if st.button("➕ New Chat"):
-        chat_id = str(uuid.uuid4())
-        st.session_state.chats[chat_id] = []
-        st.session_state.current_chat = chat_id
-
-    st.markdown("---")
-
-    for chat_id in list(st.session_state.chats.keys()):
-
-        col1, col2, col3 = st.columns([6,1,1])
-        name = st.session_state.chat_names.get(chat_id, "New Chat")
-
-        if chat_id == st.session_state.current_chat:
-            name = "👉 " + name
-
-        if col1.button(name, key=f"chat_{chat_id}"):
-            st.session_state.current_chat = chat_id
-
-        if col2.button("✏️", key=f"rename_{chat_id}"):
-            st.session_state.chat_names[chat_id] = f"Chat {len(st.session_state.chat_names)+1}"
-
-        if col3.button("🗑️", key=f"delete_{chat_id}"):
-            del st.session_state.chats[chat_id]
-            if chat_id in st.session_state.chat_names:
-                del st.session_state.chat_names[chat_id]
-
-            if st.session_state.chats:
-                st.session_state.current_chat = list(st.session_state.chats.keys())[0]
-            else:
-                new_id = str(uuid.uuid4())
-                st.session_state.chats[new_id] = []
-                st.session_state.current_chat = new_id
-
-# ---------- LOAD DATA ----------
+# Load all sheets
 all_sheets = pd.read_excel("Book 13.xlsx", sheet_name=None)
 sheet_names = list(all_sheets.keys())
 
-# ---------- CHAT ----------
-messages = st.session_state.chats[st.session_state.current_chat]
+# Chat memory
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
-for msg in messages:
+# Show chat
+for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.write(msg["content"])
 
-# ---------- INPUT ----------
+# Input
 if prompt := st.chat_input("Ask anything..."):
 
-    messages.append({"role": "user", "content": prompt})
+    st.session_state.messages.append({"role": "user", "content": prompt})
 
     with st.chat_message("user"):
         st.write(prompt)
 
-    if st.session_state.current_chat not in st.session_state.chat_names:
-        st.session_state.chat_names[st.session_state.current_chat] = prompt[:30]
-
-    # ---------- SHEET DETECTION ----------
+    # 🧠 STEP 1: Build sheet descriptions using columns
     sheet_descriptions = ""
+
     for name, df in all_sheets.items():
         cols = ", ".join(df.columns[:10])
         sheet_descriptions += f"\n{name}: {cols}"
 
-    with st.spinner("⚡ Thinking..."):
-        sheet_response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[{
+    # 🧠 STEP 2: AI selects sheet using columns (NOT name guess)
+    sheet_response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
                 "role": "system",
                 "content": f"""
-Sheets:
+You are a data expert.
+
+Below are sheets with their column names:
 {sheet_descriptions}
 
-Question: {prompt}
+User question: {prompt}
 
-Return only best matching sheet name.
+Choose the MOST relevant sheet.
+Return ONLY the sheet name exactly.
 """
-            }]
-        )
+            }
+        ]
+    )
 
     selected_sheet_raw = sheet_response.choices[0].message.content.strip()
 
+    # Match safely
     selected_sheet = next(
         (s for s in sheet_names if s.lower() == selected_sheet_raw.lower()),
         sheet_names[0]
@@ -157,52 +85,27 @@ Return only best matching sheet name.
 
     df = all_sheets[selected_sheet]
 
-    # ---------- FIX NUMERIC ----------
-    df = df.apply(lambda col: pd.to_numeric(col, errors='coerce'))
-
+    # 🧠 STEP 3: Send limited data
     data_context = df.head(50).to_string(index=False)
 
-    # ---------- AI ANSWER ----------
-    with st.spinner("🤖 Analyzing data..."):
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": f"You are analyzing '{selected_sheet}' data."},
-                {"role": "user", "content": f"Data:\n{data_context}\n\nQuestion: {prompt}"}
-            ]
-        )
+    # 🧠 STEP 4: AI answer
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": f"You are analyzing '{selected_sheet}' data."},
+            {"role": "user", "content": f"Data:\n{data_context}\n\nQuestion: {prompt}"}
+        ]
+    )
 
     answer = response.choices[0].message.content
-    messages.append({"role": "assistant", "content": answer})
 
-    # ---------- OUTPUT ----------
+    st.session_state.messages.append({"role": "assistant", "content": answer})
+
     with st.chat_message("assistant"):
-
         st.write(f"📊 Using Sheet: {selected_sheet}")
         st.write(answer)
 
+        # Chart
         numeric_df = df.select_dtypes(include="number")
-
         if not numeric_df.empty:
-
-            safe_cols = numeric_df.columns[:2].tolist()
-
-            # Always show something
-            try:
-                st.bar_chart(numeric_df[safe_cols])
-            except:
-                st.bar_chart(numeric_df)
-
-            # KPI
-            col = safe_cols[0]
-            st.metric(f"Top {col}", df[col].max())
-
-            # Insight
-            st.markdown("### 🧠 Insight")
-            st.write(f"Highest value in {col} is {df[col].max()}")
-
-        else:
-            st.warning("No numeric data available")
-
-# ---------- SAVE ----------
-save_chats(st.session_state.chats)
+            st.bar_chart(numeric_df)
