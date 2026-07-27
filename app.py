@@ -124,6 +124,7 @@ with st.sidebar:
     page = st.radio(
         "Choose a view",
         [
+            "💬 Ask AI",
             "📈 Overview",
             "🎯 Swing Divisions",
             "👥 Demographic Insights",
@@ -131,7 +132,6 @@ with st.sidebar:
             "📣 Social & Ground Campaign",
             "🎤 Speech Generator",
             "📋 Recommendations",
-            "💬 Ask AI",
         ],
         label_visibility="collapsed",
     )
@@ -443,7 +443,8 @@ elif page == "📋 Recommendations":
 # ══════════════════════════════════════════════════════════════════════
 
 elif page == "💬 Ask AI":
-    st.header("Ask AI About Your Data")
+    st.header("💬 Ask AI About Your Data")
+    st.caption("One AI call, grounded in every sheet at once — cheaper and more accurate than asking the model to pick a sheet first and then answer separately.")
 
     if not is_valid_api_key(api_key):
         st.error("Add a real OPENAI_API_KEY to .streamlit/secrets.toml to enable this page.")
@@ -453,80 +454,97 @@ elif page == "💬 Ask AI":
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
+    if "pending_prompt" not in st.session_state:
+        st.session_state.pending_prompt = None
 
-    schema = ""
-    for sheet_name, df in raw_sheets.items():
-        cols = ", ".join(map(str, df.columns))
-        sample = df.head(2).to_string(index=False)
-        schema += f"\nSheet: {sheet_name}\nColumns: {cols}\nSample:\n{sample}\n"
+    # The whole dataset is small (~2.5k tokens across all 9 sheets), so it's
+    # cheaper and more reliable to ground every answer in the full data than
+    # to spend a separate call deciding which sheet to look at.
+    data_context = "\n".join(
+        f"### Sheet: {name}\nColumns: {', '.join(map(str, df.columns))}\n{df.to_string(index=False)}\n"
+        for name, df in raw_sheets.items()
+    )
 
-    SYSTEM_PROMPT = f"""
-You are People's Mandate AI. Available sheets:
-{schema}
-Return ONLY JSON like {{"sheet":"Surveys","analysis_type":"summary","chart":"table"}}.
-analysis_type: summary, count, list, compare, trend, distribution, ranking
-chart: table, bar, line, area, pie
-Never return explanation. Return only JSON.
+    SYSTEM_PROMPT = f"""You are People's Mandate AI, answering questions about the {CONSTITUENCY_NAME} campaign.
+Below is the COMPLETE dataset, every sheet in full — not a sample.
+
+{data_context}
+
+Rules:
+- Answer ONLY using the data above. Never invent numbers, names, or facts not present here.
+- If the data doesn't cover the question, say so plainly instead of guessing.
+- Pick the ONE sheet most relevant to the question, or "none" if no single sheet applies.
+- Pick a chart type only if comparing numbers across rows would help: table, bar, line, area, pie. Otherwise "none".
+
+Respond with ONLY minified JSON, no markdown fences, in exactly this shape:
+{{"sheet": "<sheet name or none>", "chart": "<table|bar|line|area|pie|none>", "answer": "<answer as plain text>"}}
 """
+
+    @st.cache_data(show_spinner=False)
+    def ask_ai_once(question, _system_prompt):
+        resp = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "system", "content": _system_prompt}, {"role": "user", "content": question}],
+            temperature=0.2,
+        )
+        cleaned = resp.choices[0].message.content.replace("```json", "").replace("```", "").strip()
+        return json.loads(cleaned)
+
+    st.markdown("**Try asking:**")
+    suggestions = [
+        "Which division is most winnable right now?",
+        "Why do the surveys disagree so much on BJP?",
+        "What's our biggest weakness with women voters?",
+        "Summarize our ground campaign strengths vs weaknesses.",
+    ]
+    cols = st.columns(len(suggestions))
+    for col, sug in zip(cols, suggestions):
+        if col.button(sug, width='stretch'):
+            st.session_state.pending_prompt = sug
 
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]):
             st.write(msg["content"])
 
-    if prompt := st.chat_input("Ask anything about your political data..."):
+    typed_prompt = st.chat_input("Ask anything about your political data...")
+    prompt = st.session_state.pending_prompt or typed_prompt
+    st.session_state.pending_prompt = None
+
+    if prompt:
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.write(prompt)
 
         try:
-            planner = client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": prompt}],
-            )
-            cleaned = planner.choices[0].message.content.replace("```json", "").replace("```", "").strip()
-            plan = json.loads(cleaned)
-        except Exception as e:
-            st.error("Planner error")
-            st.exception(e)
-            st.stop()
-
-        sheet_raw = plan.get("sheet", "")
-        selected_sheet = next(
-            (s for s in raw_sheets if s.lower() == sheet_raw.lower()), list(raw_sheets.keys())[0]
-        )
-        df = raw_sheets[selected_sheet].copy()
-        data_context = df.head(100).to_string(index=False)
-
-        try:
-            response = client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {"role": "system", "content": f"Answer ONLY from sheet '{selected_sheet}'. Never make up facts. If the data doesn't cover it, say 'No information available in the dataset.'"},
-                    {"role": "user", "content": f"Question: {prompt}\n\nData:\n{data_context}"},
-                ],
-            )
-            answer = response.choices[0].message.content
+            with st.spinner("Thinking..."):
+                result = ask_ai_once(prompt, SYSTEM_PROMPT)
         except Exception as e:
             st.error("Answer generation failed")
             st.exception(e)
             st.stop()
+
+        answer = result.get("answer", "")
+        selected_sheet = result.get("sheet", "none")
+        chart = result.get("chart", "none")
+
         st.session_state.messages.append({"role": "assistant", "content": answer})
 
         with st.chat_message("assistant"):
-            st.markdown(source_badge(SOURCE_METADATA.get(SHEET_KEY_MAP.get(selected_sheet, ""), {}).get("type", "internal"), f"Sheet: {selected_sheet}"), unsafe_allow_html=True)
+            if selected_sheet in raw_sheets:
+                st.markdown(source_badge(SOURCE_METADATA.get(SHEET_KEY_MAP.get(selected_sheet, ""), {}).get("type", "internal"), f"Sheet: {selected_sheet}"), unsafe_allow_html=True)
             st.write(answer)
 
-            numeric_df = df.select_dtypes(include="number")
-            if not numeric_df.empty:
-                chart = plan.get("chart", "bar")
-                if chart == "line":
-                    st.line_chart(numeric_df)
-                elif chart == "area":
-                    st.area_chart(numeric_df)
-                else:
-                    st.bar_chart(numeric_df)
-
-            st.dataframe(df.head(20), hide_index=True, width='stretch')
+            if selected_sheet in raw_sheets:
+                df = raw_sheets[selected_sheet]
+                numeric_df = df.select_dtypes(include="number")
+                if not numeric_df.empty and chart in ("bar", "line", "area"):
+                    if chart == "line":
+                        st.line_chart(numeric_df)
+                    elif chart == "area":
+                        st.area_chart(numeric_df)
+                    else:
+                        st.bar_chart(numeric_df)
+                st.dataframe(df, hide_index=True, width='stretch')
 
         logger.log_analysis("ask_ai", [selected_sheet], answer[:150])
 
@@ -540,7 +558,9 @@ st.markdown(
     **Data Sources:** {' '.join(source_badge(m['type'], m['name']) for m in SOURCE_METADATA.values())}
 
     Your data stays on your infrastructure. No data leaves this app except to the OpenAI API
-    for AI-generated text (Ask AI / Speech Generator), and only the sheet excerpts shown above are sent.
+    for AI-generated text (Ask AI / Speech Generator) — only this constituency's own campaign
+    data is ever sent, never anything from outside this dataset. Repeated questions are cached,
+    so re-asking the same thing during a demo doesn't cost twice.
     """,
     unsafe_allow_html=True,
 )
