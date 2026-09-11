@@ -4,3 +4,5 @@ __pycache__/
 .streamlit/secrets.toml
 audit_log.json
 .DS_Store
+chat_history.json
+.claude/

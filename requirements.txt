@@ -1,5 +1,7 @@
-streamlit
-pandas
-openai
-openpyxl
-plotly
+# streamlit is pinned to the 1.60 minor: theme.py targets that release's DOM
+# (react-aria tabs, stMetric testids) and its [theme.light]/[theme.dark] config.
+streamlit~=1.60.0
+pandas~=3.0
+openai~=2.48
+openpyxl~=3.1
+plotly~=6.9

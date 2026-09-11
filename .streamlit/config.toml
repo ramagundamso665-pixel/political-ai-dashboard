@@ -1,0 +1,34 @@
+# Two full palettes. Streamlit's own Appearance switch (⋮ → Settings → Appearance)
+# flips between them, so native widgets and dataframes follow the theme too.
+
+[theme]
+font = "Inter"
+headingFont = "Source Serif 4"
+codeFont = "JetBrains Mono"
+baseFontSize = 15
+baseRadius = "0.625rem"
+buttonRadius = "0.5rem"
+showWidgetBorder = true
+showSidebarBorder = true
+metricValueFontSize = "1.75rem"
+metricValueFontWeight = 600
+
+[theme.light]
+backgroundColor = "#FAF9F5"
+secondaryBackgroundColor = "#F2F0E8"
+textColor = "#1F1E1D"
+primaryColor = "#C2603C"
+linkColor = "#B4552F"
+borderColor = "#E2DED2"
+dataframeHeaderBackgroundColor = "#F2F0E8"
+codeBackgroundColor = "#F2F0E8"
+
+[theme.dark]
+backgroundColor = "#1B1A19"
+secondaryBackgroundColor = "#262523"
+textColor = "#F2F0EA"
+primaryColor = "#E08A6B"
+linkColor = "#E9A184"
+borderColor = "#3A3835"
+dataframeHeaderBackgroundColor = "#262523"
+codeBackgroundColor = "#262523"

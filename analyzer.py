@@ -154,6 +154,22 @@ class PoliticalAnalyzer:
         cols = [c for c in ["Category", "Subcategory", "Congress", "BRS", "BJP", "Notes"] if c in df.columns]
         return df[cols]
 
+    def ground_campaign_facts(self):
+        """One fact per (party, subcategory) pair instead of a wide table with
+        three parties' text side by side — a wide row is exactly what causes an
+        LLM to blend BRS's point into a 'Congress' or unattributed summary."""
+        df = self.ground_campaign_matrix()
+        party_cols = [c for c in ["Congress", "BRS", "BJP"] if c in df.columns]
+        facts = []
+        for _, row in df.iterrows():
+            for col in party_cols:
+                text = str(row[col]).strip()
+                if text in ("", "-", "–", "nan", "NaN"):
+                    continue
+                party_label = "Congress (INC)" if col == "Congress" else col
+                facts.append(f"[{party_label}] {row['Category']} > {row['Subcategory']}: {text}")
+        return facts
+
     # ------------------------------------------------------------------
     # Campaign activity timeline
     # ------------------------------------------------------------------
