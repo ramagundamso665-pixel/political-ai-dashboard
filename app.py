@@ -21,6 +21,7 @@ from config import (
     SOURCE_METADATA,
     is_valid_api_key,
 )
+import db
 from context import Ctx
 from data_manager import SourceTracker, validate_all
 from speech_generator import SpeechGenerator
@@ -28,6 +29,7 @@ from theme import inject_theme
 from views import (
     ask_ai,
     demographics,
+    live_pulse,
     overview,
     recommendations,
     social,
@@ -43,11 +45,26 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-VIEWS = [ask_ai, overview, swing, demographics, survey, social, speech, recommendations]
+VIEWS = [ask_ai, overview, live_pulse, swing, demographics, survey, social, speech, recommendations]
 
 
-@st.cache_data
+@st.cache_data(ttl=300)
 def load_raw_sheets():
+    """Supabase is the source of truth when configured; Excel is the fallback
+    so the app still runs before the database is set up or if Supabase is
+    briefly unreachable — same defensive pattern as every other integration
+    here, never a hard failure on a missing key."""
+    supabase_url = st.secrets.get("SUPABASE_URL", None) if hasattr(st, "secrets") else None
+    service_key = st.secrets.get("SUPABASE_SERVICE_KEY", None) if hasattr(st, "secrets") else None
+
+    if is_valid_api_key(supabase_url, placeholder_prefix="https://REPLACE") and is_valid_api_key(
+        service_key, placeholder_prefix="REPLACE"
+    ):
+        try:
+            return db.load_sheets_from_supabase(supabase_url, service_key, CONSTITUENCY_NAME)
+        except Exception as exc:
+            st.warning(f"Supabase unavailable ({exc}) — falling back to {DATA_FILE}.")
+
     data_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), DATA_FILE)
     return pd.read_excel(data_path, sheet_name=None)
 

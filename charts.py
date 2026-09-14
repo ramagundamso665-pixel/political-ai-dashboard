@@ -117,6 +117,26 @@ def social_share(by_party):
     return _style(fig, 380, margin_t=70)
 
 
+def pulse_trend(points, value_key, title, ticksuffix=""):
+    """A single quiet line for a live signal (search interest, news tone). Grey,
+    not a party color — this isn't attributable to any one party."""
+    fig = go.Figure(
+        go.Scatter(
+            x=[p["date"] for p in points],
+            y=[p[value_key] for p in points],
+            mode="lines",
+            line=dict(width=2, color=PARTY_COLORS["Others"]),
+            fill="tozeroy",
+            fillcolor="rgba(158,158,158,.14)",
+            hovertemplate="%{x|%b %d}: %{y:.1f}<extra></extra>",
+        )
+    )
+    fig.add_hline(y=0, line_width=1, line_color=ZERO)
+    fig.update_layout(title=title)
+    fig.update_yaxes(ticksuffix=ticksuffix)
+    return _style(fig, 260, showlegend=False, margin_t=40)
+
+
 def event_counts(counts):
     """Campaign events logged per party."""
     ordered = sorted(counts.items(), key=lambda kv: kv[1], reverse=True)

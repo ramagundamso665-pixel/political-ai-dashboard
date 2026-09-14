@@ -3,6 +3,20 @@
 CONSTITUENCY_NAME = "Jubilee Hills (GHMC)"
 DATA_FILE = "Book 13.xlsx"
 
+# Search term used for the free-tier Live Pulse signals (Google Trends / GDELT /
+# YouTube) — kept separate from CONSTITUENCY_NAME since that string carries the
+# "(GHMC)" suffix, which is not what anyone actually searches or writes about.
+PULSE_KEYWORD = "Jubilee Hills"
+
+# 2023 candidates, from Historical_Results — lets Live Pulse search on names
+# that actually appear on this seat's ballot instead of a guessed keyword.
+# AIMIM has no entry: no candidate contested this seat for them in 2023.
+CANDIDATES = {
+    "BRS": "Maganti Gopinath",
+    "INC": "Mohammed Azharuddin",
+    "BJP": "Lankala Deepak Reddy",
+}
+
 # Excel sheet name -> internal key used across the app
 SHEET_KEY_MAP = {
     "Demographics": "demographics",
@@ -45,9 +59,9 @@ PARTY_ALIASES = {
 }
 
 
-def is_valid_api_key(key):
+def is_valid_api_key(key, placeholder_prefix="sk-REPLACE"):
     """Reject missing keys and the placeholder left in secrets.toml.example."""
-    return bool(key) and not key.startswith("sk-REPLACE")
+    return bool(key) and not str(key).startswith(placeholder_prefix)
 
 
 def normalize_party(raw):
@@ -114,5 +128,13 @@ SOURCE_METADATA = {
         "name": "Constituency Voter Roll Demographics",
         "type": "internal",
         "methodology": "Voter roll counts by category",
+    },
+    "live_pulse": {
+        "id": "live_pulse",
+        "name": "Live Search & News Pulse (Google Trends / GDELT / YouTube)",
+        "type": "external",
+        "methodology": "Automated free-tier pull of public search interest, news tone, "
+                        "and video activity — a sampled proxy for public mood, not a "
+                        "measured survey",
     },
 }
