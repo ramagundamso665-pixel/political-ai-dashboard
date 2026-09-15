@@ -66,8 +66,21 @@ KEY_LEADERS = {
     "Bhatti Vikramarka": "Bhatti Vikramarka",
     "Etela Rajender": "Etela Rajender",
     "G. Kishan Reddy": "Kishan Reddy",
-    "Gaddam Vamsi Krishna": "Gaddam Vamsi Krishna",
-    "Gaddam Vivek Venkatswamy": "Vivek Venkatswamy",
+    # Low-coverage names get a full spec: Google News matches a name anywhere in
+    # an article body, so a bare name search mostly returns stories where the
+    # person is a passing mention. The role in the label is verified against
+    # current headlines — Peddapalli MP, not an MLA.
+    "Gaddam Vamsi Krishna (MP, Peddapalli)": {
+        "term": "Gaddam Vamsi Krishna",
+        "news": '"Gaddam Vamsi Krishna" OR "Peddapalli MP"',
+        "headline_terms": ["vamsi krishna", "vamshi krishna", "vamsikrishna", "peddapalli mp", "peddapalle mp"],
+    },
+    "Gaddam Vivek Venkatswamy (Labour Minister)": {
+        "term": "Vivek Venkatswamy",
+        # headlines mostly say just "Vivek" — this found 8 about him vs 4 for his full name
+        "news": '"Vivek" Telangana minister',
+        "headline_terms": ["venkatswamy", "venkataswamy", "gaddam vivek", "minister vivek", "vivek"],
+    },
     "K. Chandrashekar Rao (KCR)": "KCR",
     "K. T. Rama Rao (KTR)": "KTR",
     "Komatireddy Venkat Reddy": "Komatireddy Venkat Reddy",

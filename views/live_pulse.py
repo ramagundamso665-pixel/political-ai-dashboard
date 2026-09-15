@@ -26,6 +26,14 @@ COVERAGE_SHOWN = 12
 MOOD_HEADLINES = 25
 MUTED = "opacity:.62;font-size:.9rem"
 
+# how each party is named in a headline, as opposed to the search phrase used
+PARTY_HEADLINE_TERMS = {
+    "BRS": ["brs", "bharat rashtra samithi"],
+    "INC": ["congress"],
+    "BJP": ["bjp"],
+    "AIMIM": ["aimim", "majlis", "owaisi"],
+}
+
 
 SKIPPED = {"ok": False, "error": "not configured"}
 
@@ -74,12 +82,36 @@ def _link(title, url):
 
 def _place(name):
     # a bare place name ("Uppal", "Wyra") matches unrelated news across India
-    return {"label": name, "trends": name, "news": f'"{name}" Telangana', "video": f'"{name}"'}
+    return {
+        "label": name,
+        "trends": name,
+        "news": f'"{name}" Telangana',
+        "video": f'"{name}"',
+        "headline_terms": [name.lower()],
+    }
 
 
-def _person(name, term=None):
-    term = term or name
-    return {"label": name, "trends": term, "news": f'"{term}"', "video": f'"{term}"'}
+def _person(name, spec=None):
+    if isinstance(spec, dict):
+        return {
+            "label": name,
+            "trends": spec["term"],
+            "news": spec["news"],
+            "video": f'"{spec["term"]}"',
+            "headline_terms": spec["headline_terms"],
+        }
+    term = spec or name
+    return {"label": name, "trends": term, "news": f'"{term}"', "video": f'"{term}"', "headline_terms": [term.lower()]}
+
+
+def _split_by_headline(articles, terms):
+    """Articles naming the subject in the headline, and those that only matched
+    somewhere in the body. Only the first group is presented as coverage of the
+    subject — body matches are where a leader showed up as someone else's story."""
+    about, mentioned = [], []
+    for a in articles:
+        (about if any(t in a["title"].lower() for t in terms) else mentioned).append(a)
+    return about, mentioned
 
 
 def _pick_target():
@@ -103,7 +135,13 @@ def _pick_target():
     if scope == "MP seats (17)":
         name = st.selectbox("Lok Sabha constituency", TELANGANA_LOK_SABHA, key="pulse_mp_seat")
         query = f'("{name} Lok Sabha" OR "{name} MP")'
-        return {"label": f"{name} (Lok Sabha)", "trends": name, "news": query, "video": query}
+        return {
+            "label": f"{name} (Lok Sabha)",
+            "trends": name,
+            "news": query,
+            "video": query,
+            "headline_terms": [name.lower()],
+        }
 
     if scope == "Leaders":
         label = st.selectbox("Leader — click and type to search", list(KEY_LEADERS), key="pulse_leader")
@@ -114,12 +152,20 @@ def _pick_target():
             "Party", list(PARTY_SEARCH_TERMS), format_func=lambda c: PARTY_LABELS.get(c, c), key="pulse_party"
         )
         term = PARTY_SEARCH_TERMS[code]
-        return {"label": PARTY_LABELS.get(code, code), "trends": term, "news": term, "video": term}
+        return {
+            "label": PARTY_LABELS.get(code, code),
+            "trends": term,
+            "news": term,
+            "video": term,
+            "headline_terms": PARTY_HEADLINE_TERMS[code],
+        }
 
     typed = st.text_input(
         "Search term", key="pulse_custom_term", placeholder="A person, place, scheme or issue"
     ).strip()
-    return {"label": typed, "trends": typed, "news": typed, "video": typed} if typed else None
+    if not typed:
+        return None
+    return {"label": typed, "trends": typed, "news": typed, "video": typed, "headline_terms": [typed.lower()]}
 
 
 def _render_search_interest(interest):
@@ -151,10 +197,16 @@ def _render_volume(news):
         st.caption(f"{len(news['articles'])} articles in the last {days} days{capped}{widened}.")
 
 
-def _render_mood(ctx, target, articles):
+def _render_mood(ctx, target, articles, mentioned_count):
     st.markdown("##### Headline mood")
     if not articles:
-        empty_state("No recent headlines to read.")
+        if mentioned_count:
+            empty_state(
+                f"No recent headline is directly about {target['label']} — they're only mentioned inside "
+                f"{mentioned_count} article(s), listed under “Also mentioned in”. Mood isn't judged from those."
+            )
+        else:
+            empty_state("No recent headlines to read.")
         return
     if not is_valid_api_key(ctx.api_key):
         st.info("Headline mood needs a working OPENAI_API_KEY — see System status in the sidebar.")
@@ -179,22 +231,34 @@ def _render_mood(ctx, target, articles):
         st.markdown("**Recurring themes:** " + " · ".join(html.escape(t) for t in mood["themes"]))
     unrelated = f" ({mood['unrelated']} judged unrelated)" if mood["unrelated"] else ""
     st.caption(
-        f"AI read of the tone of the {len(headlines)} latest headlines toward {target['label']}{unrelated}. "
+        f"AI read of the tone of the {mood['rated']} latest headlines toward {target['label']}{unrelated}. "
         "Based on headline wording only — not a verified sentiment measure."
     )
 
 
-def _render_coverage(articles):
-    st.markdown("##### Latest coverage")
-    if not articles:
-        empty_state("No articles to list.")
-        return
+def _article_list(articles):
     lines = []
     for a in articles[:COVERAGE_SHOWN]:
         when = a["published"].strftime("%d %b") if a["published"] else ""
         meta = " · ".join(part for part in (a["source"], when) if part)
         lines.append(f"<li>{_link(a['title'], a['url'])} <span style='{MUTED}'>· {html.escape(meta)}</span></li>")
     st.markdown(f"<ul>{''.join(lines)}</ul>", unsafe_allow_html=True)
+
+
+def _render_coverage(target, about, mentioned):
+    st.markdown(f"##### Headlines about {html.escape(target['label'])}")
+    if about:
+        _article_list(about)
+    else:
+        empty_state("No recent headlines name them directly.")
+
+    if mentioned:
+        st.markdown("##### Also mentioned in")
+        st.caption(
+            "These articles matched the search somewhere in the story, not the headline — the story is "
+            "usually about something else. Check before quoting any of them."
+        )
+        _article_list(mentioned)
 
 
 def _render_youtube(youtube, problem):
@@ -290,8 +354,9 @@ def render(ctx, sidebar):
     with col2:
         _render_volume(news)
 
-    _render_mood(ctx, target, articles)
-    _render_coverage(articles)
+    about, mentioned = _split_by_headline(articles, target["headline_terms"])
+    _render_mood(ctx, target, about, len(mentioned))
+    _render_coverage(target, about, mentioned)
 
     col3, col4 = st.columns(2)
     with col3:

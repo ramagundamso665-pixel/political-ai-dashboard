@@ -250,7 +250,8 @@ Rules:
 - "unrelated": the headline is not actually about the subject.
 - themes: up to 4 short recurring topics among the related headlines, each under 6 words, only if 2 or more headlines support it.
 
-Return ONLY JSON: {"labels": [one of "positive"|"neutral"|"negative"|"unrelated" per headline, same order], "themes": ["..."]}"""
+Return ONLY JSON, labelling every headline by its number:
+{"labels": {"1": "positive"|"neutral"|"negative"|"unrelated", "2": ..., ...}, "themes": ["..."]}"""
 
 
 def classify_headline_mood(subject, headlines, api_key, model="gpt-4o-mini"):
@@ -275,14 +276,22 @@ def classify_headline_mood(subject, headlines, api_key, model="gpt-4o-mini"):
     except Exception as exc:
         return {"ok": False, "error": _openai_reason(exc)}
 
-    labels = data.get("labels") or []
-    if len(labels) != len(headlines):
+    # Labels keyed by headline number: asked for a plain list, the model sometimes
+    # returns one item too few or too many, which misaligns every label after it
+    # and used to throw away the whole reading.
+    raw = data.get("labels") or {}
+    if isinstance(raw, list):
+        raw = {str(i + 1): label for i, label in enumerate(raw)} if len(raw) == len(headlines) else {}
+    labels = [str(raw.get(str(i + 1), "")).lower() for i in range(len(headlines))]
+    rated = [label for label in labels if label in MOOD_LABELS or label == "unrelated"]
+    if len(rated) < len(headlines) / 2:
         return {"ok": False, "error": "the model returned an incomplete answer"}
 
-    tally = Counter(str(label).lower() for label in labels)
+    tally = Counter(rated)
     return {
         "ok": True,
         "counts": {label: tally.get(label, 0) for label in MOOD_LABELS},
-        "unrelated": len(labels) - sum(tally.get(label, 0) for label in MOOD_LABELS),
+        "unrelated": tally.get("unrelated", 0),
+        "rated": len(rated),
         "themes": [str(t) for t in (data.get("themes") or [])][:4],
     }
