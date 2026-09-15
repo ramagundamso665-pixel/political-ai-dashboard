@@ -74,12 +74,22 @@ KEY_LEADERS = {
         "term": "Gaddam Vamsi Krishna",
         "news": '"Gaddam Vamsi Krishna" OR "Peddapalli MP"',
         "headline_terms": ["vamsi krishna", "vamshi krishna", "vamsikrishna", "peddapalli mp", "peddapalle mp"],
+        # Telugu media is where he is actually covered — English news only
+        # mentions him in passing
+        "news_te": '"గడ్డం వంశీకృష్ణ"',
+        "headline_terms_te": ["వంశీకృష్ణ", "ఎంపీ వంశీ"],
+        # Chikkudu Vamshi Krishna is the Achampet MLA — a different person
+        "exclude_terms": ["mla vamsi", "mla vamshi", "achampet", "chikkudu", "అచ్చంపేట", "చిక్కుడు"],
     },
     "Gaddam Vivek Venkatswamy (Labour Minister)": {
         "term": "Vivek Venkatswamy",
         # headlines mostly say just "Vivek" — this found 8 about him vs 4 for his full name
         "news": '"Vivek" Telangana minister',
         "headline_terms": ["venkatswamy", "venkataswamy", "gaddam vivek", "minister vivek", "vivek"],
+        "news_te": '"మంత్రి వివేక్"',
+        "headline_terms_te": ["వివేక్"],
+        # other Viveks the bare name pulls in; the AI relevance check catches any new ones
+        "exclude_terms": ["rawat", "athreya", "ramaswamy", "oberoi", "agnihotri", "bindra"],
     },
     "K. Chandrashekar Rao (KCR)": "KCR",
     "K. T. Rama Rao (KTR)": "KTR",

@@ -75,10 +75,17 @@ def fetch_search_interest(term, geo="IN-TG", timeframe="today 3-m"):
     return {"ok": True, "points": points}
 
 
-def fetch_google_news(query, days=7, max_items=100, timeout=15):
+GOOGLE_NEWS_EDITIONS = {
+    "en": {"hl": "en-IN", "gl": "IN", "ceid": "IN:en"},
+    "te": {"hl": "te", "gl": "IN", "ceid": "IN:te"},
+}
+LANGUAGE_NAMES = {"en": "English", "te": "Telugu"}
+
+
+def fetch_google_news(query, days=7, max_items=100, timeout=15, lang="en"):
     """Google News RSS search — free, no key, and without GDELT's strict
     one-request-per-5-seconds limit, which a shared hosting IP trips constantly."""
-    params = {"q": f"{query} when:{days}d", "hl": "en-IN", "gl": "IN", "ceid": "IN:en"}
+    params = {"q": f"{query} when:{days}d", **GOOGLE_NEWS_EDITIONS[lang]}
     try:
         resp = requests.get(GOOGLE_NEWS_RSS, params=params, timeout=timeout)
         resp.raise_for_status()
@@ -101,16 +108,32 @@ def fetch_google_news(query, days=7, max_items=100, timeout=15):
     return {"ok": True, "articles": articles}
 
 
-def fetch_recent_news(query, min_articles=10):
+def fetch_recent_news(query, min_articles=10, lang="en"):
     """Last 7 days, widened to 30 when the week is thin. Lower-profile leaders and
     small seats often have zero articles in a given week but several in the
     month — a strict 7-day window left their whole page empty."""
-    result = fetch_google_news(query, days=7)
+    result = fetch_google_news(query, days=7, lang=lang)
     if result["ok"] and len(result["articles"]) < min_articles:
-        wider = fetch_google_news(query, days=30)
+        wider = fetch_google_news(query, days=30, lang=lang)
         if wider["ok"] and len(wider["articles"]) > len(result["articles"]):
-            return {**wider, "days": 30}
-    return {**result, "days": 7}
+            return {**wider, "days": 30, "languages": [LANGUAGE_NAMES[lang]]}
+    return {**result, "days": 7, "languages": [LANGUAGE_NAMES[lang]]}
+
+
+def merge_news(primary, extra):
+    """Two editions (English and Telugu) as one result, deduplicated by link. A
+    failed edition is dropped rather than failing the whole panel."""
+    if not extra["ok"]:
+        return primary
+    if not primary["ok"]:
+        return extra
+    seen = {a["url"] for a in primary["articles"]}
+    return {
+        "ok": True,
+        "articles": primary["articles"] + [a for a in extra["articles"] if a["url"] not in seen],
+        "days": max(primary["days"], extra["days"]),
+        "languages": primary["languages"] + extra["languages"],
+    }
 
 
 def latest_first(articles):

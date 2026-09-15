@@ -6,6 +6,7 @@ analyzer.py, all styling in theme.py.
 """
 
 import os
+import subprocess
 
 import pandas as pd
 import streamlit as st
@@ -55,6 +56,24 @@ VIEWS = [ask_ai, overview, live_pulse, field_reports, swing, demographics, surve
 # never reached the pages until the whole app restarted.
 DATA_TTL = 300
 STATUS_MARKS = {"ok": "✓", "off": "–", "broken": "✗"}
+
+
+@st.cache_data(ttl=60, show_spinner=False)
+def app_version():
+    """The deployed commit, shown in the sidebar so anyone can tell whether the
+    hosted app has picked up the latest push. Short-lived cache: the host pulls
+    new code into the running process without restarting it."""
+    try:
+        out = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+            cwd=os.path.dirname(os.path.abspath(__file__)),
+        )
+        return out.stdout.strip() or None
+    except Exception:
+        return None
 
 
 @st.cache_data(ttl=DATA_TTL, show_spinner=False)
@@ -151,7 +170,10 @@ def render_sidebar(ctx):
 
         render_status()
 
-        st.caption("Light or dark: ⋮ menu → Settings → Appearance")
+        version = app_version()
+        st.caption(
+            "Light or dark: ⋮ menu → Settings → Appearance" + (f" · Version {version}" if version else "")
+        )
 
     return next(view for view in VIEWS if view.TITLE == choice), view_slot
 

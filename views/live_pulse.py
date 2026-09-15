@@ -24,12 +24,7 @@ TITLE = "Live Pulse"
 SCOPES = ["This campaign", "MLA seats (119)", "MP seats (17)", "Leaders", "Parties", "Custom"]
 COVERAGE_SHOWN = 12
 MOOD_HEADLINES = 25
-MOOD_TAB_TITLES = {
-    "positive": "Positive",
-    "neutral": "Neutral",
-    "negative": "Negative",
-    "unrelated": "Not about them",
-}
+MOOD_TITLES = {"positive": "Positive", "neutral": "Neutral", "negative": "Negative"}
 MUTED = "opacity:.62;font-size:.9rem"
 
 # how each party is named in a headline, as opposed to the search phrase used
@@ -40,12 +35,11 @@ PARTY_HEADLINE_TERMS = {
     "AIMIM": ["aimim", "majlis", "owaisi"],
 }
 
-
 SKIPPED = {"ok": False, "error": "not configured"}
 
 
 @st.cache_data(ttl=900, show_spinner=False)
-def _signals(trends, news, video, youtube_key, reddit_id, reddit_secret):
+def _signals(trends, news, video, youtube_key, reddit_id, reddit_secret, news_te=None):
     """Every independent source fetched at once. Run one after another they took
     6+ seconds before the page drew anything; in parallel the wait is only the
     slowest source. Worker threads call the plain fetchers — Streamlit's own
@@ -54,6 +48,8 @@ def _signals(trends, news, video, youtube_key, reddit_id, reddit_secret):
         "interest": (live_pulse.fetch_search_interest, (trends,)),
         "news": (live_pulse.fetch_recent_news, (news,)),
     }
+    if news_te:
+        jobs["news_te"] = (live_pulse.fetch_recent_news, (news_te, 10, "te"))
     if youtube_key:
         jobs["youtube"] = (live_pulse.fetch_youtube_mentions, (video, youtube_key))
     if reddit_id and reddit_secret:
@@ -62,6 +58,9 @@ def _signals(trends, news, video, youtube_key, reddit_id, reddit_secret):
     with ThreadPoolExecutor(max_workers=len(jobs)) as pool:
         futures = {name: pool.submit(fn, *args) for name, (fn, args) in jobs.items()}
         results = {name: future.result() for name, future in futures.items()}
+
+    if "news_te" in results:
+        results["news"] = live_pulse.merge_news(results["news"], results.pop("news_te"))
     return {"youtube": SKIPPED, "reddit": SKIPPED, **results}
 
 
@@ -99,25 +98,61 @@ def _place(name):
 
 def _person(name, spec=None):
     if isinstance(spec, dict):
+        # a curated leader: only headlines verified to be about them are shown
         return {
             "label": name,
             "trends": spec["term"],
             "news": spec["news"],
+            "news_te": spec.get("news_te"),
             "video": f'"{spec["term"]}"',
-            "headline_terms": spec["headline_terms"],
+            "headline_terms": spec["headline_terms"] + spec.get("headline_terms_te", []),
+            "exclude_terms": spec.get("exclude_terms", []),
+            "strict": True,
         }
     term = spec or name
     return {"label": name, "trends": term, "news": f'"{term}"', "video": f'"{term}"', "headline_terms": [term.lower()]}
 
 
-def _split_by_headline(articles, terms):
+def _split_by_headline(articles, terms, exclude=()):
     """Articles naming the subject in the headline, and those that only matched
-    somewhere in the body. Only the first group is presented as coverage of the
-    subject — body matches are where a leader showed up as someone else's story."""
+    somewhere in the body. Headlines naming a known namesake — a different
+    Vivek, the MLA who shares a name with an MP — are dropped outright."""
     about, mentioned = [], []
     for a in articles:
-        (about if any(t in a["title"].lower() for t in terms) else mentioned).append(a)
+        title = a["title"].lower()
+        if any(t in title for t in exclude):
+            continue
+        (about if any(t in title for t in terms) else mentioned).append(a)
     return about, mentioned
+
+
+def _classify(ctx, target, about):
+    """Mood labels for the latest headlines. Headlines the model judges to be about
+    someone else are removed from every list on the page, not only from the
+    counts — a namesake's story should never be shown as this person's news."""
+    result = {"mood": None, "relevant": about, "groups": None, "removed": 0}
+    if not about or not is_valid_api_key(ctx.api_key):
+        return result
+
+    classified = about[:MOOD_HEADLINES]
+    mood = _mood(target["label"], tuple(a["title"] for a in classified), ctx.api_key)
+    result["mood"] = mood
+    if not mood["ok"]:
+        return result
+
+    groups = {name: [] for name in MOOD_TITLES}
+    relevant = []
+    labels = mood.get("labels") or [""] * len(classified)
+    for article, label in zip(classified, labels):
+        if label == "unrelated":
+            result["removed"] += 1
+            continue
+        relevant.append(article)
+        if label in groups:
+            groups[label].append(article)
+    result["relevant"] = relevant + about[MOOD_HEADLINES:]
+    result["groups"] = groups
+    return result
 
 
 def _pick_target():
@@ -198,58 +233,59 @@ def _render_volume(news):
         st.plotly_chart(
             charts.coverage_volume(live_pulse.coverage_by_day(news["articles"], days), days), width="stretch"
         )
-        capped = " (Google News returns at most 100)" if len(news["articles"]) >= 100 else ""
+        languages = " + ".join(news.get("languages", ["English"]))
         widened = " — widened from 7 days because the last week had too little coverage" if days > 7 else ""
-        st.caption(f"{len(news['articles'])} articles in the last {days} days{capped}{widened}.")
+        st.caption(f"{len(news['articles'])} {languages} articles in the last {days} days{widened}.")
 
 
-def _render_mood(ctx, target, articles, mentioned_count):
+def _render_mood(target, classified, mentioned_count):
     st.markdown("##### Headline mood")
-    if not articles:
-        if mentioned_count:
+    mood, groups, relevant = classified["mood"], classified["groups"], classified["relevant"]
+
+    if not relevant:
+        if mentioned_count and not target.get("strict"):
             empty_state(
                 f"No recent headline is directly about {target['label']} — they're only mentioned inside "
-                f"{mentioned_count} article(s), listed under “Also mentioned in”. Mood isn't judged from those."
+                f"{mentioned_count} article(s). Mood isn't judged from those."
             )
         else:
-            empty_state("No recent headlines to read.")
+            empty_state(f"No recent headline is about {target['label']}.")
         return
-    if not is_valid_api_key(ctx.api_key):
+    if mood is None:
         st.info("Headline mood needs a working OPENAI_API_KEY — see System status in the sidebar.")
         return
-
-    headlines = tuple(a["title"] for a in articles[:MOOD_HEADLINES])
-    mood = _mood(target["label"], headlines, ctx.api_key)
     if not mood["ok"]:
         empty_state(f"Couldn't read headline mood — {mood['error']}.")
         return
-
-    counts = mood["counts"]
-    if not sum(counts.values()):
-        empty_state("None of the latest headlines are actually about this subject.")
+    if not any(groups.values()):
+        empty_state(f"None of the latest headlines turned out to be about {target['label']}.")
         return
 
-    # each count opens the headlines behind it, so a number is never taken on trust
-    groups = {name: [] for name in MOOD_TAB_TITLES}
-    for article, label in zip(articles[:MOOD_HEADLINES], mood.get("labels") or []):
-        if label in groups:
-            groups[label].append(article)
-
-    shown = [name for name in MOOD_TAB_TITLES if name != "unrelated" or groups[name]]
-    tabs = st.tabs([f"{MOOD_TAB_TITLES[name]} · {len(groups[name])}" for name in shown])
-    for tab, name in zip(tabs, shown):
-        with tab:
-            if groups[name]:
-                _article_list(groups[name], limit=MOOD_HEADLINES)
+    # the counts are buttons: tapping one lists the exact headlines behind it
+    picked = st.segmented_control(
+        "Tap Positive, Neutral or Negative to see those headlines",
+        list(MOOD_TITLES),
+        format_func=lambda name: f"{MOOD_TITLES[name]} · {len(groups[name])}",
+        key=f"pulse_mood_{target['label']}",
+    )
+    if picked:
+        with st.container(border=True):
+            st.markdown(f"**{MOOD_TITLES[picked]} headlines about {html.escape(target['label'])}**")
+            if groups[picked]:
+                _article_list(groups[picked], limit=MOOD_HEADLINES)
             else:
-                empty_state(f"No {MOOD_TAB_TITLES[name].lower()} headlines in this set.")
+                empty_state(f"No {MOOD_TITLES[picked].lower()} headlines in this set.")
 
     if mood["themes"]:
         st.markdown("**Recurring themes:** " + " · ".join(html.escape(t) for t in mood["themes"]))
+    removed = (
+        f" {classified['removed']} headline(s) judged not to be about {target['label']} were removed."
+        if classified["removed"]
+        else ""
+    )
     st.caption(
-        f"AI read of the tone of the {mood['rated']} latest headlines toward {target['label']} — "
-        "click a tab to see which headlines it counted. Based on headline wording only, not a verified "
-        "sentiment measure."
+        f"AI read of the tone of the latest headlines about {target['label']}.{removed} "
+        "Based on headline wording only, not a verified sentiment measure."
     )
 
 
@@ -262,20 +298,22 @@ def _article_list(articles, limit=COVERAGE_SHOWN):
     st.markdown(f"<ul>{''.join(lines)}</ul>", unsafe_allow_html=True)
 
 
-def _render_coverage(target, about, mentioned):
+def _render_coverage(target, relevant, mentioned):
     st.markdown(f"##### Headlines about {html.escape(target['label'])}")
-    if about:
-        _article_list(about)
+    if relevant:
+        _article_list(relevant)
     else:
         empty_state("No recent headlines name them directly.")
 
-    if mentioned:
-        st.markdown("##### Also mentioned in")
-        st.caption(
-            "These articles matched the search somewhere in the story, not the headline — the story is "
-            "usually about something else. Check before quoting any of them."
-        )
-        _article_list(mentioned)
+    # curated leaders never show body-only matches: for a name shared with other
+    # politicians, those are almost always someone else's story
+    if mentioned and not target.get("strict"):
+        with st.expander(f"Also mentioned inside {len(mentioned)} other article(s)"):
+            st.caption(
+                "These matched the search somewhere in the story, not the headline — the story is usually "
+                "about something else. Check before quoting any of them."
+            )
+            _article_list(mentioned)
 
 
 def _render_youtube(youtube, problem):
@@ -359,6 +397,7 @@ def render(ctx, sidebar):
             None if youtube_problem else youtube_key,
             reddit_id if reddit_ready else None,
             reddit_secret if reddit_ready else None,
+            target.get("news_te"),
         )
     interest, news = signals["interest"], signals["news"]
     articles = live_pulse.latest_first(news["articles"]) if news["ok"] else []
@@ -371,9 +410,11 @@ def render(ctx, sidebar):
     with col2:
         _render_volume(news)
 
-    about, mentioned = _split_by_headline(articles, target["headline_terms"])
-    _render_mood(ctx, target, about, len(mentioned))
-    _render_coverage(target, about, mentioned)
+    about, mentioned = _split_by_headline(articles, target["headline_terms"], target.get("exclude_terms", ()))
+    with st.spinner("Reading headline mood…"):
+        classified = _classify(ctx, target, about)
+    _render_mood(target, classified, len(mentioned))
+    _render_coverage(target, classified["relevant"], mentioned)
 
     col3, col4 = st.columns(2)
     with col3:
