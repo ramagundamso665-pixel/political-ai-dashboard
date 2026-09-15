@@ -137,3 +137,52 @@ def update_field_report_status(supabase_url, service_key, report_id, new_status)
         timeout=15,
     )
     resp.raise_for_status()
+
+
+def _headers(service_key, prefer=None):
+    headers = {
+        "apikey": service_key,
+        "Authorization": f"Bearer {service_key}",
+        "Content-Type": "application/json",
+    }
+    if prefer:
+        headers["Prefer"] = prefer
+    return headers
+
+
+def select_rows(supabase_url, service_key, table, params):
+    resp = requests.get(
+        f"{supabase_url}/rest/v1/{table}", headers=_headers(service_key), params=params, timeout=10
+    )
+    resp.raise_for_status()
+    return resp.json()
+
+
+def insert_row(supabase_url, service_key, table, row):
+    resp = requests.post(
+        f"{supabase_url}/rest/v1/{table}",
+        headers=_headers(service_key, "return=minimal"),
+        json=row,
+        timeout=10,
+    )
+    resp.raise_for_status()
+
+
+def upsert_row(supabase_url, service_key, table, row):
+    resp = requests.post(
+        f"{supabase_url}/rest/v1/{table}",
+        headers=_headers(service_key, "resolution=merge-duplicates,return=minimal"),
+        json=row,
+        timeout=10,
+    )
+    resp.raise_for_status()
+
+
+def delete_rows(supabase_url, service_key, table, params):
+    resp = requests.delete(
+        f"{supabase_url}/rest/v1/{table}",
+        headers=_headers(service_key, "return=minimal"),
+        params=params,
+        timeout=10,
+    )
+    resp.raise_for_status()

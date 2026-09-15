@@ -5,7 +5,7 @@
 font = "Inter"
 headingFont = "Source Serif 4"
 codeFont = "JetBrains Mono"
-baseFontSize = 15
+baseFontSize = 17
 baseRadius = "0.625rem"
 buttonRadius = "0.5rem"
 showWidgetBorder = true

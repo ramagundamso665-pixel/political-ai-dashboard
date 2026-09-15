@@ -14,3 +14,5 @@ class Ctx:
     logger: Any
     speech_gen: Any
     api_key: str | None
+    data_source: str = "Book 13.xlsx"
+    data_problem: str | None = None

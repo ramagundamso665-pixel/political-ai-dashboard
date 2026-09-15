@@ -48,6 +48,40 @@ TELANGANA_CONSTITUENCIES = [
     "Yellareddy", "Zahirabad",
 ]
 
+# The 17 Telangana Lok Sabha constituencies.
+TELANGANA_LOK_SABHA = [
+    "Adilabad", "Bhongir", "Chevella", "Hyderabad", "Karimnagar", "Khammam",
+    "Mahabubabad", "Mahbubnagar", "Malkajgiri", "Medak", "Nagarkurnool",
+    "Nalgonda", "Nizamabad", "Peddapalle", "Secunderabad", "Warangal", "Zahirabad",
+]
+
+# Display name -> the form headlines actually use ("KCR", not the full name).
+# Deliberately no party tags: affiliations change, and a stale tag on a
+# politician is exactly the kind of wrong claim this dashboard must not make.
+KEY_LEADERS = {
+    "A. Revanth Reddy": "Revanth Reddy",
+    "Akbaruddin Owaisi": "Akbaruddin Owaisi",
+    "Asaduddin Owaisi": "Asaduddin Owaisi",
+    "Bandi Sanjay Kumar": "Bandi Sanjay",
+    "Bhatti Vikramarka": "Bhatti Vikramarka",
+    "Etela Rajender": "Etela Rajender",
+    "G. Kishan Reddy": "Kishan Reddy",
+    "K. Chandrashekar Rao (KCR)": "KCR",
+    "K. T. Rama Rao (KTR)": "KTR",
+    "Komatireddy Venkat Reddy": "Komatireddy Venkat Reddy",
+    "N. Uttam Kumar Reddy": "Uttam Kumar Reddy",
+    "Ponguleti Srinivas Reddy": "Ponguleti Srinivas Reddy",
+    "Seethakka": "Seethakka",
+    "T. Harish Rao": "Harish Rao",
+}
+
+PARTY_SEARCH_TERMS = {
+    "BRS": "BRS Telangana",
+    "INC": "Telangana Congress",
+    "BJP": "Telangana BJP",
+    "AIMIM": "AIMIM",
+}
+
 # Excel sheet name -> internal key used across the app
 SHEET_KEY_MAP = {
     "Demographics": "demographics",
@@ -91,8 +125,13 @@ PARTY_ALIASES = {
 
 
 def is_valid_api_key(key, placeholder_prefix="sk-REPLACE"):
-    """Reject missing keys and the placeholder left in secrets.toml.example."""
-    return bool(key) and not str(key).startswith(placeholder_prefix)
+    """Reject missing keys, the placeholder left in secrets.toml.example, and keys
+    pasted from a masked display — those carry • characters, which are never
+    part of a real key and would otherwise fail later as an opaque HTTP 400."""
+    if not key:
+        return False
+    key = str(key)
+    return key.isascii() and " " not in key.strip() and not key.startswith(placeholder_prefix)
 
 
 def normalize_party(raw):

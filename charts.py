@@ -137,6 +137,21 @@ def pulse_trend(points, value_key, title, ticksuffix=""):
     return _style(fig, 260, showlegend=False, margin_t=40)
 
 
+def coverage_volume(days):
+    """Articles found per day — whether coverage is rising or fading."""
+    fig = go.Figure(
+        go.Bar(
+            x=[d["date"] for d in days],
+            y=[d["articles"] for d in days],
+            marker_color=PARTY_COLORS["Others"],
+            hovertemplate="%{x|%b %d}: %{y} articles<extra></extra>",
+        )
+    )
+    fig.update_layout(title="News articles per day, last 7 days")
+    fig.update_xaxes(tickformat="%b %d")
+    return _style(fig, 260, showlegend=False, margin_t=40)
+
+
 def event_counts(counts):
     """Campaign events logged per party."""
     ordered = sorted(counts.items(), key=lambda kv: kv[1], reverse=True)

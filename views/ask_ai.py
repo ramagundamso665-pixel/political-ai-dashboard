@@ -254,7 +254,9 @@ def render(ctx, sidebar):
         {"role": "assistant", "content": answer, "sheet": sheet, "chart": result.get("chart", "none")}
     )
 
-    conversations.save(st.session_state.conversation_id, messages, speaking_party)
+    stored = conversations.save(st.session_state.conversation_id, messages, speaking_party)
+    if stored == "local" and conversations.backend() == "supabase":
+        st.session_state.pending_toast = "Couldn't reach the database — this chat is saved on this server only for now."
     ctx.logger.log_analysis("ask_ai", [sheet], answer[:150])
     # re-run so the exchange renders from history, above the input and without the landing
     st.rerun()

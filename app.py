@@ -10,6 +10,9 @@ import os
 import pandas as pd
 import streamlit as st
 
+import conversations
+import db
+import health
 from analyzer import PoliticalAnalyzer
 from auth import require_password
 from audit_logger import AuditLogger
@@ -21,7 +24,6 @@ from config import (
     SOURCE_METADATA,
     is_valid_api_key,
 )
-import db
 from context import Ctx
 from data_manager import SourceTracker, validate_all
 from speech_generator import SpeechGenerator
@@ -48,31 +50,33 @@ st.set_page_config(
 
 VIEWS = [ask_ai, overview, live_pulse, field_reports, swing, demographics, survey, social, speech, recommendations]
 
+# Both caches below expire together. With only the data cached on a timer, the
+# components built from it were cached forever, so a number edited in Supabase
+# never reached the pages until the whole app restarted.
+DATA_TTL = 300
+STATUS_MARKS = {"ok": "✓", "off": "–", "broken": "✗"}
 
-@st.cache_data(ttl=300)
+
+@st.cache_data(ttl=DATA_TTL, show_spinner=False)
 def load_raw_sheets():
-    """Supabase is the source of truth when configured; Excel is the fallback
-    so the app still runs before the database is set up or if Supabase is
-    briefly unreachable — same defensive pattern as every other integration
-    here, never a hard failure on a missing key."""
-    supabase_url = st.secrets.get("SUPABASE_URL", None) if hasattr(st, "secrets") else None
-    service_key = st.secrets.get("SUPABASE_SERVICE_KEY", None) if hasattr(st, "secrets") else None
-
-    if is_valid_api_key(supabase_url, placeholder_prefix="https://REPLACE") and is_valid_api_key(
-        service_key, placeholder_prefix="REPLACE"
-    ):
+    """Supabase is the source of truth when configured; the Excel file is the
+    fallback so the app still runs before the database is set up or while it's
+    briefly unreachable. Returns (sheets, where they came from, problem)."""
+    problem = None
+    creds = health.supabase_credentials()
+    if creds:
         try:
-            return db.load_sheets_from_supabase(supabase_url, service_key, CONSTITUENCY_NAME)
+            return db.load_sheets_from_supabase(*creds, CONSTITUENCY_NAME), "Supabase", None
         except Exception as exc:
-            st.warning(f"Supabase unavailable ({exc}) — falling back to {DATA_FILE}.")
+            problem = f"The database couldn't be reached ({type(exc).__name__}) — showing {DATA_FILE} instead."
 
     data_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), DATA_FILE)
-    return pd.read_excel(data_path, sheet_name=None)
+    return pd.read_excel(data_path, sheet_name=None), DATA_FILE, problem
 
 
-@st.cache_resource
+@st.cache_resource(ttl=DATA_TTL)
 def init_components():
-    raw = load_raw_sheets()
+    raw, data_source, data_problem = load_raw_sheets()
     sheets = {SHEET_KEY_MAP.get(name, name): df for name, df in raw.items()}
     sheets["_constituency"] = CONSTITUENCY_NAME
 
@@ -85,7 +89,7 @@ def init_components():
     analyzer = PoliticalAnalyzer(sheets, tracker)
     logger = AuditLogger()
 
-    api_key = st.secrets.get("OPENAI_API_KEY", None) if hasattr(st, "secrets") else None
+    api_key = health.secret("OPENAI_API_KEY")
     speech_gen = SpeechGenerator(analyzer, tracker, api_key if is_valid_api_key(api_key) else None)
 
     return Ctx(
@@ -97,7 +101,28 @@ def init_components():
         logger=logger,
         speech_gen=speech_gen,
         api_key=api_key,
+        data_source=data_source,
+        data_problem=data_problem,
     )
+
+
+def render_status():
+    report = health.integration_status()
+    broken = [item for item in report if item["state"] == "broken"]
+    title = f"System status · {len(broken)} need attention" if broken else "System status · all working"
+
+    with st.expander(title, expanded=bool(broken)):
+        for item in report:
+            suffix = " · not set up (optional)" if item["state"] == "off" else ""
+            st.markdown(f"{STATUS_MARKS[item['state']]} **{item['label']}**{suffix}")
+            if item["state"] == "broken":
+                for problem in item["problems"]:
+                    st.caption(problem)
+
+        if conversations.backend() == "supabase":
+            st.caption("Chat history and the audit log are saved to the database.")
+        else:
+            st.caption("Chat history is kept on this server only — it's lost whenever the app restarts.")
 
 
 def render_sidebar(ctx):
@@ -120,14 +145,11 @@ def render_sidebar(ctx):
 
         # nine long source names crowd the rail, so they fold away behind the score
         with st.expander(f"Data sources · {quality}% quality"):
+            st.caption(f"Loaded from {ctx.data_source}.")
             for meta in SOURCE_METADATA.values():
                 st.markdown(source_badge(meta["type"], meta["name"]), unsafe_allow_html=True)
 
-        if not is_valid_api_key(ctx.api_key):
-            st.warning(
-                "OPENAI_API_KEY not set in .streamlit/secrets.toml — Speech Generator "
-                "and Ask AI are disabled until it's added."
-            )
+        render_status()
 
         st.caption("Light or dark: ⋮ menu → Settings → Appearance")
 
@@ -139,4 +161,6 @@ require_password()  # nothing below renders until the viewer is authenticated
 
 ctx = init_components()
 view, view_slot = render_sidebar(ctx)
+if ctx.data_problem:
+    st.warning(ctx.data_problem)
 view.render(ctx, view_slot)
