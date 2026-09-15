@@ -29,6 +29,7 @@ from theme import inject_theme
 from views import (
     ask_ai,
     demographics,
+    field_reports,
     live_pulse,
     overview,
     recommendations,
@@ -45,7 +46,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-VIEWS = [ask_ai, overview, live_pulse, swing, demographics, survey, social, speech, recommendations]
+VIEWS = [ask_ai, overview, live_pulse, field_reports, swing, demographics, survey, social, speech, recommendations]
 
 
 @st.cache_data(ttl=300)

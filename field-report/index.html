@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field Report — Jubilee Hills</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FBF9F6; --paper-raised: #FFFFFF; --ink: #1C1917; --muted: #6B6259;
+    --line: #E4DED5; --accent: #C2603C; --accent-ink: #FFFFFF;
+    --good: #2E7D46; --good-soft: #E5F3E9; --bad: #B4392A; --bad-soft: #FBE7E4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #17140F; --paper-raised: #221E18; --ink: #F2EDE6; --muted: #A69C8E;
+      --line: #37312A; --accent: #E08157; --accent-ink: #1C1917;
+      --good: #5FBE7E; --good-soft: #1D3324; --bad: #E27A6B; --bad-soft: #3A211D;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #17140F; --paper-raised: #221E18; --ink: #F2EDE6; --muted: #A69C8E;
+    --line: #37312A; --accent: #E08157; --accent-ink: #1C1917;
+    --good: #5FBE7E; --good-soft: #1D3324; --bad: #E27A6B; --bad-soft: #3A211D;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 480px; margin: 0 auto; padding: 1.75rem 1.25rem 3rem; }
+  header { border-bottom: 1px solid var(--line); padding-bottom: 1.1rem; margin-bottom: 1.5rem; }
+  .eyebrow { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: .4rem; }
+  h1 { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.55rem; margin: 0 0 .3rem; line-height: 1.15; }
+  header p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.5; }
+  .banner { display: none; border-radius: 8px; padding: .7rem .9rem; font-size: .85rem; margin-bottom: 1.1rem; font-weight: 600; }
+  .banner.show { display: block; }
+  .banner.queued { background: var(--bad-soft); color: var(--bad); }
+  label { display: block; font-size: .82rem; font-weight: 600; margin: 1.1rem 0 .4rem; }
+  label .opt { font-weight: 400; color: var(--muted); }
+  select, input, textarea {
+    width: 100%; font-family: inherit; font-size: 1rem; padding: .7rem .8rem;
+    border: 1px solid var(--line); border-radius: 8px; background: var(--paper-raised); color: var(--ink);
+  }
+  select:focus, input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  textarea { min-height: 92px; resize: vertical; }
+  button {
+    width: 100%; margin-top: 1.6rem; padding: .85rem; border: 0; border-radius: 8px;
+    background: var(--accent); color: var(--accent-ink); font-size: 1rem; font-weight: 700;
+    font-family: inherit; cursor: pointer;
+  }
+  button:disabled { opacity: .6; cursor: default; }
+  button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .queue-note { margin-top: .8rem; font-size: .78rem; color: var(--muted); text-align: center; }
+  .success { text-align: center; padding: 3rem 0; }
+  .success .mark { font-size: 2.4rem; color: var(--good); }
+  .success h2 { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.3rem; margin: .8rem 0 .3rem; }
+  .success p { color: var(--muted); font-size: .88rem; }
+  .success button { margin-top: 1.5rem; background: transparent; border: 1px solid var(--line); color: var(--ink); }
+  #pending-badge {
+    display: none; position: fixed; top: .8rem; right: .8rem; background: var(--bad);
+    color: #fff; font-size: .72rem; font-weight: 700; padding: .3rem .55rem; border-radius: 999px;
+  }
+  #pending-badge.show { display: block; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div id="pending-badge"></div>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">People's Mandate AI · Field Report</div>
+    <h1>Report what you're seeing</h1>
+    <p>For ground workers in Jubilee Hills. One issue per report — road, water, power, whatever's actually broken. This does not need signal to work; it sends when you're next online.</p>
+  </header>
+
+  <div id="banner" class="banner"></div>
+
+  <form id="report-form">
+    <label for="division">Division</label>
+    <select id="division" required>
+      <option value="" disabled selected>Select a division</option>
+      <option>Shaikpet</option>
+      <option>Srinagar Colony</option>
+      <option>Vengal Rao Nagar</option>
+      <option>Yousufguda</option>
+      <option>Borabanda</option>
+      <option>Erragadda</option>
+      <option>Rehmat Nagar</option>
+      <option>Other / not sure</option>
+    </select>
+
+    <label for="category">Category</label>
+    <select id="category" required>
+      <option value="" disabled selected>Select a category</option>
+      <option>Roads & Infrastructure</option>
+      <option>Water Supply</option>
+      <option>Electricity</option>
+      <option>Sanitation & Garbage</option>
+      <option>Drainage</option>
+      <option>Health & Medical</option>
+      <option>Education</option>
+      <option>Law & Order / Safety</option>
+      <option>Other</option>
+    </select>
+
+    <label for="party">Relates to a party <span class="opt">(optional)</span></label>
+    <select id="party">
+      <option value="">General — not party-specific</option>
+      <option value="BRS">BRS</option>
+      <option value="INC">Congress (INC)</option>
+      <option value="BJP">BJP</option>
+      <option value="AIMIM">AIMIM</option>
+    </select>
+
+    <label for="issue">What's the issue?</label>
+    <textarea id="issue" required placeholder="Describe what you saw — be specific about the street or area."></textarea>
+
+    <label for="name">Your name <span class="opt">(optional)</span></label>
+    <input id="name" type="text" placeholder="So we know who to follow up with">
+
+    <label for="phone">Your phone <span class="opt">(optional)</span></label>
+    <input id="phone" type="tel" placeholder="For follow-up only">
+
+    <button type="submit" id="submit-btn">Submit report</button>
+    <div class="queue-note" id="queue-note"></div>
+  </form>
+
+  <div class="success" id="success" style="display:none">
+    <div class="mark">&#10003;</div>
+    <h2>Report sent</h2>
+    <p id="success-detail">Thank you — this is logged.</p>
+    <button id="another-btn">Submit another</button>
+  </div>
+</div>
+
+<script>
+  const SUPABASE_URL = "https://danjvduxmgweozrkirgb.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_JBRwi-tgjHmPHF7rLst3Ag_hGf8ArnH";
+  const CONSTITUENCY_ID_KEY = "pm_constituency_id";
+  const QUEUE_KEY = "pm_field_report_queue";
+
+  const form = document.getElementById("report-form");
+  const banner = document.getElementById("banner");
+  const submitBtn = document.getElementById("submit-btn");
+  const queueNote = document.getElementById("queue-note");
+  const pendingBadge = document.getElementById("pending-badge");
+  const successView = document.getElementById("success");
+  const successDetail = document.getElementById("success-detail");
+
+  function getQueue() {
+    try { return JSON.parse(localStorage.getItem(QUEUE_KEY) || "[]"); }
+    catch { return []; }
+  }
+  function setQueue(q) {
+    try { localStorage.setItem(QUEUE_KEY, JSON.stringify(q)); } catch {}
+    refreshPendingBadge();
+  }
+  function refreshPendingBadge() {
+    const n = getQueue().length;
+    if (n > 0) {
+      pendingBadge.textContent = n + " report" + (n > 1 ? "s" : "") + " waiting to send";
+      pendingBadge.classList.add("show");
+      queueNote.textContent = n + " earlier report(s) are queued and will send automatically once you're online.";
+    } else {
+      pendingBadge.classList.remove("show");
+      queueNote.textContent = "";
+    }
+  }
+
+  let constituencyId = null;
+  async function resolveConstituencyId() {
+    const cached = localStorage.getItem(CONSTITUENCY_ID_KEY);
+    if (cached) { constituencyId = cached; return; }
+    try {
+      const resp = await fetch(
+        SUPABASE_URL + "/rest/v1/constituencies?name=eq.Jubilee%20Hills%20(GHMC)&select=id",
+        { headers: { apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + SUPABASE_ANON_KEY } }
+      );
+      const rows = await resp.json();
+      if (rows && rows[0] && rows[0].id) {
+        constituencyId = rows[0].id;
+        localStorage.setItem(CONSTITUENCY_ID_KEY, constituencyId);
+      }
+    } catch (e) { /* stays null; queued reports still work once retried later */ }
+  }
+
+  async function sendOne(payload) {
+    const resp = await fetch(SUPABASE_URL + "/rest/v1/field_reports", {
+      method: "POST",
+      headers: {
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: "Bearer " + SUPABASE_ANON_KEY,
+        "Content-Type": "application/json",
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify(payload),
+    });
+    if (!resp.ok) throw new Error("HTTP " + resp.status);
+  }
+
+  async function flushQueue() {
+    if (!navigator.onLine) return;
+    let queue = getQueue();
+    if (queue.length === 0) return;
+    if (!constituencyId) await resolveConstituencyId();
+
+    const remaining = [];
+    for (const item of queue) {
+      try {
+        const payload = { ...item };
+        if (constituencyId) payload.constituency_id = constituencyId;
+        await sendOne(payload);
+      } catch (e) {
+        remaining.push(item);
+      }
+    }
+    setQueue(remaining);
+  }
+
+  function showBanner(text, cls) {
+    banner.textContent = text;
+    banner.className = "banner show " + cls;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
+
+    const payload = {
+      division: document.getElementById("division").value,
+      category: document.getElementById("category").value,
+      party: document.getElementById("party").value || null,
+      issue_text: document.getElementById("issue").value.trim(),
+      reporter_name: document.getElementById("name").value.trim() || null,
+      reporter_phone: document.getElementById("phone").value.trim() || null,
+    };
+
+    if (!payload.division || !payload.category || !payload.issue_text) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit report";
+      showBanner("Fill in division, category, and the issue before sending.", "queued");
+      return;
+    }
+
+    let sentNow = false;
+    if (navigator.onLine) {
+      try {
+        if (!constituencyId) await resolveConstituencyId();
+        const withCid = { ...payload };
+        if (constituencyId) withCid.constituency_id = constituencyId;
+        await sendOne(withCid);
+        sentNow = true;
+      } catch (e) {
+        sentNow = false;
+      }
+    }
+
+    if (!sentNow) {
+      const queue = getQueue();
+      queue.push(payload);
+      setQueue(queue);
+    }
+
+    form.reset();
+    form.style.display = "none";
+    banner.className = "banner";
+    successView.style.display = "block";
+    successDetail.textContent = sentNow
+      ? "Sent — thank you."
+      : "No signal right now — saved on this phone and will send automatically once you're back online.";
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Submit report";
+  });
+
+  document.getElementById("another-btn").addEventListener("click", () => {
+    successView.style.display = "none";
+    form.style.display = "block";
+  });
+
+  window.addEventListener("online", flushQueue);
+  resolveConstituencyId().then(flushQueue);
+  refreshPendingBadge();
+</script>
+</body>
+</html>

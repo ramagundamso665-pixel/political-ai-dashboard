@@ -101,3 +101,39 @@ def load_sheets_from_supabase(supabase_url, service_key, constituency_name):
     ]
 
     return sheets
+
+
+def resolve_constituency_id(supabase_url, service_key, constituency_name):
+    const_df = _rest(
+        supabase_url, service_key, "constituencies",
+        {"name": f"eq.{constituency_name}", "select": "id"},
+    )
+    if const_df.empty:
+        raise ValueError(f"No constituency named {constituency_name!r} found in Supabase")
+    return const_df.iloc[0]["id"]
+
+
+def fetch_field_reports(supabase_url, service_key, constituency_id, status=None):
+    """Reports submitted through the public field-report form. Service role
+    bypasses RLS, so this sees everything regardless of the public insert-only
+    policy that protects the form itself."""
+    params = {"constituency_id": f"eq.{constituency_id}", "order": "submitted_at.desc"}
+    if status:
+        params["status"] = f"eq.{status}"
+    return _rest(supabase_url, service_key, "field_reports", params)
+
+
+def update_field_report_status(supabase_url, service_key, report_id, new_status):
+    resp = requests.patch(
+        f"{supabase_url}/rest/v1/field_reports",
+        params={"id": f"eq.{report_id}"},
+        headers={
+            "apikey": service_key,
+            "Authorization": f"Bearer {service_key}",
+            "Content-Type": "application/json",
+            "Prefer": "return=minimal",
+        },
+        json={"status": new_status},
+        timeout=15,
+    )
+    resp.raise_for_status()

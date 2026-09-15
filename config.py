@@ -129,6 +129,13 @@ SOURCE_METADATA = {
         "type": "internal",
         "methodology": "Voter roll counts by category",
     },
+    "field_reports": {
+        "id": "field_reports",
+        "name": "Public Field Report Intake",
+        "type": "internal",
+        "methodology": "Unverified reports submitted directly by field workers/the public "
+                        "through the open intake form — reviewed by staff before acting on them",
+    },
     "live_pulse": {
         "id": "live_pulse",
         "name": "Live Search & News Pulse (Google Trends / GDELT / YouTube)",
