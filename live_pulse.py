@@ -293,5 +293,7 @@ def classify_headline_mood(subject, headlines, api_key, model="gpt-4o-mini"):
         "counts": {label: tally.get(label, 0) for label in MOOD_LABELS},
         "unrelated": tally.get("unrelated", 0),
         "rated": len(rated),
+        # one per headline, same order — "" where the model skipped one
+        "labels": labels,
         "themes": [str(t) for t in (data.get("themes") or [])][:4],
     }

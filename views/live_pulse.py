@@ -24,6 +24,12 @@ TITLE = "Live Pulse"
 SCOPES = ["This campaign", "MLA seats (119)", "MP seats (17)", "Leaders", "Parties", "Custom"]
 COVERAGE_SHOWN = 12
 MOOD_HEADLINES = 25
+MOOD_TAB_TITLES = {
+    "positive": "Positive",
+    "neutral": "Neutral",
+    "negative": "Negative",
+    "unrelated": "Not about them",
+}
 MUTED = "opacity:.62;font-size:.9rem"
 
 # how each party is named in a headline, as opposed to the search phrase used
@@ -223,22 +229,33 @@ def _render_mood(ctx, target, articles, mentioned_count):
         empty_state("None of the latest headlines are actually about this subject.")
         return
 
-    c1, c2, c3 = st.columns(3)
-    c1.metric("Positive", counts["positive"])
-    c2.metric("Neutral", counts["neutral"])
-    c3.metric("Negative", counts["negative"])
+    # each count opens the headlines behind it, so a number is never taken on trust
+    groups = {name: [] for name in MOOD_TAB_TITLES}
+    for article, label in zip(articles[:MOOD_HEADLINES], mood.get("labels") or []):
+        if label in groups:
+            groups[label].append(article)
+
+    shown = [name for name in MOOD_TAB_TITLES if name != "unrelated" or groups[name]]
+    tabs = st.tabs([f"{MOOD_TAB_TITLES[name]} · {len(groups[name])}" for name in shown])
+    for tab, name in zip(tabs, shown):
+        with tab:
+            if groups[name]:
+                _article_list(groups[name], limit=MOOD_HEADLINES)
+            else:
+                empty_state(f"No {MOOD_TAB_TITLES[name].lower()} headlines in this set.")
+
     if mood["themes"]:
         st.markdown("**Recurring themes:** " + " · ".join(html.escape(t) for t in mood["themes"]))
-    unrelated = f" ({mood['unrelated']} judged unrelated)" if mood["unrelated"] else ""
     st.caption(
-        f"AI read of the tone of the {mood['rated']} latest headlines toward {target['label']}{unrelated}. "
-        "Based on headline wording only — not a verified sentiment measure."
+        f"AI read of the tone of the {mood['rated']} latest headlines toward {target['label']} — "
+        "click a tab to see which headlines it counted. Based on headline wording only, not a verified "
+        "sentiment measure."
     )
 
 
-def _article_list(articles):
+def _article_list(articles, limit=COVERAGE_SHOWN):
     lines = []
-    for a in articles[:COVERAGE_SHOWN]:
+    for a in articles[:limit]:
         when = a["published"].strftime("%d %b") if a["published"] else ""
         meta = " · ".join(part for part in (a["source"], when) if part)
         lines.append(f"<li>{_link(a['title'], a['url'])} <span style='{MUTED}'>· {html.escape(meta)}</span></li>")
