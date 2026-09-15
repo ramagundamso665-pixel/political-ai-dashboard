@@ -101,6 +101,18 @@ def fetch_google_news(query, days=7, max_items=100, timeout=15):
     return {"ok": True, "articles": articles}
 
 
+def fetch_recent_news(query, min_articles=10):
+    """Last 7 days, widened to 30 when the week is thin. Lower-profile leaders and
+    small seats often have zero articles in a given week but several in the
+    month — a strict 7-day window left their whole page empty."""
+    result = fetch_google_news(query, days=7)
+    if result["ok"] and len(result["articles"]) < min_articles:
+        wider = fetch_google_news(query, days=30)
+        if wider["ok"] and len(wider["articles"]) > len(result["articles"]):
+            return {**wider, "days": 30}
+    return {**result, "days": 7}
+
+
 def latest_first(articles):
     oldest = datetime.min.replace(tzinfo=timezone.utc)
     return sorted(articles, key=lambda a: a["published"] or oldest, reverse=True)

@@ -66,6 +66,8 @@ KEY_LEADERS = {
     "Bhatti Vikramarka": "Bhatti Vikramarka",
     "Etela Rajender": "Etela Rajender",
     "G. Kishan Reddy": "Kishan Reddy",
+    "Gaddam Vamsi Krishna": "Gaddam Vamsi Krishna",
+    "Gaddam Vivek Venkatswamy": "Vivek Venkatswamy",
     "K. Chandrashekar Rao (KCR)": "KCR",
     "K. T. Rama Rao (KTR)": "KTR",
     "Komatireddy Venkat Reddy": "Komatireddy Venkat Reddy",

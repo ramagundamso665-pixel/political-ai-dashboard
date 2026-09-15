@@ -38,7 +38,7 @@ def _signals(trends, news, video, youtube_key, reddit_id, reddit_secret):
     calls aren't safe off the script thread."""
     jobs = {
         "interest": (live_pulse.fetch_search_interest, (trends,)),
-        "news": (live_pulse.fetch_google_news, (news,)),
+        "news": (live_pulse.fetch_recent_news, (news,)),
     }
     if youtube_key:
         jobs["youtube"] = (live_pulse.fetch_youtube_mentions, (video, youtube_key))
@@ -140,11 +140,15 @@ def _render_volume(news):
     if not news["ok"]:
         empty_state(f"Google News unavailable right now — {news['error']}.")
     elif not news["articles"]:
-        empty_state("No news coverage in the last 7 days.")
+        empty_state("No news coverage in the last 30 days.")
     else:
-        st.plotly_chart(charts.coverage_volume(live_pulse.coverage_by_day(news["articles"])), width="stretch")
+        days = news["days"]
+        st.plotly_chart(
+            charts.coverage_volume(live_pulse.coverage_by_day(news["articles"], days), days), width="stretch"
+        )
         capped = " (Google News returns at most 100)" if len(news["articles"]) >= 100 else ""
-        st.caption(f"{len(news['articles'])} articles in the last 7 days{capped}.")
+        widened = " — widened from 7 days because the last week had too little coverage" if days > 7 else ""
+        st.caption(f"{len(news['articles'])} articles in the last {days} days{capped}{widened}.")
 
 
 def _render_mood(ctx, target, articles):

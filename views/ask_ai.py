@@ -37,12 +37,23 @@ GREETINGS = [
     "Which numbers would survive a challenge?",
 ]
 
+# Every one of these is answerable from the loaded sheets — a suggestion the data
+# can't answer would teach people the tool doesn't work.
 SUGGESTIONS = [
     "Which division is most winnable right now?",
     "Why do the surveys disagree so much on BJP?",
     "What's our biggest weakness with women voters?",
     "Summarize our ground campaign strengths vs weaknesses.",
+    "Which divisions swung hardest between 2023 and 2025?",
+    "How has Maganti Gopinath's vote share changed since 2014?",
+    "Which age group is most up for grabs?",
+    "Which community groups are closest to a tie?",
+    "Who out-campaigned whom in the last week of October?",
+    "Which party's social media posts got the most engagement?",
+    "What issues is Congress attacking BRS on?",
+    "Which survey looks least reliable, and why?",
 ]
+SUGGESTIONS_SHOWN = 4
 
 
 def _greeting():
@@ -118,10 +129,18 @@ def _render_chart(df, chart):
         st.bar_chart(numeric)
 
 
+def _suggestions():
+    """A fresh handful per conversation, so a new chat offers new starting points."""
+    if "suggestions" not in st.session_state:
+        st.session_state.suggestions = random.sample(SUGGESTIONS, SUGGESTIONS_SHOWN)
+    return st.session_state.suggestions
+
+
 def _start_new_chat():
     st.session_state.conversation_id = conversations.new_id()
     st.session_state.messages = []
     st.session_state.pop("greeting", None)
+    st.session_state.pop("suggestions", None)
 
 
 def _sidebar_panel(sidebar, messages):
@@ -152,12 +171,6 @@ def _sidebar_panel(sidebar, messages):
                     if item["id"] == current:
                         _start_new_chat()
                     st.rerun()
-
-        if not messages:
-            st.markdown('<div class="pm-rail">Suggested questions</div>', unsafe_allow_html=True)
-            for i, suggestion in enumerate(SUGGESTIONS):
-                if st.button(suggestion, key=f"sug_{i}", width="stretch"):
-                    st.session_state.pending_prompt = suggestion
 
         st.markdown('<div class="pm-rail">Speaking as</div>', unsafe_allow_html=True)
         party = st.selectbox(
@@ -225,6 +238,12 @@ def render(ctx, sidebar):
             _render_message(ctx, msg)
     else:
         _landing()
+        _, chips, _ = st.columns([1, 8, 1])
+        with chips:
+            cols = st.columns(2)
+            for i, suggestion in enumerate(_suggestions()):
+                if cols[i % 2].button(suggestion, key=f"sug_{i}", width="stretch"):
+                    st.session_state.pending_prompt = suggestion
 
     # chat_input docks to the viewport bottom at page level; nested in a column it
     # stays inline, which is what keeps the empty state centred.

@@ -137,17 +137,17 @@ def pulse_trend(points, value_key, title, ticksuffix=""):
     return _style(fig, 260, showlegend=False, margin_t=40)
 
 
-def coverage_volume(days):
+def coverage_volume(per_day, window_days=7):
     """Articles found per day — whether coverage is rising or fading."""
     fig = go.Figure(
         go.Bar(
-            x=[d["date"] for d in days],
-            y=[d["articles"] for d in days],
+            x=[d["date"] for d in per_day],
+            y=[d["articles"] for d in per_day],
             marker_color=PARTY_COLORS["Others"],
             hovertemplate="%{x|%b %d}: %{y} articles<extra></extra>",
         )
     )
-    fig.update_layout(title="News articles per day, last 7 days")
+    fig.update_layout(title=f"News articles per day, last {window_days} days")
     fig.update_xaxes(tickformat="%b %d")
     return _style(fig, 260, showlegend=False, margin_t=40)
 
