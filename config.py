@@ -17,6 +17,37 @@ CANDIDATES = {
     "BJP": "Lankala Deepak Reddy",
 }
 
+# All 119 Telangana Legislative Assembly constituencies, so Live Pulse can
+# track search/news/social signal for any seat in the state, not only this
+# campaign's own. Source: Wikipedia's list of Telangana Assembly
+# constituencies (delimitation in force since 2014).
+TELANGANA_CONSTITUENCIES = [
+    "Achampet", "Adilabad", "Alair", "Alampur", "Amberpet", "Andole",
+    "Armur", "Asifabad", "Aswaraopeta", "Bahadurpura", "Balkonda",
+    "Banswada", "Bellampalli", "Bhadrachalam", "Bhongir", "Bhupalpalle",
+    "Boath", "Bodhan", "Chandrayangutta", "Charminar", "Chennur",
+    "Chevella", "Choppadandi", "Devarakonda", "Devarkadra", "Dharmapuri",
+    "Dornakal", "Dubbak", "Gadwal", "Gajwel", "Ghanpur Station",
+    "Goshamahal", "Huzurabad", "Huzurnagar", "Husnabad", "Ibrahimpatnam",
+    "Jadcherla", "Jagtial", "Jangaon", "Jubilee Hills", "Jukkal",
+    "Kalwakurthy", "Kamareddy", "Karimnagar", "Karwan", "Khairatabad",
+    "Khammam", "Khanapur", "Kodad", "Kodangal", "Kollapur", "Koratla",
+    "Kothagudem", "Kukatpally", "Lal Bahadur Nagar", "Madhira", "Maheshwaram",
+    "Mahabubabad", "Mahbubnagar", "Makthal", "Malakpet", "Malkajgiri",
+    "Manakondur", "Mancherial", "Manthani", "Medak", "Medchal",
+    "Miryalaguda", "Mudhole", "Mulug", "Munugode", "Musheerabad",
+    "Nagarjuna Sagar", "Nagarkurnool", "Nakrekal", "Nalgonda", "Nampally",
+    "Narayankhed", "Narayanpet", "Narsampet", "Narsapur", "Nirmal",
+    "Nizamabad Rural", "Nizamabad Urban", "Palair", "Palakurthi", "Pargi",
+    "Parkal", "Patancheru", "Peddapalle", "Pinapaka", "Quthbullapur",
+    "Rajendranagar", "Ramagundam", "Sanathnagar", "Sangareddy", "Sathupalli",
+    "Secunderabad", "Secunderabad Cantonment", "Serilingampally", "Shadnagar",
+    "Siddipet", "Sircilla", "Sirpur", "Suryapet", "Tandur", "Thungathurthi",
+    "Uppal", "Vemulawada", "Vikarabad", "Wanaparthy", "Waradhanapet",
+    "Warangal East", "Warangal West", "Wyra", "Yakutpura", "Yellandu",
+    "Yellareddy", "Zahirabad",
+]
+
 # Excel sheet name -> internal key used across the app
 SHEET_KEY_MAP = {
     "Demographics": "demographics",

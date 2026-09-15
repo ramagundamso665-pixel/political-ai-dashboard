@@ -3,7 +3,14 @@ import streamlit as st
 import charts
 import live_pulse
 from components import empty_state, fact_card, section
-from config import CANDIDATES, PARTY_LABELS, PULSE_KEYWORD, SOURCE_METADATA, is_valid_api_key
+from config import (
+    CANDIDATES,
+    PARTY_LABELS,
+    PULSE_KEYWORD,
+    SOURCE_METADATA,
+    TELANGANA_CONSTITUENCIES,
+    is_valid_api_key,
+)
 
 TITLE = "Live Pulse"
 
@@ -37,11 +44,16 @@ def _load_reddit(keyword, client_id, client_secret):
 
 
 def _keyword_options():
-    """Constituency plus every 2023 candidate, so the default choices are names
-    that actually appear on this seat's ballot rather than a guessed keyword."""
+    """This campaign's constituency and candidates first (most relevant),
+    then every other Telangana Assembly constituency A-Z — so the page can
+    track signal for any seat in the state, not only this campaign's own."""
     options = [("Constituency — " + PULSE_KEYWORD, PULSE_KEYWORD)]
     for code, name in CANDIDATES.items():
         options.append((f"{PARTY_LABELS.get(code, code)} — {name}", name))
+    for name in TELANGANA_CONSTITUENCIES:
+        if name == PULSE_KEYWORD:
+            continue
+        options.append((f"Telangana — {name}", name))
     return options
 
 
