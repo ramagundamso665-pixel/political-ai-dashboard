@@ -1,0 +1,35 @@
+name: Keep Supabase awake
+
+# A free Supabase project is paused after about a week with no activity, and the app
+# then quietly falls back to Book 13.xlsx. One small read every few days prevents it.
+#
+# Repository secrets to add (Settings -> Secrets and variables -> Actions):
+#   SUPABASE_URL       e.g. https://abcdefgh.supabase.co
+#   SUPABASE_ANON_KEY  the public "publishable" (anon) key, the one that starts with
+#                      sb_publishable_. It can only read what the public may read, so
+#                      the powerful service key never has to live in GitHub.
+
+on:
+  schedule:
+    - cron: "17 3 */3 * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read one row
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
+            echo "Add the SUPABASE_URL and SUPABASE_ANON_KEY repository secrets first."
+            exit 1
+          fi
+          curl --fail --silent --show-error --max-time 30 \
+            "$SUPABASE_URL/rest/v1/constituencies?select=id&limit=1" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY"
+          echo
+          echo "Database answered."
