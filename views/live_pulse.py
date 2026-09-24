@@ -4,6 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 import streamlit as st
 
 import charts
+import db
 import health
 import live_pulse
 from components import empty_state, fact_card, section
@@ -155,6 +156,41 @@ def _classify(ctx, target, about):
     return result
 
 
+@st.cache_data(ttl=30, show_spinner=False)
+def _manual_key_leaders():
+    """Leaders added through the Manage Leaders page, in the same shape as
+    config.KEY_LEADERS, so the two merge into one dropdown below."""
+    url = st.secrets.get("SUPABASE_URL", None) if hasattr(st, "secrets") else None
+    key = st.secrets.get("SUPABASE_SERVICE_KEY", None) if hasattr(st, "secrets") else None
+    if not (is_valid_api_key(url, placeholder_prefix="https://REPLACE") and is_valid_api_key(key, placeholder_prefix="REPLACE")):
+        return {}
+    try:
+        rows = db.fetch_manual_leaders(url, key)
+    except Exception:
+        return {}
+    out = {}
+    for _, r in rows.iterrows():
+        name = r["display_name"]
+        term = db.as_text(r.get("term"))
+        headline_terms = db.as_list(r.get("headline_terms"))
+        if headline_terms:
+            term = term or name
+            out[name] = {
+                "term": term,
+                "news": f'"{term}"',
+                # headlines are compared in lowercase, so terms typed as "Jane Doe" must be too
+                "headline_terms": [t.lower() for t in headline_terms],
+                "exclude_terms": [t.lower() for t in db.as_list(r.get("exclude_terms"))],
+            }
+        else:
+            out[name] = term
+    return out
+
+
+def _all_leaders():
+    return {**KEY_LEADERS, **_manual_key_leaders()}
+
+
 def _pick_target():
     scope = st.radio("What to track", SCOPES, horizontal=True, key="pulse_scope")
 
@@ -185,8 +221,9 @@ def _pick_target():
         }
 
     if scope == "Leaders":
-        label = st.selectbox("Leader — click and type to search", list(KEY_LEADERS), key="pulse_leader")
-        return _person(label, KEY_LEADERS[label])
+        all_leaders = _all_leaders()
+        label = st.selectbox("Leader — click and type to search", list(all_leaders), key="pulse_leader")
+        return _person(label, all_leaders[label])
 
     if scope == "Parties":
         code = st.selectbox(

@@ -178,6 +178,30 @@ def upsert_row(supabase_url, service_key, table, row):
     resp.raise_for_status()
 
 
+def as_list(value):
+    """A list column from PostgREST, or [] — an empty one arrives as NaN, which is truthy."""
+    return list(value) if isinstance(value, (list, tuple)) else []
+
+
+def as_text(value):
+    """A text column, or None — an empty one arrives as NaN, which is truthy."""
+    return value.strip() if isinstance(value, str) and value.strip() else None
+
+
+def fetch_manual_leaders(supabase_url, service_key):
+    """Leaders added by campaign staff through the in-app Manage Leaders page,
+    on top of the curated KEY_LEADERS baked into config.py."""
+    return _rest(supabase_url, service_key, "manual_leaders", {"order": "display_name.asc"})
+
+
+def add_manual_leader(supabase_url, service_key, row):
+    insert_row(supabase_url, service_key, "manual_leaders", row)
+
+
+def delete_manual_leader(supabase_url, service_key, leader_id):
+    delete_rows(supabase_url, service_key, "manual_leaders", {"id": f"eq.{leader_id}"})
+
+
 def delete_rows(supabase_url, service_key, table, params):
     resp = requests.delete(
         f"{supabase_url}/rest/v1/{table}",

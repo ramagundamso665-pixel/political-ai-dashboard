@@ -36,6 +36,7 @@ from views import (
     data_check,
     demographics,
     field_reports,
+    leaders,
     live_pulse,
     overview,
     rebuttal,
@@ -55,7 +56,7 @@ st.set_page_config(
 )
 
 VIEWS = [
-    ask_ai, overview, live_pulse, field_reports,
+    ask_ai, overview, live_pulse, field_reports, leaders,
     swing, demographics, survey, backtest, simulator, social,
     speech, rebuttal, recommendations, brief, data_check,
 ]
