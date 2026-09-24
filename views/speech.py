@@ -2,6 +2,7 @@ import streamlit as st
 
 from components import fact_card, section
 from config import PARTIES, PARTY_LABELS, is_valid_api_key
+from grounding import LANGUAGES
 
 TITLE = "Speech Generator"
 
@@ -21,7 +22,7 @@ def render(ctx, sidebar):
     theme_options = sorted(ctx.sheets["ground_campaign"]["Subcategory"].dropna().unique().tolist())
     event_options = sorted(ctx.sheets["campaign_activity"]["Event Type"].dropna().unique().tolist())
 
-    c1, c2, c3, c4 = st.columns(4)
+    c1, c2, c3, c4, c5 = st.columns(5)
     with c1:
         party = st.selectbox("Speaking for", PARTIES, format_func=lambda p: PARTY_LABELS.get(p, p))
     with c2:
@@ -30,12 +31,14 @@ def render(ctx, sidebar):
         theme = st.selectbox("Theme", theme_options)
     with c4:
         event = st.selectbox("Event type", event_options)
+    with c5:
+        language = st.selectbox("Language", LANGUAGES)
 
     if not st.button("Generate speech", width="stretch"):
         return
 
     with st.spinner("Grounding facts and generating speech..."):
-        result = ctx.speech_gen.generate_speech(party, audience, theme, event)
+        result = ctx.speech_gen.generate_speech(party, audience, theme, event, language)
 
     if "error" in result:
         st.error(result["error"])

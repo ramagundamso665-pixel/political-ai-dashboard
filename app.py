@@ -31,11 +31,16 @@ from speech_generator import SpeechGenerator
 from theme import inject_theme
 from views import (
     ask_ai,
+    backtest,
+    brief,
+    data_check,
     demographics,
     field_reports,
     live_pulse,
     overview,
+    rebuttal,
     recommendations,
+    simulator,
     social,
     speech,
     survey,
@@ -49,7 +54,11 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-VIEWS = [ask_ai, overview, live_pulse, field_reports, swing, demographics, survey, social, speech, recommendations]
+VIEWS = [
+    ask_ai, overview, live_pulse, field_reports,
+    swing, demographics, survey, backtest, simulator, social,
+    speech, rebuttal, recommendations, brief, data_check,
+]
 
 # Both caches below expire together. With only the data cached on a timer, the
 # components built from it were cached forever, so a number edited in Supabase

@@ -7,6 +7,7 @@ import re
 from openai import OpenAI
 
 from config import PARTIES, PARTY_LABELS
+from grounding import language_rule
 
 
 SYSTEM_PROMPT = """You are a campaign speechwriter for an Indian local election.
@@ -62,7 +63,7 @@ class SpeechGenerator:
 
         return "\n".join(f"- {f}" for f in facts), cited
 
-    def generate_speech(self, party, audience_subgroup, theme_keyword, event_type):
+    def generate_speech(self, party, audience_subgroup, theme_keyword, event_type, language="English"):
         if self.client is None:
             return {
                 "error": "No OpenAI API key configured. Add OPENAI_API_KEY to .streamlit/secrets.toml.",
@@ -84,7 +85,7 @@ Write the full speech now.
             response = self.client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[
-                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "system", "content": SYSTEM_PROMPT + "\n" + language_rule(language)},
                     {"role": "user", "content": user_prompt},
                 ],
             )
@@ -115,6 +116,7 @@ Write the full speech now.
     def _check_unverified_numbers(speech, facts_block):
         """Heuristic: every standalone number in the speech should appear
         somewhere in the facts block it was grounded on."""
-        speech_numbers = set(re.findall(r"\d+(?:\.\d+)?%?", speech))
-        fact_numbers = set(re.findall(r"\d+(?:\.\d+)?%?", facts_block))
+        # compare the digits alone: a sheet stores 50.2 where the speech says 50.2%
+        speech_numbers = set(re.findall(r"\d+(?:\.\d+)?", speech))
+        fact_numbers = set(re.findall(r"\d+(?:\.\d+)?", facts_block))
         return sorted(speech_numbers - fact_numbers)

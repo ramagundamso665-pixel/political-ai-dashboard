@@ -168,3 +168,63 @@ def event_counts(counts):
     )
     fig.update_layout(title="Logged events by party")
     return _style(fig, 320, showlegend=False)
+
+
+def what_if(before, after):
+    """Average share per party before and after a what-if shift: the original in
+    a muted tone, the scenario in the party's own color."""
+    parties = [p for p in PARTIES if p in before and p in after]
+    labels = [PARTY_LABELS.get(p, p) for p in parties]
+    fig = go.Figure()
+    fig.add_trace(
+        go.Bar(
+            name="Now",
+            x=labels,
+            y=[before[p] for p in parties],
+            marker_color="rgba(158,158,158,.55)",
+            hovertemplate="Now, %{x}: %{y:.1f}%<extra></extra>",
+        )
+    )
+    fig.add_trace(
+        go.Bar(
+            name="Scenario",
+            x=labels,
+            y=[after[p] for p in parties],
+            marker_color=[PARTY_COLORS.get(p, "#9E9E9E") for p in parties],
+            text=[f"{after[p]:.1f}%" for p in parties],
+            textposition="outside",
+            cliponaxis=False,
+            hovertemplate="Scenario, %{x}: %{y:.1f}%<extra></extra>",
+        )
+    )
+    fig.update_layout(barmode="group", title="Average vote share across divisions")
+    fig.update_yaxes(ticksuffix="%", range=[0, max(max(before.values()), max(after.values())) * 1.2])
+    return _style(fig, 380, margin_t=70)
+
+
+def backtest_compare(actual, estimated, estimate_label):
+    """Official result next to what an estimate said, per party."""
+    parties = [p for p in PARTIES if p in actual and p in estimated]
+    labels = [PARTY_LABELS.get(p, p) for p in parties]
+    fig = go.Figure()
+    fig.add_trace(
+        go.Bar(
+            name="Official result",
+            x=labels,
+            y=[actual[p] for p in parties],
+            marker_color=[PARTY_COLORS.get(p, "#9E9E9E") for p in parties],
+            hovertemplate="Official, %{x}: %{y:.1f}%<extra></extra>",
+        )
+    )
+    fig.add_trace(
+        go.Bar(
+            name=estimate_label,
+            x=labels,
+            y=[estimated[p] for p in parties],
+            marker_color="rgba(158,158,158,.55)",
+            hovertemplate=estimate_label + ", %{x}: %{y:.1f}%<extra></extra>",
+        )
+    )
+    fig.update_layout(barmode="group", title="Official vote share vs the estimate")
+    fig.update_yaxes(ticksuffix="%")
+    return _style(fig, 360, margin_t=70)

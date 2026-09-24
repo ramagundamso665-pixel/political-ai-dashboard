@@ -22,9 +22,21 @@ def _configured_password():
         return None
 
 
+def _lock_disabled():
+    try:
+        return str(st.secrets.get("AUTH_DISABLED", "")).lower() in ("1", "true", "yes")
+    except Exception:
+        return False
+
+
 def require_password():
     """Render the lock screen and stop the script unless the viewer is in."""
     if st.session_state.get(SESSION_KEY):
+        return
+
+    # Explicit opt-out for demos and testing. Delete the AUTH_DISABLED secret to lock again.
+    if _lock_disabled():
+        st.sidebar.warning("Password lock is OFF (AUTH_DISABLED). Anyone with the URL can use this app.")
         return
 
     expected = _configured_password()

@@ -6,6 +6,7 @@ import streamlit as st
 import conversations
 import telangana
 from components import source_badge
+from grounding import LANGUAGES, build_data_context, language_rule
 from config import (
     CONSTITUENCY_NAME,
     PARTIES,
@@ -63,32 +64,13 @@ def _greeting():
     return st.session_state.greeting
 
 
-def _build_data_context(ctx):
-    """Serialize every sheet for the prompt.
-
-    Ground_Campaign is the one sheet where three parties' notes sit side by side in
-    a wide row — sent as-is, an LLM summary tends to blend them (e.g. folding BRS's
-    "ruling fatigue" into an undifferentiated answer). Melting it into one fact per
-    (party, subcategory) line removes that ambiguity.
-    """
-    parts = []
-    for name, df in ctx.raw_sheets.items():
-        if SHEET_KEY_MAP.get(name) == "ground_campaign":
-            facts = "\n".join(ctx.analyzer.ground_campaign_facts())
-            parts.append(f"### Sheet: {name} (one fact per party per row)\n{facts}\n")
-        else:
-            columns = ", ".join(map(str, df.columns))
-            parts.append(f"### Sheet: {name}\nColumns: {columns}\n{df.to_string(index=False)}\n")
-    return "\n".join(parts)
-
-
-def _system_prompt(ctx, speaking_party):
+def _system_prompt(ctx, speaking_party, language):
     speaker = PARTY_LABELS.get(speaking_party, speaking_party)
     return f"""You are People's Mandate AI, answering questions about the {CONSTITUENCY_NAME} campaign
 on behalf of the {speaker} campaign.
 Below is the COMPLETE dataset, every sheet in full — not a sample.
 
-{_build_data_context(ctx)}
+{build_data_context(ctx)}
 
 Rules:
 - Answer ONLY using the data above. Never invent numbers, names, or facts not present here.
@@ -98,6 +80,13 @@ Rules:
 - When the question says "we", "our", or "us", that means {speaker} specifically.
   Facts about other parties are about competitors, not "us" — name the party explicitly when citing them.
 - If the data doesn't cover the question, say so plainly instead of guessing.
+- Never tie a fact to a voter group (women, youth, a caste or religion) unless the data does:
+  a Demo_Preferences row for that group, or a note that names the group. A general weakness
+  such as party unity or anti-incumbency is NOT a weakness "with women". For a question about
+  a group, give that group's Demo_Preferences numbers for every party, compare {speaker} against
+  the leader, add any note that names the group, and say plainly if no group-specific weakness
+  is recorded.
+{language_rule(language)}
 - Pick the ONE sheet most relevant to the question, or "none" if no single sheet applies.
 - Pick a chart type only if comparing numbers across rows would help: table, bar, line, area, pie. Otherwise "none".
 
@@ -107,7 +96,7 @@ Respond with ONLY minified JSON, no markdown fences, in exactly this shape:
 
 
 @st.cache_data(show_spinner=False)
-def _ask_once(_client, question, party, _system):
+def _ask_once(_client, question, party, language, _system):
     resp = _client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[{"role": "system", "content": _system}, {"role": "user", "content": question}],
@@ -180,7 +169,11 @@ def _sidebar_panel(sidebar, messages):
             key="ask_ai_party",
             label_visibility="collapsed",
         )
-    return party
+        st.markdown('<div class="pm-rail">Reply in</div>', unsafe_allow_html=True)
+        language = st.selectbox(
+            "Reply in", LANGUAGES, key="ask_ai_language", label_visibility="collapsed"
+        )
+    return party, language
 
 
 def _landing():
@@ -231,7 +224,7 @@ def render(ctx, sidebar):
 
     client = OpenAI(api_key=ctx.api_key)
     messages = st.session_state.messages
-    speaking_party = _sidebar_panel(sidebar, messages)
+    speaking_party, language = _sidebar_panel(sidebar, messages)
 
     if messages:
         for msg in messages:
@@ -259,7 +252,7 @@ def render(ctx, sidebar):
 
     try:
         with st.spinner("Reading the sheets..."):
-            result = _ask_once(client, prompt, speaking_party, _system_prompt(ctx, speaking_party))
+            result = _ask_once(client, prompt, speaking_party, language, _system_prompt(ctx, speaking_party, language))
     except Exception as exc:
         st.error("Answer generation failed")
         st.exception(exc)
