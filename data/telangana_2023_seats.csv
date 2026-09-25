@@ -1,0 +1,120 @@
+seat_no,seat,reservation,electors,votes_polled,turnout_pct,winner,winner_party,winner_votes,runner_up,runner_up_party,runner_up_votes,margin_votes,margin_pct
+1,Sirpur,GENERAL,227164,186880,82.27,Dr.palvai Harish Babu,BJP,63702,Koneru Konappa,BRS,60614,3088,1.65
+2,Chennur,SC,188417,152230,80.79,Vivek Venkat Swamy,INC,87541,Balka Suman,BRS,50026,37515,24.64
+3,Bellampalli,SC,173500,141863,81.77,Gaddam Vinod,INC,82217,Durgam Chinnaiah,BRS,45339,36878,26.0
+4,Mancherial,GENERAL,275141,192510,69.97,Kokkirala Premsagar Rao,INC,105945,Raghunath Verabelli,BJP,39829,66116,34.34
+5,Asifabad,ST,226778,184666,81.43,Kova Laxmi,BRS,83052,Ajmera Shyam,INC,60242,22810,12.35
+6,Khanapur,ST,220942,174239,78.86,Vedma. Bhojju,INC,58870,Johnson Naik Bhukya,BRS,54168,4702,2.7
+7,Adilabad,GENERAL,240559,188652,78.42,Payal Shanker,BJP,67608,Jogu Ramanna,BRS,60916,6692,3.55
+8,Boath,ST,208599,174018,83.42,Anil Jadhav,BRS,76792,Soyam Bapurao,BJP,53992,22800,13.1
+9,Nirmal,GENERAL,253551,196931,77.67,Alleti Maheshwar Reddy,BJP,106400,Allola Indrakaran Reddy,BRS,55697,50703,25.75
+10,Mudhole,GENERAL,249826,202202,80.94,Ram Rao Pawar,BJP,98252,Gaddigari Vittal Reddy,BRS,74253,23999,11.87
+11,Armur,GENERAL,210341,161826,76.94,Paidi Rakesh Reddy,BJP,72658,Prodduturi Vinay Kumar Reddy,INC,42989,29669,18.33
+12,Bodhan,GENERAL,220238,171929,78.07,P. Sudarshan Reddy,INC,66963,Mohammed Shakil Aamir,BRS,63901,3062,1.78
+13,Jukkal,SC,200100,164539,82.23,Laxmi Kantha Rao Thota,INC,64489,Hanmant Shinde,BRS,63337,1152,0.7
+14,Banswada,GENERAL,195384,160079,81.93,Srinivas Reddy Parige (pocharam),BRS,76278,Eanugu Ravinder Reddy,INC,52814,23464,14.66
+15,Yellareddy,GENERAL,220789,184800,83.7,Madan Mohan Rao. K,INC,86989,Surendar Jajala,BRS,62988,24001,12.99
+16,Kamareddy,GENERAL,252620,192889,76.36,Katipally Venkata Ramana Reddy,BJP,66652,Kalvakuntla Chandrashekar Rao,BRS,59911,6741,3.49
+17,Nizamabad (Urban),GENERAL,294902,184332,62.51,Dhanpal Suryanarayana,BJP,75240,Mohammed Ali Shabbir,INC,59853,15387,8.35
+18,Nizamabad (Rural),GENERAL,253417,195018,76.96,Bhoopathi Reddy Rekulapally,INC,78378,Goverdhan Bajireddy,BRS,56415,21963,11.26
+19,Balkonda,GENERAL,221511,174839,78.93,Prashanth Reddy Vemula,BRS,70417,Sunil Kumar Muthyala,INC,65884,4533,2.59
+20,Koratla,GENERAL,240901,183590,76.21,Kalvakuntla Sanjay,BRS,72115,Arvind Dharmapuri,BJP,61810,10305,5.61
+21,Jagtial,GENERAL,231513,176359,76.18,Dr. Sanjay,BRS,70243,Jeevan Reddy. T,INC,54421,15822,8.97
+22,Dharmapuri,SC,227013,181690,80.04,Adluri Laxman Kumar,INC,91393,Koppula Eshwar,BRS,69354,22039,12.13
+23,Ramagundam,GENERAL,221251,152988,69.15,Makkan Singh Raj Thakur,INC,92227,Korukanti Chander,BRS,35433,56794,37.12
+24,Manthani,GENERAL,236597,196543,83.07,Duddilla Sridhar Babu,INC,103822,Putta Madhukar,BRS,72442,31380,15.97
+25,Peddapalle,GENERAL,254530,207944,81.7,Chinthakunta Vijaya Ramana Rao,INC,118888,Dasari Manohar Reddy,BRS,63780,55108,26.5
+26,Karimnagar,GENERAL,355156,229774,64.7,Gangula Kamalakar,BRS,92179,Bandi Sanjay Kumar,BJP,89016,3163,1.38
+27,Choppadandi,SC,233183,182188,78.13,Medipally Sathyam,INC,90395,Ravi Shankar Sunke,BRS,52956,37439,20.55
+28,Vemulawada,GENERAL,222304,174145,78.34,Aadi Srinivas,INC,71451,Chalimeda Lakshmi Narasimha Rao,BRS,56870,14581,8.37
+29,Sircilla,GENERAL,244532,188740,77.18,Kalvakuntla Taraka Rama Rao (k.t.r),BRS,89244,K.k. Mahender Reddy,INC,59557,29687,15.73
+30,Manakondur,SC,221741,185829,83.8,Dr. Kavvampally Satyanarayana,INC,96773,Erupula Balakishan Rasamayi,BRS,64408,32365,17.42
+31,Huzurabad,GENERAL,249738,209311,83.81,Kaushik Reddy Padi,BRS,80333,Eatala Rajendar,BJP,63460,16873,8.06
+32,Husnabad,GENERAL,242397,206698,85.27,Ponnam Prabhakar,INC,100955,Satish Kumar Voditela,BRS,81611,19344,9.36
+33,Siddipet,GENERAL,233840,181403,77.58,Thanneeru Harish Rao,BRS,105514,Pujala Hari Krishna,INC,23206,82308,45.37
+34,Medak,GENERAL,216835,186863,86.18,Mynampally Rohith,INC,87126,Padma Devender Reddy.m,BRS,76969,10157,5.44
+35,Narayankhed,GENERAL,231255,194036,83.91,Patlolla Sanjeeva Reddy,INC,91373,Mahareddy Bhupal Reddy,BRS,84826,6547,3.37
+36,Andole,SC,249301,212750,85.34,C. Damodar Rajanarsimha,INC,114147,Chanti Kranthi Kiran,BRS,85954,28193,13.25
+37,Narsapur,GENERAL,223632,198062,88.57,Vakiti Sunitha Laxma Reddy,BRS,88410,Aavula Raji Reddy,INC,79555,8855,4.47
+38,Zahirabad,SC,270889,209089,77.19,Koninty Manik Rao,BRS,97205,A.chandrasekhar,INC,84415,12790,6.12
+39,Sangareddy,GENERAL,245329,187506,76.43,Chinta Prabhakar,BRS,83112,T. Jayaprakash Reddy,INC,74895,8217,4.38
+40,Patancheru,GENERAL,397307,276881,69.69,Gudem Mahipal Reddy,BRS,105387,Kata Srinivas Goud,INC,98296,7091,2.56
+41,Dubbak,GENERAL,198158,174765,88.19,Kotta Prabhakar Reddy,BRS,97879,Madhavaneni Raghunandan Rao,BJP,44366,53513,30.62
+42,Gajwel,GENERAL,274726,232417,84.6,Kalvakuntla Chandrashekar Rao,BRS,111684,Eatala Rajender,BJP,66653,45031,19.38
+43,Medchal,GENERAL,637995,400516,62.78,Chamakura Malla Reddy,BRS,186017,Thotakura Vajresh Yadav (jangaiah Yadav),INC,152598,33419,8.34
+44,Malkajgiri,GENERAL,489299,265411,54.24,Marri Rajashekar Reddy,BRS,125049,Mynampally Hanumanth Rao,INC,75519,49530,18.66
+45,Quthbullapur,GENERAL,699239,401667,57.44,K.p. Vivekanand,BRS,187999,Kuna Srisailam Goud,BJP,102423,85576,21.31
+46,Kukatpalle,GENERAL,463917,250794,54.06,Madhavaram Krishna Rao,BRS,135635,Bandi Ramesh,INC,65248,70387,28.07
+47,Uppal,GENERAL,529574,275039,51.94,Bandari Lakshma Reddy,BRS,132929,Parameshwar Reddy Mandumula,INC,83900,49029,17.83
+48,Ibrahimpatnam,GENERAL,327638,248461,75.83,Malreddy Ranga Reddy,INC,126506,Manchireddy Kishan Reddy,BRS,89806,36700,14.77
+49,Lal Bahadur Nagar,GENERAL,593762,295131,49.71,Devireddy Sudhir Reddy,BRS,111380,Sama Ranga Reddy,BJP,89075,22305,7.56
+50,Maheswaram,GENERAL,546654,306334,56.04,Patlolla Sabitha Indra Reddy,BRS,125578,Andela Sriramulu Yadav,BJP,99391,26187,8.55
+51,Rajendranagar,GENERAL,582030,328193,56.39,T. Prakash Goud,BRS,121734,Thokala Srinivas Reddy,BJP,89638,32096,9.78
+52,Serilingampally,GENERAL,732560,357830,48.85,Arekapudi Gandhi,BRS,157332,Jagadeeswar Goud,INC,110780,46552,13.01
+53,Chevella,SC,262079,196802,75.09,Kale Yadaiah,BRS,76218,Beem Bharath Pamena,INC,75950,268,0.14
+54,Pargi,GENERAL,259674,201433,77.57,Dr. T. Ram Mohan Reddy,INC,98570,K. Mahesh Reddy,BRS,74537,24033,11.93
+55,Vicarabad,SC,228330,174282,76.33,Gaddam Prasad Kumar,INC,86885,Dr. Anand Methuku,BRS,73992,12893,7.4
+56,Tandur,GENERAL,236125,175225,74.21,B. Manohar Reddy,INC,84662,Pilot Rohith Reddy,BRS,78079,6583,3.76
+57,Musheerabad,GENERAL,301811,153252,50.78,Muta Gopal,BRS,75207,Anjan Kumar Yadav,INC,37410,37797,24.66
+58,Malakpet,GENERAL,317875,132024,41.53,Ahmed Bin Abdullah Balala,AIMIM,55805,Shaik Akbar,INC,29699,26106,19.77
+59,Amberpet,GENERAL,277125,146488,52.86,Kaleru Venkatesh,BRS,74416,Chenaboyanna Krishna Yadav,BJP,49879,24537,16.75
+60,Khairatabad,GENERAL,296036,154924,52.33,Danam Nagender,BRS,67368,P Vijaya Reddy,INC,45358,22010,14.21
+61,Jubilee Hills,GENERAL,385287,183312,47.58,Maganti Gopinath,BRS,80549,Mohammed Azharuddin,INC,64212,16337,8.91
+62,Sanathnagar,GENERAL,249032,128263,51.5,Talasani Srinivas Yadav,BRS,72557,Marri Shashidhar Reddy,BJP,30730,41827,32.61
+63,Nampally,GENERAL,332791,152300,45.76,Mohammed Majid Hussain,AIMIM,62185,Feroz Khan,INC,60148,2037,1.34
+64,Karwan,GENERAL,359485,175836,48.91,Kausar Mohiuddin,AIMIM,83388,Amar Singh,BJP,41402,41986,23.88
+65,Goshamahal,GENERAL,270633,148259,54.78,T. Raja Singh,BJP,80182,Nandu Bilal,BRS,58725,21457,14.47
+66,Charminar,GENERAL,226126,98103,43.38,Mir Zulfeqar Ali,AIMIM,49103,Megha Rani Agarwal,BJP,26250,22853,23.29
+67,Chandrayangutta,GENERAL,337912,153771,45.51,Akbar Uddin Owaisi,AIMIM,99776,Sitharam Reddy Muppi,BRS,18116,81660,53.1
+68,Yakutpura,GENERAL,353141,140434,39.77,Jaffar Hussain,AIMIM,46153,Amjed Ullah Khan,MBT,45275,878,0.63
+69,Bahadurpura,GENERAL,316675,143725,45.39,Mohammed Mubeen,AIMIM,89451,Mir Inayath Ali Baqri,BRS,22426,67025,46.63
+70,Secunderabad,GENERAL,262539,141148,53.76,Padma Rao.t,BRS,78223,Adam Santhosh Kumar,INC,32983,45240,32.05
+71,Secunderabad Cantt.,SC,250788,124517,49.65,Lasya Nanditha Sayanna,BRS,59057,Sriganesh. N,BJP,41888,17169,13.79
+72,Kodangal,GENERAL,236789,195163,82.42,Anumula Revanth Reddy,INC,107429,Patnam Narender Reddy,BRS,74897,32532,16.67
+73,Narayanpet,GENERAL,232062,182899,78.81,Chittem Parnika Reddy,INC,84708,S.rajender Reddy,BRS,76757,7951,4.35
+74,Mahbubnagar,GENERAL,252678,181572,71.86,Yennam Srinivas Reddy,INC,87227,V. Srinivas Goud,BRS,68489,18738,10.32
+75,Jadcherla,GENERAL,220503,180640,81.92,Anirudh Reddy Janampalli,INC,90865,Charlakola Laxma Rreddy,BRS,75694,15171,8.4
+76,Devarkadra,GENERAL,235352,195423,83.03,Gavinolla Madhusudan Reddy (gmr),INC,88551,Alla Venkateswar Reddy,BRS,87159,1392,0.71
+77,Makthal,GENERAL,242316,187834,77.52,Vakiti Srihari,INC,74917,Chittem Ram Mohan Reddy,BRS,57392,17525,9.33
+78,Wanaparthy,GENERAL,271371,213164,78.55,Megha Reddy Tudi,INC,107115,Singireddy Niranjan Reddy,BRS,81795,25320,11.88
+79,Gadwal,GENERAL,256644,214872,83.72,Bandla Krishna Mohan Reddy,BRS,94097,Saritha W/o Thirupataiah,INC,87061,7036,3.27
+80,Alampur,SC,237997,196797,82.69,Vijayudu,BRS,104060,S.a.sampath Kumar,INC,73487,30573,15.54
+81,Nagarkurnool,GENERAL,233014,184616,79.23,Dr. Kuchkulla Rajesh Reddy,INC,87161,Marri Janardhan Reddy,BRS,81913,5248,2.84
+82,Achampet,SC,242302,195620,80.73,Chikkudu Vamshi Krishna,INC,115337,Guvvala Balaraju,BRS,66011,49326,25.22
+83,Kalwakurthy,GENERAL,241897,202752,83.82,Kasireddy Narayan Reddy,INC,75858,Achari Thalloju,BJP,70448,5410,2.67
+84,Shadnagar,GENERAL,236392,195555,82.72,K Shankaraiah,INC,77817,Anjaiah Yelganamoni,BRS,70689,7128,3.65
+85,Kollapur,GENERAL,234348,192228,82.03,Jupally Krishna Rao,INC,93609,Beeram Harshavardhan Reddy,BRS,63678,29931,15.57
+86,Devarakonda,ST,251710,213881,84.97,Balu Naik Nenavath,INC,111344,Ravindra Kumar Ramavath,BRS,81323,30021,14.04
+87,Nagarjuna Sagar,GENERAL,233514,202088,86.54,Kunduru Jayaveer,INC,119831,Nomula Bhagath Kumar,BRS,63982,55849,27.64
+88,Miryalaguda,GENERAL,231502,193741,83.69,Bathula Laxma Reddy,INC,114462,Nallamothu Bhaskar Rao,BRS,65680,48782,25.18
+89,Huzurnagar,GENERAL,247708,215298,86.92,Uttam Kumar Reddy Nalamada,INC,116707,Saidi Reddy Shanampudi,BRS,71819,44888,20.85
+90,Kodad,GENERAL,241669,208992,86.48,Nalamada Padmavathi Reddy,INC,125783,Bollam. Mallaiah Yadav,BRS,67611,58172,27.83
+91,Suryapet,GENERAL,241901,206669,85.44,Guntakandla Jagadish Reddy,BRS,75143,Damodar Reddy Ramreddy,INC,70537,4606,2.23
+92,Nalgonda,GENERAL,244545,204027,83.43,Komati Reddy Venkat Reddy,INC,107405,Kancharla. Bhupal Reddy,BRS,53073,54332,26.63
+93,Munugode,GENERAL,252699,233608,92.45,Komatireddy Raj Gopal Reddy,INC,119624,Koosukuntla Prabhakar Reddy,BRS,79034,40590,17.38
+94,Bhongir,GENERAL,216995,196077,90.36,Kumbam Anil Kumar Reddy,INC,102742,Pailla Shekar Reddy,BRS,76541,26201,13.36
+95,Nakrekal,SC,250653,219033,87.38,Vemula Veeresham,INC,133540,Chirumarthy Lingaiah,BRS,64701,68839,31.43
+96,Thungathurthi,SC,255163,225170,88.25,Mandula Samel,INC,129535,Gadari Kishore Kumar,BRS,78441,51094,22.69
+97,Alair,GENERAL,233366,212761,91.17,Ilaiah Beerla,INC,122140,Gongidi Sunitha,BRS,72504,49636,23.33
+98,Jangoan,GENERAL,237242,203600,85.82,Palla Rajeshwar Reddy,BRS,98975,Kommuri Pratap Reddy,INC,83192,15783,7.75
+99,Ghanpur (Station),SC,249321,215755,86.54,Kadiyam Srihari,BRS,101696,Indira Singapuram,INC,93917,7779,3.61
+100,Palakurthi,GENERAL,251632,220156,87.49,Yashaswini Mamidala,INC,126848,Dayakar Rao Errabelli,BRS,79214,47634,21.64
+101,Dornakal,ST,219426,192623,87.78,Jatoth Ram Chander Naik,INC,115587,Dharamsoth Redya Naik,BRS,62456,53131,27.58
+102,Mahabubabad,ST,253524,210328,82.96,Dr. Murali Naik Bhukya,INC,116644,Banoth Shankar Naik,BRS,66473,50171,23.85
+103,Narsampet,GENERAL,232519,205386,88.33,Donthi Madhava Reddy,INC,104185,Peddi Sudarshan Reddy,BRS,85296,18889,9.2
+104,Parkal,GENERAL,221590,188681,85.15,Revuri Prakash Reddy,INC,72573,Challa. Dharma Reddy.,BRS,64632,7941,4.21
+105,Warangal West,GENERAL,286757,167025,58.25,Naini Rajender Reddy,INC,72649,Dasyam Vinay Bhasker,BRS,57318,15331,9.18
+106,Warangal East,GENERAL,254726,171687,67.4,Konda Surekha,INC,67757,Errabelli Pradeep Kumar Rao,BJP,52105,15652,9.12
+107,Waradhanapet,SC,269363,218776,81.22,K.r.nagaraj.k,INC,106696,Aroori Ramesh,BRS,87238,19458,8.89
+108,Bhupalpalle,GENERAL,273803,225688,82.43,Gandra Satyanarayana Rao,INC,123116,Gandra Venkata Ramana Reddy,BRS,70417,52699,23.35
+109,Mulug,ST,226574,187583,82.79,Anasuya Seethakka Danasari,INC,102267,Bade Nagajyothi,BRS,68567,33700,17.97
+110,Pinapaka,ST,198604,159883,80.5,Payam Venkateswarlu,INC,90510,Kantha Rao Rega,BRS,56004,34506,21.58
+111,Yellandu,ST,219836,178339,81.12,Koram Kanakaiah,INC,109171,Banoth Hari Priya,BRS,51862,57309,32.13
+112,Khammam,GENERAL,323072,236224,73.12,Tummala Nageswara Rao,INC,136016,Ajay Kumar Puvvada,BRS,86635,49381,20.9
+113,Palair,GENERAL,236451,216851,91.71,Ponguleti Srinivasa Reddy,INC,127820,Kandala Upender Reddy,BRS,71170,56650,26.12
+114,Madhira,SC,221473,196364,88.66,Bhatti Vikramarka Mallu,INC,108970,Kamal Raju Lingala,BRS,73518,35452,18.05
+115,Wyra,ST,193264,169407,87.66,Ramdas Maloth,INC,93913,Madanlal Banoth,BRS,60868,33045,19.51
+116,Sathupalle,SC,243220,215349,88.54,Matta Ragamayee,INC,111245,Sandra Venkata Veeraiah,BRS,91805,19440,9.03
+117,Kothagudem,GENERAL,244006,187920,77.01,Kunamneni Sambasiva Rao,CPI,80336,Jalagam Venkat Rao,AIFB,53789,26547,14.13
+118,Aswaraopeta,ST,156012,136224,87.32,Adinarayana. Jare,INC,74993,Mecha Nageswara Rao,BRS,46088,28905,21.22
+119,Bhadrachalam,ST,148713,118129,79.43,Dr. Tellam Venkata Rao,BRS,53252,Podem Veeraiah,INC,47533,5719,4.84

@@ -6,3 +6,4 @@ audit_log.json
 .DS_Store
 chat_history.json
 .claude/
+pipeline/cache/
