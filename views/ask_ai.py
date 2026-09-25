@@ -6,8 +6,9 @@ import streamlit as st
 import conversations
 import telangana
 from components import source_badge
-from grounding import LANGUAGES, build_data_context, language_rule
+from grounding import LANGUAGES, build_data_context, language_rule, result_rule
 from config import (
+    ANSWER_MODEL,
     CONSTITUENCY_NAME,
     PARTIES,
     PARTY_LABELS,
@@ -73,6 +74,7 @@ Below is the COMPLETE dataset, every sheet in full — not a sample.
 {build_data_context(ctx)}
 
 Rules:
+{result_rule(ctx)}
 - Answer ONLY using the data above. Never invent numbers, names, or facts not present here.
 - This dataset covers MULTIPLE parties (BRS, Congress/INC, BJP, AIMIM). Every fact is
   attributable to exactly one party — never attribute a fact to a party other than the
@@ -98,7 +100,7 @@ Respond with ONLY minified JSON, no markdown fences, in exactly this shape:
 @st.cache_data(show_spinner=False)
 def _ask_once(_client, question, party, language, _system):
     resp = _client.chat.completions.create(
-        model="gpt-4o-mini",
+        model=ANSWER_MODEL,
         messages=[{"role": "system", "content": _system}, {"role": "user", "content": question}],
         temperature=0.2,
     )

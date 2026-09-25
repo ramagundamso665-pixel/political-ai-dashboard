@@ -191,23 +191,101 @@ class PoliticalAnalyzer:
     # ------------------------------------------------------------------
     # Prediction
     # ------------------------------------------------------------------
-    def predict_outcome(self):
-        historical = self.sheets["historical_results"]
-        latest_hist = historical[historical["Year"] == historical["Year"].max()]
-        hist_pct = {row["Party"]: float(row["Pct"]) for _, row in latest_hist.iterrows()}
+    def _tracking_year(self):
+        return int(self.sheets["division_shares"]["Year"].max())
+
+    def _survey_summary(self):
+        """Plain and sample-weighted survey averages, per party.
+
+        A poll with no stated sample size can't be weighed against the others, so
+        the weighted figure uses only the ones that state it. Disagreement (the
+        spread used for confidence) is still measured across every poll: dropping
+        the unsized ones from that would make a messy field look calmer."""
+        surveys = self.sheets["surveys"].copy()
+        sample = pd.to_numeric(surveys["Sample"], errors="coerce") if "Sample" in surveys.columns else pd.Series(dtype=float)
+        sized = sample.notna() & (sample > 0)
+
+        plain, weighted, std = {}, {}, {}
+        for p in PARTIES:
+            if p not in surveys.columns:
+                continue
+            vals = pd.to_numeric(surveys[p], errors="coerce")
+            have = vals.dropna()
+            if not len(have):
+                continue
+            plain[p] = round(float(have.mean()), 1)
+            std[p] = round(float(have.std(ddof=0)), 1) if len(have) > 1 else 0.0
+            usable = vals.notna() & sized
+            if usable.any():
+                weighted[p] = round(float((vals[usable] * sample[usable]).sum() / sample[usable].sum()), 1)
+
+        return {
+            "plain": plain,
+            "weighted": weighted,
+            "std": std,
+            "used": int(sized.sum()),
+            "total": len(surveys),
+            "per_survey": [
+                {"name": r["Survey"], "sample": (int(sample.iloc[i]) if sized.iloc[i] else None),
+                 "shares": {p: float(v) for p in PARTIES if p in surveys.columns
+                            and pd.notna(v := pd.to_numeric(pd.Series([r[p]]), errors="coerce").iloc[0])}}
+                for i, (_, r) in enumerate(surveys.iterrows())
+            ],
+        }
+
+    def latest_result(self):
+        """The official result of the vote the tracking was for, once it has been
+        held; None while the race is still open. Shares are of all votes polled,
+        the same basis as Historical_Results."""
+        historical = self.sheets["historical_results"].copy()
+        historical["Year"] = pd.to_numeric(historical["Year"], errors="coerce")
+        held = historical[historical["Year"] >= self._tracking_year()]
+        if held.empty:
+            return None
+        year = int(held["Year"].max())
+        rows = held[held["Year"] == year]
+        shares = {(normalize_party(r["Party"]) or r["Party"]): float(r["Pct"]) for _, r in rows.iterrows()}
+        candidates = {(normalize_party(r["Party"]) or r["Party"]): r["Candidate"] for _, r in rows.iterrows()}
+        ranked = sorted(shares, key=shares.get, reverse=True)
+        return {
+            "year": year,
+            "shares": shares,
+            "candidates": candidates,
+            "winner": ranked[0],
+            "runner_up": ranked[1] if len(ranked) > 1 else None,
+            "margin": round(shares[ranked[0]] - shares[ranked[1]], 1) if len(ranked) > 1 else None,
+            "polled": int(pd.to_numeric(rows["Turnout"], errors="coerce").max()),
+        }
+
+    def forecast_inputs(self):
+        """Everything the prediction is built from, as {party: percent}, so each
+        piece can be checked against a real result on its own."""
+        historical = self.sheets["historical_results"].copy()
+        historical["Year"] = pd.to_numeric(historical["Year"], errors="coerce")
+
+        # the last election BEFORE the tracking round: the vote being predicted must
+        # never be one of its own inputs
+        prior = historical[historical["Year"] < self._tracking_year()]
+        prior_year = int(prior["Year"].max()) if not prior.empty else None
+        prior_pct = (
+            {(normalize_party(r["Party"]) or r["Party"]): float(r["Pct"]) for _, r in prior[prior["Year"] == prior_year].iterrows()}
+            if prior_year is not None else {}
+        )
 
         shares = self.sheets["division_shares"]
-        latest_year = shares["Year"].max()
-        division_avg = {k: float(v) for k, v in shares[shares["Year"] == latest_year][PARTIES].mean().to_dict().items()}
+        division_avg = {
+            k: round(float(v), 1)
+            for k, v in shares[shares["Year"] == self._tracking_year()][PARTIES].mean().to_dict().items()
+        }
+        return {"prior_year": prior_year, "prior": prior_pct, "division": division_avg, "surveys": self._survey_summary()}
 
-        surveys = self.sheets["surveys"].copy()
-        survey_avgs, survey_stds = {}, {}
-        for p in PARTIES:
-            if p in surveys.columns:
-                vals = pd.to_numeric(surveys[p], errors="coerce").dropna()
-                if len(vals):
-                    survey_avgs[p] = round(float(vals.mean()), 1)
-                    survey_stds[p] = round(float(vals.std(ddof=0)), 1) if len(vals) > 1 else 0.0
+    def predict_outcome(self):
+        inp = self.forecast_inputs()
+        hist_pct, division_avg, surveys = inp["prior"], inp["division"], inp["surveys"]
+
+        # sample-weighted where any poll states its sample size, else a plain average
+        survey_avgs = surveys["weighted"] if surveys["used"] else surveys["plain"]
+        survey_stds = surveys["std"]
 
         # Weighted blend: internal division tracking is closest to ground truth
         # but small-sample; historical is stale but verified; surveys are
@@ -252,10 +330,13 @@ class PoliticalAnalyzer:
             "confidence_label": confidence_label,
             "avg_survey_disagreement_pct": avg_survey_std,
             "inputs": {
-                "historical_2023_pct": hist_pct,
-                "division_avg_2025_pct": {k: round(v, 1) for k, v in division_avg.items()},
-                "survey_avg_2025_pct": survey_avgs,
-                "survey_std_2025_pct": survey_stds,
+                "prior_result_year": inp["prior_year"],
+                "prior_result_pct": hist_pct,
+                "division_tracking_pct": division_avg,
+                "survey_pct_used": survey_avgs,
+                "survey_spread_pct": survey_stds,
+                "surveys_with_stated_sample": f"{surveys['used']} of {surveys['total']}",
+                "survey_method": "weighted by sample size" if surveys["used"] else "plain average (no poll states its sample size)",
             },
             "weights": weights,
         }

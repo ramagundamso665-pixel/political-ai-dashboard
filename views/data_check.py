@@ -72,14 +72,37 @@ def _upload():
     _show_issues(validate_workbook(sheets))
 
 
+def _sources():
+    st.markdown(
+        "Where each number comes from, how often it changes, and on what basis it was collected. Every "
+        "source here is aggregate or public, except field reports: those are free text filed by people, so "
+        "they can contain personal details and need a look before they're shared. Keeping this on record now "
+        "makes it straightforward to show consent and purpose as data-protection rules phase in (the DPDP "
+        "Act's main obligations are due from 2027). This is a record, not legal advice."
+    )
+    rows = [
+        {
+            "Source": meta["name"],
+            "Type": meta["type"],
+            "Refreshed": meta.get("refresh", ""),
+            "Collected on the basis of": meta.get("basis", ""),
+            "How it was produced": meta.get("methodology", ""),
+        }
+        for meta in SOURCE_METADATA.values()
+    ]
+    st.dataframe(pd.DataFrame(rows).drop_duplicates(subset="Source"), hide_index=True, width="stretch")
+
+
 def render(ctx, sidebar):
     section(
         "Data check",
         "Do the numbers agree with each other? Shares add up, changes match the tables they came from, "
         "official counts match their percentages, and no point sits under the wrong party.",
     )
-    current, upload = st.tabs(["Current data", "Check a new file"])
+    current, upload, sources = st.tabs(["Current data", "Check a new file", "Sources and basis"])
     with current:
         _current(ctx)
     with upload:
         _upload()
+    with sources:
+        _sources()

@@ -39,7 +39,9 @@ class SpeechGenerator:
         match = next((d for d in demo if d["subgroup"] == audience_subgroup), None)
         if match:
             shares_str = ", ".join(f"{PARTY_LABELS.get(p, p)} {v}%" for p, v in match["shares"].items())
-            fact = f"Among {audience_subgroup} voters, current estimated support: {shares_str}."
+            held = self.analyzer.latest_result()
+            when = "the campaign's pre-election estimate of support" if held else "current estimated support"
+            fact = f"Among {audience_subgroup} voters, {when}: {shares_str}."
             facts.append(fact)
             cited.append({"claim": fact, "source": "Internal Demographic Preference Tracking", "confidence": "medium"})
 
@@ -52,14 +54,25 @@ class SpeechGenerator:
                 facts.append(fact)
                 cited.append({"claim": fact, "source": "Ground Campaign Field Notes", "confidence": "low"})
 
-        pred = self.analyzer.predict_outcome()
-        lead_fact = (
-            f"Blended estimate across historical results, division tracking, and surveys: "
-            f"{PARTY_LABELS.get(pred['predicted_leader'], pred['predicted_leader'])} leads by "
-            f"{pred['margin_pct']} points (confidence: {pred['confidence_label']})."
-        )
-        facts.append(lead_fact)
-        cited.append({"claim": lead_fact, "source": "Prediction Engine (blended)", "confidence": "medium"})
+        result = self.analyzer.latest_result()
+        if result:
+            # the vote has been held: state the result, not a pre-election estimate
+            tally = ", ".join(f"{PARTY_LABELS.get(p, p)} {v}%" for p, v in sorted(result["shares"].items(), key=lambda kv: -kv[1]))
+            lead_fact = (
+                f"At the {result['year']} by-election, {PARTY_LABELS.get(result['winner'], result['winner'])} won by "
+                f"{result['margin']} points ({tally})."
+            )
+            facts.append(lead_fact)
+            cited.append({"claim": lead_fact, "source": "Official election results", "confidence": "high"})
+        else:
+            pred = self.analyzer.predict_outcome()
+            lead_fact = (
+                f"Blended estimate across historical results, division tracking, and surveys: "
+                f"{PARTY_LABELS.get(pred['predicted_leader'], pred['predicted_leader'])} leads by "
+                f"{pred['margin_pct']} points (confidence: {pred['confidence_label']})."
+            )
+            facts.append(lead_fact)
+            cited.append({"claim": lead_fact, "source": "Prediction Engine (blended)", "confidence": "medium"})
 
         return "\n".join(f"- {f}" for f in facts), cited
 

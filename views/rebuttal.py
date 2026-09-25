@@ -4,8 +4,8 @@ import re
 import streamlit as st
 
 from components import empty_state, section
-from config import CONSTITUENCY_NAME, PARTIES, PARTY_LABELS, is_valid_api_key
-from grounding import LANGUAGES, build_data_context, language_rule
+from config import ANSWER_MODEL, CONSTITUENCY_NAME, PARTIES, PARTY_LABELS, is_valid_api_key
+from grounding import LANGUAGES, build_data_context, language_rule, result_rule
 from speech_generator import SpeechGenerator
 
 try:
@@ -24,6 +24,7 @@ Below is the COMPLETE dataset, every sheet in full.
 {build_data_context(ctx)}
 
 Rules:
+{result_rule(ctx)}
 - Use ONLY the data above. Never invent numbers, names, events or facts that are not there.
 - Every fact belongs to exactly one party (it is tagged or sits in that party's column). Never
   attribute a fact to a different party, and name the party whenever you cite a fact.
@@ -48,7 +49,7 @@ Respond with ONLY minified JSON, no markdown fences, in exactly this shape:
 @st.cache_data(show_spinner=False)
 def _rebut(_client, claim, party, language, _system):
     resp = _client.chat.completions.create(
-        model="gpt-4o-mini",
+        model=ANSWER_MODEL,
         messages=[{"role": "system", "content": _system}, {"role": "user", "content": f"The claim: {claim}"}],
         temperature=0.2,
     )

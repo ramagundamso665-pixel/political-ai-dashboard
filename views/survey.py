@@ -1,7 +1,7 @@
 import streamlit as st
 
 import charts
-from components import section
+from components import result_banner, section
 from config import PARTY_LABELS
 
 TITLE = "Survey Reliability & Prediction"
@@ -35,6 +35,7 @@ def render(ctx, sidebar):
     section("Blended prediction", "Historical result, internal tracking and surveys, weighted.")
 
     pred = ctx.analyzer.predict_outcome()
+    result_banner(ctx.analyzer.latest_result(), pred)
 
     c1, c2, c3 = st.columns(3)
     c1.metric("Predicted leader", PARTY_LABELS.get(pred["predicted_leader"]))

@@ -44,9 +44,11 @@ def _distinct_predictions(events):
 def _calibration(ctx):
     section(
         "1. Is the base data consistent with the official result?",
-        "The 2023 division figures, averaged, against the official 2023 result.",
+        "The earlier division figures, averaged, against the official result for that election.",
     )
-    entries = scoring.calibration(ctx.sheets)
+    tracking_year = int(ctx.sheets["division_shares"]["Year"].max())
+    # the round being forecast is tested in section 2; this one only checks past figures
+    entries = [e for e in scoring.calibration(ctx.sheets) if e["year"] < tracking_year]
     if not entries:
         empty_state("No election appears in both the official results and the division tracking.")
         return
@@ -75,6 +77,87 @@ def _calibration(ctx):
         SOURCE_METADATA["historical_results"]["name"],
         SOURCE_METADATA["historical_results"]["type"],
         "high",
+    )
+
+
+def _by_election(ctx):
+    result = ctx.analyzer.latest_result()
+    if not result:
+        return
+    year = result["year"]
+    label = lambda p: PARTY_LABELS.get(p, p)
+    section(
+        f"2. The {year} result: how each input did",
+        "Every input to the prediction, scored on its own against what actually happened.",
+    )
+
+    tally = " · ".join(f"{label(p)} {v}%" for p, v in sorted(result["shares"].items(), key=lambda kv: -kv[1]))
+    st.markdown(
+        f"**Result:** {label(result['winner'])} won by {result['margin']} points. {tally}. "
+        f"({result['polled']:,} votes polled.) Shares are of all votes polled."
+    )
+
+    pred = ctx.analyzer.predict_outcome()
+    inputs = ctx.analyzer.forecast_inputs()
+    surveys = inputs["surveys"]
+
+    estimates = {"The model's blended call": pred["blended_shares"], "Internal division tracking": inputs["division"]}
+    if inputs["prior_year"]:
+        estimates[f"Previous election ({inputs['prior_year']}) carried forward"] = inputs["prior"]
+    if surveys["used"]:
+        estimates["Survey average, weighted by sample"] = surveys["weighted"]
+    estimates["Survey average, plain"] = surveys["plain"]
+    for survey in surveys["per_survey"]:
+        note = f"n={survey['sample']:,}" if survey["sample"] else "no sample stated"
+        estimates[f"Survey: {survey['name']} ({note})"] = survey["shares"]
+
+    card = scoring.input_scorecard(result["shares"], estimates)
+    model = next(r for r in card if r["name"] == "The model's blended call")
+
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Model called", label(model["winner_called"]))
+    c2.metric("Winner", "Correct" if model["winner_correct"] else "Wrong")
+    c3.metric("Average gap per party", f"{model['mae']} pt")
+
+    st.plotly_chart(
+        charts.backtest_compare(
+            {p: result["shares"][p] for p in model["compared"]},
+            {p: pred["blended_shares"][p] for p in model["compared"]},
+            "Model",
+        ),
+        width="stretch",
+    )
+
+    st.dataframe(
+        pd.DataFrame(
+            [
+                {
+                    "Input": r["name"],
+                    "Called": label(r["winner_called"]),
+                    "Right winner?": "Yes" if r["winner_correct"] else "No",
+                    "Average gap (pt)": r["mae"],
+                    "Gap by party (pt)": ", ".join(f"{p} {g:+.1f}" for p, g in r["errors"].items()),
+                }
+                for r in card
+            ]
+        ),
+        hide_index=True,
+        width="stretch",
+    )
+
+    best, worst = card[0], card[-1]
+    st.markdown(
+        f"Closest input: **{best['name']}** ({best['mae']} pt). Furthest: **{worst['name']}** ({worst['mae']} pt)."
+    )
+    fact_card(
+        "One election can't say which input deserves more weight, and the model's weights should not be retuned "
+        "to fit it. What it does show is which inputs to trust less until more results are in. Polls with no stated "
+        "sample size can't be weighed at all, and the model now uses only those that state one. "
+        "The comparison uses the campaign-period figures in your sheets. The app can formally score only a "
+        "prediction it logged before the result, which is what the next section does.",
+        SOURCE_METADATA["historical_results"]["name"],
+        SOURCE_METADATA["historical_results"]["type"],
+        "medium",
     )
 
 
@@ -110,7 +193,7 @@ def _record_form(ctx):
 
 def _score(ctx):
     section(
-        "2. Score a prediction against a real result",
+        "3. Score a prediction against a real result",
         "Predictions are logged automatically when the prediction pages load. Record the real result once it is out.",
     )
 
@@ -189,4 +272,5 @@ def _score(ctx):
 def render(ctx, sidebar):
     section("Backtest", "How close have the numbers been to what actually happened?")
     _calibration(ctx)
+    _by_election(ctx)
     _score(ctx)

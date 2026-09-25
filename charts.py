@@ -228,3 +228,118 @@ def backtest_compare(actual, estimated, estimate_label):
     fig.update_layout(barmode="group", title="Official vote share vs the estimate")
     fig.update_yaxes(ticksuffix="%")
     return _style(fig, 360, margin_t=70)
+
+
+def margin_distribution(seats):
+    """How many seats fell into each winning-margin band, split by who won them."""
+    import pandas as pd
+
+    bands = [0, 2, 5, 10, 20, 30, 100]
+    labels = ["under 2%", "2-5%", "5-10%", "10-20%", "20-30%", "30%+"]
+    banded = pd.cut(seats["margin_pct"], bins=bands, labels=labels, right=False)
+    order = ["INC", "BRS", "BJP", "AIMIM"]
+    fig = go.Figure()
+    for party in order + ["Others"]:
+        if party == "Others":
+            mask = ~seats["winner_party"].isin(order)
+        else:
+            mask = seats["winner_party"] == party
+        counts = banded[mask].value_counts().reindex(labels, fill_value=0)
+        if counts.sum():
+            fig.add_trace(
+                go.Bar(
+                    name=PARTY_LABELS.get(party, party),
+                    x=labels,
+                    y=counts.tolist(),
+                    marker_color=PARTY_COLORS.get(party, "#9E9E9E"),
+                    hovertemplate="%{fullData.name}, margin %{x}: %{y} seats<extra></extra>",
+                )
+            )
+    fig.update_layout(barmode="stack", title="Seats by winning margin (share of votes polled)")
+    fig.update_yaxes(title_text="Seats")
+    return _style(fig, 380, margin_t=70)
+
+
+def seats_vs_votes(table):
+    """Vote share next to seat share for the biggest parties."""
+    fig = go.Figure()
+    fig.add_trace(go.Bar(name="Share of votes", x=table["Party"], y=table["Vote share %"], marker_color="rgba(158,158,158,.6)",
+                         hovertemplate="%{x}: %{y:.1f}% of votes<extra></extra>"))
+    fig.add_trace(go.Bar(name="Share of seats", x=table["Party"], y=table["Seat share %"],
+                         marker_color=[PARTY_COLORS.get(p, "#9E9E9E") for p in table["Party"]],
+                         hovertemplate="%{x}: %{y:.1f}% of seats<extra></extra>"))
+    fig.update_layout(barmode="group", title="Votes vs seats, 2023")
+    fig.update_yaxes(ticksuffix="%")
+    return _style(fig, 360, margin_t=70)
+
+
+def seat_shares(rows):
+    """Vote share of the leading candidates in one seat."""
+    top = rows.head(6)
+    fig = go.Figure(
+        go.Bar(
+            x=top["Candidate"] + " (" + top["Party"] + ")",
+            y=top["% of votes"],
+            marker_color=[PARTY_COLORS.get(p, "#9E9E9E") for p in top["Party"]],
+            text=[f"{v:.1f}%" for v in top["% of votes"]],
+            textposition="outside",
+            cliponaxis=False,
+            hovertemplate="%{x}: %{y:.2f}%<extra></extra>",
+        )
+    )
+    fig.update_layout(title="Leading candidates, share of votes polled")
+    fig.update_yaxes(ticksuffix="%", range=[0, max(top["% of votes"]) * 1.2])
+    return _style(fig, 360, showlegend=False, margin_t=60)
+
+
+def vote_share_compare(share_then, share_now, parties, then_label="2018", now_label="2023"):
+    """Statewide vote share per party at two elections, side by side."""
+    labels = [PARTY_LABELS.get(p, p) for p in parties]
+    fig = go.Figure()
+    fig.add_trace(go.Bar(name=then_label, x=labels, y=[float(share_then.get(p, 0)) for p in parties],
+                         marker_color="rgba(158,158,158,.55)", hovertemplate=then_label + ", %{x}: %{y:.1f}%<extra></extra>"))
+    fig.add_trace(go.Bar(name=now_label, x=labels, y=[float(share_now.get(p, 0)) for p in parties],
+                         marker_color=[PARTY_COLORS.get(p, "#9E9E9E") for p in parties],
+                         text=[f"{float(share_now.get(p, 0)):.1f}%" for p in parties], textposition="outside", cliponaxis=False,
+                         hovertemplate=now_label + ", %{x}: %{y:.1f}%<extra></extra>"))
+    fig.update_layout(barmode="group", title=f"Share of all votes, {then_label} and {now_label}")
+    fig.update_yaxes(ticksuffix="%")
+    return _style(fig, 360, margin_t=70)
+
+
+def booth_lead_curve(booths, a="BRS", b="INC"):
+    """Every booth in order of how far `a` led `b` (in points of the booth's valid votes).
+    Bars above zero are booths `a` won against `b`, below zero booths `b` won."""
+    gap = (booths[f"{a}_pct"] - booths[f"{b}_pct"]).sort_values(ascending=False)
+    fig = go.Figure(
+        go.Bar(
+            x=list(range(1, len(gap) + 1)),
+            y=gap.values,
+            marker_color=[PARTY_COLORS.get(a if v >= 0 else b, "#9E9E9E") for v in gap.values],
+            customdata=booths.loc[gap.index, "booth"],
+            hovertemplate="Booth %{customdata}: %{y:+.1f} pts<extra></extra>",
+        )
+    )
+    fig.add_hline(y=0, line_color=ZERO, line_width=1)
+    fig.update_layout(title=f"Each booth, {PARTY_LABELS.get(a, a)} lead over {PARTY_LABELS.get(b, b)} (points)", bargap=0)
+    fig.update_xaxes(title_text="Booths, most favourable to least", showticklabels=False)
+    fig.update_yaxes(ticksuffix=" pts")
+    return _style(fig, 340, showlegend=False, margin_t=60)
+
+
+def booth_share_spread(booths, parties):
+    """How widely each party's share varies from booth to booth."""
+    fig = go.Figure()
+    for party in parties:
+        fig.add_trace(
+            go.Box(
+                y=booths[f"{party}_pct"],
+                name=PARTY_LABELS.get(party, party),
+                marker_color=PARTY_COLORS.get(party, "#9E9E9E"),
+                boxpoints=False,
+                hovertemplate="%{y:.1f}%<extra>" + PARTY_LABELS.get(party, party) + "</extra>",
+            )
+        )
+    fig.update_layout(title="Share of a booth's votes: the spread across booths")
+    fig.update_yaxes(ticksuffix="%")
+    return _style(fig, 340, showlegend=False, margin_t=60)

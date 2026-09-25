@@ -1,6 +1,6 @@
 import streamlit as st
 
-from components import section
+from components import result_banner, section
 from config import CONSTITUENCY_NAME, PARTIES, PARTY_LABELS
 
 TITLE = "Overview"
@@ -13,12 +13,14 @@ def render(ctx, sidebar):
     )
 
     pred = ctx.analyzer.predict_outcome()
+    result = ctx.analyzer.latest_result()
+    result_banner(result, pred)
     swing = ctx.analyzer.swing_divisions(top_n=100)
     survey = ctx.analyzer.survey_landscape()
     conflicted = [c for c in survey["conflicts"] if c["conflict_exists"]]
 
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Predicted leader", PARTY_LABELS.get(pred["predicted_leader"]), f"+{pred['margin_pct']}pt")
+    c1.metric("Model's pre-election call" if result else "Predicted leader", PARTY_LABELS.get(pred["predicted_leader"]), f"+{pred['margin_pct']}pt")
     c2.metric("Prediction confidence", f"{pred['confidence_pct']}%", pred["confidence_label"])
     c3.metric("Swing divisions tracked", len(swing))
     c4.metric(

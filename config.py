@@ -159,6 +159,14 @@ def is_valid_api_key(key, placeholder_prefix="sk-REPLACE"):
     return key.isascii() and " " not in key.strip() and not key.startswith(placeholder_prefix)
 
 
+# The model that answers questions about the data (Ask AI, Rebuttal Builder). Chosen by
+# testing seven known-answer questions: gpt-4o-mini misread the numeric tables (4/7),
+# gpt-4o was dearer and no better (5/7), gpt-4.1-mini got them right for about
+# Rs 0.2 a question. Speeches and headline mood stay on gpt-4o-mini: they don't
+# read numbers out of tables.
+ANSWER_MODEL = "gpt-4.1-mini"
+
+
 def normalize_party(raw):
     """Return canonical party code, or None if unrecognized/placeholder text."""
     if raw is None:
@@ -172,62 +180,113 @@ def normalize_party(raw):
 SOURCE_METADATA = {
     "historical_results": {
         "id": "historical_results",
-        "name": "Official GHMC/Assembly Election Results (2014-2023)",
+        "name": "Official GHMC/Assembly Election Results (2014-2025)",
         "type": "verified",
-        "methodology": "Official declared results, prior election cycles",
+        "refresh": "Fixed per election cycle",
+        "basis": "Public official record (Election Commission results)",
+        "methodology": "Official declared results. The 2025 by-election rows were taken from Wikipedia's results "
+                        "table and cross-checked against news reports, not from the ECI file itself; replace "
+                        "them with ECI's own figures when downloaded",
+    },
+    "eci_2018": {
+        "id": "eci_2018",
+        "name": "Election Commission of India: Telangana 2018 Detailed Results",
+        "type": "verified",
+        "refresh": "Fixed per election cycle",
+        "basis": "Public official record (Election Commission of India statistical report)",
+        "methodology": "Candidate-wise results for all 119 constituencies, read from the ECI's published report "
+                        "(hosted on its old site). Every constituency is checked against its own turnout line. "
+                        "The party then called TRS is shown as BRS, its later name.",
+    },
+    "eci_2023": {
+        "id": "eci_2023",
+        "name": "Election Commission of India: Telangana 2023 Detailed Results",
+        "type": "verified",
+        "refresh": "Fixed per election cycle",
+        "basis": "Public official record (Election Commission of India statistical report)",
+        "methodology": "Candidate-wise results for all 119 constituencies, read from the ECI's published report. "
+                        "Every constituency is checked against its own turnout line: the candidates' votes add up exactly.",
+    },
+    "ceo_form20_2023": {
+        "id": "ceo_form20_2023",
+        "name": "CEO Telangana: Form 20 booth results, Jubilee Hills 2023",
+        "type": "verified",
+        "refresh": "Fixed per election cycle",
+        "basis": "Public official record (Form 20 final result sheet, scanned), read by hand and reconciled",
+        "methodology": "One line per polling station, read off the scanned sheet. Each candidate's column adds up "
+                        "exactly to that candidate's EVM votes in the ECI Detailed Results report. Postal votes are "
+                        "not attributed to any booth.",
     },
     "division_shares": {
         "id": "division_shares",
         "name": "Internal Division-Level Vote Share Tracking",
         "type": "internal",
+        "refresh": "Per tracking round (2023, 2025), updated by staff",
+        "basis": "Campaign's own aggregate estimate; no individual voter is identified",
         "methodology": "Campaign's own division/ward-level estimate, not an official count",
     },
     "division_deltas": {
         "id": "division_deltas",
         "name": "Internal Division-Level Vote Share Tracking",
         "type": "internal",
+        "refresh": "Recomputed when a tracking round is added",
+        "basis": "Derived from the aggregate tracking rounds; no individual voter is identified",
         "methodology": "Change in campaign's division-level estimate between 2023 and 2025 tracking rounds",
     },
     "demo_preferences": {
         "id": "demo_preferences",
         "name": "Internal Demographic Preference Tracking",
         "type": "internal",
+        "refresh": "Per tracking round, updated by staff",
+        "basis": "Campaign's own aggregate estimate by group; no individual voter is identified",
         "methodology": "Campaign's own subgroup-level vote preference estimate",
     },
     "surveys": {
         "id": "surveys",
         "name": "Third-Party Opinion Surveys",
         "type": "external",
+        "refresh": "As each poll is published",
+        "basis": "Published third-party polls; aggregate figures only",
         "methodology": "Multiple independent pollsters; sample size and methodology vary by survey and are not independently verified",
     },
     "social_media": {
         "id": "social_media",
         "name": "Social Media Activity Log",
         "type": "internal",
+        "refresh": "Logged by staff, post by post",
+        "basis": "Public post engagement counts; no individual profiles kept",
         "methodology": "Manually logged post-level engagement counts, not a sentiment model",
     },
     "ground_campaign": {
         "id": "ground_campaign",
         "name": "Ground Campaign Field Notes",
         "type": "internal",
+        "refresh": "Updated when staff file field notes",
+        "basis": "Staff observations about parties and issues; no personal data recorded",
         "methodology": "Qualitative field intelligence collected by campaign staff",
     },
     "campaign_activity": {
         "id": "campaign_activity",
         "name": "Campaign Activity Log",
         "type": "internal",
+        "refresh": "Logged event by event",
+        "basis": "Public campaign events reported by staff",
         "methodology": "Event-by-event log of rallies, visits, and press activity",
     },
     "demographics": {
         "id": "demographics",
         "name": "Constituency Voter Roll Demographics",
         "type": "internal",
+        "refresh": "Updated when the electoral roll is revised",
+        "basis": "Aggregate counts from the public electoral roll; no individual is identified",
         "methodology": "Voter roll counts by category",
     },
     "field_reports": {
         "id": "field_reports",
         "name": "Public Field Report Intake",
         "type": "internal",
+        "refresh": "As reports arrive, reviewed by staff",
+        "basis": "Submitted voluntarily by the person filing the report; free text, so it can contain personal details",
         "methodology": "Unverified reports submitted directly by field workers/the public "
                         "through the open intake form — reviewed by staff before acting on them",
     },
@@ -235,6 +294,8 @@ SOURCE_METADATA = {
         "id": "live_pulse",
         "name": "Live Search & News Pulse (Google Trends / GDELT / YouTube)",
         "type": "external",
+        "refresh": "Fetched live, cached for 15 minutes",
+        "basis": "Public search trends, news headlines and video details from free APIs and feeds; no individual profiles collected",
         "methodology": "Automated free-tier pull of public search interest, news tone, "
                         "and video activity — a sampled proxy for public mood, not a "
                         "measured survey",

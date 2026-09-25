@@ -32,15 +32,18 @@ from theme import inject_theme
 from views import (
     ask_ai,
     backtest,
+    booths,
     brief,
     data_check,
     demographics,
     field_reports,
     leaders,
     live_pulse,
+    mood_check,
     overview,
     rebuttal,
     recommendations,
+    seats,
     simulator,
     social,
     speech,
@@ -56,8 +59,8 @@ st.set_page_config(
 )
 
 VIEWS = [
-    ask_ai, overview, live_pulse, field_reports, leaders,
-    swing, demographics, survey, backtest, simulator, social,
+    ask_ai, overview, seats, booths, live_pulse, field_reports, leaders,
+    swing, demographics, survey, backtest, mood_check, simulator, social,
     speech, rebuttal, recommendations, brief, data_check,
 ]
 

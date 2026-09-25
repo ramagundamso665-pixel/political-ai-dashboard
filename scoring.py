@@ -92,3 +92,58 @@ def score_prediction(predicted, actual):
         "winner_actual": won,
         "winner_correct": called == won,
     }
+
+
+def input_scorecard(actual, estimates):
+    """Score each estimate ({name: {party: pct}}) against a real result, closest first."""
+    rows = []
+    for name, estimate in estimates.items():
+        scored = score_prediction(estimate, actual)
+        if scored:
+            rows.append({"name": name, **scored})
+    return sorted(rows, key=lambda r: r["mae"])
+
+
+# ----------------------------------------------------------------------
+# Headline mood: does the AI's reading match a person's?
+# ----------------------------------------------------------------------
+MOOD_CLASSES = ("positive", "neutral", "negative", "unrelated")
+MIN_LABELS_FOR_ACCURACY = 30
+
+
+def _wilson(agree, n, z=1.96):
+    """95% range for a proportion. With few labels it is wide, which is the point:
+    2 right out of 3 is not evidence of 67% accuracy."""
+    if not n:
+        return (0.0, 0.0)
+    p = agree / n
+    denom = 1 + z * z / n
+    centre = (p + z * z / (2 * n)) / denom
+    half = z * ((p * (1 - p) / n + z * z / (4 * n * n)) ** 0.5) / denom
+    return (max(0.0, centre - half), min(1.0, centre + half))
+
+
+def mood_agreement(rows):
+    """`rows` are {"model": label, "human": label}. Agreement between the AI's
+    reading of a headline and a person's, overall and per label."""
+    pairs = [(r["model"], r["human"]) for r in rows if r.get("model") in MOOD_CLASSES and r.get("human") in MOOD_CLASSES]
+    n = len(pairs)
+    if not n:
+        return None
+    agree = sum(m == h for m, h in pairs)
+    low, high = _wilson(agree, n)
+    return {
+        "n": n,
+        "agree": agree,
+        "pct": round(agree / n * 100, 1),
+        "low_pct": round(low * 100, 1),
+        "high_pct": round(high * 100, 1),
+        "enough": n >= MIN_LABELS_FOR_ACCURACY,
+        "per_class": {
+            c: {
+                "labelled": sum(1 for _, h in pairs if h == c),
+                "agreed": sum(1 for m, h in pairs if h == c and m == c),
+            }
+            for c in MOOD_CLASSES
+        },
+    }

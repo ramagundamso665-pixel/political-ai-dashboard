@@ -57,7 +57,9 @@ def check_conflicting_sources(values_by_source, metric_name, tolerance_pct=5.0):
     values_by_source: dict of {source_label: numeric_value}
     Never hides conflicts - always returns the full spread.
     """
-    clean = {k: v for k, v in values_by_source.items() if v is not None}
+    # a blank poll figure arrives as NaN, which is not None and which silently poisons
+    # min/max (the answer then depends on row order), so drop it explicitly
+    clean = {k: float(v) for k, v in values_by_source.items() if v is not None and v == v}
     if len(clean) < 2:
         return {
             "metric": metric_name,

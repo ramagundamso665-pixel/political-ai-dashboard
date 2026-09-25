@@ -25,6 +25,8 @@ TITLE = "Live Pulse"
 SCOPES = ["This campaign", "MLA seats (119)", "MP seats (17)", "Leaders", "Parties", "Custom"]
 COVERAGE_SHOWN = 12
 MOOD_HEADLINES = 25
+# below this many judged headlines a positive/negative split is noise, not a mood
+MIN_MOOD_HEADLINES = 8
 MOOD_TITLES = {"positive": "Positive", "neutral": "Neutral", "negative": "Negative"}
 MUTED = "opacity:.62;font-size:.9rem"
 
@@ -275,7 +277,7 @@ def _render_volume(news):
         st.caption(f"{len(news['articles'])} {languages} articles in the last {days} days{widened}.")
 
 
-def _render_mood(target, classified, mentioned_count):
+def _render_mood(target, classified, mentioned_count, days=None):
     st.markdown("##### Headline mood")
     mood, groups, relevant = classified["mood"], classified["groups"], classified["relevant"]
 
@@ -312,6 +314,16 @@ def _render_mood(target, classified, mentioned_count):
                 _article_list(groups[picked], limit=MOOD_HEADLINES)
             else:
                 empty_state(f"No {MOOD_TITLES[picked].lower()} headlines in this set.")
+
+    judged = sum(len(g) for g in groups.values())
+    window = f" from the last {days} days" if days else ""
+    if judged < MIN_MOOD_HEADLINES:
+        st.warning(
+            f"Only {judged} headline(s){window} — too few to call a mood. Read these as individual "
+            f"stories, not a trend. A reading needs at least {MIN_MOOD_HEADLINES}."
+        )
+    else:
+        st.caption(f"Based on {judged} headlines{window}.")
 
     if mood["themes"]:
         st.markdown("**Recurring themes:** " + " · ".join(html.escape(t) for t in mood["themes"]))
@@ -450,7 +462,7 @@ def render(ctx, sidebar):
     about, mentioned = _split_by_headline(articles, target["headline_terms"], target.get("exclude_terms", ()))
     with st.spinner("Reading headline mood…"):
         classified = _classify(ctx, target, about)
-    _render_mood(target, classified, len(mentioned))
+    _render_mood(target, classified, len(mentioned), days=news["days"] if news["ok"] else None)
     _render_coverage(target, classified["relevant"], mentioned)
 
     col3, col4 = st.columns(2)

@@ -44,6 +44,7 @@ def build_brief_html(ctx, party, today=None):
     analyzer = ctx.analyzer
 
     pred = analyzer.predict_outcome()
+    result = analyzer.latest_result()
     survey = analyzer.survey_landscape()
     swing = analyzer.swing_divisions(top_n=3)
     subgroups = analyzer.demographic_preferences()
@@ -51,18 +52,31 @@ def build_brief_html(ctx, party, today=None):
     issues = validate_workbook(ctx.sheets)
 
     leader, runner_up = _label(pred["predicted_leader"]), _label(pred["runner_up"])
-    blended = pred["blended_shares"]
+    # once the vote has been held, where a party stands is what it actually got
+    blended = result["shares"] if result else pred["blended_shares"]
     ours = blended.get(party)
     rank = sorted(blended, key=blended.get, reverse=True).index(party) + 1 if party in blended else None
+    top = max(blended, key=blended.get)
     conflicted = [c for c in survey["conflicts"] if c["conflict_exists"]]
     widest = max((c["spread"] for c in survey["conflicts"]), default=0)
 
     parts = [
         f"<h1>Daily brief — {_e(CONSTITUENCY_NAME)}</h1>",
         f'<div class="sub">{today:%A, %d %B %Y} · prepared for the {_e(_label(party))} campaign</div>',
-        f'<div class="headline"><strong>{_e(leader)}</strong> leads {_e(runner_up)} by '
-        f'<strong>{pred["margin_pct"]} points</strong> on the blended estimate. '
-        f'Confidence: <strong>{_e(pred["confidence_label"].title())} ({pred["confidence_pct"]}%)</strong>.</div>',
+        (
+            f'<div class="headline"><strong>{_e(_label(result["winner"]))}</strong> won the {result["year"]} by-election by '
+            f'<strong>{result["margin"]} points</strong> ('
+            + ", ".join(f"{_e(_label(p))} {v}%" for p, v in sorted(result["shares"].items(), key=lambda kv: -kv[1]))
+            + f'). This model\'s pre-election call was {_e(leader)} by {pred["margin_pct"]} points'
+            + (", which was right." if pred["predicted_leader"] == result["winner"] else ", which was wrong.")
+            + "</div>"
+        )
+        if result
+        else (
+            f'<div class="headline"><strong>{_e(leader)}</strong> leads {_e(runner_up)} by '
+            f'<strong>{pred["margin_pct"]} points</strong> on the blended estimate. '
+            f'Confidence: <strong>{_e(pred["confidence_label"].title())} ({pred["confidence_pct"]}%)</strong>.</div>'
+        ),
     ]
     if conflicted:
         parts.append(
@@ -71,9 +85,10 @@ def build_brief_html(ctx, party, today=None):
         )
 
     if ours is not None:
-        gap = blended[pred["predicted_leader"]] - ours
+        gap = blended[top] - ours
         where = "leading" if rank == 1 else f"{gap:.1f} points behind the leader, ranked {rank}"
-        parts.append(f"<h2>Where {_e(_label(party))} stands</h2><p>Blended share <strong>{ours:.1f}%</strong> — {where}.</p>")
+        basis = f"Share at the {result['year']} by-election" if result else "Blended share"
+        parts.append(f"<h2>Where {_e(_label(party))} stands</h2><p>{basis} <strong>{ours:.1f}%</strong> — {where}.</p>")
         strengths, weaknesses, campaigning = [], [], []
         for point in _own_points(ctx, party):
             category, _, note = point.partition(" > ")
