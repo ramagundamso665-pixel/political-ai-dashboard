@@ -1,0 +1,5 @@
+seat_no,seat,status,problems,booths
+1,Sirpur,NOT reconciled,"2 rows do not add up (253, 290)",0
+10,Mudhole,NOT reconciled,no rows read,0
+60,Khairatabad,NOT reconciled,"serial numbers not 1..258 unbroken (missing [61, 62, 63, 64, 65, 66]); candidate column sums do not match the Election Commission's EVM votes; NOTA column adds to 983, Election Commission says 1188",0
+61,Jubilee Hills,reconciled,,352
