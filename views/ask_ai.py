@@ -4,6 +4,7 @@ import random
 import streamlit as st
 
 import conversations
+import area_survey
 import registers
 import telangana
 from components import source_badge
@@ -73,7 +74,17 @@ def _registers_text():
         url, key = st.secrets.get("SUPABASE_URL"), st.secrets.get("SUPABASE_SERVICE_KEY")
         if not (url and key):
             return ""
-        return registers.context_text(registers.fetch(url, key, "rti_requests"), registers.fetch(url, key, "local_issues"))
+        text = registers.context_text(registers.fetch(url, key, "rti_requests"), registers.fetch(url, key, "local_issues"))
+        try:
+            table, _ = area_survey.by_area(area_survey.prepare(registers.fetch(url, key, "area_ratings")))
+        except Exception:
+            table = None
+        if table is not None and not table.empty:
+            text += "\nAREA SURVEY (volunteered WhatsApp answers, self-selected; areas with at least 5 answers):\n" + "\n".join(
+                f"- {r['Area']}: {r['Answers']} answers, average rating {r['Average rating']} of 5, most named issue {r['Most named issue']} ({r['Share naming it']})"
+                for _, r in table.iterrows()
+            )
+        return text
     except Exception:
         return ""
 

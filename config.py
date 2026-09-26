@@ -226,6 +226,38 @@ SOURCE_METADATA = {
                         "exactly to that candidate's EVM votes in the ECI Detailed Results report. Postal votes are "
                         "not attributed to any booth.",
     },
+    "google_trends": {
+        "id": "google_trends",
+        "name": "Google Trends (public interface)",
+        "type": "external",
+        "refresh": "Live, cached for an hour",
+        "basis": "Relative search interest from Google's public Trends site via an unofficial client; sampled, not a count",
+        "methodology": "Interest is scaled 0 to 100 among the terms asked for together. Google may throttle or change the service without notice.",
+    },
+    "youtube_comments": {
+        "id": "youtube_comments",
+        "name": "YouTube public comments (official API)",
+        "type": "external",
+        "refresh": "Live when you click Analyse",
+        "basis": "Public comments on chosen videos via the YouTube Data API; a sample of commenters, not of voters",
+        "methodology": "Organic-likelihood flags from channel age and copied or bursty text; sentiment read by a language model. Heuristic, not proof.",
+    },
+    "newspaper_clippings": {
+        "id": "newspaper_clippings",
+        "name": "Local newspaper pages (photographed by staff)",
+        "type": "external",
+        "refresh": "When staff upload a page",
+        "basis": "Published newspaper pages read by a vision model, one-line summaries checked by staff",
+        "methodology": "Each complaint is summarised in our own words with its area; the article text is not stored.",
+    },
+    "area_survey": {
+        "id": "area_survey",
+        "name": "WhatsApp area survey (volunteered answers)",
+        "type": "internal",
+        "refresh": "Live as residents answer",
+        "basis": "Consented, voluntary answers to a short WhatsApp survey; phone numbers are not stored",
+        "methodology": "One rating and one named issue per person per week. Self-selected, so not a representative sample.",
+    },
     "division_shares": {
         "id": "division_shares",
         "name": "Internal Division-Level Vote Share Tracking",

@@ -343,3 +343,56 @@ def booth_share_spread(booths, parties):
     fig.update_layout(title="Share of a booth's votes: the spread across booths")
     fig.update_yaxes(ticksuffix="%")
     return _style(fig, 340, showlegend=False, margin_t=60)
+
+
+def trend_lines(interest):
+    """Search interest over time, one line per term."""
+    fig = go.Figure()
+    palette = ["#2563eb", "#dc2626", "#16a34a", "#d97706", "#7c3aed"]
+    for i, term in enumerate(interest.columns):
+        fig.add_trace(go.Scatter(x=interest.index, y=interest[term], name=term, mode="lines",
+                                 line=dict(color=palette[i % len(palette)], width=2.2),
+                                 hovertemplate="%{x|%d %b}: %{y}<extra>" + term + "</extra>"))
+    fig.update_layout(title="Search interest over time (100 = the peak among these terms)")
+    fig.update_yaxes(range=[0, 105])
+    return _style(fig, 360, margin_t=70)
+
+
+def organic_split(counts):
+    """How many comments fell in each organic-likelihood tier."""
+    order = ["Likely organic", "Uncertain", "Flagged"]
+    colors = {"Likely organic": "#16a34a", "Uncertain": "#d97706", "Flagged": "#dc2626"}
+    fig = go.Figure(go.Bar(x=order, y=[counts.get(t, 0) for t in order], marker_color=[colors[t] for t in order],
+                           text=[counts.get(t, 0) for t in order], textposition="outside", cliponaxis=False,
+                           hovertemplate="%{x}: %{y} comments<extra></extra>"))
+    fig.update_layout(title="Comments by organic likelihood")
+    fig.update_yaxes(title_text="Comments")
+    return _style(fig, 300, showlegend=False, margin_t=60)
+
+
+def stance_tone(rows_all, rows_organic):
+    """Net tone per party (positive minus negative, as a share of comments about it): all comments next to the organic ones."""
+    fig = go.Figure()
+    for name, rows, color in (("All comments", rows_all, "rgba(158,158,158,.7)"), ("Likely organic only", rows_organic, "#2563eb")):
+        fig.add_trace(go.Bar(name=name, x=[r["Party"] for r in rows], y=[r["Net tone"] for r in rows], marker_color=color,
+                             text=[f"{r['Net tone']:+d}" for r in rows], textposition="outside", cliponaxis=False,
+                             hovertemplate="%{x}: net %{y:+d} (of %{customdata} comments)<extra>" + name + "</extra>",
+                             customdata=[r["Comments"] for r in rows]))
+    fig.add_hline(y=0, line_color=ZERO, line_width=1)
+    fig.update_layout(barmode="group", title="Net tone toward each party (positive minus negative, % of comments about it)")
+    fig.update_yaxes(ticksuffix="")
+    return _style(fig, 360, margin_t=70)
+
+
+def rating_by_area(table):
+    """Average rating per area, lowest first, coloured from red (poor) to green (good)."""
+    fig = go.Figure(go.Bar(
+        y=table["Area"], x=table["Average rating"], orientation="h",
+        marker=dict(color=table["Average rating"], colorscale=[[0, "#dc2626"], [0.5, "#d97706"], [1, "#16a34a"]], cmin=1, cmax=5),
+        text=[f"{v:.1f}  (n={n})" for v, n in zip(table["Average rating"], table["Answers"])], textposition="outside", cliponaxis=False,
+        hovertemplate="%{y}: %{x:.2f} of 5<extra></extra>",
+    ))
+    fig.update_layout(title="Average rating by area (1 = very poor, 5 = very good)")
+    fig.update_xaxes(range=[1, 5.6])
+    fig.update_yaxes(autorange="reversed")
+    return _style(fig, max(260, 60 + 34 * len(table)), showlegend=False, margin_t=60)

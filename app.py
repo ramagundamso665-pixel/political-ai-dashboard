@@ -30,6 +30,7 @@ from data_manager import SourceTracker, validate_all
 from speech_generator import SpeechGenerator
 from theme import inject_theme
 from views import (
+    area_ratings,
     ask_ai,
     backtest,
     booths,
@@ -41,14 +42,17 @@ from views import (
     live_pulse,
     local_issues,
     mlas,
+    newspaper,
     mood_check,
     overview,
     rebuttal,
     recommendations,
     rti,
+    search_trends,
     seats,
     simulator,
     social,
+    social_voices,
     speech,
     survey,
     swing,
@@ -62,8 +66,8 @@ st.set_page_config(
 )
 
 VIEWS = [
-    ask_ai, overview, seats, booths, live_pulse, field_reports, mlas, local_issues, rti, leaders,
-    swing, demographics, survey, backtest, mood_check, simulator, social,
+    ask_ai, overview, seats, booths, live_pulse, search_trends, field_reports, mlas, local_issues, newspaper, area_ratings, rti, leaders,
+    swing, demographics, survey, backtest, mood_check, simulator, social, social_voices,
     speech, rebuttal, recommendations, brief, data_check,
 ]
 
