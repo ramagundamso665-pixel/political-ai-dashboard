@@ -210,3 +210,14 @@ def delete_rows(supabase_url, service_key, table, params):
         timeout=10,
     )
     resp.raise_for_status()
+
+
+def update_rows(supabase_url, service_key, table, params, changes):
+    resp = requests.patch(
+        f"{supabase_url}/rest/v1/{table}",
+        headers=_headers(service_key, "return=minimal"),
+        params=params,
+        json=changes,
+        timeout=10,
+    )
+    resp.raise_for_status()

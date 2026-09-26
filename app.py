@@ -39,10 +39,13 @@ from views import (
     field_reports,
     leaders,
     live_pulse,
+    local_issues,
+    mlas,
     mood_check,
     overview,
     rebuttal,
     recommendations,
+    rti,
     seats,
     simulator,
     social,
@@ -59,7 +62,7 @@ st.set_page_config(
 )
 
 VIEWS = [
-    ask_ai, overview, seats, booths, live_pulse, field_reports, leaders,
+    ask_ai, overview, seats, booths, live_pulse, field_reports, mlas, local_issues, rti, leaders,
     swing, demographics, survey, backtest, mood_check, simulator, social,
     speech, rebuttal, recommendations, brief, data_check,
 ]

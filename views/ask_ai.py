@@ -4,6 +4,7 @@ import random
 import streamlit as st
 
 import conversations
+import registers
 import telangana
 from components import source_badge
 from grounding import LANGUAGES, build_data_context, language_rule, result_rule
@@ -65,14 +66,28 @@ def _greeting():
     return st.session_state.greeting
 
 
+@st.cache_data(ttl=60, show_spinner=False)
+def _registers_text():
+    """Staff-kept RTI and local-issue logs, if the tables exist. Silent when they don't."""
+    try:
+        url, key = st.secrets.get("SUPABASE_URL"), st.secrets.get("SUPABASE_SERVICE_KEY")
+        if not (url and key):
+            return ""
+        return registers.context_text(registers.fetch(url, key, "rti_requests"), registers.fetch(url, key, "local_issues"))
+    except Exception:
+        return ""
+
+
 def _system_prompt(ctx, speaking_party, language):
+    extra = _registers_text()
+    extra_block = f"\n{extra}\n(These entries were typed in by campaign staff. Treat them as unverified reports, and say so when you use them.)\n" if extra else ""
     speaker = PARTY_LABELS.get(speaking_party, speaking_party)
     return f"""You are People's Mandate AI, answering questions about the {CONSTITUENCY_NAME} campaign
 on behalf of the {speaker} campaign.
 Below is the COMPLETE dataset, every sheet in full — not a sample.
 
 {build_data_context(ctx)}
-
+{extra_block}
 Rules:
 {result_rule(ctx)}
 - Answer ONLY using the data above. Never invent numbers, names, or facts not present here.

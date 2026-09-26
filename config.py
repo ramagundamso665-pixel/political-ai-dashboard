@@ -207,6 +207,15 @@ SOURCE_METADATA = {
         "methodology": "Candidate-wise results for all 119 constituencies, read from the ECI's published report. "
                         "Every constituency is checked against its own turnout line: the candidates' votes add up exactly.",
     },
+    "lokdhaba_2014": {
+        "id": "lokdhaba_2014",
+        "name": "Lok Dhaba (Trivedi Centre): Telangana 2014 assembly results",
+        "type": "verified",
+        "refresh": "Fixed per election cycle",
+        "basis": "Open compilation of Election Commission of India results (Trivedi Centre for Political Data, Ashoka University)",
+        "methodology": "Candidate-wise results for all 119 seats. Every seat's candidate votes add up to its valid votes, "
+                        "and the winners by party match the known 2014 tally. Check the compiler's terms before commercial use.",
+    },
     "ceo_form20_2023": {
         "id": "ceo_form20_2023",
         "name": "CEO Telangana: Form 20 booth results, Jubilee Hills 2023",

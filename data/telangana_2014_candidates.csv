@@ -1,0 +1,1789 @@
+seat_no,seat,reservation,rank,candidate,sex,age,category,party,votes_general,votes_postal,votes_total,pct
+1,Sirpur,GENERAL,1,Koneru Konappa,MALE,58,GENERAL,BSP,,,49033,32.41
+1,Sirpur,GENERAL,2,Kaveti Sammaiah,MALE,57,GENERAL,BRS,,,40196,26.57
+1,Sirpur,GENERAL,3,Kokkirala Prem Sagar Rao,MALE,50,GENERAL,INC,,,26955,17.82
+1,Sirpur,GENERAL,4,Raavi Srinivas Rao,MALE,40,GENERAL,TDP,,,19359,12.8
+1,Sirpur,GENERAL,5,M.D Razi Hyder.,MALE,59,GENERAL,MASP,,,4675,3.09
+1,Sirpur,GENERAL,6,Mohammad Jabbar Khan.,MALE,50,GENERAL,IND,,,3769,2.49
+1,Sirpur,GENERAL,7,Nota,,,,NOTA,,,1756,1.16
+1,Sirpur,GENERAL,8,Durgam. Shyam Rao,MALE,57,SC,IND,,,1614,1.07
+1,Sirpur,GENERAL,9,Murali Krishna.R.,MALE,38,GENERAL,IND,,,1263,0.83
+1,Sirpur,GENERAL,10,M.Ramchander,MALE,54,SC,IND,,,933,0.62
+1,Sirpur,GENERAL,11,Lendugure Mengaji Patel,MALE,62,GENERAL,BCUF,,,923,0.61
+1,Sirpur,GENERAL,12,Shabbir Hussain,MALE,38,GENERAL,YSRCP,,,812,0.54
+2,Chennur,SC,1,Nallala Odelu,MALE,50,SC,BRS,,,64867,50.79
+2,Chennur,SC,2,Gaddam Vinod,MALE,57,SC,INC,,,38703,30.3
+2,Chennur,SC,3,Ram Venu,MALE,39,SC,BJP,,,7879,6.17
+2,Chennur,SC,4,Sogala Sanjeev,MALE,34,SC,RP(K),,,5711,4.47
+2,Chennur,SC,5,Nota,,,,NOTA,,,1616,1.27
+2,Chennur,SC,6,Thungapindi Ramesh,MALE,34,SC,BSP,,,1607,1.26
+2,Chennur,SC,7,Seggam Rajeshwar,MALE,44,SC,IND,,,1415,1.11
+2,Chennur,SC,8,Medapaka Sathish,MALE,29,SC,IND,,,1069,0.84
+2,Chennur,SC,9,Thogari Banesh,MALE,39,SC,IND,,,1064,0.83
+2,Chennur,SC,10,Mekala Prameela,FEMALE,47,SC,YSRCP,,,843,0.66
+2,Chennur,SC,11,Andugula Srinivas,MALE,42,SC,IND,,,571,0.45
+2,Chennur,SC,12,Moyya Rambabu,MALE,45,SC,IND,,,568,0.44
+2,Chennur,SC,13,Rodda Mohan,MALE,33,SC,AAAP,,,536,0.42
+2,Chennur,SC,14,Elpula Srinivas,MALE,37,SC,RLD,,,500,0.39
+2,Chennur,SC,15,Ramagiri Vikram Singh,MALE,27,SC,NIP,,,404,0.32
+2,Chennur,SC,16,Birudula Pradeep,MALE,29,SC,IND,,,368,0.29
+3,Bellampalle,SC,1,Durgam Chinnaiah,MALE,43,SC,BRS,,,73779,61.76
+3,Bellampalle,SC,2,Gunda Mallesh,MALE,67,SC,CPI,,,21251,17.79
+3,Bellampalle,SC,3,Pati Subhadra,FEMALE,59,SC,TDP,,,9167,7.67
+3,Bellampalle,SC,4,Badikela Sampath Kumar,MALE,51,SC,IND,,,2648,2.22
+3,Bellampalle,SC,5,Jadi Shankaraiah,MALE,41,SC,IND,,,1940,1.62
+3,Bellampalle,SC,6,Sabbani Krishna,MALE,51,SC,MCPI,,,1390,1.16
+3,Bellampalle,SC,7,Erukala Raj Kiran,MALE,35,SC,YSRCP,,,1377,1.15
+3,Bellampalle,SC,8,Chilumula Shankar,MALE,49,SC,IND,,,1257,1.05
+3,Bellampalle,SC,9,Nota,,,,NOTA,,,781,0.65
+3,Bellampalle,SC,10,Dandu Ravinder,MALE,45,SC,LSP,,,631,0.53
+3,Bellampalle,SC,11,Maddala Srinivas,MALE,33,SC,IND,,,618,0.52
+3,Bellampalle,SC,12,Gaddala Hymavathi,FEMALE,32,SC,IND,,,545,0.46
+3,Bellampalle,SC,13,Mekala Venkatesham,MALE,44,SC,IND,,,518,0.43
+3,Bellampalle,SC,14,Neerla Padma,FEMALE,34,SC,IND,,,517,0.43
+3,Bellampalle,SC,15,Dubasi Prabhakar,MALE,29,SC,IND,,,516,0.43
+3,Bellampalle,SC,16,Ambala Mahendar,MALE,43,SC,IND,,,503,0.42
+3,Bellampalle,SC,17,Gandham Shankar,MALE,48,SC,IND,,,436,0.36
+3,Bellampalle,SC,18,Bandari Srinivas,MALE,27,SC,AAAP,,,385,0.32
+3,Bellampalle,SC,19,Bathula Madhu,MALE,35,SC,AIFB,,,366,0.31
+3,Bellampalle,SC,20,Moguram Kannaiah,MALE,42,SC,IND,,,359,0.3
+3,Bellampalle,SC,21,Rajalingu Chippakurthi,MALE,28,SC,IND,,,320,0.27
+3,Bellampalle,SC,22,Rathnam Srikanth,MALE,27,SC,IND,,,150,0.13
+4,Mancherial,GENERAL,1,Diwakar Rao Nadipelli,MALE,61,GENERAL,BRS,,,95171,61.62
+4,Mancherial,GENERAL,2,Gaddam Aravinda Reddy,MALE,57,GENERAL,INC,,,35921,23.26
+4,Mancherial,GENERAL,3,Mulkala Mallareddy,MALE,46,GENERAL,BJP,,,11584,7.5
+4,Mancherial,GENERAL,4,Azmeera Lalkumar,MALE,36,ST,IND,,,5110,3.31
+4,Mancherial,GENERAL,5,Nota,,,,NOTA,,,1482,0.96
+4,Mancherial,GENERAL,6,Mittapalli Kiran Kumar,MALE,28,SC,PJDL,,,1206,0.78
+4,Mancherial,GENERAL,7,Vemula Kiran,MALE,30,GENERAL,BSP,,,970,0.63
+4,Mancherial,GENERAL,8,Syed Afzaluddin,MALE,37,GENERAL,YSRCP,,,813,0.53
+4,Mancherial,GENERAL,9,Bakam Mallesh,MALE,34,GENERAL,IND,,,482,0.31
+4,Mancherial,GENERAL,10,Nainala Venkateshwarlu,MALE,41,GENERAL,IND,,,359,0.23
+4,Mancherial,GENERAL,11,Md.Chand Pasha,MALE,46,GENERAL,IND,,,354,0.23
+4,Mancherial,GENERAL,12,Ravikanti Dasharatham,MALE,56,GENERAL,IND,,,345,0.22
+4,Mancherial,GENERAL,13,Shaik Mohamed,MALE,46,GENERAL,IND,,,336,0.22
+4,Mancherial,GENERAL,14,Rangu Mallesham,MALE,44,GENERAL,AIFB,,,320,0.21
+5,Asifabad,ST,1,Kova Laxmi,FEMALE,45,ST,BRS,,,59094,40.35
+5,Asifabad,ST,2,Atram Sakku,MALE,42,ST,INC,,,40039,27.34
+5,Asifabad,ST,3,Marsukola Sarswathi,FEMALE,42,ST,TDP,,,25439,17.37
+5,Asifabad,ST,4,Kotnaka Vijay Kumar,MALE,44,ST,MASP,,,7735,5.28
+5,Asifabad,ST,5,Ade Leelarani,FEMALE,47,ST,IND,,,4592,3.14
+5,Asifabad,ST,6,Kanaka Rambabai,FEMALE,56,ST,BSP,,,4022,2.75
+5,Asifabad,ST,7,Nota,,,,NOTA,,,2833,1.93
+5,Asifabad,ST,8,Pendram Gopi,MALE,48,ST,IND,,,1370,0.94
+5,Asifabad,ST,9,Sidam Arju,MALE,62,ST,GGP,,,1314,0.9
+6,Khanapur,ST,1,Ajmeera Rekha,FEMALE,39,ST,BRS,,,67442,49.33
+6,Khanapur,ST,2,Rathod Ritesh,MALE,29,ST,TDP,,,28931,21.16
+6,Khanapur,ST,3,Ajmeera Hari Naik,MALE,45,ST,INC,,,26087,19.08
+6,Khanapur,ST,4,Jadhav Bhojya Naik,MALE,51,ST,IND,,,5692,4.16
+6,Khanapur,ST,5,Mesram Anand Rao,MALE,32,ST,IND,,,5107,3.74
+6,Khanapur,ST,6,Nota,,,,NOTA,,,2427,1.78
+6,Khanapur,ST,7,Banoth Bheelsingh Naik,MALE,34,ST,RLD,,,1031,0.75
+7,Adilabad,GENERAL,1,Jogu Ramanna,MALE,51,GENERAL,BRS,,,58705,40.92
+7,Adilabad,GENERAL,2,Payal Shanker,MALE,42,GENERAL,BJP,,,43994,30.66
+7,Adilabad,GENERAL,3,Bhargav Deshpande,MALE,27,GENERAL,INC,,,30298,21.12
+7,Adilabad,GENERAL,4,Islamuddin,MALE,37,GENERAL,MASP,,,2878,2.01
+7,Adilabad,GENERAL,5,Bhuma Reddy Patil,MALE,55,SC,BSP,,,1701,1.19
+7,Adilabad,GENERAL,6,Lanka Raghavulu,MALE,53,GENERAL,CPM,,,1120,0.78
+7,Adilabad,GENERAL,7,Nota,,,,NOTA,,,864,0.6
+7,Adilabad,GENERAL,8,Shiraz Khan,FEMALE,43,GENERAL,IND,,,631,0.44
+7,Adilabad,GENERAL,9,Utla Narsimlu,MALE,54,GENERAL,IND,,,565,0.39
+7,Adilabad,GENERAL,10,Ss Rasheed Ul Harque,MALE,26,GENERAL,AAAP,,,485,0.34
+7,Adilabad,GENERAL,11,Bejjenki Anil Kumar,MALE,37,GENERAL,YSRCP,,,449,0.31
+7,Adilabad,GENERAL,12,Pandith Rao Takbide,MALE,66,GENERAL,SHS,,,427,0.3
+7,Adilabad,GENERAL,13,Munigela Narsing,MALE,51,GENERAL,IND,,,427,0.3
+7,Adilabad,GENERAL,14,Harish Chander,MALE,50,GENERAL,IND,,,355,0.25
+7,Adilabad,GENERAL,15,Shafi Ulla Khan,MALE,44,GENERAL,WPOI,,,297,0.21
+7,Adilabad,GENERAL,16,Mohd. Rafeeq,MALE,37,GENERAL,IUML,,,283,0.2
+8,Boath,ST,1,Rathod Bapurao,MALE,52,ST,BRS,,,62870,45.39
+8,Boath,ST,2,Jadhav Anil Kumar,MALE,41,ST,INC,,,35877,25.9
+8,Boath,ST,3,Soyam Bapurao,MALE,45,ST,TDP,,,35218,25.43
+8,Boath,ST,4,Nota,,,,NOTA,,,2246,1.62
+8,Boath,ST,5,Gedam Tulasi Das,MALE,62,ST,YSRCP,,,1281,0.92
+8,Boath,ST,6,Mesram Nanda Kishore,MALE,27,ST,RLD,,,1007,0.73
+9,Nirmal,GENERAL,1,Allolla Indra Karan Reddy,MALE,65,GENERAL,BSP,,,61368,38.0
+9,Nirmal,GENERAL,2,Kuchadi Sriharirao,MALE,53,GENERAL,BRS,,,52871,32.73
+9,Nirmal,GENERAL,3,Alleti Maheshwar Reddy,MALE,46,GENERAL,INC,,,38951,24.12
+9,Nirmal,GENERAL,4,Mirza Yaseen Baig,MALE,49,GENERAL,TDP,,,4567,2.83
+9,Nirmal,GENERAL,5,Nota,,,,NOTA,,,1365,0.85
+9,Nirmal,GENERAL,6,Alluri Mallareddy,MALE,55,GENERAL,YSRCP,,,946,0.59
+9,Nirmal,GENERAL,7,N.T.Rajeshwar,MALE,48,SC,BMUP,,,870,0.54
+9,Nirmal,GENERAL,8,Kapurapu Praveen Kumar,MALE,32,SC,IND,,,577,0.36
+10,Mudhole,GENERAL,1,Gaddigari Vittal Reddy,MALE,59,GENERAL,INC,,,63322,38.88
+10,Mudhole,GENERAL,2,Dr. Padakanti Ramadevi,FEMALE,52,GENERAL,BJP,,,48485,29.77
+10,Mudhole,GENERAL,3,Dr.S.Venugopala Chary,MALE,54,GENERAL,BRS,,,43540,26.73
+10,Mudhole,GENERAL,4,Jagme Devidas,MALE,30,SC,BSP,,,3683,2.26
+10,Mudhole,GENERAL,5,Nota,,,,NOTA,,,1792,1.1
+10,Mudhole,GENERAL,6,Pandit Rao Takbide,MALE,66,GENERAL,SHS,,,1086,0.67
+10,Mudhole,GENERAL,7,Lalu Tatiwar,MALE,62,GENERAL,IND,,,964,0.59
+11,Armur,GENERAL,1,Ashannagari Jeevan Reddy,MALE,38,GENERAL,BRS,,,67555,49.74
+11,Armur,GENERAL,2,K.R.Suresh Reddy,MALE,54,GENERAL,INC,,,53591,39.46
+11,Armur,GENERAL,3,Rajaram Dodolla,MALE,38,GENERAL,TDP,,,7528,5.54
+11,Armur,GENERAL,4,Koppu Rajaiah,MALE,64,SC,BSP,,,1456,1.07
+11,Armur,GENERAL,5,Nota,,,,NOTA,,,1445,1.06
+11,Armur,GENERAL,6,Anjaiah Kondani,MALE,32,GENERAL,PPOI,,,1362,1.0
+11,Armur,GENERAL,7,Laxmi Prasanna,FEMALE,25,GENERAL,IND,,,1271,0.94
+11,Armur,GENERAL,8,Talari Satyam,MALE,31,SC,RPI(A),,,1135,0.84
+11,Armur,GENERAL,9,Basar Sayanna,MALE,39,GENERAL,IND,,,485,0.36
+12,Bodhan,GENERAL,1,Shakil,MALE,38,GENERAL,BRS,,,67427,44.02
+12,Bodhan,GENERAL,2,Sudarshan Reddy Podduturi,MALE,64,GENERAL,INC,,,51543,33.65
+12,Bodhan,GENERAL,3,Medapati Prakash Reddy,MALE,49,GENERAL,TDP,,,26558,17.34
+12,Bodhan,GENERAL,4,Katpally Sudeep Reddy,MALE,40,GENERAL,YSRCP,,,1656,1.08
+12,Bodhan,GENERAL,5,Silumula Ganesh,MALE,29,SC,BSP,,,1497,0.98
+12,Bodhan,GENERAL,6,Nota,,,,NOTA,,,1397,0.91
+12,Bodhan,GENERAL,7,Paniganti Rajithavani,FEMALE,40,SC,PPOI,,,1058,0.69
+12,Bodhan,GENERAL,8,Satyanarayana,MALE,48,GENERAL,IND,,,641,0.42
+12,Bodhan,GENERAL,9,Wajhiullah Khan M.D.,MALE,38,GENERAL,BCUF,,,400,0.26
+12,Bodhan,GENERAL,10,Amarnath Babu. M,MALE,56,GENERAL,IND,,,392,0.26
+12,Bodhan,GENERAL,11,Balashowri Bellamkonda,MALE,60,GENERAL,AAAP,,,310,0.2
+12,Bodhan,GENERAL,12,Yarlagadda Saibaba,MALE,45,GENERAL,RSP,,,289,0.19
+13,Jukkal,SC,1,Hanmanth Shinde,MALE,40,SC,BRS,,,72901,51.63
+13,Jukkal,SC,2,Gangaram S,MALE,62,SC,INC,,,37394,26.49
+13,Jukkal,SC,3,T. Aruna Tara,FEMALE,41,SC,IND,,,10324,7.31
+13,Jukkal,SC,4,Maddela Naveen Kumar,MALE,26,SC,TDP,,,7462,5.29
+13,Jukkal,SC,5,Gangaram,MALE,39,SC,BSP,,,5211,3.69
+13,Jukkal,SC,6,Prakash Naidu,MALE,47,SC,YSRCP,,,1771,1.25
+13,Jukkal,SC,7,Ayyala Anand Kumar,MALE,33,SC,DABAP,,,1622,1.15
+13,Jukkal,SC,8,Nota,,,,NOTA,,,1430,1.01
+13,Jukkal,SC,9,E. Thukaram,MALE,49,SC,IND,,,1105,0.78
+13,Jukkal,SC,10,B. Pandari,MALE,55,SC,IND,,,688,0.49
+13,Jukkal,SC,11,Raju,MALE,33,SC,IND,,,667,0.47
+13,Jukkal,SC,12,K. Nagarao,MALE,42,SC,IND,,,614,0.43
+14,Banswada,GENERAL,1,Srinivas Reddy Parige,MALE,62,GENERAL,BRS,,,65868,47.68
+14,Banswada,GENERAL,2,Balaraju Kasula,MALE,52,GENERAL,INC,,,41938,30.36
+14,Banswada,GENERAL,3,Badya Naik Rathod,MALE,43,ST,TDP,,,19692,14.25
+14,Banswada,GENERAL,4,Narahari Gangaram,MALE,53,SC,BSP,,,3890,2.82
+14,Banswada,GENERAL,5,Ramesh Chandra Benarji Kaki,MALE,52,GENERAL,IND,,,2861,2.07
+14,Banswada,GENERAL,6,Nota,,,,NOTA,,,1316,0.95
+14,Banswada,GENERAL,7,Anjaiah Kondani,MALE,32,GENERAL,PPOI,,,944,0.68
+14,Banswada,GENERAL,8,Ravutla Sobhana Mahender Goud,FEMALE,41,GENERAL,YSRCP,,,788,0.57
+14,Banswada,GENERAL,9,R.Sailu,MALE,66,GENERAL,IND,,,493,0.36
+14,Banswada,GENERAL,10,Majid Ali Qureshi,MALE,63,GENERAL,AAAP,,,361,0.26
+15,Yellareddy,GENERAL,1,Eanugu Ravinder Reddy,MALE,49,GENERAL,BRS,,,70760,44.78
+15,Yellareddy,GENERAL,2,Jajala Surender,MALE,41,GENERAL,INC,,,46751,29.59
+15,Yellareddy,GENERAL,3,Banala Laxma Reddy,MALE,42,GENERAL,BJP,,,33359,21.11
+15,Yellareddy,GENERAL,4,Nota,,,,NOTA,,,2212,1.4
+15,Yellareddy,GENERAL,5,Dr. Marri Ramreddy,MALE,45,GENERAL,LSP,,,1867,1.18
+15,Yellareddy,GENERAL,6,Sidhartha Reddy Peddapatlola,MALE,43,GENERAL,YSRCP,,,1642,1.04
+15,Yellareddy,GENERAL,7,Nagabushanam Battini,MALE,50,GENERAL,IND,,,767,0.49
+15,Yellareddy,GENERAL,8,Chityala Sayanna,MALE,42,SC,IND,,,657,0.42
+16,Kamareddy,GENERAL,1,Gampa Govardhan,MALE,52,GENERAL,BRS,,,71961,45.53
+16,Kamareddy,GENERAL,2,Mohd Ali Shabbir,MALE,57,GENERAL,INC,,,63278,40.04
+16,Kamareddy,GENERAL,3,Siddaramulu Ettam,MALE,59,GENERAL,BJP,,,13938,8.82
+16,Kamareddy,GENERAL,4,Erra Shivaraju A,MALE,47,SC,BSP,,,3862,2.44
+16,Kamareddy,GENERAL,5,Nota,,,,NOTA,,,1478,0.94
+16,Kamareddy,GENERAL,6,Paila Krishna Reddy,MALE,43,GENERAL,YSRCP,,,785,0.5
+16,Kamareddy,GENERAL,7,Mahender Goud Kodipyaka,MALE,52,GENERAL,IND,,,691,0.44
+16,Kamareddy,GENERAL,8,Kairamkonda Yadagiri,MALE,40,GENERAL,RDHP,,,680,0.43
+16,Kamareddy,GENERAL,9,Bharthwaja Vedashree,FEMALE,37,GENERAL,LSP,,,547,0.35
+16,Kamareddy,GENERAL,10,Nagabhushanam Battini,MALE,50,GENERAL,IND,,,417,0.26
+16,Kamareddy,GENERAL,11,K. Kishan,MALE,38,SC,IND,,,409,0.26
+17,Nizamabad (Urban),GENERAL,1,Bigala Ganesh,MALE,44,GENERAL,BRS,,,42148,31.15
+17,Nizamabad (Urban),GENERAL,2,Mir Majaz Ali Shaik,MALE,45,GENERAL,AIMIM,,,31840,23.53
+17,Nizamabad (Urban),GENERAL,3,Suryanarayana Dhanpal,MALE,56,GENERAL,BJP,,,28301,20.91
+17,Nizamabad (Urban),GENERAL,4,Mahesh Kumar Goud Bomma,MALE,47,GENERAL,INC,,,25742,19.02
+17,Nizamabad (Urban),GENERAL,5,Sridhar Reddy Anantha,MALE,38,GENERAL,YSRCP,,,891,0.66
+17,Nizamabad (Urban),GENERAL,6,Jaipal Puli,MALE,29,SC,BSP,,,753,0.56
+17,Nizamabad (Urban),GENERAL,7,Chakradhar. Rotte,MALE,34,GENERAL,IND,,,724,0.54
+17,Nizamabad (Urban),GENERAL,8,Nota,,,,NOTA,,,708,0.52
+17,Nizamabad (Urban),GENERAL,9,Mirza Afsar Baig,MALE,41,GENERAL,IND,,,591,0.44
+17,Nizamabad (Urban),GENERAL,10,Dodle Shekhar,MALE,40,GENERAL,LSP,,,504,0.37
+17,Nizamabad (Urban),GENERAL,11,Ramana Reddy,MALE,37,GENERAL,AAAP,,,480,0.35
+17,Nizamabad (Urban),GENERAL,12,Saritha Pitla,FEMALE,27,GENERAL,IND,,,383,0.28
+17,Nizamabad (Urban),GENERAL,13,Ramchandra Reddy. P,MALE,76,GENERAL,IND,,,332,0.25
+17,Nizamabad (Urban),GENERAL,14,Govardhan D,MALE,46,GENERAL,PPOI,,,327,0.24
+17,Nizamabad (Urban),GENERAL,15,Mayakala Swamy,MALE,47,GENERAL,IND,,,299,0.22
+17,Nizamabad (Urban),GENERAL,16,Giridhar. R,MALE,39,GENERAL,SP,,,246,0.18
+17,Nizamabad (Urban),GENERAL,17,K.S. Anand,MALE,63,GENERAL,IND,,,208,0.15
+17,Nizamabad (Urban),GENERAL,18,Srinivas Mutyala,MALE,35,GENERAL,IND,,,206,0.15
+17,Nizamabad (Urban),GENERAL,19,Shaik Khader Khan,MALE,67,GENERAL,IND,,,185,0.14
+17,Nizamabad (Urban),GENERAL,20,Mohammad Khaja Moinuddin,MALE,55,GENERAL,BCUF,,,130,0.1
+17,Nizamabad (Urban),GENERAL,21,Ashok. L,MALE,51,GENERAL,IND,,,112,0.08
+17,Nizamabad (Urban),GENERAL,22,Bagwan B,MALE,49,ST,IND,,,109,0.08
+17,Nizamabad (Urban),GENERAL,23,Syed Abdul Khader,MALE,54,GENERAL,IND,,,107,0.08
+18,Nizamabad (Rural),GENERAL,1,Goverdhan Baji Reddy,MALE,59,GENERAL,BRS,,,78107,46.52
+18,Nizamabad (Rural),GENERAL,2,Dharmapuri Srinivaas,MALE,66,GENERAL,INC,,,51560,30.71
+18,Nizamabad (Rural),GENERAL,3,Anand Reddy Gaddam,MALE,56,GENERAL,BJP,,,25579,15.23
+18,Nizamabad (Rural),GENERAL,4,Pedda Panchakshari Bokkala,MALE,54,GENERAL,IND,,,3734,2.22
+18,Nizamabad (Rural),GENERAL,5,Nota,,,,NOTA,,,2006,1.19
+18,Nizamabad (Rural),GENERAL,6,Pitla Rama Krishna,MALE,35,GENERAL,IND,,,1696,1.01
+18,Nizamabad (Rural),GENERAL,7,Maqsood,MALE,67,GENERAL,IND,,,1458,0.87
+18,Nizamabad (Rural),GENERAL,8,Nathanial,MALE,52,SC,BSP,,,1390,0.83
+18,Nizamabad (Rural),GENERAL,9,Badavath Meera Bai,FEMALE,40,ST,IND,,,797,0.47
+18,Nizamabad (Rural),GENERAL,10,Boddu Ganga Reddy,MALE,56,GENERAL,YSRCP,,,722,0.43
+18,Nizamabad (Rural),GENERAL,11,Abdul Kareem Khan,MALE,44,GENERAL,IND,,,469,0.28
+18,Nizamabad (Rural),GENERAL,12,Mood Mohan,MALE,30,GENERAL,AAAP,,,388,0.23
+19,Balkonda,GENERAL,1,Vemula Prashanth Reddy,MALE,46,GENERAL,BRS,,,69145,47.48
+19,Balkonda,GENERAL,2,Anil Kumar Eravatri,MALE,39,GENERAL,INC,,,32897,22.59
+19,Balkonda,GENERAL,3,Aleti Mallikarjun Reddy,MALE,41,GENERAL,TDP,,,25494,17.51
+19,Balkonda,GENERAL,4,M.J. Dr. Madhushekhar,MALE,50,GENERAL,IND,,,7890,5.42
+19,Balkonda,GENERAL,5,Boga Ashok,MALE,62,GENERAL,IND,,,3840,2.64
+19,Balkonda,GENERAL,6,Kuninti Mahipal Reddy,MALE,47,GENERAL,IND,,,1540,1.06
+19,Balkonda,GENERAL,7,Nota,,,,NOTA,,,1535,1.05
+19,Balkonda,GENERAL,8,Ananth Bandari,MALE,31,GENERAL,LSP,,,719,0.49
+19,Balkonda,GENERAL,9,T.Mallesham,MALE,42,GENERAL,IND,,,648,0.44
+19,Balkonda,GENERAL,10,Vinith Kumar,MALE,26,GENERAL,IND,,,639,0.44
+19,Balkonda,GENERAL,11,Bathnathe Shankar,MALE,36,GENERAL,RLD,,,451,0.31
+19,Balkonda,GENERAL,12,Ourakonda Rajaiah,MALE,53,GENERAL,IND,,,413,0.28
+19,Balkonda,GENERAL,13,Murali Palepu,MALE,38,GENERAL,YSRCP,,,411,0.28
+20,Koratla,GENERAL,1,Kalvakuntla Vidya Sagar Rao,MALE,61,GENERAL,BRS,,,58890,39.1
+20,Koratla,GENERAL,2,Juvvadi Narsinga Rao,MALE,52,GENERAL,IND,,,38305,25.43
+20,Koratla,GENERAL,3,Komoreddy Ramulu,MALE,64,GENERAL,INC,,,24954,16.57
+20,Koratla,GENERAL,4,Surabhi Bhum Rao,MALE,62,GENERAL,BJP,,,22806,15.14
+20,Koratla,GENERAL,5,Barla Laxman,MALE,50,SC,BSP,,,1601,1.06
+20,Koratla,GENERAL,6,Nota,,,,NOTA,,,1270,0.84
+20,Koratla,GENERAL,7,Gollapelli Rama Goud,MALE,53,GENERAL,IND,,,813,0.54
+20,Koratla,GENERAL,8,Md Rasheed Khan,MALE,50,GENERAL,IND,,,615,0.41
+20,Koratla,GENERAL,9,Allala Santhosh Reddy,MALE,26,GENERAL,YSRCP,,,442,0.29
+20,Koratla,GENERAL,10,Vasam Bhumanandam,MALE,71,GENERAL,LSP,,,325,0.22
+20,Koratla,GENERAL,11,Katkam Laxmi,FEMALE,49,GENERAL,AAAP,,,230,0.15
+20,Koratla,GENERAL,12,Karijengula Naresh Kumar,MALE,33,GENERAL,SHS,,,213,0.14
+20,Koratla,GENERAL,13,Gangarajam Singani,MALE,58,GENERAL,JD(U),,,137,0.09
+21,Jagtial,GENERAL,1,Jeevan Reddy Thatiparthi,MALE,61,GENERAL,INC,,,62616,42.16
+21,Jagtial,GENERAL,2,Dr. M.Sanjay Kumar,MALE,51,GENERAL,BRS,,,54788,36.89
+21,Jagtial,GENERAL,3,L. Ramana,MALE,53,GENERAL,TDP,,,22385,15.07
+21,Jagtial,GENERAL,4,Sabbu Jagan,MALE,30,GENERAL,IND,,,3585,2.41
+21,Jagtial,GENERAL,5,Damma Bharathi,FEMALE,31,SC,BSP,,,1697,1.14
+21,Jagtial,GENERAL,6,Nota,,,,NOTA,,,1020,0.69
+21,Jagtial,GENERAL,7,Md. Mansoor Ahmed,MALE,45,GENERAL,IND,,,729,0.49
+21,Jagtial,GENERAL,8,Katta Sandhya Rani,FEMALE,25,GENERAL,YSRCP,,,501,0.34
+21,Jagtial,GENERAL,9,Mohammed Jamaluddin,MALE,66,GENERAL,IND,,,415,0.28
+21,Jagtial,GENERAL,10,Mahesh Shivanuri,MALE,36,GENERAL,IND,,,297,0.2
+21,Jagtial,GENERAL,11,Vilasagaram Ramesh,MALE,37,GENERAL,AAAP,,,266,0.18
+21,Jagtial,GENERAL,12,Syed Zakir Ali,MALE,46,GENERAL,WPOI,,,229,0.15
+22,Dharmapuri,SC,1,Koppula Eshwar,MALE,55,SC,BRS,,,67836,46.18
+22,Dharmapuri,SC,2,Adluri Laxman Kumar,MALE,48,SC,INC,,,49157,33.47
+22,Dharmapuri,SC,3,Kannam Anajaiah,MALE,40,SC,BJP,,,13267,9.03
+22,Dharmapuri,SC,4,Santhosh Ramagiri,MALE,26,SC,IND,,,7479,5.09
+22,Dharmapuri,SC,5,Kannuri Suresh,MALE,34,SC,BSP,,,2114,1.44
+22,Dharmapuri,SC,6,Bangari Madhav,MALE,28,SC,PPOI,,,1758,1.2
+22,Dharmapuri,SC,7,Nota,,,,NOTA,,,1554,1.06
+22,Dharmapuri,SC,8,Akkenapelli Kumar,MALE,47,SC,YSRCP,,,1038,0.71
+22,Dharmapuri,SC,9,Nalla Shyam,MALE,40,SC,IND,,,957,0.65
+22,Dharmapuri,SC,10,Mokenapelli Rajavva,FEMALE,45,SC,BCUF,,,497,0.34
+22,Dharmapuri,SC,11,Kadari Kumara Swamy,MALE,28,SC,IND,,,417,0.28
+22,Dharmapuri,SC,12,Buradagunta Deva Deevana Kumar,MALE,54,SC,AIFB,,,411,0.28
+22,Dharmapuri,SC,13,Uparapu Rayanarsu,MALE,40,SC,IND,,,402,0.27
+23,Ramagundam,GENERAL,1,Somarapu Satyanarayana,MALE,65,GENERAL,BRS,,,35789,26.0
+23,Ramagundam,GENERAL,2,Korukanti Chander,MALE,42,GENERAL,AIFB,,,33494,24.33
+23,Ramagundam,GENERAL,3,Babar Saleem Pasha,MALE,61,GENERAL,INC,,,16900,12.28
+23,Ramagundam,GENERAL,4,Koushika Harinadh,MALE,49,GENERAL,IND,,,13577,9.86
+23,Ramagundam,GENERAL,5,Makkansingh Raj Thakur,MALE,42,GENERAL,IND,,,11387,8.27
+23,Ramagundam,GENERAL,6,Gujjula Ramakrishna Reddy,MALE,54,GENERAL,BJP,,,7894,5.74
+23,Ramagundam,GENERAL,7,Ailaiah Yadav Gopu,MALE,58,GENERAL,IND,,,5695,4.14
+23,Ramagundam,GENERAL,8,Balakalyan Panja,MALE,30,SC,BSP,,,1984,1.44
+23,Ramagundam,GENERAL,9,Shaik Saleem,MALE,32,GENERAL,PRBP,,,1458,1.06
+23,Ramagundam,GENERAL,10,Mallavajjala Vijayanand,MALE,40,GENERAL,AAAP,,,946,0.69
+23,Ramagundam,GENERAL,11,Divakar Rao Surabhi,MALE,61,GENERAL,PPOI,,,888,0.65
+23,Ramagundam,GENERAL,12,Pathapelli Ravi Kumar,MALE,41,GENERAL,IND,,,799,0.58
+23,Ramagundam,GENERAL,13,Rapolu Mahender,MALE,33,GENERAL,RP(K),,,637,0.46
+23,Ramagundam,GENERAL,14,Nota,,,,NOTA,,,619,0.45
+23,Ramagundam,GENERAL,15,Katkoori Rama,FEMALE,40,GENERAL,IND,,,603,0.44
+23,Ramagundam,GENERAL,16,Upender Nandelli,MALE,49,GENERAL,MASP,,,598,0.43
+23,Ramagundam,GENERAL,17,Thota Venu,MALE,32,GENERAL,IND,,,578,0.42
+23,Ramagundam,GENERAL,18,Naresh Edunoori,MALE,42,SC,IND,,,550,0.4
+23,Ramagundam,GENERAL,19,Siriseti Mallesh,MALE,45,GENERAL,IND,,,517,0.38
+23,Ramagundam,GENERAL,20,Damuka Laxman,MALE,45,SC,IND,,,500,0.36
+23,Ramagundam,GENERAL,21,P.T. Swamy,MALE,66,GENERAL,RLD,,,428,0.31
+23,Ramagundam,GENERAL,22,Dasari Koteshwar Rao,MALE,43,SC,IND,,,363,0.26
+23,Ramagundam,GENERAL,23,Gorre Ramesh,MALE,47,SC,IND,,,323,0.23
+23,Ramagundam,GENERAL,24,Ramu Nelikanti,MALE,30,SC,IND,,,271,0.2
+23,Ramagundam,GENERAL,25,Sabbani Harish,MALE,30,GENERAL,IND,,,248,0.18
+23,Ramagundam,GENERAL,26,Mulukuntla Suman,MALE,26,GENERAL,IND,,,240,0.17
+23,Ramagundam,GENERAL,27,Somavarapu Satyanarayana,MALE,48,GENERAL,IND,,,210,0.15
+23,Ramagundam,GENERAL,28,Suddala Ramesh,MALE,48,GENERAL,IND,,,142,0.1
+24,Manthani,GENERAL,1,Putta Madhukar,MALE,42,GENERAL,BRS,,,84037,49.38
+24,Manthani,GENERAL,2,Duddilla Sridhar Babu,MALE,45,GENERAL,INC,,,64677,38.0
+24,Manthani,GENERAL,3,Karru Nagaiah,MALE,52,GENERAL,TDP,,,9735,5.72
+24,Manthani,GENERAL,4,Chandrupatla Sunil Reddy,MALE,38,GENERAL,IND,,,6530,3.84
+24,Manthani,GENERAL,5,Dunde Narsaiah,MALE,42,GENERAL,BSP,,,1725,1.01
+24,Manthani,GENERAL,6,Nota,,,,NOTA,,,1339,0.79
+24,Manthani,GENERAL,7,Dubbasi Vishwanath,MALE,26,SC,AAAP,,,677,0.4
+24,Manthani,GENERAL,8,Thokala Rajkumar,MALE,39,SC,IND,,,580,0.34
+24,Manthani,GENERAL,9,Avadanula Hari Prasad,MALE,41,GENERAL,IND,,,471,0.28
+24,Manthani,GENERAL,10,Noone Rajesham,MALE,63,GENERAL,IND,,,425,0.25
+25,Peddapalle,GENERAL,1,Manohar Reddy Dasari,MALE,60,GENERAL,BRS,,,96220,57.33
+25,Peddapalle,GENERAL,2,T. Bhanu Prasad Rao,MALE,47,GENERAL,INC,,,33543,19.99
+25,Peddapalle,GENERAL,3,Chinthakunta Vijaya Ramana Rao,MALE,47,GENERAL,TDP,,,24216,14.43
+25,Peddapalle,GENERAL,4,Edla Neela,FEMALE,28,SC,IND,,,5840,3.48
+25,Peddapalle,GENERAL,5,Saritha Padma,FEMALE,28,SC,PPOI,,,1791,1.07
+25,Peddapalle,GENERAL,6,Nota,,,,NOTA,,,1545,0.92
+25,Peddapalle,GENERAL,7,Varikilla Mallesh,MALE,38,SC,BSP,,,1513,0.9
+25,Peddapalle,GENERAL,8,M.A.Mustak Pasha,MALE,29,GENERAL,YSRCP,,,736,0.44
+25,Peddapalle,GENERAL,9,Thammadoboina Odelu Yadav,MALE,42,GENERAL,AAAP,,,665,0.4
+25,Peddapalle,GENERAL,10,Pendyala Surender,MALE,39,GENERAL,IND,,,473,0.28
+25,Peddapalle,GENERAL,11,Shyam Sundar Attal,MALE,54,GENERAL,IND,,,388,0.23
+25,Peddapalle,GENERAL,12,Kethipelli Sammi Reddy,MALE,48,GENERAL,BCUF,,,364,0.22
+25,Peddapalle,GENERAL,13,Kondra Enock,MALE,51,GENERAL,ICSP,,,278,0.17
+25,Peddapalle,GENERAL,14,Donkena Ravindar,MALE,45,GENERAL,RLD,,,257,0.15
+26,Karimnagar,GENERAL,1,Gangula Kamalakar,MALE,46,GENERAL,BRS,,,77209,40.92
+26,Karimnagar,GENERAL,2,Bandi Sanjay Kumar,MALE,43,GENERAL,BJP,,,52455,27.8
+26,Karimnagar,GENERAL,3,C. Lakshmi Narasimha Rao,MALE,51,GENERAL,INC,,,51339,27.21
+26,Karimnagar,GENERAL,4,Waseemuddin Ahmed,MALE,43,GENERAL,WPOI,,,3386,1.79
+26,Karimnagar,GENERAL,5,Sadurla Mallesham,MALE,59,GENERAL,BSP,,,837,0.44
+26,Karimnagar,GENERAL,6,Dr. K. Nagesh,MALE,55,GENERAL,YSRCP,,,761,0.4
+26,Karimnagar,GENERAL,7,Nota,,,,NOTA,,,750,0.4
+26,Karimnagar,GENERAL,8,Chetty Kalyan,MALE,31,GENERAL,IND,,,495,0.26
+26,Karimnagar,GENERAL,9,Syed Ishtiaq Ahmed,MALE,44,GENERAL,AAAP,,,485,0.26
+26,Karimnagar,GENERAL,10,Mamindla Sandeep Kumar,MALE,27,GENERAL,LSP,,,437,0.23
+26,Karimnagar,GENERAL,11,Madari Srinivas,MALE,35,SC,BMUP,,,203,0.11
+26,Karimnagar,GENERAL,12,Gajangi Nirmala,FEMALE,39,GENERAL,IND,,,191,0.1
+26,Karimnagar,GENERAL,13,M.A. Basheer,MALE,51,GENERAL,BCUF,,,125,0.07
+27,Choppadandi,SC,1,Bodiga Shobha,FEMALE,39,SC,BRS,,,86841,58.13
+27,Choppadandi,SC,2,Suddala Devaiah,MALE,58,SC,INC,,,31860,21.33
+27,Choppadandi,SC,3,Medipally Sathyam,MALE,34,SC,TDP,,,13104,8.77
+27,Choppadandi,SC,4,Bandapalli Rajaiah,MALE,51,SC,MASP,,,7199,4.82
+27,Choppadandi,SC,5,Mohan Durgam,MALE,41,SC,RPI(A),,,1910,1.28
+27,Choppadandi,SC,6,Jannu Jayaraj,MALE,60,SC,BSP,,,1806,1.21
+27,Choppadandi,SC,7,Nota,,,,NOTA,,,993,0.66
+27,Choppadandi,SC,8,Malyala Prathap,MALE,42,SC,YSRCP,,,932,0.62
+27,Choppadandi,SC,9,Bollampalli Ailaiah,MALE,45,SC,IND,,,846,0.57
+27,Choppadandi,SC,10,Bhakthu Saraiah,MALE,27,SC,PRBP,,,729,0.49
+27,Choppadandi,SC,11,Chiluka Lingaiah,MALE,38,SC,MCPI,,,626,0.42
+27,Choppadandi,SC,12,Thadagonda Satyaraj Varma,MALE,45,SC,AIFB,,,608,0.41
+27,Choppadandi,SC,13,Anjaiah Thalla,MALE,46,SC,IND,,,494,0.33
+27,Choppadandi,SC,14,Kannam Raghu,MALE,50,SC,IND,,,396,0.27
+27,Choppadandi,SC,15,Swamy Janapatla,MALE,57,SC,IND,,,388,0.26
+27,Choppadandi,SC,16,Cherla Laxman,MALE,47,SC,IND,,,345,0.23
+27,Choppadandi,SC,17,Chelimalla Laxmikantham @ Sunil,MALE,36,SC,IND,,,318,0.21
+28,Vemulawada,GENERAL,1,Ramesh Chennamaneni,MALE,58,GENERAL,BRS,,,58414,42.79
+28,Vemulawada,GENERAL,2,Aadi Srinivas,MALE,48,GENERAL,BJP,,,53146,38.93
+28,Vemulawada,GENERAL,3,Bomma Venkateshwar,MALE,72,GENERAL,INC,,,14051,10.29
+28,Vemulawada,GENERAL,4,Naagula Narender,MALE,38,GENERAL,IND,,,3635,2.66
+28,Vemulawada,GENERAL,5,Gaddam Ravinder Reddy,MALE,58,GENERAL,BSP,,,2432,1.78
+28,Vemulawada,GENERAL,6,Nota,,,,NOTA,,,1535,1.12
+28,Vemulawada,GENERAL,7,Cheekoti Varun Kumar Gupta,MALE,25,GENERAL,IND,,,1452,1.06
+28,Vemulawada,GENERAL,8,Areddy Sridhar Reddy,MALE,33,GENERAL,AAAP,,,616,0.45
+28,Vemulawada,GENERAL,9,Musku Venkat Reddy,MALE,29,GENERAL,YSRCP,,,525,0.38
+28,Vemulawada,GENERAL,10,A. Rajalingaiah,MALE,43,SC,MASP,,,389,0.28
+28,Vemulawada,GENERAL,11,Marwadi Sudarshan,MALE,35,SC,BCUF,,,323,0.24
+29,Sircilla,GENERAL,1,K.Tarakarama Rao (Ktr),MALE,38,GENERAL,BRS,,,92135,58.36
+29,Sircilla,GENERAL,2,Konduru Ravinder Rao,MALE,62,GENERAL,INC,,,39131,24.79
+29,Sircilla,GENERAL,3,Akula Vijaya,FEMALE,41,GENERAL,BJP,,,14494,9.18
+29,Sircilla,GENERAL,4,Reddymalla Srinivas,MALE,46,SC,RPI(A),,,3345,2.12
+29,Sircilla,GENERAL,5,Anagandula Venkanna,MALE,38,GENERAL,BSP,,,1815,1.15
+29,Sircilla,GENERAL,6,Nota,,,,NOTA,,,1650,1.05
+29,Sircilla,GENERAL,7,Gopi Reddaveni,MALE,38,GENERAL,IND,,,1637,1.04
+29,Sircilla,GENERAL,8,Anthaiah Kodi,MALE,40,GENERAL,IND,,,1406,0.89
+29,Sircilla,GENERAL,9,Sridhar Reddy Velumula,MALE,40,GENERAL,YSRCP,,,803,0.51
+29,Sircilla,GENERAL,10,D.Anandam,MALE,58,GENERAL,AAAP,,,800,0.51
+29,Sircilla,GENERAL,11,Challa Balreddy,MALE,58,GENERAL,IND,,,653,0.41
+30,Manakondur,SC,1,Rasamai Balakishan,MALE,48,SC,BRS,,,85010,54.2
+30,Manakondur,SC,2,Arepalli Mohan,MALE,51,SC,INC,,,38088,24.28
+30,Manakondur,SC,3,Dr. Kavvampally Satyanarayana,MALE,49,SC,TDP,,,23627,15.06
+30,Manakondur,SC,4,Ande Bhanumurthy,MALE,65,SC,RPI(A),,,2877,1.83
+30,Manakondur,SC,5,Nisani Ramachandram,MALE,28,SC,BSP,,,1748,1.11
+30,Manakondur,SC,6,Nota,,,,NOTA,,,1105,0.7
+30,Manakondur,SC,7,Bamandla Ravinder,MALE,34,SC,IND,,,990,0.63
+30,Manakondur,SC,8,Thipparapu John Suman,MALE,30,SC,IND,,,727,0.46
+30,Manakondur,SC,9,Ajay Varma Sollu,MALE,42,SC,YSRCP,,,630,0.4
+30,Manakondur,SC,10,Gaddam Nagaraju,MALE,40,SC,IND,,,539,0.34
+30,Manakondur,SC,11,Kande Sammaiah,MALE,45,SC,BCUF,,,424,0.27
+30,Manakondur,SC,12,Siricilla Srinivas,MALE,27,SC,IND,,,385,0.25
+30,Manakondur,SC,13,Jakanapally Ganesh,MALE,25,SC,AIFB,,,244,0.16
+30,Manakondur,SC,14,Kondra Swaroopa,FEMALE,33,SC,IND,,,242,0.15
+30,Manakondur,SC,15,Edla Venkataiah,MALE,58,SC,IND,,,211,0.13
+31,Huzurabad,GENERAL,1,Eatala Rajender,MALE,50,GENERAL,BRS,,,95315,58.76
+31,Huzurabad,GENERAL,2,Kethiri Sudarshan Reddy,MALE,57,GENERAL,INC,,,38278,23.6
+31,Huzurabad,GENERAL,3,Kashyap Reddy Muddasani,MALE,31,GENERAL,TDP,,,15642,9.64
+31,Huzurabad,GENERAL,4,E. Bheema Rao,MALE,40,SC,IND,,,5075,3.13
+31,Huzurabad,GENERAL,5,Myakamalla Rathnaiah,MALE,52,SC,RPI(A),,,1992,1.23
+31,Huzurabad,GENERAL,6,Chintha Anilkumar,MALE,29,GENERAL,PPOI,,,1711,1.05
+31,Huzurabad,GENERAL,7,Kothuri Ramesh,MALE,33,SC,BSP,,,1479,0.91
+31,Huzurabad,GENERAL,8,Nota,,,,NOTA,,,1445,0.89
+31,Huzurabad,GENERAL,9,Sandamalla Naresh,MALE,27,SC,YSRCP,,,741,0.46
+31,Huzurabad,GENERAL,10,Shingi Reddy Veera Reddy,MALE,51,GENERAL,BCUF,,,523,0.32
+32,Husnabad,GENERAL,1,Vodithela Sathish Kumar,MALE,45,GENERAL,BRS,,,96517,55.0
+32,Husnabad,GENERAL,2,Aligireddy Praveen Reddy,MALE,55,GENERAL,INC,,,62248,35.47
+32,Husnabad,GENERAL,3,Velpula Sanjeev,MALE,33,SC,IND,,,4626,2.64
+32,Husnabad,GENERAL,4,Enagandula Laxminarayana,MALE,53,SC,IND,,,2156,1.23
+32,Husnabad,GENERAL,5,Bolli Ilaiah,MALE,41,GENERAL,BSP,,,2098,1.2
+32,Husnabad,GENERAL,6,Kaparthi Raghu,MALE,29,GENERAL,PPOI,,,1819,1.04
+32,Husnabad,GENERAL,7,Nota,,,,NOTA,,,1449,0.83
+32,Husnabad,GENERAL,8,Dubbaka Vishnuvardhan Reddy,MALE,42,GENERAL,IND,,,1201,0.68
+32,Husnabad,GENERAL,9,Kamera Laxman,MALE,43,GENERAL,IND,,,819,0.47
+32,Husnabad,GENERAL,10,Bollam Ravi,MALE,29,GENERAL,LSP,,,655,0.37
+32,Husnabad,GENERAL,11,Venkatadri Chennaboina,MALE,37,GENERAL,IND,,,561,0.32
+32,Husnabad,GENERAL,12,Aakula Bhumaiah,MALE,72,GENERAL,IND,,,533,0.3
+32,Husnabad,GENERAL,13,Bhasker Reddy Singireddy,MALE,50,GENERAL,YSRCP,,,506,0.29
+32,Husnabad,GENERAL,14,Srinivas Burra,MALE,42,GENERAL,BCUF,,,297,0.17
+33,Siddipet,GENERAL,1,Thanneeru Harish Rao,MALE,42,GENERAL,BRS,,,108699,71.96
+33,Siddipet,GENERAL,2,Taduri Srinivas Goud,MALE,44,GENERAL,INC,,,15371,10.18
+33,Siddipet,GENERAL,3,Soppadandi Vidyasagar,MALE,49,GENERAL,BJP,,,13003,8.61
+33,Siddipet,GENERAL,4,Karrolla Babu,MALE,30,SC,BSP,,,5035,3.33
+33,Siddipet,GENERAL,5,Bathula Chandram,MALE,35,SC,IND,,,3774,2.5
+33,Siddipet,GENERAL,6,Nota,,,,NOTA,,,1664,1.1
+33,Siddipet,GENERAL,7,K.Kamalakar Reddy,MALE,35,GENERAL,RPI(A),,,1157,0.77
+33,Siddipet,GENERAL,8,Pothuganti Narsimha Reddy,MALE,63,GENERAL,IND,,,623,0.41
+33,Siddipet,GENERAL,9,Balaraju Mittapally,MALE,38,GENERAL,IND,,,592,0.39
+33,Siddipet,GENERAL,10,Tadka Jagadishwar,MALE,51,GENERAL,YSRCP,,,555,0.37
+33,Siddipet,GENERAL,11,Thummanapally Srinivasu,MALE,42,GENERAL,LSP,,,331,0.22
+33,Siddipet,GENERAL,12,Udutha Mallesham,MALE,40,GENERAL,IND,,,245,0.16
+34,Medak,GENERAL,1,M.Padma Devender Reddy,FEMALE,44,GENERAL,BRS,,,89654,56.64
+34,Medak,GENERAL,2,Vijaya Shanthi. M,FEMALE,48,GENERAL,INC,,,50054,31.62
+34,Medak,GENERAL,3,Batti Jagapathi,MALE,55,GENERAL,TDP,,,9281,5.86
+34,Medak,GENERAL,4,Pogaku Ashok Kumar,MALE,55,GENERAL,IND,,,3240,2.05
+34,Medak,GENERAL,5,Nota,,,,NOTA,,,1602,1.01
+34,Medak,GENERAL,6,Siddiramulu,MALE,48,SC,BSP,,,1189,0.75
+34,Medak,GENERAL,7,C.Shobharani,FEMALE,56,GENERAL,PPOI,,,933,0.59
+34,Medak,GENERAL,8,Pakala Srihari Rao,MALE,61,GENERAL,IND,,,798,0.5
+34,Medak,GENERAL,9,Dorbala Gunaker Sharma,MALE,33,GENERAL,IND,,,474,0.3
+34,Medak,GENERAL,10,Allaram Kristu Dass,MALE,60,SC,YSRCP,,,465,0.29
+34,Medak,GENERAL,11,M.D. Abdul Haleem Quraishi,MALE,59,GENERAL,TMOR,,,320,0.2
+34,Medak,GENERAL,12,Noorbhasha.M.E.Rahee M,MALE,55,GENERAL,RLD,,,282,0.18
+35,Narayankhed,GENERAL,1,Patlolla Kishta Reddy,MALE,66,GENERAL,INC,,,62347,39.49
+35,Narayankhed,GENERAL,2,Mahareddy Bhupal Reddy,MALE,50,GENERAL,BRS,,,47601,30.15
+35,Narayankhed,GENERAL,3,M. Vijaypal Reddy,MALE,55,GENERAL,TDP,,,40405,25.59
+35,Narayankhed,GENERAL,4,Apparao Shetkar,MALE,36,GENERAL,YSRCP,,,3911,2.48
+35,Narayankhed,GENERAL,5,G. Nagesh Yadav,MALE,34,GENERAL,IND,,,1561,0.99
+35,Narayankhed,GENERAL,6,Nota,,,,NOTA,,,1035,0.66
+35,Narayankhed,GENERAL,7,Hanmandlu Karanji,MALE,33,GENERAL,ABJS,,,407,0.26
+35,Narayankhed,GENERAL,8,V.Tukaram Nayak,MALE,36,ST,MCPI,,,318,0.2
+35,Narayankhed,GENERAL,9,Rajiv Kumar Mathur,MALE,56,GENERAL,AAAP,,,283,0.18
+36,Andole,SC,1,Babumohanpally,MALE,59,SC,BRS,,,87087,48.18
+36,Andole,SC,2,C.Damodar Rajanarsimha,MALE,55,SC,INC,,,83796,46.36
+36,Andole,SC,3,Allaram Rathnaiah,MALE,49,SC,IND,,,4204,2.33
+36,Andole,SC,4,Burri Yellaiah,MALE,58,SC,BJP,,,3062,1.69
+36,Andole,SC,5,Nota,,,,NOTA,,,1472,0.81
+36,Andole,SC,6,Bandargalla Sanjeeva Rao,MALE,43,SC,YSRCP,,,1141,0.63
+37,Narsapur,GENERAL,1,Chilumula Madan Reddy,MALE,59,GENERAL,BRS,,,85890,49.0
+37,Narsapur,GENERAL,2,Vakiti Sunitha,FEMALE,46,GENERAL,INC,,,71673,40.89
+37,Narsapur,GENERAL,3,Chaganla Balvindernath,MALE,25,GENERAL,BJP,,,6088,3.47
+37,Narsapur,GENERAL,4,Errolla Sanjeevaiah,MALE,30,SC,IND,,,5211,2.97
+37,Narsapur,GENERAL,5,Kandlapally Laxmibai,FEMALE,39,GENERAL,CPM,,,2604,1.49
+37,Narsapur,GENERAL,6,S. Shanthi Kumar,MALE,45,SC,BSP,,,1309,0.75
+37,Narsapur,GENERAL,7,Nota,,,,NOTA,,,1229,0.7
+37,Narsapur,GENERAL,8,Dandepu Baswanandam,MALE,50,GENERAL,YSRCP,,,671,0.38
+37,Narsapur,GENERAL,9,Mood Suryam,MALE,28,ST,IND,,,611,0.35
+38,Zahirabad,SC,1,Dr. Jetty Geeta,FEMALE,69,SC,INC,,,57558,34.68
+38,Zahirabad,SC,2,Koninty Manik Rao,MALE,61,SC,BRS,,,56716,34.17
+38,Zahirabad,SC,3,Y.Narotham,MALE,49,SC,TDP,,,39057,23.53
+38,Zahirabad,SC,4,Nalla Surya Prakash,MALE,55,SC,YSRCP,,,4591,2.77
+38,Zahirabad,SC,5,Dappu Rachaiah,MALE,44,SC,WPOI,,,1768,1.07
+38,Zahirabad,SC,6,B.Ramchander,MALE,36,SC,CPM,,,1593,0.96
+38,Zahirabad,SC,7,Manthapuram Balaiah,MALE,45,SC,BSP,,,1564,0.94
+38,Zahirabad,SC,8,Nota,,,,NOTA,,,1195,0.72
+38,Zahirabad,SC,9,Bandameedi Devadas,MALE,59,SC,IND,,,620,0.37
+38,Zahirabad,SC,10,Vittal,MALE,48,SC,IND,,,611,0.37
+38,Zahirabad,SC,11,Dappu Bhasker,MALE,36,SC,IND,,,370,0.22
+38,Zahirabad,SC,12,D.Esmalappa,MALE,39,SC,IND,,,338,0.2
+39,Sangareddy,GENERAL,1,Chinta Prabhakar,MALE,54,GENERAL,BRS,,,82860,52.63
+39,Sangareddy,GENERAL,2,Jayaprakash Reddy .T,MALE,48,GENERAL,INC,,,53338,33.88
+39,Sangareddy,GENERAL,3,K.Sathyanarayana,MALE,54,ST,BJP,,,11914,7.57
+39,Sangareddy,GENERAL,4,B. Mallesham,MALE,39,GENERAL,CPM,,,2684,1.7
+39,Sangareddy,GENERAL,5,Kashipuram Praveen Kumar,MALE,26,GENERAL,IND,,,1569,1.0
+39,Sangareddy,GENERAL,6,Gouraiahgari Sreedhar Reddy,MALE,37,GENERAL,YSRCP,,,1198,0.76
+39,Sangareddy,GENERAL,7,Nota,,,,NOTA,,,985,0.63
+39,Sangareddy,GENERAL,8,Nagedapally Krishnam Raju,MALE,41,SC,IND,,,818,0.52
+39,Sangareddy,GENERAL,9,K. Vijaya Kumar,MALE,44,GENERAL,BSP,,,758,0.48
+39,Sangareddy,GENERAL,10,Dayanand,MALE,31,ST,VOP,,,298,0.19
+39,Sangareddy,GENERAL,11,Sangram Surender,MALE,58,GENERAL,IND,,,288,0.18
+39,Sangareddy,GENERAL,12,Bathini Ramulu,MALE,46,SC,IND,,,250,0.16
+39,Sangareddy,GENERAL,13,Rumandla Prakash,MALE,39,GENERAL,IND,,,244,0.15
+39,Sangareddy,GENERAL,14,P. Ranjith Kumar,MALE,40,SC,IND,,,241,0.15
+40,Patancheru,GENERAL,1,Gudem Maipal Reddy,MALE,47,GENERAL,BRS,,,73986,37.06
+40,Patancheru,GENERAL,2,M Sapanadev,MALE,40,GENERAL,TDP,,,55100,27.6
+40,Patancheru,GENERAL,3,T. Nandeshwar Goud,MALE,52,GENERAL,INC,,,37226,18.65
+40,Patancheru,GENERAL,4,C.Anji Reddy,MALE,47,GENERAL,IND,,,12571,6.3
+40,Patancheru,GENERAL,5,Srinivas Goud Gurujala,MALE,46,GENERAL,YSRCP,,,7284,3.65
+40,Patancheru,GENERAL,6,Syed Rahamath,MALE,45,GENERAL,AIMIM,,,4000,2.0
+40,Patancheru,GENERAL,7,Mohammed Wajid Ali,MALE,52,GENERAL,CPM,,,1507,0.75
+40,Patancheru,GENERAL,8,Sathyanarayana Singarapu,MALE,36,GENERAL,LSP,,,1361,0.68
+40,Patancheru,GENERAL,9,Syed Hameed,MALE,40,GENERAL,IND,,,1280,0.64
+40,Patancheru,GENERAL,10,Nota,,,,NOTA,,,1157,0.58
+40,Patancheru,GENERAL,11,T.D.S.Mani,MALE,40,GENERAL,BSP,,,949,0.48
+40,Patancheru,GENERAL,12,P.Mallesh,MALE,28,GENERAL,IND,,,889,0.45
+40,Patancheru,GENERAL,13,G. Venkata Giri,MALE,42,GENERAL,IND,,,617,0.31
+40,Patancheru,GENERAL,14,Yerra Devadanam,MALE,65,GENERAL,ICSP,,,530,0.27
+40,Patancheru,GENERAL,15,Mamidi Chukkaiah,MALE,54,GENERAL,IND,,,391,0.2
+40,Patancheru,GENERAL,16,Annam Praveen Kumar,MALE,32,GENERAL,IND,,,352,0.18
+40,Patancheru,GENERAL,17,Nune Prabhakar,MALE,46,GENERAL,IND,,,261,0.13
+40,Patancheru,GENERAL,18,Terupally Mohan Reddy,MALE,44,GENERAL,IND,,,157,0.08
+41,Dubbak,GENERAL,1,Solipteta Rama Linga Reddy,MALE,53,GENERAL,BRS,,,82231,53.37
+41,Dubbak,GENERAL,2,Cheruku Muthyam Reddy,MALE,72,GENERAL,INC,,,44306,28.75
+41,Dubbak,GENERAL,3,M.Raghunandan Rao,MALE,49,GENERAL,BJP,,,15133,9.82
+41,Dubbak,GENERAL,4,Gaddam Mohan Reddy,MALE,39,GENERAL,MASP,,,5307,3.44
+41,Dubbak,GENERAL,5,Rachakatla Laxmi,FEMALE,48,GENERAL,BSP,,,1993,1.29
+41,Dubbak,GENERAL,6,Nota,,,,NOTA,,,1519,0.99
+41,Dubbak,GENERAL,7,Chindam Rajukumar,MALE,51,GENERAL,IND,,,1086,0.7
+41,Dubbak,GENERAL,8,Bommera Anjaiah,MALE,56,GENERAL,IND,,,763,0.5
+41,Dubbak,GENERAL,9,Marapadaga Sravan Kumar,MALE,26,GENERAL,YSRCP,,,612,0.4
+41,Dubbak,GENERAL,10,Arukula Swamy,MALE,27,ST,IND,,,402,0.26
+41,Dubbak,GENERAL,11,Gondi Bhujangam,MALE,47,GENERAL,IND,,,378,0.25
+41,Dubbak,GENERAL,12,Jakkula Narsimulu,MALE,46,GENERAL,IND,,,353,0.23
+42,Gajwel,GENERAL,1,Kalvakuntla Chandrashekar Rao,MALE,60,GENERAL,BRS,,,86694,44.06
+42,Gajwel,GENERAL,2,Pratap Reddy Vanteru,MALE,51,GENERAL,TDP,,,67303,34.21
+42,Gajwel,GENERAL,3,Tumkunta Narsa Reddy,MALE,51,GENERAL,INC,,,34085,17.32
+42,Gajwel,GENERAL,4,Nallanagula Venkatesham,MALE,38,GENERAL,TPS,,,3127,1.59
+42,Gajwel,GENERAL,5,Nota,,,,NOTA,,,1592,0.81
+42,Gajwel,GENERAL,6,Gurrapu Ramulu,MALE,51,GENERAL,IND,,,1028,0.52
+42,Gajwel,GENERAL,7,Sudagani Venkatesh Goud,MALE,42,GENERAL,BSP,,,982,0.5
+42,Gajwel,GENERAL,8,K. Praveen Kumar Reddy,MALE,27,GENERAL,IND,,,647,0.33
+42,Gajwel,GENERAL,9,Chethireddy Linga Reddy,MALE,58,GENERAL,IND,,,547,0.28
+42,Gajwel,GENERAL,10,Donthi Purshotham Reddy,MALE,48,GENERAL,YSRCP,,,488,0.25
+42,Gajwel,GENERAL,11,Kunta Veera Reddy,MALE,58,GENERAL,MTP,,,266,0.14
+43,Medchal,GENERAL,1,Malipedhi Sudheer Reddy,MALE,61,GENERAL,BRS,,,114235,43.41
+43,Medchal,GENERAL,2,Thotakura Jangaiah Yadav,MALE,46,GENERAL,TDP,,,70780,26.9
+43,Medchal,GENERAL,3,Kichannagari Laxma Reddy (Klr),MALE,58,GENERAL,INC,,,58016,22.05
+43,Medchal,GENERAL,4,Dr. G.R.Linga Murthy,MALE,60,GENERAL,LSP,,,5076,1.93
+43,Medchal,GENERAL,5,B.Beenu Prakash,MALE,45,GENERAL,IND,,,4856,1.85
+43,Medchal,GENERAL,6,Chinthala Yadaiah,MALE,42,SC,CPM,,,1615,0.61
+43,Medchal,GENERAL,7,Bakkola Ram Mohan,MALE,40,SC,BSP,,,1327,0.5
+43,Medchal,GENERAL,8,Nota,,,,NOTA,,,1308,0.5
+43,Medchal,GENERAL,9,Kolkuri Satyanarayana,MALE,56,GENERAL,IND,,,1169,0.44
+43,Medchal,GENERAL,10,Prabhakar Reddy Geedipally,MALE,55,GENERAL,AAAP,,,697,0.26
+43,Medchal,GENERAL,11,Battini Raj Kumar,MALE,33,GENERAL,IND,,,690,0.26
+43,Medchal,GENERAL,12,Munuganti Narayana,MALE,47,GENERAL,JP,,,555,0.21
+43,Medchal,GENERAL,13,Kanuganti Sudhakar,MALE,32,GENERAL,IND,,,540,0.21
+43,Medchal,GENERAL,14,M.Balanarsimha Chary,MALE,29,GENERAL,IND,,,509,0.19
+43,Medchal,GENERAL,15,K.Renu Kumar,MALE,38,ST,NCP,,,502,0.19
+43,Medchal,GENERAL,16,Nakka Prabhakar Goud,MALE,47,GENERAL,IND,,,381,0.14
+43,Medchal,GENERAL,17,Hameed Ul Hak Choudari,MALE,46,GENERAL,IND,,,278,0.11
+43,Medchal,GENERAL,18,Jesudas Chakravarthy (Dass),MALE,39,GENERAL,IND,,,237,0.09
+43,Medchal,GENERAL,19,Avula Allaji Yadav,MALE,43,GENERAL,IND,,,184,0.07
+43,Medchal,GENERAL,20,B.Anantha Laxmi,FEMALE,30,GENERAL,IND,,,179,0.07
+44,Malkajgiri,GENERAL,1,C. Kanaka Reddy,MALE,56,GENERAL,BRS,,,77132,33.42
+44,Malkajgiri,GENERAL,2,Ram Chander Rao. N,MALE,54,GENERAL,BJP,,,74364,32.22
+44,Malkajgiri,GENERAL,3,Nandhikanti Sridhar,MALE,42,GENERAL,INC,,,37201,16.12
+44,Malkajgiri,GENERAL,4,G. Surya Narayana Reddy,MALE,67,GENERAL,YSRCP,,,14828,6.42
+44,Malkajgiri,GENERAL,5,Dilip Sankar Reddy,MALE,32,GENERAL,LSP,,,12121,5.25
+44,Malkajgiri,GENERAL,6,Sudhakar Dharanikota,MALE,54,GENERAL,AIMIM,,,3306,1.43
+44,Malkajgiri,GENERAL,7,Nota,,,,NOTA,,,1965,0.85
+44,Malkajgiri,GENERAL,8,Chandra Supriya,FEMALE,37,GENERAL,AAAP,,,1794,0.78
+44,Malkajgiri,GENERAL,9,D G Narshima Rao,MALE,59,GENERAL,CPM,,,1320,0.57
+44,Malkajgiri,GENERAL,10,Dr. Pitla Sreen Raj,MALE,39,GENERAL,JASPA,,,1150,0.5
+44,Malkajgiri,GENERAL,11,Md. Osman,MALE,34,GENERAL,IND,,,1013,0.44
+44,Malkajgiri,GENERAL,12,B. Sukumar,MALE,50,GENERAL,ICSP,,,860,0.37
+44,Malkajgiri,GENERAL,13,M N Jaisimha,MALE,38,GENERAL,NCP,,,675,0.29
+44,Malkajgiri,GENERAL,14,G. Nagaraj,MALE,29,GENERAL,IND,,,642,0.28
+44,Malkajgiri,GENERAL,15,Ved Vrath,MALE,62,SC,BSP,,,592,0.26
+44,Malkajgiri,GENERAL,16,M U Annie Neelima,FEMALE,40,GENERAL,IND,,,437,0.19
+44,Malkajgiri,GENERAL,17,Ramesh Loggari,MALE,37,GENERAL,IND,,,400,0.17
+44,Malkajgiri,GENERAL,18,Ginna Srinivas,MALE,42,GENERAL,AHNP,,,205,0.09
+44,Malkajgiri,GENERAL,19,S. Mahesh Sharma,MALE,37,GENERAL,IND,,,161,0.07
+44,Malkajgiri,GENERAL,20,Mohammed Zaid Ahmed,MALE,27,GENERAL,IND,,,155,0.07
+44,Malkajgiri,GENERAL,21,Nancharigala Vinender @ Vinay,MALE,34,SC,IND,,,147,0.06
+44,Malkajgiri,GENERAL,22,K. Dharma Reddy,MALE,63,GENERAL,TLP,,,130,0.06
+44,Malkajgiri,GENERAL,23,Bala Krishna Kukudala,MALE,29,GENERAL,RJD,,,120,0.05
+44,Malkajgiri,GENERAL,24,K. Ram Mohan,MALE,49,SC,IND,,,105,0.05
+45,Quthbullapur,GENERAL,1,K.P. Vivekanand,MALE,36,GENERAL,TDP,,,114363,39.38
+45,Quthbullapur,GENERAL,2,K Hanmanth Reddy,MALE,48,GENERAL,BRS,,,75339,25.94
+45,Quthbullapur,GENERAL,3,Kuna Srisailam Goud,MALE,48,GENERAL,INC,,,40283,13.87
+45,Quthbullapur,GENERAL,4,Kolan Srinivas Reddy,MALE,40,GENERAL,YSRCP,,,27039,9.31
+45,Quthbullapur,GENERAL,5,Mohd Ghousuddin,MALE,54,GENERAL,AIMIM,,,15128,5.21
+45,Quthbullapur,GENERAL,6,Shivaji Raju Pothuri,MALE,31,GENERAL,LSP,,,6486,2.23
+45,Quthbullapur,GENERAL,7,Nota,,,,NOTA,,,1392,0.48
+45,Quthbullapur,GENERAL,8,Gunja Srinivas,MALE,46,GENERAL,JASPA,,,1344,0.46
+45,Quthbullapur,GENERAL,9,Shaik Moinuddin Shah Quadri,MALE,36,GENERAL,IND,,,1267,0.44
+45,Quthbullapur,GENERAL,10,Sabera Begum,FEMALE,40,GENERAL,BSP,,,1140,0.39
+45,Quthbullapur,GENERAL,11,Kakani Hari Prasad,MALE,51,GENERAL,CPM,,,1059,0.36
+45,Quthbullapur,GENERAL,12,V.Kiran Kumar,MALE,35,GENERAL,PPOI,,,791,0.27
+45,Quthbullapur,GENERAL,13,Mohammed Yusufuddin,MALE,58,GENERAL,ANC,,,771,0.27
+45,Quthbullapur,GENERAL,14,Morthala Jaipal Reddy,MALE,41,GENERAL,AAAP,,,709,0.24
+45,Quthbullapur,GENERAL,15,Hari Narayana Eramadha,MALE,45,GENERAL,IND,,,608,0.21
+45,Quthbullapur,GENERAL,16,T. Inna Reddy,MALE,40,GENERAL,IND,,,512,0.18
+45,Quthbullapur,GENERAL,17,Mudireddy Ashok Reddy,MALE,51,GENERAL,IND,,,452,0.16
+45,Quthbullapur,GENERAL,18,M. Rekha,FEMALE,53,GENERAL,ICSP,,,347,0.12
+45,Quthbullapur,GENERAL,19,Mabbu Varalakshmi,FEMALE,29,SC,DABAP,,,280,0.1
+45,Quthbullapur,GENERAL,20,Mudimela Ramu,MALE,31,GENERAL,IND,,,276,0.1
+45,Quthbullapur,GENERAL,21,Cherpalli Ramu,MALE,25,GENERAL,IND,,,265,0.09
+45,Quthbullapur,GENERAL,22,B.Hanumantha Rao,MALE,64,GENERAL,IND,,,203,0.07
+45,Quthbullapur,GENERAL,23,T Show Reddy,MALE,57,GENERAL,IND,,,199,0.07
+45,Quthbullapur,GENERAL,24,Annarapu Subba Rayudu,MALE,42,GENERAL,IND,,,165,0.06
+46,Kukatpalle,GENERAL,1,Madhavaram Krishna Rao,MALE,46,GENERAL,TDP,,,99874,43.0
+46,Kukatpalle,GENERAL,2,G. Padma Rao,MALE,59,GENERAL,BRS,,,56688,24.41
+46,Kukatpalle,GENERAL,3,M.Narsimha Yadav,MALE,47,GENERAL,INC,,,23321,10.04
+46,Kukatpalle,GENERAL,4,Jampana Pratap,MALE,54,GENERAL,YSRCP,,,21887,9.42
+46,Kukatpalle,GENERAL,5,Katari Srinivasa Rao,MALE,44,GENERAL,LSP,,,13004,5.6
+46,Kukatpalle,GENERAL,6,Kusampudi Srinivas,MALE,37,GENERAL,SPS,,,6186,2.66
+46,Kukatpalle,GENERAL,7,G. Vijaya Bhaskar,MALE,50,GENERAL,IND,,,2139,0.92
+46,Kukatpalle,GENERAL,8,Nota,,,,NOTA,,,1664,0.72
+46,Kukatpalle,GENERAL,9,Ariginti Sharadha,FEMALE,38,GENERAL,AAAP,,,1367,0.59
+46,Kukatpalle,GENERAL,10,V. P. Narashimha Raju,MALE,62,GENERAL,JASPA,,,1057,0.46
+46,Kukatpalle,GENERAL,11,M. Narsing Rao,MALE,38,SC,IND,,,674,0.29
+46,Kukatpalle,GENERAL,12,M. Sudhakar,MALE,40,GENERAL,IND,,,461,0.2
+46,Kukatpalle,GENERAL,13,Kurapaty Srinivasa Raju,MALE,48,GENERAL,IND,,,428,0.18
+46,Kukatpalle,GENERAL,14,Mattapally Vasudeva Rao,MALE,48,GENERAL,IND,,,396,0.17
+46,Kukatpalle,GENERAL,15,T. Rambabu,MALE,26,GENERAL,PJDL,,,345,0.15
+46,Kukatpalle,GENERAL,16,Bandari Prabhu,MALE,65,GENERAL,IND,,,334,0.14
+46,Kukatpalle,GENERAL,17,K. Victor Paul,MALE,50,GENERAL,IND,,,300,0.13
+46,Kukatpalle,GENERAL,18,Shaik Mohammed Maqbool,MALE,48,GENERAL,ANC,,,234,0.1
+46,Kukatpalle,GENERAL,19,B Ram Mohan,MALE,35,GENERAL,IND,,,218,0.09
+46,Kukatpalle,GENERAL,20,Thumu Yella Rao,MALE,51,GENERAL,IND,,,217,0.09
+46,Kukatpalle,GENERAL,21,K Lazar,MALE,33,SC,IND,,,207,0.09
+46,Kukatpalle,GENERAL,22,Ravalla Omshanker,MALE,26,GENERAL,IND,,,204,0.09
+46,Kukatpalle,GENERAL,23,Md. Mansoor Ali,MALE,37,GENERAL,IND,,,196,0.08
+46,Kukatpalle,GENERAL,24,Menga Prabhakar,MALE,27,GENERAL,IND,,,168,0.07
+46,Kukatpalle,GENERAL,25,M. Sri Hari,MALE,36,GENERAL,PPOI,,,165,0.07
+46,Kukatpalle,GENERAL,26,B. Ajay Raj,MALE,28,GENERAL,IND,,,134,0.06
+46,Kukatpalle,GENERAL,27,Kalyankar Ramesh Chowdary Suryavamshi,MALE,60,GENERAL,RLD,,,118,0.05
+46,Kukatpalle,GENERAL,28,Shaik Younusuddin,MALE,38,GENERAL,IND,,,91,0.04
+46,Kukatpalle,GENERAL,29,Karre Jangaiah,MALE,46,GENERAL,IND,,,90,0.04
+46,Kukatpalle,GENERAL,30,Md. Shameem,MALE,48,GENERAL,IND,,,72,0.03
+47,Uppal,GENERAL,1,Nvss Prabhakar,MALE,48,GENERAL,BJP,,,82395,36.47
+47,Uppal,GENERAL,2,Bethi Subhas Reddy,MALE,50,GENERAL,BRS,,,68226,30.2
+47,Uppal,GENERAL,3,Bandari Lakshma Reddy,MALE,46,GENERAL,INC,,,34331,15.2
+47,Uppal,GENERAL,4,Ampala Padma Reddy,MALE,47,GENERAL,YSRCP,,,16394,7.26
+47,Uppal,GENERAL,5,Mohd Ayub Khan,MALE,31,GENERAL,AIMIM,,,6652,2.94
+47,Uppal,GENERAL,6,Kallu Venkat Reddy,MALE,39,GENERAL,LSP,,,6508,2.88
+47,Uppal,GENERAL,7,S.Narsimha Reddy,MALE,62,GENERAL,CPM,,,1973,0.87
+47,Uppal,GENERAL,8,Nota,,,,NOTA,,,1820,0.81
+47,Uppal,GENERAL,9,Rakesh Parepalli,MALE,25,GENERAL,AAAP,,,1056,0.47
+47,Uppal,GENERAL,10,Gouda Sudersan,MALE,42,SC,BSP,,,814,0.36
+47,Uppal,GENERAL,11,Samudrala Shiva Kumar,MALE,39,GENERAL,IND,,,776,0.34
+47,Uppal,GENERAL,12,Loka Rama Krishna,MALE,29,GENERAL,IND,,,657,0.29
+47,Uppal,GENERAL,13,Anthony David,MALE,45,GENERAL,ICSP,,,575,0.25
+47,Uppal,GENERAL,14,Kranthi Kumar S,MALE,31,GENERAL,IND,,,504,0.22
+47,Uppal,GENERAL,15,Venkat Kumar,MALE,27,GENERAL,PPOI,,,342,0.15
+47,Uppal,GENERAL,16,Nalla Radha Krishna,MALE,35,SC,IND,,,326,0.14
+47,Uppal,GENERAL,17,Jaya Prakash Agarwal,MALE,35,GENERAL,IND,,,315,0.14
+47,Uppal,GENERAL,18,Gadda Yugander,MALE,47,SC,IND,,,312,0.14
+47,Uppal,GENERAL,19,Deshagani Sambaiah,MALE,35,GENERAL,IND,,,288,0.13
+47,Uppal,GENERAL,20,Anil Kumar,MALE,39,GENERAL,IND,,,267,0.12
+47,Uppal,GENERAL,21,M.L. Kantha Reddy,MALE,60,GENERAL,IND,,,266,0.12
+47,Uppal,GENERAL,22,Nampally Chandra Shekar,MALE,35,GENERAL,IND,,,214,0.09
+47,Uppal,GENERAL,23,Erra Rajesh,MALE,33,SC,RSP,,,196,0.09
+47,Uppal,GENERAL,24,V.S.Vinod Kumar,MALE,48,GENERAL,IND,,,168,0.07
+47,Uppal,GENERAL,25,K.Mahinder,MALE,34,GENERAL,ABJS,,,168,0.07
+47,Uppal,GENERAL,26,Ponnam Devaraju Goud,MALE,44,GENERAL,BMUP,,,137,0.06
+47,Uppal,GENERAL,27,Jogu Jagan,MALE,31,SC,ANC,,,130,0.06
+47,Uppal,GENERAL,28,D Pavitra,FEMALE,38,SC,IND,,,125,0.06
+48,Ibrahimpatnam,GENERAL,1,Manchireddy Kishan Reddy,MALE,61,GENERAL,TDP,,,48397,26.67
+48,Ibrahimpatnam,GENERAL,2,Malreddy Ramreddy,MALE,55,GENERAL,IND,,,37341,20.58
+48,Ibrahimpatnam,GENERAL,3,Kyama Mallesha,MALE,45,GENERAL,INC,,,36865,20.32
+48,Ibrahimpatnam,GENERAL,4,Kancharla Chandrashekar Reddy,MALE,61,GENERAL,BRS,,,21779,12.0
+48,Ibrahimpatnam,GENERAL,5,Pagadala Yadaiah,MALE,44,GENERAL,CPM,,,14902,8.21
+48,Ibrahimpatnam,GENERAL,6,E.C. Shekhar Goud,MALE,59,GENERAL,YSRCP,,,10884,6.0
+48,Ibrahimpatnam,GENERAL,7,Pandi Pentaiah,MALE,51,SC,IND,,,985,0.54
+48,Ibrahimpatnam,GENERAL,8,Uppunanthala Balakrishna,MALE,27,GENERAL,TLP,,,850,0.47
+48,Ibrahimpatnam,GENERAL,9,Bathani Kistaiah,MALE,43,SC,IND,,,797,0.44
+48,Ibrahimpatnam,GENERAL,10,Nota,,,,NOTA,,,770,0.42
+48,Ibrahimpatnam,GENERAL,11,Raghupathi Kondru,MALE,45,SC,BSP,,,766,0.42
+48,Ibrahimpatnam,GENERAL,12,Kuntla Udaypal Reddy,MALE,31,GENERAL,IND,,,729,0.4
+48,Ibrahimpatnam,GENERAL,13,Vikram Gounti,MALE,30,GENERAL,AIMIM,,,701,0.39
+48,Ibrahimpatnam,GENERAL,14,Mohd Shafiuddin,MALE,48,GENERAL,IND,,,625,0.34
+48,Ibrahimpatnam,GENERAL,15,Dr.V.Ravi Kumar,MALE,41,GENERAL,IND,,,615,0.34
+48,Ibrahimpatnam,GENERAL,16,Ande Rambabu,MALE,33,GENERAL,IND,,,543,0.3
+48,Ibrahimpatnam,GENERAL,17,Solipuram Venkatram Reddy,MALE,39,GENERAL,IND,,,508,0.28
+48,Ibrahimpatnam,GENERAL,18,Vangeti Gopal Reddy,MALE,33,GENERAL,IND,,,465,0.26
+48,Ibrahimpatnam,GENERAL,19,P.Jangaiah,MALE,38,SC,IND,,,464,0.26
+48,Ibrahimpatnam,GENERAL,20,K.Ravinder Reddy,MALE,48,GENERAL,IND,,,424,0.23
+48,Ibrahimpatnam,GENERAL,21,Nallabolu Bhoji Reddy,MALE,46,GENERAL,IND,,,410,0.23
+48,Ibrahimpatnam,GENERAL,22,Kontham Madhava Reddy,MALE,48,GENERAL,IND,,,408,0.22
+48,Ibrahimpatnam,GENERAL,23,Boda Chandra Prakash,MALE,28,SC,AAAP,,,276,0.15
+48,Ibrahimpatnam,GENERAL,24,Ukkula Ashok,MALE,35,SC,IND,,,247,0.14
+48,Ibrahimpatnam,GENERAL,25,Ramavath Padma,FEMALE,37,ST,RJD,,,245,0.14
+48,Ibrahimpatnam,GENERAL,26,Thirumani Edukondalu,MALE,30,GENERAL,RLD,,,230,0.13
+48,Ibrahimpatnam,GENERAL,27,Elgapali Shriramulu,MALE,25,GENERAL,IND,,,217,0.12
+49,Lal Bahadur Nagar,GENERAL,1,Ryaga Krishnaiah,MALE,60,GENERAL,TDP,,,84316,33.61
+49,Lal Bahadur Nagar,GENERAL,2,Muddagowni Ram Mohan Goud,MALE,44,GENERAL,BRS,,,71791,28.62
+49,Lal Bahadur Nagar,GENERAL,3,Devireddy Sudheer Reddy,MALE,51,GENERAL,INC,,,56489,22.52
+49,Lal Bahadur Nagar,GENERAL,4,Putha Pratap Reddy,MALE,41,GENERAL,YSRCP,,,19376,7.72
+49,Lal Bahadur Nagar,GENERAL,5,Dosapati Ramu,MALE,38,GENERAL,LSP,,,8888,3.54
+49,Lal Bahadur Nagar,GENERAL,6,Nota,,,,NOTA,,,2248,0.9
+49,Lal Bahadur Nagar,GENERAL,7,Katakam Narisng Rao,MALE,49,GENERAL,AAAP,,,1552,0.62
+49,Lal Bahadur Nagar,GENERAL,8,Nandigama Venkatesh,MALE,44,SC,BSP,,,893,0.36
+49,Lal Bahadur Nagar,GENERAL,9,Gunnam Narendra Reddy,MALE,40,GENERAL,JASPA,,,833,0.33
+49,Lal Bahadur Nagar,GENERAL,10,Chepuri Raju,MALE,36,SC,DABAP,,,780,0.31
+49,Lal Bahadur Nagar,GENERAL,11,Jenige Vishnu Vardhan,MALE,31,SC,IND,,,778,0.31
+49,Lal Bahadur Nagar,GENERAL,12,N. Narender Reddy,MALE,28,GENERAL,IND,,,297,0.12
+49,Lal Bahadur Nagar,GENERAL,13,Gora Shyamsunder Goud,MALE,45,GENERAL,IND,,,296,0.12
+49,Lal Bahadur Nagar,GENERAL,14,P. Koteshwar Rao,MALE,25,GENERAL,IND,,,236,0.09
+49,Lal Bahadur Nagar,GENERAL,15,Kanka Charles Sampath Kiran,MALE,44,GENERAL,ICSP,,,229,0.09
+49,Lal Bahadur Nagar,GENERAL,16,Ija Venkatesh Goud,MALE,38,GENERAL,IND,,,211,0.08
+49,Lal Bahadur Nagar,GENERAL,17,Durga Prasad Gopu,MALE,39,GENERAL,IND,,,200,0.08
+49,Lal Bahadur Nagar,GENERAL,18,Chintha Kalyan Kumar,MALE,44,GENERAL,IND,,,194,0.08
+49,Lal Bahadur Nagar,GENERAL,19,V. Paramesh Goud,MALE,37,GENERAL,IND,,,168,0.07
+49,Lal Bahadur Nagar,GENERAL,20,P. Sudhakar Reddy,MALE,31,GENERAL,IND,,,166,0.07
+49,Lal Bahadur Nagar,GENERAL,21,Desireddy Venkata Ramana Reddy,MALE,46,GENERAL,IND,,,156,0.06
+49,Lal Bahadur Nagar,GENERAL,22,Gajvinkar Sudarshan,MALE,65,GENERAL,GAAP,,,132,0.05
+49,Lal Bahadur Nagar,GENERAL,23,Satish Gyara,MALE,27,SC,IND,,,110,0.04
+49,Lal Bahadur Nagar,GENERAL,24,Beeram Nagarjuna.,MALE,46,GENERAL,IND,,,92,0.04
+49,Lal Bahadur Nagar,GENERAL,25,Dharma Naik. R,MALE,42,ST,IND,,,92,0.04
+49,Lal Bahadur Nagar,GENERAL,26,Anugu Prabhakar Reddy,MALE,47,GENERAL,IND,,,74,0.03
+49,Lal Bahadur Nagar,GENERAL,27,Bhavani Pramod Kumar,MALE,43,GENERAL,IND,,,68,0.03
+49,Lal Bahadur Nagar,GENERAL,28,Srinivasulu Dontha,MALE,47,GENERAL,IND,,,68,0.03
+49,Lal Bahadur Nagar,GENERAL,29,Sabhavath Srinu,MALE,31,ST,RJD,,,64,0.03
+49,Lal Bahadur Nagar,GENERAL,30,Sutharapu Padmaiah,MALE,61,GENERAL,APRSSP,,,55,0.02
+50,Maheswaram,GENERAL,1,Teegala Krishna Reddy,MALE,66,GENERAL,TDP,,,93305,42.86
+50,Maheswaram,GENERAL,2,Malreddy Ranga Reddy,MALE,57,GENERAL,INC,,,62521,28.72
+50,Maheswaram,GENERAL,3,Kotha Manohar Reddy,MALE,39,GENERAL,BRS,,,42517,19.53
+50,Maheswaram,GENERAL,4,Syed Azeez Pasha,MALE,68,GENERAL,CPI,,,5333,2.45
+50,Maheswaram,GENERAL,5,Dubbaka. Ramchandraiah,MALE,38,SC,CPM,,,3068,1.41
+50,Maheswaram,GENERAL,6,Devi Prasad. Samudrala,MALE,28,GENERAL,LSP,,,2864,1.32
+50,Maheswaram,GENERAL,7,Nota,,,,NOTA,,,1396,0.64
+50,Maheswaram,GENERAL,8,Pole Kishtamma,FEMALE,51,SC,BSP,,,1133,0.52
+50,Maheswaram,GENERAL,9,L.Shankar Chauhan,MALE,29,ST,IND,,,807,0.37
+50,Maheswaram,GENERAL,10,Battula Venkatesh Goud,MALE,46,GENERAL,AAAP,,,742,0.34
+50,Maheswaram,GENERAL,11,M.M.Mahaboob Ali,MALE,32,GENERAL,IND,,,701,0.32
+50,Maheswaram,GENERAL,12,Bussu Chenna Krishna Reddy,MALE,49,GENERAL,IND,,,685,0.31
+50,Maheswaram,GENERAL,13,Parwaith Malla Reddy,MALE,56,GENERAL,IND,,,537,0.25
+50,Maheswaram,GENERAL,14,D.Madhavi,FEMALE,35,GENERAL,PPOI,,,453,0.21
+50,Maheswaram,GENERAL,15,Syed Layeeq Ali,MALE,36,GENERAL,IND,,,287,0.13
+50,Maheswaram,GENERAL,16,Megavath Rajender Prasad,MALE,28,ST,IND,,,273,0.13
+50,Maheswaram,GENERAL,17,Nomula Mallesh,MALE,35,SC,IND,,,248,0.11
+50,Maheswaram,GENERAL,18,Azam Hussain,MALE,34,GENERAL,IND,,,173,0.08
+50,Maheswaram,GENERAL,19,Syam Kumar Goud Dusari,MALE,61,GENERAL,MASP,,,172,0.08
+50,Maheswaram,GENERAL,20,V. Jaganlal Naik,MALE,32,ST,IND,,,162,0.07
+50,Maheswaram,GENERAL,21,S. Padmaiah,MALE,61,GENERAL,APRSSP,,,158,0.07
+50,Maheswaram,GENERAL,22,Mohammed Moin,MALE,25,GENERAL,GAAP,,,144,0.07
+51,Rajendranagar,GENERAL,1,T.Prakash Goud,MALE,55,GENERAL,TDP,,,77843,33.91
+51,Rajendranagar,GENERAL,2,Gnaneshwar,MALE,49,GENERAL,INC,,,51962,22.63
+51,Rajendranagar,GENERAL,3,Zakeer Hussain Javid,MALE,42,GENERAL,AIMIM,,,49053,21.37
+51,Rajendranagar,GENERAL,4,A. Swarnalatha Bheemarjun Reddy,FEMALE,34,GENERAL,BRS,,,29870,13.01
+51,Rajendranagar,GENERAL,5,Mujataba Ahmed Syed,MALE,52,GENERAL,YSRCP,,,6028,2.63
+51,Rajendranagar,GENERAL,6,Kotha Solkar Reddy,MALE,32,GENERAL,LSP,,,2191,0.95
+51,Rajendranagar,GENERAL,7,Pendyala Narsing Rao,MALE,38,SC,IND,,,1801,0.78
+51,Rajendranagar,GENERAL,8,Chalasani Vishnu Murthy,MALE,53,GENERAL,BSP,,,1511,0.66
+51,Rajendranagar,GENERAL,9,A.Narsing Rao,MALE,44,GENERAL,IND,,,1507,0.66
+51,Rajendranagar,GENERAL,10,Nota,,,,NOTA,,,1336,0.58
+51,Rajendranagar,GENERAL,11,Vundavalli Prameela,FEMALE,38,GENERAL,AAAP,,,1257,0.55
+51,Rajendranagar,GENERAL,12,Ch. Raja Shekar,MALE,46,GENERAL,IND,,,839,0.37
+51,Rajendranagar,GENERAL,13,Khaja Gayasuddin,MALE,39,GENERAL,IND,,,584,0.25
+51,Rajendranagar,GENERAL,14,Vanam Narender,MALE,30,GENERAL,PPOI,,,548,0.24
+51,Rajendranagar,GENERAL,15,Brahmanulapally Balaraj Mudiraj,MALE,39,GENERAL,IND,,,521,0.23
+51,Rajendranagar,GENERAL,16,P.Joshua Suresh Kumar,MALE,50,GENERAL,ICSP,,,488,0.21
+51,Rajendranagar,GENERAL,17,Musab Hussain,MALE,36,GENERAL,IND,,,381,0.17
+51,Rajendranagar,GENERAL,18,Syed Shafiullah Quadri,MALE,30,GENERAL,WPOI,,,361,0.16
+51,Rajendranagar,GENERAL,19,Syed Omer,MALE,40,GENERAL,JASPA,,,336,0.15
+51,Rajendranagar,GENERAL,20,Manne Lakshman Kumar,MALE,37,SC,JASP,,,278,0.12
+51,Rajendranagar,GENERAL,21,Haji Amiroddin,MALE,40,GENERAL,IND,,,259,0.11
+51,Rajendranagar,GENERAL,22,Sabhapati Goverdhan,MALE,33,GENERAL,ESP,,,228,0.1
+51,Rajendranagar,GENERAL,23,Azizunnisa Begum,FEMALE,50,GENERAL,IMPP,,,221,0.1
+51,Rajendranagar,GENERAL,24,K. Harinadh,MALE,35,GENERAL,IND,,,183,0.08
+52,Serilingampally,GENERAL,1,Arekapudi Gandhi,MALE,53,GENERAL,TDP,,,129796,45.87
+52,Serilingampally,GENERAL,2,Komaragoni Shanker Goud,MALE,60,GENERAL,BRS,,,53539,18.92
+52,Serilingampally,GENERAL,3,Bhikshapathi Yadav .M,MALE,64,GENERAL,INC,,,43384,15.33
+52,Serilingampally,GENERAL,4,Mukka Rupananda Reddy,MALE,53,GENERAL,YSRCP,,,24410,8.63
+52,Serilingampally,GENERAL,5,Nazeer Khan,MALE,38,GENERAL,AIMIM,,,11100,3.92
+52,Serilingampally,GENERAL,6,Gorthi Srinivas,MALE,47,GENERAL,LSP,,,9478,3.35
+52,Serilingampally,GENERAL,7,Matta Suresh Kumar,MALE,35,GENERAL,AAAP,,,3102,1.1
+52,Serilingampally,GENERAL,8,Nota,,,,NOTA,,,2054,0.73
+52,Serilingampally,GENERAL,9,Thempally Dinakara Sarma,MALE,39,GENERAL,BSP,,,1058,0.37
+52,Serilingampally,GENERAL,10,Tandra Kumar,MALE,46,GENERAL,MCPI,,,1009,0.36
+52,Serilingampally,GENERAL,11,Mohammed Mushiruddin Baba,MALE,43,GENERAL,IND,,,668,0.24
+52,Serilingampally,GENERAL,12,Rakthapu Sudhakar Goud,MALE,27,GENERAL,PJDL,,,580,0.2
+52,Serilingampally,GENERAL,13,Ravinder Uppula,MALE,41,GENERAL,IND,,,530,0.19
+52,Serilingampally,GENERAL,14,Phani Kumar Juvva,MALE,33,GENERAL,IND,,,384,0.14
+52,Serilingampally,GENERAL,15,Satish,MALE,36,GENERAL,IND,,,337,0.12
+52,Serilingampally,GENERAL,16,G.V. Srinivasa Rao,MALE,46,GENERAL,PPOI,,,334,0.12
+52,Serilingampally,GENERAL,17,Syed Hashmathullah Quadri,MALE,45,GENERAL,IUML,,,326,0.12
+52,Serilingampally,GENERAL,18,D. Srinivas,MALE,34,GENERAL,IND,,,194,0.07
+52,Serilingampally,GENERAL,19,Edara Jagan Mohan,MALE,30,GENERAL,IND,,,185,0.07
+52,Serilingampally,GENERAL,20,M. Samba Siva Prasad,MALE,44,GENERAL,IND,,,175,0.06
+52,Serilingampally,GENERAL,21,M.S. Nagaraju,MALE,61,GENERAL,ANC,,,164,0.06
+52,Serilingampally,GENERAL,22,Talari Gopal,MALE,38,SC,IND,,,137,0.05
+53,Chevella,SC,1,Kale Yadaiah,MALE,52,SC,INC,,,64182,39.48
+53,Chevella,SC,2,Korani Sayanna Ratnam,MALE,56,SC,BRS,,,63401,39.0
+53,Chevella,SC,3,Mekala Venkatesh,MALE,47,SC,TDP,,,15117,9.3
+53,Chevella,SC,4,Deshamolla Anjaneyulu,MALE,43,SC,IND,,,6799,4.18
+53,Chevella,SC,5,K. Satyaiah,MALE,50,SC,IND,,,3719,2.29
+53,Chevella,SC,6,Krishna Vemula,MALE,44,SC,BSP,,,2033,1.25
+53,Chevella,SC,7,Korani Dayanand,MALE,40,SC,YSRCP,,,1990,1.22
+53,Chevella,SC,8,Tolkatta Durga Prasad,MALE,28,SC,IND,,,1725,1.06
+53,Chevella,SC,9,Nota,,,,NOTA,,,1229,0.76
+53,Chevella,SC,10,Girigalla Manikyam,MALE,44,SC,GRIP,,,914,0.56
+53,Chevella,SC,11,Vanam Narsimha,MALE,45,SC,IND,,,681,0.42
+53,Chevella,SC,12,Peddagandu Madhusudhan,MALE,35,SC,AAAP,,,265,0.16
+53,Chevella,SC,13,Baindla Samaiah,MALE,62,SC,IND,,,263,0.16
+53,Chevella,SC,14,Jogu Ashok Kumar,MALE,30,SC,IND,,,253,0.16
+54,Pargi,GENERAL,1,Tammannagari Ram Mohan Reddy,MALE,49,GENERAL,INC,,,68098,45.34
+54,Pargi,GENERAL,2,Koppula Harishwar Reddy,MALE,67,GENERAL,BRS,,,62935,41.91
+54,Pargi,GENERAL,3,Kamatham Ram Reddy,MALE,75,GENERAL,BJP,,,13355,8.89
+54,Pargi,GENERAL,4,P. Ramaiah,MALE,44,SC,BSP,,,2260,1.5
+54,Pargi,GENERAL,5,Nota,,,,NOTA,,,1305,0.87
+54,Pargi,GENERAL,6,Kola Srinivas,MALE,45,GENERAL,IND,,,632,0.42
+54,Pargi,GENERAL,7,Karavelly Rukma Reddy,MALE,59,GENERAL,YSRCP,,,567,0.38
+54,Pargi,GENERAL,8,Ande Vijaya Kumar,MALE,54,GENERAL,IND,,,404,0.27
+54,Pargi,GENERAL,9,Emangaari Anjallaiah,MALE,57,GENERAL,IND,,,371,0.25
+54,Pargi,GENERAL,10,Yatakarla Krishnaiah,MALE,50,GENERAL,AAAP,,,251,0.17
+55,Vicarabad,SC,1,B.Sanjeeva Rao,MALE,60,SC,BRS,,,64592,46.84
+55,Vicarabad,SC,2,G.Prasad Kumar,MALE,49,SC,INC,,,54520,39.54
+55,Vicarabad,SC,3,Vadla Ramulu,MALE,44,SC,IND,,,6513,4.72
+55,Vicarabad,SC,4,Pushpa Leela Kondru,FEMALE,44,SC,BJP,,,6335,4.59
+55,Vicarabad,SC,5,Venkata Ramesh Tirupati,MALE,40,SC,BSP,,,2608,1.89
+55,Vicarabad,SC,6,Nota,,,,NOTA,,,1052,0.76
+55,Vicarabad,SC,7,Kranthi Kumar Chintala,MALE,26,SC,YSRCP,,,726,0.53
+55,Vicarabad,SC,8,P.Ravi,MALE,43,SC,IND,,,446,0.32
+55,Vicarabad,SC,9,T. Venkatesh,MALE,38,SC,AAAP,,,261,0.19
+55,Vicarabad,SC,10,P. Anandam,MALE,31,SC,IND,,,250,0.18
+55,Vicarabad,SC,11,Mala Jangaiah,MALE,62,SC,MCPI,,,217,0.16
+55,Vicarabad,SC,12,K. Pavan Kumar,MALE,36,SC,IND,,,206,0.15
+55,Vicarabad,SC,13,Nakkala Rathnam,MALE,35,SC,TLP,,,175,0.13
+56,Tandur,GENERAL,1,P. Mahender Reddy,MALE,50,GENERAL,BRS,,,61293,45.97
+56,Tandur,GENERAL,2,Malkud Narayan Rao,MALE,61,GENERAL,INC,,,45219,33.92
+56,Tandur,GENERAL,3,M Naresh,MALE,39,GENERAL,TDP,,,11362,8.52
+56,Tandur,GENERAL,4,Sri Gopal,MALE,43,SC,IND,,,4503,3.38
+56,Tandur,GENERAL,5,M . Prabhu Kumar,MALE,32,SC,YSRCP,,,4327,3.25
+56,Tandur,GENERAL,6,Chittempally Balaiah,MALE,60,SC,BSP,,,3151,2.36
+56,Tandur,GENERAL,7,Nota,,,,NOTA,,,1327,1.0
+56,Tandur,GENERAL,8,Syed Kamal Athar,MALE,52,GENERAL,WPOI,,,1091,0.82
+56,Tandur,GENERAL,9,Allipuram Rajashaker Reddy,MALE,38,GENERAL,AAAP,,,703,0.53
+56,Tandur,GENERAL,10,Manya Naik Powar,MALE,30,ST,IND,,,348,0.26
+57,Musheerabad,GENERAL,1,Dr.K Laxman,MALE,58,GENERAL,BJP,,,65209,43.22
+57,Musheerabad,GENERAL,2,Muta Gopal,MALE,61,GENERAL,BRS,,,37823,25.07
+57,Musheerabad,GENERAL,3,Vinay Kumar .P,MALE,57,GENERAL,INC,,,26808,17.77
+57,Musheerabad,GENERAL,4,Qhasim Shaheen,MALE,45,GENERAL,AIMIM,,,5659,3.75
+57,Musheerabad,GENERAL,5,Gade Bal Reddy,MALE,65,GENERAL,YSRCP,,,5265,3.49
+57,Musheerabad,GENERAL,6,P. Rohit Kumar,MALE,40,GENERAL,LSP,,,2473,1.64
+57,Musheerabad,GENERAL,7,M Srinivas,MALE,46,GENERAL,CPM,,,1855,1.23
+57,Musheerabad,GENERAL,8,Nota,,,,NOTA,,,1101,0.73
+57,Musheerabad,GENERAL,9,M.A. Qavi Abbasi,MALE,42,GENERAL,AAAP,,,1038,0.69
+57,Musheerabad,GENERAL,10,M. Solomon Raju,MALE,47,GENERAL,ICSP,,,748,0.5
+57,Musheerabad,GENERAL,11,Merugu Srinivas,MALE,36,GENERAL,IND,,,586,0.39
+57,Musheerabad,GENERAL,12,Rani Kadasi,FEMALE,43,SC,JASPA,,,416,0.28
+57,Musheerabad,GENERAL,13,Syed Raheemuddin,MALE,37,GENERAL,BSP,,,251,0.17
+57,Musheerabad,GENERAL,14,M Pramila Bai,FEMALE,65,GENERAL,PPOI,,,235,0.16
+57,Musheerabad,GENERAL,15,Kandagatla Swamy,MALE,54,GENERAL,RLD,,,235,0.16
+57,Musheerabad,GENERAL,16,Chandu. B,MALE,33,GENERAL,IND,,,224,0.15
+57,Musheerabad,GENERAL,17,Gampala Jayaraj,MALE,53,GENERAL,IND,,,216,0.14
+57,Musheerabad,GENERAL,18,Mohd. Moosa. Ba.,MALE,34,GENERAL,IND,,,162,0.11
+57,Musheerabad,GENERAL,19,Govind Ratan Parke,MALE,48,GENERAL,RSPI,,,137,0.09
+57,Musheerabad,GENERAL,20,Shabber Khan Hassan,MALE,37,GENERAL,IND,,,116,0.08
+57,Musheerabad,GENERAL,21,Dasaram Satish Kumar,MALE,29,GENERAL,TLP,,,100,0.07
+57,Musheerabad,GENERAL,22,Ramesh Pothula,MALE,25,GENERAL,IND,,,91,0.06
+57,Musheerabad,GENERAL,23,K. Sundeep Moses,MALE,27,GENERAL,IND,,,77,0.05
+57,Musheerabad,GENERAL,24,Sayola Renuka,FEMALE,30,SC,IND,,,59,0.04
+58,Malakpet,GENERAL,1,Ahmed Bin Abdullah Balala,MALE,44,GENERAL,AIMIM,,,58976,47.24
+58,Malakpet,GENERAL,2,B. Venkat Reddy,MALE,56,GENERAL,BJP,,,35713,28.61
+58,Malakpet,GENERAL,3,C. Satish Kumar,MALE,63,GENERAL,BRS,,,11378,9.11
+58,Malakpet,GENERAL,4,V.N. Reddy,MALE,60,GENERAL,INC,,,8320,6.66
+58,Malakpet,GENERAL,5,Hari Krishna Goud Lingala,MALE,39,GENERAL,YSRCP,,,5421,4.34
+58,Malakpet,GENERAL,6,Alleni Babu Rao,MALE,29,GENERAL,LSP,,,1522,1.22
+58,Malakpet,GENERAL,7,Nota,,,,NOTA,,,856,0.69
+58,Malakpet,GENERAL,8,Gaddam Sridhar,MALE,45,SC,AAAP,,,824,0.66
+58,Malakpet,GENERAL,9,Hanumanth Rao,MALE,43,GENERAL,IND,,,549,0.44
+58,Malakpet,GENERAL,10,P. Aravind,MALE,33,SC,BSP,,,458,0.37
+58,Malakpet,GENERAL,11,Sardar Jagjit Singh,MALE,44,GENERAL,IND,,,269,0.22
+58,Malakpet,GENERAL,12,Taher Kamal Khundmir,MALE,56,GENERAL,IND,,,184,0.15
+58,Malakpet,GENERAL,13,Rasheeduddin Md,MALE,57,GENERAL,JAP,,,120,0.1
+58,Malakpet,GENERAL,14,Syed Anwar,MALE,34,GENERAL,SRS,,,116,0.09
+58,Malakpet,GENERAL,15,Md. Mahmood Ali Khan,MALE,49,GENERAL,IND,,,81,0.06
+58,Malakpet,GENERAL,16,L. Ashoknath,MALE,44,SC,IND,,,56,0.04
+59,Amberpet,GENERAL,1,G.Kishan Reddy,MALE,54,GENERAL,BJP,,,81430,55.7
+59,Amberpet,GENERAL,2,Aedla Sudhakar Reddy,MALE,46,GENERAL,BRS,,,18832,12.88
+59,Amberpet,GENERAL,3,Naliganti Sharath Babu,MALE,28,SC,AIMIM,,,17536,12.0
+59,Amberpet,GENERAL,4,V.Hanumanta Rao,MALE,66,GENERAL,INC,,,16975,11.61
+59,Amberpet,GENERAL,5,Mohammed,MALE,48,GENERAL,YSRCP,,,2692,1.84
+59,Amberpet,GENERAL,6,M.Mahender,MALE,41,SC,CPM,,,1859,1.27
+59,Amberpet,GENERAL,7,Jagan Mohan Metla,MALE,43,GENERAL,LSP,,,1380,0.94
+59,Amberpet,GENERAL,8,N.Sridhar Rao,MALE,58,GENERAL,AAAP,,,739,0.51
+59,Amberpet,GENERAL,9,Nota,,,,NOTA,,,583,0.4
+59,Amberpet,GENERAL,10,Syedjalaluddin,MALE,46,GENERAL,MMSP,,,451,0.31
+59,Amberpet,GENERAL,11,Syed Faqruddin Ali Ahmed,MALE,35,GENERAL,WPOI,,,423,0.29
+59,Amberpet,GENERAL,12,Mohammed Maqbool,MALE,43,GENERAL,IND,,,412,0.28
+59,Amberpet,GENERAL,13,Bathula Ravi,MALE,43,SC,IND,,,372,0.25
+59,Amberpet,GENERAL,14,S.Sanjeeva Chary,MALE,46,GENERAL,BSP,,,261,0.18
+59,Amberpet,GENERAL,15,Annumulasathyanaray Anarao,MALE,66,SC,ICSP,,,168,0.11
+59,Amberpet,GENERAL,16,Habib Ahmad Alias Farooq,MALE,56,GENERAL,IND,,,163,0.11
+59,Amberpet,GENERAL,17,Md. Abdul Gafoor,MALE,61,GENERAL,IND,,,162,0.11
+59,Amberpet,GENERAL,18,Kalerusrinivasrao,MALE,44,GENERAL,IND,,,152,0.1
+59,Amberpet,GENERAL,19,Surender Goud,MALE,60,GENERAL,NCP,,,151,0.1
+59,Amberpet,GENERAL,20,Srinivas Rao Boini,MALE,49,GENERAL,TPS,,,151,0.1
+59,Amberpet,GENERAL,21,Kethatishyam,MALE,45,SC,IND,,,146,0.1
+59,Amberpet,GENERAL,22,Andrapusudarshan Gangaputra,MALE,38,GENERAL,SHS,,,145,0.1
+59,Amberpet,GENERAL,23,Ponnapati Chinna Linganna,MALE,46,SC,IND,,,140,0.1
+59,Amberpet,GENERAL,24,A.Nagaraju,MALE,45,GENERAL,IND,,,132,0.09
+59,Amberpet,GENERAL,25,Konda Reddy N,MALE,34,GENERAL,PPOI,,,112,0.08
+59,Amberpet,GENERAL,26,K.K.Srinivas,MALE,42,GENERAL,IND,,,107,0.07
+59,Amberpet,GENERAL,27,Boie Venkat Ramana,MALE,45,SC,IND,,,99,0.07
+59,Amberpet,GENERAL,28,Nirmala Gandha Mala,FEMALE,34,SC,IND,,,83,0.06
+59,Amberpet,GENERAL,29,K. Venkatanarayana,MALE,27,SC,IND,,,79,0.05
+59,Amberpet,GENERAL,30,Md.Raheem Uddin,MALE,27,GENERAL,IND,,,77,0.05
+59,Amberpet,GENERAL,31,Mohammed Imtiazghori,MALE,26,GENERAL,JAP,,,65,0.04
+59,Amberpet,GENERAL,32,Md.Qadeer Khan,MALE,40,GENERAL,IUML,,,59,0.04
+59,Amberpet,GENERAL,33,B.Sridhar Yadav,MALE,29,GENERAL,IND,,,53,0.04
+60,Khairatabad,GENERAL,1,Chintala Rama Chandra Reddy,MALE,59,GENERAL,BJP,,,53102,36.91
+60,Khairatabad,GENERAL,2,Danam Nagender,MALE,51,GENERAL,INC,,,32256,22.42
+60,Khairatabad,GENERAL,3,P.Vijaya Reddy,FEMALE,34,GENERAL,YSRCP,,,23845,16.57
+60,Khairatabad,GENERAL,4,Manne Govardhan Reddy,MALE,43,GENERAL,BRS,,,19768,13.74
+60,Khairatabad,GENERAL,5,Narsing Rao Gonti,MALE,49,GENERAL,SPS,,,6025,4.19
+60,Khairatabad,GENERAL,6,Durga Ramachandra Rao,MALE,41,GENERAL,LSP,,,2887,2.01
+60,Khairatabad,GENERAL,7,Nota,,,,NOTA,,,1482,1.03
+60,Khairatabad,GENERAL,8,E.Raju,MALE,45,SC,JASPA,,,607,0.42
+60,Khairatabad,GENERAL,9,Shabad Ramesh,MALE,42,GENERAL,IND,,,387,0.27
+60,Khairatabad,GENERAL,10,Joseph David,MALE,31,GENERAL,ICSP,,,340,0.24
+60,Khairatabad,GENERAL,11,Syed Mujjeeb Raoof,MALE,46,GENERAL,MMSP,,,317,0.22
+60,Khairatabad,GENERAL,12,E Hemalatha,FEMALE,39,GENERAL,SUCI,,,312,0.22
+60,Khairatabad,GENERAL,13,Cinga Jogi Murali,MALE,51,GENERAL,PPOI,,,274,0.19
+60,Khairatabad,GENERAL,14,Saleh Baladraf,MALE,42,GENERAL,BSP,,,255,0.18
+60,Khairatabad,GENERAL,15,Muneer Alam Khan,MALE,45,GENERAL,MBT,,,245,0.17
+60,Khairatabad,GENERAL,16,Paladugu Anil Kumar,MALE,47,SC,RPI,,,218,0.15
+60,Khairatabad,GENERAL,17,M Krishna,MALE,45,SC,IND,,,178,0.12
+60,Khairatabad,GENERAL,18,Mohd Jahangir,MALE,44,GENERAL,IUML,,,172,0.12
+60,Khairatabad,GENERAL,19,Mohammed Abdul Hakeem,MALE,52,GENERAL,WPOI,,,142,0.1
+60,Khairatabad,GENERAL,20,A.R. Arun Kumar,MALE,37,GENERAL,IND,,,138,0.1
+60,Khairatabad,GENERAL,21,Md Murtuza Ali Khan,MALE,31,GENERAL,JAP,,,115,0.08
+60,Khairatabad,GENERAL,22,Dr.Mohd Shafi Ur Rahman,MALE,39,GENERAL,IND,,,109,0.08
+60,Khairatabad,GENERAL,23,Paul Sathyanadhan David,MALE,56,GENERAL,IND,,,108,0.08
+60,Khairatabad,GENERAL,24,Bitla David Chakravarthy,MALE,32,GENERAL,IND,,,101,0.07
+60,Khairatabad,GENERAL,25,P.Suresh,MALE,39,GENERAL,IND,,,97,0.07
+60,Khairatabad,GENERAL,26,R.Mahesh Kumar,MALE,33,SC,ABJS,,,80,0.06
+60,Khairatabad,GENERAL,27,G.Naresh,MALE,32,SC,IND,,,67,0.05
+60,Khairatabad,GENERAL,28,V.Srinivas Rao,MALE,45,GENERAL,IND,,,65,0.05
+60,Khairatabad,GENERAL,29,G. Ravi Chandran,MALE,41,SC,IND,,,61,0.04
+60,Khairatabad,GENERAL,30,Rajani C.Venu Gopal,FEMALE,34,GENERAL,IND,,,59,0.04
+60,Khairatabad,GENERAL,31,M. Vinod Kumar Yadav,MALE,36,GENERAL,IND,,,53,0.04
+61,Jubilee Hills,GENERAL,1,Maganti Gopinath,MALE,50,GENERAL,TDP,,,50898,30.78
+61,Jubilee Hills,GENERAL,2,Naveen Yadav V,MALE,31,GENERAL,AIMIM,,,41656,25.19
+61,Jubilee Hills,GENERAL,3,P Vishnuvardhan Reddy,MALE,34,GENERAL,INC,,,33642,20.34
+61,Jubilee Hills,GENERAL,4,G Raja Mouli (G.Murali Goud),MALE,50,GENERAL,BRS,,,18436,11.15
+61,Jubilee Hills,GENERAL,5,Kotim Reddy Vinay Reddy,MALE,41,GENERAL,YSRCP,,,10528,6.37
+61,Jubilee Hills,GENERAL,6,B Sambi Reddy,MALE,35,GENERAL,LSP,,,3152,1.91
+61,Jubilee Hills,GENERAL,7,Nota,,,,NOTA,,,1037,0.63
+61,Jubilee Hills,GENERAL,8,K Subhash Chandra Singh,MALE,53,GENERAL,ICSP,,,959,0.58
+61,Jubilee Hills,GENERAL,9,Ramgopal Yadav,MALE,37,GENERAL,AAAP,,,892,0.54
+61,Jubilee Hills,GENERAL,10,Sudarshanam Venkateshwarulu,MALE,47,GENERAL,JASPA,,,724,0.44
+61,Jubilee Hills,GENERAL,11,R.V.R.V Prasad,MALE,48,GENERAL,BSP,,,654,0.4
+61,Jubilee Hills,GENERAL,12,Md Zaheed Khan,MALE,38,GENERAL,TMOR,,,617,0.37
+61,Jubilee Hills,GENERAL,13,M D Hussain,MALE,33,GENERAL,CPM,,,481,0.29
+61,Jubilee Hills,GENERAL,14,A.Naveen Yadav,MALE,31,GENERAL,IND,,,390,0.24
+61,Jubilee Hills,GENERAL,15,Dr B. Uday Kiran,MALE,33,GENERAL,WPOI,,,306,0.19
+61,Jubilee Hills,GENERAL,16,B Satyanarayana,MALE,52,SC,RPI(A),,,214,0.13
+61,Jubilee Hills,GENERAL,17,Dr. Ravi Kumar T,MALE,39,GENERAL,IND,,,168,0.1
+61,Jubilee Hills,GENERAL,18,A Praveen Kumar,MALE,32,SC,ANC,,,162,0.1
+61,Jubilee Hills,GENERAL,19,Abdul Waheed,MALE,42,GENERAL,JD(U),,,150,0.09
+61,Jubilee Hills,GENERAL,20,M Naresh Kumar,MALE,30,GENERAL,IND,,,117,0.07
+61,Jubilee Hills,GENERAL,21,G Satyanarayana,MALE,64,GENERAL,IND,,,96,0.06
+61,Jubilee Hills,GENERAL,22,M Kalyana Rama Krishna,MALE,48,GENERAL,NBNP,,,89,0.05
+62,Sanathnagar,GENERAL,1,Talasani Srinivas Yadav,MALE,48,GENERAL,TDP,,,56475,45.27
+62,Sanathnagar,GENERAL,2,Dande Vithal,MALE,44,GENERAL,BRS,,,29014,23.26
+62,Sanathnagar,GENERAL,3,Marri Shashidhar Reddy,MALE,64,GENERAL,INC,,,23820,19.09
+62,Sanathnagar,GENERAL,4,Vellala Ram Mohan,MALE,40,GENERAL,YSRCP,,,5833,4.68
+62,Sanathnagar,GENERAL,5,Hymavati Sagi,FEMALE,39,GENERAL,LSP,,,3975,3.19
+62,Sanathnagar,GENERAL,6,Ambika Krishna,FEMALE,25,GENERAL,AAAP,,,1235,0.99
+62,Sanathnagar,GENERAL,7,Nota,,,,NOTA,,,1041,0.83
+62,Sanathnagar,GENERAL,8,Dagilla Dayanand Rao,MALE,45,GENERAL,BSP,,,515,0.41
+62,Sanathnagar,GENERAL,9,Cherlapally Neetha Goud,FEMALE,45,GENERAL,JASPA,,,362,0.29
+62,Sanathnagar,GENERAL,10,Gajadhar Gajju Kolariya,MALE,44,GENERAL,SHS,,,357,0.29
+62,Sanathnagar,GENERAL,11,S Sambhu Kalyan,MALE,32,GENERAL,PPOI,,,342,0.27
+62,Sanathnagar,GENERAL,12,Basa Krupanandam,MALE,48,GENERAL,ICSP,,,276,0.22
+62,Sanathnagar,GENERAL,13,B Chandrashekar,MALE,29,GENERAL,IND,,,240,0.19
+62,Sanathnagar,GENERAL,14,Mohd Ather Hussain,MALE,27,GENERAL,IUML,,,220,0.18
+62,Sanathnagar,GENERAL,15,Ramesh Ravuri,MALE,42,GENERAL,IND,,,215,0.17
+62,Sanathnagar,GENERAL,16,Ranjit Kumar Sanghishetty,MALE,25,GENERAL,MBT,,,144,0.12
+62,Sanathnagar,GENERAL,17,Mahip Jain,MALE,44,GENERAL,IND,,,141,0.11
+62,Sanathnagar,GENERAL,18,Putnala Rajeshwar (Rajanna),MALE,51,GENERAL,JD(U),,,134,0.11
+62,Sanathnagar,GENERAL,19,M K Ibrahim Ali,MALE,52,GENERAL,NBNP,,,102,0.08
+62,Sanathnagar,GENERAL,20,Basanti Rajpurohit,FEMALE,32,GENERAL,BUDM,,,97,0.08
+62,Sanathnagar,GENERAL,21,Anki Reddy Gopi Krishna,MALE,32,GENERAL,IND,,,80,0.06
+62,Sanathnagar,GENERAL,22,Nandikanti Sai Kumar,MALE,34,GENERAL,BMUP,,,65,0.05
+62,Sanathnagar,GENERAL,23,Praganapuram Sagar,MALE,31,GENERAL,TLP,,,63,0.05
+63,Nampally,GENERAL,1,Jaffar Hussain,MALE,54,GENERAL,AIMIM,,,64066,47.48
+63,Nampally,GENERAL,2,Mohammed Feroz Khan,MALE,42,GENERAL,TDP,,,46356,34.35
+63,Nampally,GENERAL,3,E. Vinod Kumar,MALE,53,GENERAL,INC,,,8818,6.53
+63,Nampally,GENERAL,4,K. Hanmantha Rao,MALE,69,GENERAL,BRS,,,6327,4.69
+63,Nampally,GENERAL,5,Shahzoor Ali Siddiqui,MALE,35,GENERAL,YSRCP,,,2795,2.07
+63,Nampally,GENERAL,6,Kanthimathi Kannan,FEMALE,56,GENERAL,LSP,,,1852,1.37
+63,Nampally,GENERAL,7,K Anitha,FEMALE,38,GENERAL,IND,,,1269,0.94
+63,Nampally,GENERAL,8,Nota,,,,NOTA,,,855,0.63
+63,Nampally,GENERAL,9,Mohammed Abdul Muqeet,MALE,43,GENERAL,BSP,,,452,0.33
+63,Nampally,GENERAL,10,C Laxmi,FEMALE,47,GENERAL,BCUF,,,374,0.28
+63,Nampally,GENERAL,11,G Manmohan,MALE,42,SC,IND,,,315,0.23
+63,Nampally,GENERAL,12,H. Nagaraja Rao,MALE,35,GENERAL,PPOI,,,223,0.17
+63,Nampally,GENERAL,13,M Venkata Swamy,MALE,44,SC,RPI(A),,,175,0.13
+63,Nampally,GENERAL,14,Shameem Begum,FEMALE,34,GENERAL,IND,,,172,0.13
+63,Nampally,GENERAL,15,Mohammed Abdul Khadeer,MALE,46,GENERAL,MMSP,,,113,0.08
+63,Nampally,GENERAL,16,Masood Ahmed,MALE,31,GENERAL,IND,,,113,0.08
+63,Nampally,GENERAL,17,Yerraballi Durgeshwar,MALE,38,SC,IND,,,100,0.07
+63,Nampally,GENERAL,18,G Amarender,MALE,42,SC,IND,,,100,0.07
+63,Nampally,GENERAL,19,Mohd Shafiuddin,MALE,33,GENERAL,IND,,,95,0.07
+63,Nampally,GENERAL,20,B Geeta Bai,FEMALE,44,GENERAL,IND,,,84,0.06
+63,Nampally,GENERAL,21,Mohd. Muzafar Ali,MALE,37,GENERAL,ANC,,,82,0.06
+63,Nampally,GENERAL,22,G. Raja Gopal Chary,MALE,45,GENERAL,IND,,,68,0.05
+63,Nampally,GENERAL,23,Suresh Kumar Pathakoti,MALE,31,GENERAL,IND,,,67,0.05
+63,Nampally,GENERAL,24,Vinod Kumar,MALE,25,GENERAL,IND,,,65,0.05
+64,Karwan,GENERAL,1,Kausar Moinuddin,MALE,42,GENERAL,AIMIM,,,86391,53.95
+64,Karwan,GENERAL,2,Baddam Bal Reddy,MALE,68,GENERAL,BJP,,,48614,30.36
+64,Karwan,GENERAL,3,T. Jeevan Singh,MALE,49,GENERAL,BRS,,,10760,6.72
+64,Karwan,GENERAL,4,T. Roop Singh,MALE,53,GENERAL,INC,,,6512,4.07
+64,Karwan,GENERAL,5,Balakar Srikanthlal,MALE,34,GENERAL,YSRCP,,,2018,1.26
+64,Karwan,GENERAL,6,Md Afzal,MALE,45,GENERAL,AAAP,,,1272,0.79
+64,Karwan,GENERAL,7,Guttamedi Vittalaiah,MALE,48,GENERAL,CPM,,,978,0.61
+64,Karwan,GENERAL,8,Nota,,,,NOTA,,,587,0.37
+64,Karwan,GENERAL,9,Anand Goud G,MALE,36,GENERAL,IND,,,573,0.36
+64,Karwan,GENERAL,10,Meesala Gopal Saibaba,MALE,45,SC,LSP,,,496,0.31
+64,Karwan,GENERAL,11,Md Abdullah Reddy Kallem,MALE,29,GENERAL,ESP,,,477,0.3
+64,Karwan,GENERAL,12,Mohd Abdul Raheem,MALE,44,GENERAL,IND,,,376,0.23
+64,Karwan,GENERAL,13,Syed Raheemuddin,MALE,33,GENERAL,BSP,,,310,0.19
+64,Karwan,GENERAL,14,Sandeep Yadav Akula,MALE,26,GENERAL,IND,,,215,0.13
+64,Karwan,GENERAL,15,Poola Arundhathi,FEMALE,43,GENERAL,PPOI,,,200,0.12
+64,Karwan,GENERAL,16,Nisar Ahmed Baig,MALE,56,GENERAL,IND,,,164,0.1
+64,Karwan,GENERAL,17,Mohd Abdul Azeem (Javeed),MALE,44,GENERAL,IMPP,,,99,0.06
+64,Karwan,GENERAL,18,Sadhan. P,MALE,26,GENERAL,JAP,,,87,0.05
+65,Goshamahal,GENERAL,1,T. Raja Singh,MALE,36,GENERAL,BJP,,,92757,58.51
+65,Goshamahal,GENERAL,2,M. Mukesh Goud,MALE,55,GENERAL,INC,,,45964,28.99
+65,Goshamahal,GENERAL,3,Nand Kishore Vyas,MALE,44,GENERAL,IND,,,7123,4.49
+65,Goshamahal,GENERAL,4,Prem Kumar Dhoot,MALE,49,GENERAL,BRS,,,6312,3.98
+65,Goshamahal,GENERAL,5,Bapuji,MALE,36,GENERAL,BSP,,,1690,1.07
+65,Goshamahal,GENERAL,6,Raghavendra Mettu,MALE,26,GENERAL,YSRCP,,,1337,0.84
+65,Goshamahal,GENERAL,7,Nota,,,,NOTA,,,1076,0.68
+65,Goshamahal,GENERAL,8,Syed Shaheen Shah,MALE,47,GENERAL,IND,,,587,0.37
+65,Goshamahal,GENERAL,9,Ambika Rani,FEMALE,39,GENERAL,NBNP,,,471,0.3
+65,Goshamahal,GENERAL,10,Syed Siddiq Akbar Ali,MALE,45,GENERAL,MMSP,,,234,0.15
+65,Goshamahal,GENERAL,11,A. Praneeth Reddy,MALE,29,GENERAL,ICSP,,,223,0.14
+65,Goshamahal,GENERAL,12,Shankar Singh Jamedar,MALE,42,GENERAL,IND,,,193,0.12
+65,Goshamahal,GENERAL,13,Jogender Gupta,MALE,33,GENERAL,IND,,,144,0.09
+65,Goshamahal,GENERAL,14,Arvind Singh Panwale,MALE,31,GENERAL,IND,,,114,0.07
+65,Goshamahal,GENERAL,15,Muraharikar Prashanth,MALE,35,GENERAL,RLD,,,104,0.07
+65,Goshamahal,GENERAL,16,Milind Raj Singh,MALE,44,GENERAL,IND,,,100,0.06
+65,Goshamahal,GENERAL,17,Kamsali Nagabhushana Chary,MALE,47,GENERAL,TPS,,,99,0.06
+66,Charminar,GENERAL,1,Syed Ahmed Pasha Quadri,MALE,60,GENERAL,AIMIM,,,62941,57.11
+66,Charminar,GENERAL,2,M A Basith,MALE,60,GENERAL,TDP,,,26326,23.89
+66,Charminar,GENERAL,3,Mir Inayath Ali Baqri,MALE,44,GENERAL,BRS,,,8275,7.51
+66,Charminar,GENERAL,4,K Venkatesh,MALE,43,GENERAL,INC,,,5598,5.08
+66,Charminar,GENERAL,5,Majid Ahmed Khan,MALE,34,GENERAL,MBT,,,2244,2.04
+66,Charminar,GENERAL,6,Mir Mohammed Ali,MALE,45,GENERAL,AAAP,,,1045,0.95
+66,Charminar,GENERAL,7,K Ram Kumar,MALE,38,GENERAL,IND,,,967,0.88
+66,Charminar,GENERAL,8,Nota,,,,NOTA,,,958,0.87
+66,Charminar,GENERAL,9,T Srinivasa Rao,MALE,36,GENERAL,YSRCP,,,681,0.62
+66,Charminar,GENERAL,10,Sreekrishana,MALE,42,GENERAL,BSP,,,303,0.27
+66,Charminar,GENERAL,11,Kanta Devi,FEMALE,49,SC,TECPI,,,255,0.23
+66,Charminar,GENERAL,12,Madhununthni Srinivas,MALE,33,GENERAL,IND,,,200,0.18
+66,Charminar,GENERAL,13,P. Gopal,MALE,38,SC,TPS,,,176,0.16
+66,Charminar,GENERAL,14,Md Ayub Khan,MALE,58,GENERAL,JASPA,,,153,0.14
+66,Charminar,GENERAL,15,Bhagwan Das Sanklu,MALE,54,GENERAL,IND,,,90,0.08
+67,Chandrayangutta,GENERAL,1,Akbaruddin Owaisi,MALE,43,GENERAL,AIMIM,,,80393,59.19
+67,Chandrayangutta,GENERAL,2,Dr. Khayam Khan,MALE,52,GENERAL,MBT,,,21119,15.55
+67,Chandrayangutta,GENERAL,3,M. Prakash Mudiraj,MALE,53,GENERAL,TDP,,,17391,12.8
+67,Chandrayangutta,GENERAL,4,Muppidi Seetharam Reddy,MALE,46,GENERAL,BRS,,,7278,5.36
+67,Chandrayangutta,GENERAL,5,B.R. Sadanand,MALE,40,GENERAL,INC,,,5120,3.77
+67,Chandrayangutta,GENERAL,6,Mohd Samiullah Qureshi,MALE,49,GENERAL,AAAP,,,597,0.44
+67,Chandrayangutta,GENERAL,7,Nota,,,,NOTA,,,503,0.37
+67,Chandrayangutta,GENERAL,8,L. Yadagiri,MALE,34,SC,IND,,,483,0.36
+67,Chandrayangutta,GENERAL,9,Md. Dastagir,MALE,43,GENERAL,IND,,,454,0.33
+67,Chandrayangutta,GENERAL,10,Kurakula Mallesh,MALE,37,ST,IND,,,383,0.28
+67,Chandrayangutta,GENERAL,11,Mohammed Ayub,MALE,50,GENERAL,BSP,,,383,0.28
+67,Chandrayangutta,GENERAL,12,K. Nagaraj,MALE,34,GENERAL,IND,,,375,0.28
+67,Chandrayangutta,GENERAL,13,Abbas Timimi,MALE,63,GENERAL,IND,,,307,0.23
+67,Chandrayangutta,GENERAL,14,Vaman Rao Mehtre,MALE,43,GENERAL,SHS,,,204,0.15
+67,Chandrayangutta,GENERAL,15,Shaik Basha,MALE,46,GENERAL,DABAP,,,187,0.14
+67,Chandrayangutta,GENERAL,16,V. Shekhar Naik,MALE,28,ST,IND,,,180,0.13
+67,Chandrayangutta,GENERAL,17,S Bhaskar,MALE,27,GENERAL,IND,,,131,0.1
+67,Chandrayangutta,GENERAL,18,Thudi Anil Kumar,MALE,29,GENERAL,IND,,,127,0.09
+67,Chandrayangutta,GENERAL,19,Hamed Ali,MALE,46,GENERAL,IND,,,118,0.09
+67,Chandrayangutta,GENERAL,20,V Dinesh,MALE,26,ST,IND,,,98,0.07
+68,Yakutpura,GENERAL,1,Mumtaz Ahmed Khan,MALE,66,GENERAL,AIMIM,,,66843,45.84
+68,Yakutpura,GENERAL,2,Ch Roop Raj,MALE,38,GENERAL,BJP,,,32420,22.23
+68,Yakutpura,GENERAL,3,Majeed Ullah Khan Alias Farhat Khan,MALE,45,GENERAL,MBT,,,28793,19.75
+68,Yakutpura,GENERAL,4,Shabbir Ahmed,MALE,51,GENERAL,BRS,,,7862,5.39
+68,Yakutpura,GENERAL,5,Ashwin Reddy Mainampati,MALE,34,GENERAL,INC,,,6608,4.53
+68,Yakutpura,GENERAL,6,Nota,,,,NOTA,,,910,0.62
+68,Yakutpura,GENERAL,7,Asma Shahnaz,FEMALE,42,GENERAL,AAAP,,,631,0.43
+68,Yakutpura,GENERAL,8,D.Prakash,MALE,51,SC,IND,,,383,0.26
+68,Yakutpura,GENERAL,9,Jaya Vindhyala,FEMALE,49,GENERAL,SP(I),,,364,0.25
+68,Yakutpura,GENERAL,10,Kazam Hussain Khan,MALE,40,GENERAL,IND,,,214,0.15
+68,Yakutpura,GENERAL,11,Sa Abdul Rajak,MALE,25,GENERAL,PPOI,,,205,0.14
+68,Yakutpura,GENERAL,12,Rama Krishna Goud Srimanthula,MALE,57,GENERAL,IND,,,185,0.13
+68,Yakutpura,GENERAL,13,M.Ramesh,MALE,60,GENERAL,IND,,,172,0.12
+68,Yakutpura,GENERAL,14,G. Gnaneshwar,MALE,51,GENERAL,IND,,,131,0.09
+68,Yakutpura,GENERAL,15,G. Chandrashekar,MALE,42,GENERAL,IND,,,103,0.07
+69,Bahadurpura,GENERAL,1,Mohd. Moazam Khan,MALE,44,GENERAL,AIMIM,,,106874,78.46
+69,Bahadurpura,GENERAL,2,Md. Abdul Rahman @ Mahmood,MALE,41,GENERAL,TDP,,,11829,8.68
+69,Bahadurpura,GENERAL,3,Syed Abdul Sami,MALE,42,GENERAL,INC,,,4857,3.57
+69,Bahadurpura,GENERAL,4,Mohd Ziauddin,MALE,52,GENERAL,BRS,,,3719,2.73
+69,Bahadurpura,GENERAL,5,Rashed Hashmi,MALE,43,GENERAL,MBT,,,2538,1.86
+69,Bahadurpura,GENERAL,6,M. Rameshwari Shyamala,FEMALE,34,ST,YSRCP,,,1967,1.44
+69,Bahadurpura,GENERAL,7,Shaik Naseem Begum,FEMALE,32,GENERAL,AAAP,,,1647,1.21
+69,Bahadurpura,GENERAL,8,Nota,,,,NOTA,,,1242,0.91
+69,Bahadurpura,GENERAL,9,S. Khaja Moinuddin,MALE,45,GENERAL,AIACP,,,601,0.44
+69,Bahadurpura,GENERAL,10,Mohd. Munawar,MALE,60,GENERAL,TLP,,,428,0.31
+69,Bahadurpura,GENERAL,11,K. Anil Kumar,MALE,32,ST,IND,,,333,0.24
+69,Bahadurpura,GENERAL,12,Mir Ibrahim Ali,MALE,53,GENERAL,IND,,,174,0.13
+70,Secunderabad,GENERAL,1,T. Padma Rao,MALE,60,GENERAL,BRS,,,57920,42.4
+70,Secunderabad,GENERAL,2,Kuna Venkatesh Goud,MALE,54,GENERAL,TDP,,,31941,23.38
+70,Secunderabad,GENERAL,3,Jayasudha Kapoor,FEMALE,55,GENERAL,INC,,,14090,10.31
+70,Secunderabad,GENERAL,4,James Sylvester,MALE,51,GENERAL,AIMIM,,,12721,9.31
+70,Secunderabad,GENERAL,5,Adam Vijay Kumar,MALE,43,GENERAL,YSRCP,,,11668,8.54
+70,Secunderabad,GENERAL,6,Pulla Sunitha Rani,FEMALE,38,GENERAL,LSP,,,2192,1.6
+70,Secunderabad,GENERAL,7,Anitha Rao. K,FEMALE,45,GENERAL,AAAP,,,1338,0.98
+70,Secunderabad,GENERAL,8,Nota,,,,NOTA,,,976,0.71
+70,Secunderabad,GENERAL,9,Anil Kumar Gasiganti,MALE,31,SC,BSP,,,478,0.35
+70,Secunderabad,GENERAL,10,M A Ashraf,MALE,32,GENERAL,MMS,,,319,0.23
+70,Secunderabad,GENERAL,11,A G Venkat Rao,MALE,58,GENERAL,SP,,,315,0.23
+70,Secunderabad,GENERAL,12,Arla Sathi Reddy,MALE,51,GENERAL,IND,,,256,0.19
+70,Secunderabad,GENERAL,13,P. Saroja,FEMALE,47,GENERAL,AIFB,,,242,0.18
+70,Secunderabad,GENERAL,14,Shaker Hussain,MALE,27,GENERAL,JD(U),,,201,0.15
+70,Secunderabad,GENERAL,15,Bommakanti Padma,FEMALE,47,GENERAL,PPOI,,,184,0.13
+70,Secunderabad,GENERAL,16,Jiguru Poorna Kala Lalitha,FEMALE,40,GENERAL,IND,,,183,0.13
+70,Secunderabad,GENERAL,17,N. U. Sarala Devi,FEMALE,44,GENERAL,PJDL,,,171,0.13
+70,Secunderabad,GENERAL,18,Anuradha. M,FEMALE,33,GENERAL,JAP,,,168,0.12
+70,Secunderabad,GENERAL,19,Chundi Shobhan Babu,MALE,40,GENERAL,IND,,,128,0.09
+70,Secunderabad,GENERAL,20,Shaik Abdul Sayeed,MALE,63,GENERAL,GAAP,,,127,0.09
+70,Secunderabad,GENERAL,21,P. Yadagiri,MALE,40,SC,MCPI,,,118,0.09
+70,Secunderabad,GENERAL,22,K Anji Babu,MALE,43,GENERAL,IND,,,112,0.08
+70,Secunderabad,GENERAL,23,Panduranga Rao.Gala,MALE,60,SC,BMUP,,,105,0.08
+70,Secunderabad,GENERAL,24,Ajay Kamlekar,MALE,26,GENERAL,IND,,,104,0.08
+70,Secunderabad,GENERAL,25,Paladugu Gouramma Alias Marymadiga,FEMALE,41,SC,RLD,,,95,0.07
+70,Secunderabad,GENERAL,26,M Anand Kumar,MALE,51,GENERAL,NBNP,,,91,0.07
+70,Secunderabad,GENERAL,27,Neelam Srinivas Mudiraj,MALE,50,GENERAL,IND,,,78,0.06
+70,Secunderabad,GENERAL,28,Mohammed Ibrahim Ahmed,MALE,36,GENERAL,IND,,,67,0.05
+70,Secunderabad,GENERAL,29,V Anji Reddy,MALE,51,GENERAL,IND,,,66,0.05
+70,Secunderabad,GENERAL,30,Kondoju Mohan,MALE,54,GENERAL,IND,,,62,0.05
+70,Secunderabad,GENERAL,31,Srinivas Rao. Choudary,MALE,42,GENERAL,IND,,,47,0.03
+70,Secunderabad,GENERAL,32,Boddu Sadanand,MALE,39,GENERAL,IND,,,40,0.03
+71,Secunderabad Cantt.,SC,1,G .Sayanna,MALE,63,SC,TDP,,,44693,35.5
+71,Secunderabad Cantt.,SC,2,Gajjela Nagesh,MALE,46,SC,BRS,,,41418,32.9
+71,Secunderabad Cantt.,SC,3,Gajjela Kantham,MALE,42,SC,INC,,,22136,17.58
+71,Secunderabad Cantt.,SC,4,P .Venkat Rao,MALE,57,SC,YSRCP,,,8235,6.54
+71,Secunderabad Cantt.,SC,5,Dasari Ratnam,MALE,42,SC,LSP,,,3509,2.79
+71,Secunderabad Cantt.,SC,6,Jayaraju Madari,MALE,50,SC,AAAP,,,2111,1.68
+71,Secunderabad Cantt.,SC,7,Nota,,,,NOTA,,,1834,1.46
+71,Secunderabad Cantt.,SC,8,U .Rajender,MALE,42,SC,BSP,,,979,0.78
+71,Secunderabad Cantt.,SC,9,Mahender,MALE,29,SC,IND,,,452,0.36
+71,Secunderabad Cantt.,SC,10,M .M .Ravi Kumar,MALE,44,SC,NCP,,,329,0.26
+71,Secunderabad Cantt.,SC,11,A .Narsing Rao,MALE,61,SC,IND,,,198,0.16
+72,Kodangal,GENERAL,1,Anumula Revanth Reddy,MALE,46,GENERAL,TDP,,,54026,39.06
+72,Kodangal,GENERAL,2,Gurunath Reddy,MALE,71,GENERAL,BRS,,,39412,28.5
+72,Kodangal,GENERAL,3,D. Vittal Rao,MALE,62,GENERAL,INC,,,36304,26.25
+72,Kodangal,GENERAL,4,Lingam Chinna Sayappa,MALE,36,SC,IND,,,3835,2.77
+72,Kodangal,GENERAL,5,Esuvaiah,MALE,38,SC,BSP,,,1474,1.07
+72,Kodangal,GENERAL,6,Basappa,MALE,41,GENERAL,IND,,,1433,1.04
+72,Kodangal,GENERAL,7,Nota,,,,NOTA,,,1136,0.82
+72,Kodangal,GENERAL,8,Srinivas Reddy,MALE,25,GENERAL,IND,,,680,0.49
+73,Narayanpet,GENERAL,1,S.Rajender Reddy,MALE,49,GENERAL,TDP,,,40107,29.37
+73,Narayanpet,GENERAL,2,K.Shivakumar Reddy,MALE,49,GENERAL,BRS,,,37837,27.71
+73,Narayanpet,GENERAL,3,Krishna Vamangiri,MALE,65,GENERAL,INC,,,29278,21.44
+73,Narayanpet,GENERAL,4,Kothakapu Rathanga Pandu Reddy,MALE,49,GENERAL,IND,,,23591,17.28
+73,Narayanpet,GENERAL,5,Rajender Rathod,MALE,44,ST,BSP,,,1573,1.15
+73,Narayanpet,GENERAL,6,Antharam Sridhar Mudiraj,MALE,30,GENERAL,IND,,,1344,0.98
+73,Narayanpet,GENERAL,7,Nota,,,,NOTA,,,1131,0.83
+73,Narayanpet,GENERAL,8,Pesala Jayadeva Reddy,MALE,45,GENERAL,YSRCP,,,938,0.69
+73,Narayanpet,GENERAL,9,Polepally Vinod Kumar,MALE,37,GENERAL,IND,,,739,0.54
+74,Mahbubnagar,GENERAL,1,Srinivas Goud. V,MALE,45,GENERAL,BRS,,,45447,30.67
+74,Mahbubnagar,GENERAL,2,Yennam Srinivas Reddy,MALE,43,GENERAL,BJP,,,42308,28.55
+74,Mahbubnagar,GENERAL,3,Ibrahim Syed,MALE,44,GENERAL,IND,,,27395,18.49
+74,Mahbubnagar,GENERAL,4,Md. Obedulla Kothwal,MALE,52,GENERAL,INC,,,22744,15.35
+74,Mahbubnagar,GENERAL,5,Dr.C. Amarendernath,MALE,46,GENERAL,IND,,,4666,3.15
+74,Mahbubnagar,GENERAL,6,Gonela Mahender Mudiraj,MALE,40,GENERAL,IND,,,1399,0.94
+74,Mahbubnagar,GENERAL,7,Bekkari Srinivas Reddy,MALE,53,GENERAL,YSRCP,,,1192,0.8
+74,Mahbubnagar,GENERAL,8,Mangalagiri Yadagiri,MALE,46,GENERAL,BSP,,,998,0.67
+74,Mahbubnagar,GENERAL,9,Nota,,,,NOTA,,,618,0.42
+74,Mahbubnagar,GENERAL,10,Suryaprakash,MALE,41,SC,IND,,,328,0.22
+74,Mahbubnagar,GENERAL,11,Bujjamma,FEMALE,32,ST,IND,,,309,0.21
+74,Mahbubnagar,GENERAL,12,M. Ramakrishna Reddy,MALE,46,GENERAL,IND,,,288,0.19
+74,Mahbubnagar,GENERAL,13,Jagadeesh Chand,MALE,30,GENERAL,IND,,,258,0.17
+74,Mahbubnagar,GENERAL,14,Mohammed Abdul Raheem,MALE,50,GENERAL,IND,,,222,0.15
+75,Jadcherla,GENERAL,1,Charlakola Laxma Reddy,MALE,52,GENERAL,BRS,,,70654,48.27
+75,Jadcherla,GENERAL,2,Dr. Mallu Ravi,MALE,64,SC,INC,,,55920,38.21
+75,Jadcherla,GENERAL,3,Chandra Shekar Marati,MALE,47,GENERAL,TDP,,,11465,7.83
+75,Jadcherla,GENERAL,4,Nadiminti Srinivasulu,MALE,49,GENERAL,IND,,,2931,2.0
+75,Jadcherla,GENERAL,5,M. Pandu Naik,MALE,51,ST,YSRCP,,,1738,1.19
+75,Jadcherla,GENERAL,6,Nota,,,,NOTA,,,1537,1.05
+75,Jadcherla,GENERAL,7,Anand Ummadi,MALE,44,SC,BSP,,,1330,0.91
+75,Jadcherla,GENERAL,8,Yenmangandla Jangaiah,MALE,41,SC,IND,,,788,0.54
+76,Devarkadra,GENERAL,1,Alla Venkateshwar Reddy,MALE,46,GENERAL,BRS,,,66354,44.23
+76,Devarkadra,GENERAL,2,Pavan Kumar,MALE,41,GENERAL,INC,,,49432,32.95
+76,Devarkadra,GENERAL,3,Seethamma,FEMALE,51,GENERAL,TDP,,,24422,16.28
+76,Devarkadra,GENERAL,4,Aggani Narsimulu,MALE,40,GENERAL,IND,,,3803,2.53
+76,Devarkadra,GENERAL,5,Allampally Ramkoti,MALE,38,GENERAL,IND,,,3396,2.26
+76,Devarkadra,GENERAL,6,Nota,,,,NOTA,,,1213,0.81
+76,Devarkadra,GENERAL,7,Pavan Kumar Reddy D,MALE,34,GENERAL,IND,,,875,0.58
+76,Devarkadra,GENERAL,8,D.Janardhan,MALE,44,GENERAL,IND,,,529,0.35
+77,Makthal,GENERAL,1,Chittem Ram Mohan Reddy,MALE,51,GENERAL,INC,,,51632,36.45
+77,Makthal,GENERAL,2,Yelkoti Yella Reddy,MALE,75,GENERAL,BRS,,,41605,29.38
+77,Makthal,GENERAL,3,Kothakotta Dhayaakkar Reddy,MALE,54,GENERAL,TDP,,,35235,24.88
+77,Makthal,GENERAL,4,Ninganna,MALE,43,SC,IND,,,2885,2.04
+77,Makthal,GENERAL,5,Varakatam Jagannath Reddy,MALE,41,GENERAL,YSRCP,,,2730,1.93
+77,Makthal,GENERAL,6,Kori Mareppa,MALE,43,SC,BSP,,,1870,1.32
+77,Makthal,GENERAL,7,K. Ramulu Goud,MALE,42,GENERAL,PPOI,,,1665,1.18
+77,Makthal,GENERAL,8,Bangla T. Laxmi Kanth Reddy,MALE,42,GENERAL,IND,,,1063,0.75
+77,Makthal,GENERAL,9,Nota,,,,NOTA,,,724,0.51
+77,Makthal,GENERAL,10,Ramesh Bandari,MALE,30,GENERAL,IND,,,554,0.39
+77,Makthal,GENERAL,11,Dasari Hema Sundar,MALE,37,SC,IND,,,472,0.33
+77,Makthal,GENERAL,12,Baswaraj Karku,MALE,35,SC,IND,,,380,0.27
+77,Makthal,GENERAL,13,Sugappa,MALE,50,GENERAL,IND,,,372,0.26
+77,Makthal,GENERAL,14,Kadiyala Chinna Yadagiri,MALE,25,GENERAL,IND,,,268,0.19
+77,Makthal,GENERAL,15,Jutla Srinivasulu,MALE,36,SC,IND,,,178,0.13
+78,Wanaparthy,GENERAL,1,Dr.G.Chinna Reddy,MALE,58,GENERAL,INC,,,59543,35.38
+78,Wanaparthy,GENERAL,2,Singireddy Niranjan Reddy,MALE,56,GENERAL,BRS,,,55252,32.83
+78,Wanaparthy,GENERAL,3,Chandra Sekhar Reddy Ravula,MALE,59,GENERAL,TDP,,,45200,26.86
+78,Wanaparthy,GENERAL,4,Kotham Prashant,MALE,38,GENERAL,IND,,,2759,1.64
+78,Wanaparthy,GENERAL,5,Vanguri Madduletty,MALE,50,SC,BSP,,,1489,0.88
+78,Wanaparthy,GENERAL,6,M.R.Muralidhar,MALE,40,GENERAL,PPOI,,,950,0.56
+78,Wanaparthy,GENERAL,7,Nota,,,,NOTA,,,860,0.51
+78,Wanaparthy,GENERAL,8,R.Ravi Prakash,MALE,37,GENERAL,YSRCP,,,631,0.37
+78,Wanaparthy,GENERAL,9,Masulu,MALE,64,SC,IND,,,419,0.25
+78,Wanaparthy,GENERAL,10,Dr.A.Bhupesh Kumar,MALE,51,GENERAL,IND,,,374,0.22
+78,Wanaparthy,GENERAL,11,Manigilla Purushotham,MALE,34,SC,IND,,,308,0.18
+78,Wanaparthy,GENERAL,12,Itiykala Maheshwar Reddy,MALE,29,GENERAL,IND,,,261,0.16
+78,Wanaparthy,GENERAL,13,Gandham Suman,MALE,41,SC,IND,,,245,0.15
+79,Gadwal,GENERAL,1,Aruna D. K,FEMALE,53,GENERAL,INC,,,83355,48.54
+79,Gadwal,GENERAL,2,Bandla Krishna Mohan Reddy,MALE,47,GENERAL,BRS,,,75095,43.73
+79,Gadwal,GENERAL,3,Krishnaiah,MALE,27,SC,IND,,,3576,2.08
+79,Gadwal,GENERAL,4,V .L .Keshav Reddy,MALE,43,GENERAL,BJP,,,3431,2.0
+79,Gadwal,GENERAL,5,Shekar Reddy Gondhi,MALE,35,GENERAL,IND,,,2780,1.62
+79,Gadwal,GENERAL,6,Nota,,,,NOTA,,,862,0.5
+79,Gadwal,GENERAL,7,M.Hanmanthu Rao Arya,MALE,44,SC,BSP,,,818,0.48
+79,Gadwal,GENERAL,8,R.Prabhavathi,FEMALE,51,GENERAL,PPOI,,,535,0.31
+79,Gadwal,GENERAL,9,Monesh,MALE,27,GENERAL,IND,,,388,0.23
+79,Gadwal,GENERAL,10,Nagaraju,MALE,35,GENERAL,IND,,,347,0.2
+79,Gadwal,GENERAL,11,Munnuru Kapu Gopal Reddy,MALE,43,GENERAL,IND,,,183,0.11
+79,Gadwal,GENERAL,12,M. Maddileti,MALE,37,GENERAL,IND,,,127,0.07
+79,Gadwal,GENERAL,13,Pedda Achanna Gowd,MALE,55,GENERAL,IND,,,121,0.07
+79,Gadwal,GENERAL,14,P Padmavathi,FEMALE,41,GENERAL,IND,,,110,0.06
+80,Alampur,SC,1,S.A.Sampath Kumar,MALE,41,SC,INC,,,57419,36.26
+80,Alampur,SC,2,V.M.Abraham,MALE,68,SC,TDP,,,50689,32.01
+80,Alampur,SC,3,Manda Sreenath,MALE,35,SC,BRS,,,38136,24.08
+80,Alampur,SC,4,Bangi Laxmanna,MALE,46,SC,YSRCP,,,3779,2.39
+80,Alampur,SC,5,M.Maddileti,MALE,48,SC,IND,,,3519,2.22
+80,Alampur,SC,6,Thummala Ravi Kumar,MALE,38,SC,BSP,,,1866,1.18
+80,Alampur,SC,7,Nota,,,,NOTA,,,965,0.61
+80,Alampur,SC,8,Kashapogu Prabhakar,MALE,38,SC,IND,,,479,0.3
+80,Alampur,SC,9,Sreelatha Ramesh.Ur.,FEMALE,32,SC,IND,,,421,0.27
+80,Alampur,SC,10,K.Masthan,MALE,38,SC,IND,,,401,0.25
+80,Alampur,SC,11,Swamulu,MALE,32,SC,JMBP,,,354,0.22
+80,Alampur,SC,12,M.Ravindar,MALE,36,SC,IND,,,316,0.2
+81,Nagarkurnool,GENERAL,1,Marri Janardhan Reddy,MALE,46,GENERAL,BRS,,,62470,41.34
+81,Nagarkurnool,GENERAL,2,Kuchakulla Damodar Reddy,MALE,67,GENERAL,INC,,,48035,31.79
+81,Nagarkurnool,GENERAL,3,Dr. Nagam Shashidhar Reddy,MALE,38,GENERAL,BJP,,,27789,18.39
+81,Nagarkurnool,GENERAL,4,M Chennakeshva Giri Babu,MALE,32,SC,IND,,,4070,2.69
+81,Nagarkurnool,GENERAL,5,Anthati Nagaiah,MALE,40,SC,BSP,,,2616,1.73
+81,Nagarkurnool,GENERAL,6,B. Balaraju,MALE,40,SC,IND,,,2313,1.53
+81,Nagarkurnool,GENERAL,7,Srinivas Reddy,MALE,38,GENERAL,YSRCP,,,1003,0.66
+81,Nagarkurnool,GENERAL,8,Nota,,,,NOTA,,,581,0.38
+81,Nagarkurnool,GENERAL,9,Teppa Thirupathaiah,MALE,48,GENERAL,IND,,,470,0.31
+81,Nagarkurnool,GENERAL,10,Vellijala Baswaiah,MALE,44,SC,AIFB,,,443,0.29
+81,Nagarkurnool,GENERAL,11,P. Krishnaiah,MALE,32,SC,IND,,,424,0.28
+81,Nagarkurnool,GENERAL,12,S Yadagiri,MALE,28,SC,IND,,,249,0.16
+81,Nagarkurnool,GENERAL,13,Rekhya,MALE,33,ST,IND,,,220,0.15
+81,Nagarkurnool,GENERAL,14,A Srinivas Goud,MALE,47,GENERAL,IND,,,219,0.14
+81,Nagarkurnool,GENERAL,15,Balaraju Kandikonda,MALE,49,GENERAL,IND,,,215,0.14
+82,Achampet,SC,1,Guvvala Balaraju,MALE,36,SC,BRS,,,62584,42.68
+82,Achampet,SC,2,Chikkudu Vamshikrishna,MALE,48,SC,INC,,,50764,34.62
+82,Achampet,SC,3,Pothuganti Ramulu,MALE,61,SC,TDP,,,24199,16.5
+82,Achampet,SC,4,Nidigonda Sriramu,MALE,39,SC,BSP,,,3269,2.23
+82,Achampet,SC,5,Chintha Anjaneyulu,MALE,46,SC,CPM,,,2595,1.77
+82,Achampet,SC,6,Nota,,,,NOTA,,,1298,0.89
+82,Achampet,SC,7,B.Ravinder,MALE,34,SC,YSRCP,,,1279,0.87
+82,Achampet,SC,8,Chinthala Venkateshwarlu,MALE,26,SC,AAAP,,,657,0.45
+83,Kalwakurthy,GENERAL,1,Challa Vamshichand Reddy,MALE,33,GENERAL,INC,,,42782,26.44
+83,Kalwakurthy,GENERAL,2,Achary Talloju,MALE,48,GENERAL,BJP,,,42704,26.39
+83,Kalwakurthy,GENERAL,3,Gurka Jaipal Yadav,MALE,58,GENERAL,BRS,,,29844,18.45
+83,Kalwakurthy,GENERAL,4,Kashireddy Narayana Reddy,MALE,50,GENERAL,IND,,,24095,14.89
+83,Kalwakurthy,GENERAL,5,Yadma Kista Reddy,MALE,64,GENERAL,YSRCP,,,13818,8.54
+83,Kalwakurthy,GENERAL,6,Balaji Singh.T,MALE,43,GENERAL,IND,,,3236,2.0
+83,Kalwakurthy,GENERAL,7,Kaanugula Jangaiah,MALE,46,GENERAL,BSP,,,1911,1.18
+83,Kalwakurthy,GENERAL,8,Nota,,,,NOTA,,,1140,0.7
+83,Kalwakurthy,GENERAL,9,V.Hussain,MALE,33,ST,RLD,,,921,0.57
+83,Kalwakurthy,GENERAL,10,D. Krishna Reddy,MALE,25,GENERAL,IND,,,693,0.43
+83,Kalwakurthy,GENERAL,11,Yatham Srinivas,MALE,40,GENERAL,IND,,,655,0.4
+84,Shadnagar,GENERAL,1,Anjaiah Yelganamoni,MALE,59,GENERAL,BRS,,,70315,45.37
+84,Shadnagar,GENERAL,2,Chowlapally Prathap Reddy,MALE,57,GENERAL,INC,,,52987,34.19
+84,Shadnagar,GENERAL,3,Sreevardan Reddy Nelli,MALE,39,GENERAL,BJP,,,20425,13.18
+84,Shadnagar,GENERAL,4,Aenugu Mahender Reddy,MALE,48,GENERAL,IND,,,5108,3.3
+84,Shadnagar,GENERAL,5,Bobbili Sudhakar Reddy,MALE,42,GENERAL,YSRCP,,,1713,1.11
+84,Shadnagar,GENERAL,6,Anjaiah,MALE,54,SC,IND,,,949,0.61
+84,Shadnagar,GENERAL,7,Nota,,,,NOTA,,,846,0.55
+84,Shadnagar,GENERAL,8,Dhanakka Sangameshwar,MALE,38,SC,AAAP,,,476,0.31
+84,Shadnagar,GENERAL,9,Busa Jangaiah Mangali,MALE,46,GENERAL,IND,,,397,0.26
+84,Shadnagar,GENERAL,10,A.Chandrashekher,MALE,45,GENERAL,IND,,,354,0.23
+84,Shadnagar,GENERAL,11,Mohammed. Shafiuddin,MALE,49,GENERAL,IND,,,336,0.22
+84,Shadnagar,GENERAL,12,Anjaneyulu Gundu,MALE,44,GENERAL,IND,,,301,0.19
+84,Shadnagar,GENERAL,13,Shaik Noorulla Khan,MALE,34,GENERAL,IND,,,294,0.19
+84,Shadnagar,GENERAL,14,Dr.C.Ramakrishna,MALE,58,SC,IND,,,244,0.16
+84,Shadnagar,GENERAL,15,Raghapuram Radhika,FEMALE,31,GENERAL,IND,,,240,0.15
+85,Kollapur,GENERAL,1,Jupally Krishna Rao,MALE,50,GENERAL,BRS,,,72741,46.86
+85,Kollapur,GENERAL,2,Beeram Harshavardhan Reddy,MALE,35,GENERAL,INC,,,62243,40.1
+85,Kollapur,GENERAL,3,Katikaneni Madhusudhan Rao,MALE,64,GENERAL,BJP,,,5358,3.45
+85,Kollapur,GENERAL,4,M.D. Jabbar,MALE,48,GENERAL,CPM,,,4481,2.89
+85,Kollapur,GENERAL,5,E.Srinivas,MALE,37,GENERAL,IND,,,4296,2.77
+85,Kollapur,GENERAL,6,K. Venkatesh,MALE,36,SC,BSP,,,1871,1.21
+85,Kollapur,GENERAL,7,Konda Sudhakar Reddy,MALE,37,GENERAL,IND,,,1371,0.88
+85,Kollapur,GENERAL,8,Nota,,,,NOTA,,,767,0.49
+85,Kollapur,GENERAL,9,Jambula .Srinivas Reddy,MALE,62,GENERAL,PPOI,,,694,0.45
+85,Kollapur,GENERAL,10,Bolle Swamy,MALE,31,SC,IND,,,610,0.39
+85,Kollapur,GENERAL,11,Anjaneyudu V,MALE,32,GENERAL,IND,,,321,0.21
+85,Kollapur,GENERAL,12,Anvarpasha M.D.,MALE,28,GENERAL,IND,,,249,0.16
+85,Kollapur,GENERAL,13,Arjanudu Rao,MALE,35,GENERAL,IND,,,222,0.14
+86,Devarakonda,ST,1,Ravindra Kumar Ramavath,MALE,42,ST,CPI,,,57717,35.64
+86,Devarakonda,ST,2,Bheelya Naik Kethavath,MALE,39,ST,TDP,,,53501,33.04
+86,Devarakonda,ST,3,Kethavath Lalu,MALE,49,ST,BRS,,,38618,23.85
+86,Devarakonda,ST,4,Dheeravath Ravi,MALE,34,ST,CPM,,,5791,3.58
+86,Devarakonda,ST,5,Vadthya Nagaraju,MALE,26,ST,BSP,,,1796,1.11
+86,Devarakonda,ST,6,Nota,,,,NOTA,,,1166,0.72
+86,Devarakonda,ST,7,Nageswar Rao.J,MALE,52,ST,YSRCP,,,1121,0.69
+86,Devarakonda,ST,8,Chelamalla Jhansi Lakshmi Bai,FEMALE,28,ST,IND,,,686,0.42
+86,Devarakonda,ST,9,Kethavath Nageswara Rao,MALE,27,ST,AAAP,,,542,0.33
+86,Devarakonda,ST,10,Rudrakshi Yadaiah,MALE,42,ST,IND,,,502,0.31
+86,Devarakonda,ST,11,Dharavath Ravindra Naik,MALE,61,ST,RLD,,,500,0.31
+87,Nagarjuna Sagar,GENERAL,1,Jana Reddy Kunduru,MALE,67,GENERAL,INC,,,69684,42.72
+87,Nagarjuna Sagar,GENERAL,2,Nomula Narsimaiah,MALE,54,GENERAL,BRS,,,53208,32.62
+87,Nagarjuna Sagar,GENERAL,3,Kadari Anjaiah Yadav,MALE,44,GENERAL,TDP,,,27858,17.08
+87,Nagarjuna Sagar,GENERAL,4,Janaki Ram Godavarthy,MALE,59,GENERAL,MASP,,,3322,2.04
+87,Nagarjuna Sagar,GENERAL,5,Kunreddy Nagireddy,MALE,48,GENERAL,CPM,,,2090,1.28
+87,Nagarjuna Sagar,GENERAL,6,Mallu Ravindar Reddy,MALE,42,GENERAL,YSRCP,,,2029,1.24
+87,Nagarjuna Sagar,GENERAL,7,Yele Ranganayakulu,MALE,45,GENERAL,PPOI,,,1103,0.68
+87,Nagarjuna Sagar,GENERAL,8,Panugundla Biksham,MALE,34,GENERAL,BSP,,,871,0.53
+87,Nagarjuna Sagar,GENERAL,9,Nota,,,,NOTA,,,775,0.48
+87,Nagarjuna Sagar,GENERAL,10,Nimmala Indira,FEMALE,47,GENERAL,JASPA,,,640,0.39
+87,Nagarjuna Sagar,GENERAL,11,Sapavath Kishan,MALE,33,ST,IND,,,602,0.37
+87,Nagarjuna Sagar,GENERAL,12,D.S.K.V. Naik,MALE,32,ST,IND,,,348,0.21
+87,Nagarjuna Sagar,GENERAL,13,Royyala Srinivasu,MALE,43,SC,IND,,,310,0.19
+87,Nagarjuna Sagar,GENERAL,14,Duduku Lakshminarayana,MALE,42,GENERAL,IND,,,288,0.18
+88,Miryalaguda,GENERAL,1,Bhaskar Rao Nallamothu,MALE,62,GENERAL,INC,,,62059,37.57
+88,Miryalaguda,GENERAL,2,Alugubelli Amarender Reddy,MALE,46,GENERAL,BRS,,,56005,33.9
+88,Miryalaguda,GENERAL,3,Julakanti Ranga Reddy,MALE,58,GENERAL,CPM,,,22592,13.68
+88,Miryalaguda,GENERAL,4,Bantu Venkateshwarlu,MALE,50,GENERAL,TDP,,,20758,12.57
+88,Miryalaguda,GENERAL,5,Nota,,,,NOTA,,,957,0.58
+88,Miryalaguda,GENERAL,6,Dhanavath Lalu,MALE,36,ST,IND,,,879,0.53
+88,Miryalaguda,GENERAL,7,Marepally Srinivasreddy,MALE,52,GENERAL,LSP,,,878,0.53
+88,Miryalaguda,GENERAL,8,Sarikonda Rushikeshwar Raju,MALE,31,GENERAL,AAAP,,,540,0.33
+88,Miryalaguda,GENERAL,9,D.Hanya,MALE,43,ST,IND,,,521,0.32
+89,Huzurnagar,GENERAL,1,Uttam Kumar Reddy Nalamada,MALE,51,GENERAL,INC,,,69879,38.94
+89,Huzurnagar,GENERAL,2,Kasoju Shankaramma,FEMALE,42,GENERAL,BRS,,,45955,25.61
+89,Huzurnagar,GENERAL,3,Gattu Srikanth Reddy,MALE,38,GENERAL,YSRCP,,,29692,16.55
+89,Huzurnagar,GENERAL,4,Swamy Goud Vangala,MALE,62,GENERAL,TDP,,,25395,14.15
+89,Huzurnagar,GENERAL,5,Parepally Shekar Rao,MALE,51,GENERAL,CPM,,,5618,3.13
+89,Huzurnagar,GENERAL,6,Vakiti Chinna Srinivas,MALE,41,GENERAL,BSP,,,963,0.54
+89,Huzurnagar,GENERAL,7,Nota,,,,NOTA,,,852,0.47
+89,Huzurnagar,GENERAL,8,Tanneru Venkateshwarlu,MALE,34,GENERAL,AAAP,,,462,0.26
+89,Huzurnagar,GENERAL,9,Chinthapally Yadagiri,MALE,27,SC,IND,,,405,0.23
+89,Huzurnagar,GENERAL,10,Gangireddy Koti Reddy,MALE,28,GENERAL,IND,,,217,0.12
+90,Kodad,GENERAL,1,Padmavathi Reddy Nalamada,FEMALE,46,GENERAL,INC,,,81966,45.2
+90,Kodad,GENERAL,2,Bollam Mallaiah Yadav,MALE,48,GENERAL,TDP,,,68592,37.83
+90,Kodad,GENERAL,3,Kanmantha Reddy Shashidhar Reddy,MALE,47,GENERAL,BRS,,,13404,7.39
+90,Kodad,GENERAL,4,Yerneni Venkata Rathnam Babu,MALE,55,GENERAL,YSRCP,,,8302,4.58
+90,Kodad,GENERAL,5,Juttukonda Basavaiah,MALE,44,GENERAL,CPM,,,4165,2.3
+90,Kodad,GENERAL,6,Dasari Jayasurya,MALE,31,SC,BSP,,,1080,0.6
+90,Kodad,GENERAL,7,Khaleel Ahamed Shaik,MALE,38,GENERAL,IND,,,825,0.45
+90,Kodad,GENERAL,8,Nota,,,,NOTA,,,621,0.34
+90,Kodad,GENERAL,9,Martha Rama Krishna,MALE,27,GENERAL,AAAP,,,472,0.26
+90,Kodad,GENERAL,10,Sunkara Linga Reddy,MALE,45,GENERAL,IND,,,356,0.2
+90,Kodad,GENERAL,11,Sathuluri Govinda Rao,MALE,39,GENERAL,LSP,,,354,0.2
+90,Kodad,GENERAL,12,Muppani Sriram Reddy,MALE,51,GENERAL,IND,,,293,0.16
+90,Kodad,GENERAL,13,V.Narasimha Rao,MALE,50,GENERAL,IND,,,179,0.1
+90,Kodad,GENERAL,14,Kollu Lakshmi Narayana Rao,MALE,39,GENERAL,IND,,,163,0.09
+90,Kodad,GENERAL,15,Godeshi Pedda Lingaiah,MALE,69,GENERAL,IND,,,140,0.08
+90,Kodad,GENERAL,16,Polampally Dana Veera,MALE,33,SC,IND,,,139,0.08
+90,Kodad,GENERAL,17,Banothu Haapa,MALE,40,ST,IND,,,138,0.08
+90,Kodad,GENERAL,18,Kandula Madhu,MALE,28,SC,IND,,,137,0.08
+91,Suryapet,GENERAL,1,Guntakandla Jagadish Reddy,MALE,49,GENERAL,BRS,,,43554,25.22
+91,Suryapet,GENERAL,2,Sankineni Venkateshwer Rao,MALE,51,GENERAL,IND,,,41335,23.93
+91,Suryapet,GENERAL,3,Damodar Reddy Ramreddy,MALE,62,GENERAL,INC,,,39175,22.68
+91,Suryapet,GENERAL,4,Patel Ramesh Reddy,MALE,44,GENERAL,TDP,,,38529,22.31
+91,Suryapet,GENERAL,5,Beeravolu Sri Harsha,MALE,30,GENERAL,IND,,,2797,1.62
+91,Suryapet,GENERAL,6,Beeravolu Somi Reddy,MALE,60,GENERAL,YSRCP,,,1621,0.94
+91,Suryapet,GENERAL,7,Muppani Linga Reddy,MALE,50,GENERAL,IND,,,1448,0.84
+91,Suryapet,GENERAL,8,Dasari Narendar,MALE,42,SC,BSP,,,1202,0.7
+91,Suryapet,GENERAL,9,Nota,,,,NOTA,,,722,0.42
+91,Suryapet,GENERAL,10,Racharla Vijaykumar,MALE,41,GENERAL,PPOI,,,685,0.4
+91,Suryapet,GENERAL,11,Degala Janardhan,MALE,51,GENERAL,AAAP,,,458,0.27
+91,Suryapet,GENERAL,12,Mandari Devid,MALE,45,SC,IND,,,412,0.24
+91,Suryapet,GENERAL,13,Maram Venkat Reddy,MALE,43,GENERAL,IND,,,318,0.18
+91,Suryapet,GENERAL,14,Marri Nehemiah,MALE,60,GENERAL,IND,,,171,0.1
+91,Suryapet,GENERAL,15,Garlapati Upender Reddy,MALE,36,GENERAL,IND,,,150,0.09
+91,Suryapet,GENERAL,16,Joseph Mynam,MALE,44,GENERAL,IND,,,124,0.07
+92,Nalgonda,GENERAL,1,Komatireddy Venkat Reddy,MALE,51,GENERAL,INC,,,60774,36.57
+92,Nalgonda,GENERAL,2,Kancharla Bhupal Reddy,MALE,40,GENERAL,IND,,,50227,30.22
+92,Nalgonda,GENERAL,3,Dubbaka Narsimha Reddy,MALE,45,GENERAL,BRS,,,35606,21.42
+92,Nalgonda,GENERAL,4,Syed Hasham,MALE,48,GENERAL,CPM,,,10332,6.22
+92,Nalgonda,GENERAL,5,Kuthuru Srinivas Reddy,MALE,41,GENERAL,BJP,,,4523,2.72
+92,Nalgonda,GENERAL,6,Masaram Siddhartha Phooley,MALE,43,SC,BSP,,,850,0.51
+92,Nalgonda,GENERAL,7,Kommu Mallesham,MALE,58,SC,IND,,,630,0.38
+92,Nalgonda,GENERAL,8,Kodimala Shiva Kumar,MALE,35,GENERAL,PPOI,,,625,0.38
+92,Nalgonda,GENERAL,9,Nota,,,,NOTA,,,493,0.3
+92,Nalgonda,GENERAL,10,S.K.R.Ansari,MALE,49,GENERAL,AAAP,,,390,0.23
+92,Nalgonda,GENERAL,11,Polishetti Venkateshwarlu,MALE,48,GENERAL,IND,,,377,0.23
+92,Nalgonda,GENERAL,12,Gulam Subhani,MALE,34,GENERAL,IND,,,323,0.19
+92,Nalgonda,GENERAL,13,Azzezuddin Mohammed,MALE,48,GENERAL,IND,,,304,0.18
+92,Nalgonda,GENERAL,14,Elati Tejawardhan Ram Pratap Reddy,MALE,35,GENERAL,IND,,,275,0.17
+92,Nalgonda,GENERAL,15,Mohammed Majeed,MALE,29,GENERAL,IND,,,236,0.14
+92,Nalgonda,GENERAL,16,Thallamalla Yadagiri,MALE,30,SC,BMUP,,,229,0.14
+93,Munugode,GENERAL,1,Koosukuntla Prabhakar Reddy,MALE,53,GENERAL,BRS,,,65496,38.13
+93,Munugode,GENERAL,2,Palvai Sravanthi,FEMALE,42,GENERAL,IND,,,27441,15.97
+93,Munugode,GENERAL,3,Gangidi Manohar Reddy,MALE,45,GENERAL,BJP,,,27434,15.97
+93,Munugode,GENERAL,4,Palla Venkat Reddy,MALE,62,GENERAL,CPI,,,20952,12.2
+93,Munugode,GENERAL,5,Surkanti Srinivas Reddy,MALE,53,GENERAL,CPM,,,9206,5.36
+93,Munugode,GENERAL,6,Kontham Bixam Reddy,MALE,36,GENERAL,IND,,,4518,2.63
+93,Munugode,GENERAL,7,Palakuri Dayanand Goud,MALE,29,GENERAL,IND,,,3046,1.77
+93,Munugode,GENERAL,8,Karnati Srinivasulu,MALE,43,GENERAL,RLD,,,2399,1.4
+93,Munugode,GENERAL,9,Enja Pradeep Reddy,MALE,32,GENERAL,PPOI,,,2013,1.17
+93,Munugode,GENERAL,10,Nakka Yadishwar,MALE,31,SC,IND,,,1491,0.87
+93,Munugode,GENERAL,11,Barigala Ashok,MALE,30,SC,BSP,,,1084,0.63
+93,Munugode,GENERAL,12,Palwhai Sriniwaasa Reddy,MALE,40,GENERAL,IND,,,1037,0.6
+93,Munugode,GENERAL,13,Mudireddy Gavaskar Reddy,MALE,35,GENERAL,YSRCP,,,835,0.49
+93,Munugode,GENERAL,14,Budida Lingaiah Yadav,MALE,37,GENERAL,IND,,,695,0.4
+93,Munugode,GENERAL,15,Eeda Bhaskar,MALE,36,SC,IND,,,569,0.33
+93,Munugode,GENERAL,16,Nota,,,,NOTA,,,558,0.32
+93,Munugode,GENERAL,17,Ganji Yadagiri,MALE,37,GENERAL,IND,,,541,0.31
+93,Munugode,GENERAL,18,Mohammad Jabbar,MALE,43,GENERAL,IND,,,505,0.29
+93,Munugode,GENERAL,19,Sriramulu Muthyala,MALE,54,SC,IND,,,448,0.26
+93,Munugode,GENERAL,20,Kodicherla Venkataiah,MALE,44,GENERAL,JASPA,,,367,0.21
+93,Munugode,GENERAL,21,Mudigonda Anjaiah,MALE,48,GENERAL,IND,,,348,0.2
+93,Munugode,GENERAL,22,Muddam Srinivas Goud,MALE,26,GENERAL,IND,,,308,0.18
+93,Munugode,GENERAL,23,Varkala Lingaiah,MALE,48,GENERAL,IND,,,305,0.18
+93,Munugode,GENERAL,24,Malga Yadaiah,MALE,45,GENERAL,AAAP,,,190,0.11
+94,Bhongir,GENERAL,1,Pailla Shekar Reddy,MALE,46,GENERAL,BRS,,,54686,34.36
+94,Bhongir,GENERAL,2,Jitta Bala Krishna Reddy,MALE,42,GENERAL,YTP,,,39270,24.67
+94,Bhongir,GENERAL,3,Pothamshetty Venkateshwarulu,MALE,35,GENERAL,INC,,,33560,21.08
+94,Bhongir,GENERAL,4,Alimineti Uma Madhava Reddy,FEMALE,58,GENERAL,TDP,,,24569,15.44
+94,Bhongir,GENERAL,5,Thummala Veera Reddy,MALE,46,GENERAL,CPM,,,2439,1.53
+94,Bhongir,GENERAL,6,Puligilla Sathyanarayana,MALE,47,GENERAL,IND,,,1008,0.63
+94,Bhongir,GENERAL,7,Battu Ramchandraiah,MALE,63,SC,BSP,,,998,0.63
+94,Bhongir,GENERAL,8,Nota,,,,NOTA,,,962,0.6
+94,Bhongir,GENERAL,9,Guahti Motilal,MALE,45,ST,AIMIM,,,866,0.54
+94,Bhongir,GENERAL,10,Sangishetty Narsimha,MALE,38,GENERAL,AAAP,,,451,0.28
+94,Bhongir,GENERAL,11,Hanuma Megavath,MALE,38,ST,IND,,,357,0.22
+95,Nakrekal,SC,1,Vemula Veeresham,MALE,36,SC,BRS,,,62445,34.74
+95,Nakrekal,SC,2,Chirumarthy Lingaiah,MALE,42,SC,INC,,,60075,33.42
+95,Nakrekal,SC,3,Cheruku Laxmi,FEMALE,50,SC,BJP,,,38440,21.39
+95,Nakrekal,SC,4,Mamidi Sarvaiah,MALE,43,SC,CPM,,,12741,7.09
+95,Nakrekal,SC,5,Nota,,,,NOTA,,,1395,0.78
+95,Nakrekal,SC,6,Chirumarthy Saidulu,MALE,28,SC,BSP,,,1322,0.74
+95,Nakrekal,SC,7,Nakerakanti Swamy,MALE,40,SC,YSRCP,,,1216,0.68
+95,Nakrekal,SC,8,Kadium Suhasini,FEMALE,28,SC,ICSP,,,586,0.33
+95,Nakrekal,SC,9,Medi Satyanarayana,MALE,29,SC,IND,,,466,0.26
+95,Nakrekal,SC,10,Medi Eedamma,FEMALE,48,SC,IND,,,388,0.22
+95,Nakrekal,SC,11,Dondapati Prabhakar Rao,MALE,62,SC,RLD,,,336,0.19
+95,Nakrekal,SC,12,Dubba Venkanna,MALE,38,SC,IND,,,336,0.19
+96,Thungathurthi,SC,1,Gadari Kishore Kumar,MALE,32,SC,BRS,,,64382,36.89
+96,Thungathurthi,SC,2,Addanki Dayakar,MALE,42,SC,INC,,,62003,35.53
+96,Thungathurthi,SC,3,Palvai Rajani Kumari,FEMALE,43,SC,TDP,,,31672,18.15
+96,Thungathurthi,SC,4,Palvai Venu,MALE,42,SC,IND,,,6142,3.52
+96,Thungathurthi,SC,5,Mulkalapally Ramulu,MALE,47,SC,CPM,,,3495,2.0
+96,Thungathurthi,SC,6,Bade Anil,MALE,32,SC,IND,,,1253,0.72
+96,Thungathurthi,SC,7,Potharaju Venkateshwarlu,MALE,30,SC,BSP,,,1137,0.65
+96,Thungathurthi,SC,8,Nota,,,,NOTA,,,845,0.48
+96,Thungathurthi,SC,9,Erugu Venkateshwarlu,MALE,40,SC,YSRCP,,,780,0.45
+96,Thungathurthi,SC,10,Mamidi Srinivas,MALE,25,SC,IND,,,709,0.41
+96,Thungathurthi,SC,11,Gudipati Saidulu,MALE,36,SC,IND,,,494,0.28
+96,Thungathurthi,SC,12,Ganta Nagaiah,MALE,30,SC,IND,,,474,0.27
+96,Thungathurthi,SC,13,Puduri Srinivas Rao,MALE,41,SC,LSP,,,387,0.22
+96,Thungathurthi,SC,14,Boda Ramulu,MALE,60,SC,RLD,,,301,0.17
+96,Thungathurthi,SC,15,Kongari Mallaiah,MALE,38,SC,IND,,,232,0.13
+96,Thungathurthi,SC,16,Kondagadapala Suraiah,MALE,56,SC,IND,,,209,0.12
+97,Alair,GENERAL,1,Gongidi Sunitha,FEMALE,44,GENERAL,BRS,,,91737,52.7
+97,Alair,GENERAL,2,Budida Bikshamaiah,MALE,43,GENERAL,INC,,,60260,34.62
+97,Alair,GENERAL,3,Kotha Kishtaiah,MALE,36,SC,ANC,,,7086,4.07
+97,Alair,GENERAL,4,Dr.Kasam Venkateshwarlu,MALE,43,GENERAL,BJP,,,6530,3.75
+97,Alair,GENERAL,5,Gopi Jonah,MALE,34,GENERAL,BSP,,,1625,0.93
+97,Alair,GENERAL,6,Gavala Rama Swamy,MALE,71,GENERAL,CPM,,,1382,0.79
+97,Alair,GENERAL,7,Kalluri Ram Chandra Reddy,MALE,38,GENERAL,AAAP,,,851,0.49
+97,Alair,GENERAL,8,Nota,,,,NOTA,,,778,0.45
+97,Alair,GENERAL,9,Morigadi Krishna,MALE,44,GENERAL,IND,,,754,0.43
+97,Alair,GENERAL,10,Rachakonda Sitha,FEMALE,40,ST,IND,,,691,0.4
+97,Alair,GENERAL,11,Srinivas Goud Vattipally,MALE,55,GENERAL,RLD,,,657,0.38
+97,Alair,GENERAL,12,Vyla Srinivas Reddy,MALE,43,GENERAL,IND,,,430,0.25
+97,Alair,GENERAL,13,V.R. Sreenuvas,MALE,40,GENERAL,IND,,,353,0.2
+97,Alair,GENERAL,14,Gujjula Ram Chandra Reddy,MALE,32,GENERAL,IND,,,342,0.2
+97,Alair,GENERAL,15,Kanuganti Lakshma Reddy,MALE,53,GENERAL,IND,,,299,0.17
+97,Alair,GENERAL,16,Thudi Prema Rani,FEMALE,26,SC,IND,,,296,0.17
+98,Jangoan,GENERAL,1,Muthireddy Yadagiri Reddy,MALE,60,GENERAL,BRS,,,84074,48.8
+98,Jangoan,GENERAL,2,Ponnala Lakshmaiah,MALE,70,GENERAL,INC,,,51379,29.82
+98,Jangoan,GENERAL,3,Pratap Reddy Kommuri,MALE,52,GENERAL,BJP,,,21113,12.25
+98,Jangoan,GENERAL,4,Panneru Mohan Raj,MALE,41,GENERAL,MASP,,,4467,2.59
+98,Jangoan,GENERAL,5,Amudala Malla Reddy,MALE,46,GENERAL,CPM,,,2828,1.64
+98,Jangoan,GENERAL,6,Pakala Jaya,FEMALE,34,SC,IND,,,1619,0.94
+98,Jangoan,GENERAL,7,K. Mahipal Reddy,MALE,33,GENERAL,NCP,,,1031,0.6
+98,Jangoan,GENERAL,8,Neelam Suresh,MALE,35,GENERAL,PPOI,,,938,0.54
+98,Jangoan,GENERAL,9,Nota,,,,NOTA,,,858,0.5
+98,Jangoan,GENERAL,10,Jerupothula Kumar,MALE,37,SC,BSP,,,657,0.38
+98,Jangoan,GENERAL,11,Bakka Judson,MALE,41,SC,IND,,,507,0.29
+98,Jangoan,GENERAL,12,Neela Naresh Babu,MALE,29,GENERAL,IND,,,475,0.28
+98,Jangoan,GENERAL,13,Vara Prasad Rao Yerra,MALE,36,SC,LSP,,,420,0.24
+98,Jangoan,GENERAL,14,Arjula Shashi Kumar Reddy,MALE,29,GENERAL,AAAP,,,416,0.24
+98,Jangoan,GENERAL,15,Shankara Chary Vajroju,MALE,32,GENERAL,YSRCP,,,364,0.21
+98,Jangoan,GENERAL,16,Akula Shashidhar Rao,MALE,36,GENERAL,IND,,,297,0.17
+98,Jangoan,GENERAL,17,Valaboju Dayasagar,MALE,45,GENERAL,IND,,,286,0.17
+98,Jangoan,GENERAL,18,Maseeurrahman Zakir,MALE,31,GENERAL,IND,,,225,0.13
+98,Jangoan,GENERAL,19,Chipuru Mallaiah,MALE,32,GENERAL,IND,,,213,0.12
+98,Jangoan,GENERAL,20,Methuku Vamshi Krishna,MALE,32,GENERAL,IND,,,124,0.07
+99,Ghanpur,SC,1,Thatikonda Rajaiah,MALE,55,SC,BRS,,,103662,57.83
+99,Ghanpur,SC,2,Dr.Gunde Vijaya Rama Rao,MALE,59,SC,INC,,,44833,25.01
+99,Ghanpur,SC,3,Dommati Sambaiah,MALE,52,SC,TDP,,,20430,11.4
+99,Ghanpur,SC,4,Nota,,,,NOTA,,,3224,1.8
+99,Ghanpur,SC,5,Marapaka Ramesh,MALE,26,SC,RPI(A),,,2487,1.39
+99,Ghanpur,SC,6,Munigala William,MALE,59,SC,YSRCP,,,1155,0.64
+99,Ghanpur,SC,7,Singapuram Sammaiah,MALE,41,SC,IND,,,904,0.5
+99,Ghanpur,SC,8,Dandu Karuna,FEMALE,28,SC,BCUF,,,806,0.45
+99,Ghanpur,SC,9,Gurram Yadagiri,MALE,42,SC,IND,,,783,0.44
+99,Ghanpur,SC,10,Murali Krishna Rodda,MALE,47,SC,AAAP,,,535,0.3
+99,Ghanpur,SC,11,Prabhakar Bhaskula,MALE,49,SC,IND,,,446,0.25
+100,Palakurthi,GENERAL,1,Dayaker Rao Errabelli,MALE,53,GENERAL,TDP,,,57799,32.99
+100,Palakurthi,GENERAL,2,Dugyala Shrinivas Rao,MALE,51,GENERAL,INC,,,53486,30.53
+100,Palakurthi,GENERAL,3,Dr.N.Sudhakar Rao,MALE,64,GENERAL,BRS,,,52253,29.83
+100,Palakurthi,GENERAL,4,Ekalavya Chintha,MALE,49,SC,BSP,,,3195,1.82
+100,Palakurthi,GENERAL,5,Dr. Lakavath Lakshminarayana Naik,MALE,44,ST,IND,,,3129,1.79
+100,Palakurthi,GENERAL,6,Gola Gangarao,MALE,30,GENERAL,IND,,,1485,0.85
+100,Palakurthi,GENERAL,7,Nota,,,,NOTA,,,1103,0.63
+100,Palakurthi,GENERAL,8,Bikshapathi Velpula,MALE,62,GENERAL,IND,,,529,0.3
+100,Palakurthi,GENERAL,9,Anagandula Bobbili,MALE,62,GENERAL,WPOI,,,399,0.23
+100,Palakurthi,GENERAL,10,Sreeram Reddy Lingala,MALE,45,GENERAL,SP,,,340,0.19
+100,Palakurthi,GENERAL,11,Yakaiah Erenti,MALE,29,SC,JAP,,,338,0.19
+100,Palakurthi,GENERAL,12,Arrabelly Raghava Rao,MALE,51,GENERAL,IND,,,307,0.18
+100,Palakurthi,GENERAL,13,Banda Kumara Swamy,MALE,44,SC,IND,,,301,0.17
+100,Palakurthi,GENERAL,14,Vengala Nagesh Babu,MALE,26,GENERAL,PPOI,,,282,0.16
+100,Palakurthi,GENERAL,15,Devender Rao Raavipati,MALE,41,GENERAL,IND,,,252,0.14
+101,Dornakal,ST,1,D.S. Redya Naik,MALE,62,ST,INC,,,84170,51.11
+101,Dornakal,ST,2,Sathyavathi Rathod,FEMALE,46,ST,BRS,,,60639,36.82
+101,Dornakal,ST,3,Dr. Jatoth Ramachandru Naik,MALE,39,ST,TDP,,,8384,5.09
+101,Dornakal,ST,4,Ramesh Naik Banoth,MALE,28,ST,IND,,,4935,3.0
+101,Dornakal,ST,5,Angoth Venkanna Naik,MALE,41,ST,CPM,,,3646,2.21
+101,Dornakal,ST,6,Nota,,,,NOTA,,,1090,0.66
+101,Dornakal,ST,7,Banoth Sujatha,FEMALE,32,ST,YSRCP,,,908,0.55
+101,Dornakal,ST,8,Halavath Lingya,MALE,30,ST,IND,,,579,0.35
+101,Dornakal,ST,9,Char Mazundar Maloth,MALE,30,ST,IND,,,330,0.2
+102,Mahabubabad,ST,1,Banoth Shankar Nayak,MALE,49,ST,BRS,,,78370,44.78
+102,Mahabubabad,ST,2,Kavitha Malothu,FEMALE,34,ST,INC,,,69055,39.45
+102,Mahabubabad,ST,3,Balu Chowan Moodu,MALE,39,ST,TDP,,,15680,8.96
+102,Mahabubabad,ST,4,Gugulothu Shankar Naik,MALE,30,ST,MASP,,,3595,2.05
+102,Mahabubabad,ST,5,Banoth Seetharam Naik,MALE,33,ST,CPM,,,2205,1.26
+102,Mahabubabad,ST,6,Peddala Nageshwar Rao,MALE,51,ST,IND,,,1870,1.07
+102,Mahabubabad,ST,7,Nota,,,,NOTA,,,1616,0.92
+102,Mahabubabad,ST,8,Lavudya Raju,MALE,30,ST,IND,,,889,0.51
+102,Mahabubabad,ST,9,Jatoth Harichand,MALE,35,ST,IND,,,413,0.24
+102,Mahabubabad,ST,10,Gugulothu Venkanna,MALE,30,ST,IND,,,403,0.23
+102,Mahabubabad,ST,11,Rathnavath Ramesh,MALE,33,ST,IND,,,339,0.19
+102,Mahabubabad,ST,12,Bukya Bicha Naik,MALE,33,ST,IND,,,321,0.18
+102,Mahabubabad,ST,13,Gugulothu Devika Shankar Naik,FEMALE,42,ST,IND,,,271,0.15
+103,Narsampet,GENERAL,1,Donthi Madhava Reddy,MALE,58,GENERAL,IND,,,76144,41.99
+103,Narsampet,GENERAL,2,Peddi Sudarshan Reddy,MALE,42,GENERAL,BRS,,,57768,31.86
+103,Narsampet,GENERAL,3,Prakash Reddy Revuri,MALE,62,GENERAL,TDP,,,34479,19.01
+103,Narsampet,GENERAL,4,Katthi Venkataswamy,MALE,50,GENERAL,INC,,,6638,3.66
+103,Narsampet,GENERAL,5,Prabhakar Reddy Gade,MALE,52,GENERAL,CPM,,,1266,0.7
+103,Narsampet,GENERAL,6,Kurimilla Ramurthy,MALE,53,GENERAL,PPOI,,,1112,0.61
+103,Narsampet,GENERAL,7,Pulluri Kumara Swamy,MALE,36,GENERAL,IND,,,852,0.47
+103,Narsampet,GENERAL,8,Nota,,,,NOTA,,,770,0.42
+103,Narsampet,GENERAL,9,Mupparapu Raju,MALE,29,GENERAL,BSP,,,593,0.33
+103,Narsampet,GENERAL,10,Thotakuri Chinna Raju,MALE,35,GENERAL,IND,,,535,0.3
+103,Narsampet,GENERAL,11,Ashok Maddikayala,MALE,53,GENERAL,MCPI,,,443,0.24
+103,Narsampet,GENERAL,12,Neerati Devender,MALE,29,GENERAL,TPS,,,396,0.22
+103,Narsampet,GENERAL,13,Ramgopal Rao Annamaneni,MALE,59,GENERAL,IND,,,341,0.19
+104,Parkal,GENERAL,1,Challa Dharma Reddy,MALE,46,GENERAL,TDP,,,67432,41.06
+104,Parkal,GENERAL,2,Sahoder Reddy Muddasani,MALE,62,GENERAL,BRS,,,58324,35.52
+104,Parkal,GENERAL,3,Engala Venkatram Reddy,MALE,45,GENERAL,INC,,,30283,18.44
+104,Parkal,GENERAL,4,Abbadi Buchi Reddy,MALE,44,GENERAL,IND,,,3054,1.86
+104,Parkal,GENERAL,5,Bochu Saraiah,MALE,48,SC,BSP,,,1706,1.04
+104,Parkal,GENERAL,6,Nota,,,,NOTA,,,918,0.56
+104,Parkal,GENERAL,7,Kumaraswamy Gone,MALE,46,GENERAL,MCPI,,,424,0.26
+104,Parkal,GENERAL,8,Punnam Bhagyasri,FEMALE,35,GENERAL,IND,,,354,0.22
+104,Parkal,GENERAL,9,Challa Srinivas,MALE,31,GENERAL,IND,,,340,0.21
+104,Parkal,GENERAL,10,Shirupa Kiran Kumar,MALE,34,GENERAL,AAAP,,,324,0.2
+104,Parkal,GENERAL,11,Kannam Sunil,MALE,28,SC,IND,,,277,0.17
+104,Parkal,GENERAL,12,Shaboddin Mohammad,MALE,30,GENERAL,IND,,,272,0.17
+104,Parkal,GENERAL,13,Damodar Rachamalla,MALE,52,GENERAL,TECPI,,,184,0.11
+104,Parkal,GENERAL,14,Jannu Prameela,FEMALE,33,SC,AIFB,,,175,0.11
+104,Parkal,GENERAL,15,Ravi Vollaji,MALE,38,GENERAL,TPS,,,153,0.09
+105,Warangal West,GENERAL,1,Dasyam Vinay Bhasker,MALE,50,GENERAL,BRS,,,83492,59.31
+105,Warangal West,GENERAL,2,Swarna Errabelli,FEMALE,55,GENERAL,INC,,,27188,19.31
+105,Warangal West,GENERAL,3,Dharmarao Marthineni,MALE,54,GENERAL,BJP,,,18584,13.2
+105,Warangal West,GENERAL,4,Riaz Mohammad,MALE,41,GENERAL,MASP,,,2276,1.62
+105,Warangal West,GENERAL,5,Kumaraswamy Perla,MALE,54,SC,BSP,,,1989,1.41
+105,Warangal West,GENERAL,6,Nota,,,,NOTA,,,1704,1.21
+105,Warangal West,GENERAL,7,Bheemreddy Sudheer Reddy,MALE,33,GENERAL,YSRCP,,,1131,0.8
+105,Warangal West,GENERAL,8,Kapilavai Dileep Kumar,MALE,59,GENERAL,RLD,,,1016,0.72
+105,Warangal West,GENERAL,9,Chidara Chandra Shekar,MALE,34,GENERAL,LSP,,,844,0.6
+105,Warangal West,GENERAL,10,Pamu Ramesh,MALE,42,GENERAL,IND,,,737,0.52
+105,Warangal West,GENERAL,11,Tirunahari Seshaiah,MALE,42,GENERAL,TPS,,,511,0.36
+105,Warangal West,GENERAL,12,Dadaboina Srikanth Yadav,MALE,39,GENERAL,AAAP,,,440,0.31
+105,Warangal West,GENERAL,13,P. Sathya Prakash,MALE,48,GENERAL,IND,,,343,0.24
+105,Warangal West,GENERAL,14,K.Rukmini Kumari,FEMALE,58,GENERAL,IND,,,183,0.13
+105,Warangal West,GENERAL,15,Kandakatla Rajeshwer Rao (Kala),MALE,62,GENERAL,IND,,,125,0.09
+105,Warangal West,GENERAL,16,Gopu Srinivas,MALE,37,GENERAL,IND,,,119,0.08
+105,Warangal West,GENERAL,17,Yerra Dayakar,MALE,42,SC,IND,,,90,0.06
+106,Warangal East,GENERAL,1,Konda Surekha,FEMALE,47,GENERAL,BRS,,,88641,59.82
+106,Warangal East,GENERAL,2,Baswaraju Saraiah,MALE,58,GENERAL,INC,,,33556,22.65
+106,Warangal East,GENERAL,3,Padma. Rao,FEMALE,45,GENERAL,BJP,,,11639,7.85
+106,Warangal East,GENERAL,4,Mettu Srinivas,MALE,44,GENERAL,CPM,,,7802,5.27
+106,Warangal East,GENERAL,5,Nota,,,,NOTA,,,2936,1.98
+106,Warangal East,GENERAL,6,Sandra Johnson,MALE,45,SC,IND,,,1143,0.77
+106,Warangal East,GENERAL,7,Birru Ravi,MALE,28,SC,BSP,,,551,0.37
+106,Warangal East,GENERAL,8,Perala Jagadishwar Rao,MALE,53,GENERAL,LSP,,,506,0.34
+106,Warangal East,GENERAL,9,Kishan Reddy Junnuthula,MALE,54,GENERAL,PPOI,,,476,0.32
+106,Warangal East,GENERAL,10,Syed Mumtaz Ali,MALE,40,GENERAL,WPOI,,,271,0.18
+106,Warangal East,GENERAL,11,Ravi Kumar Tripuroju,MALE,28,GENERAL,AAAP,,,245,0.17
+106,Warangal East,GENERAL,12,Oruganti Krushna,MALE,29,GENERAL,IND,,,189,0.13
+106,Warangal East,GENERAL,13,Sambaiah Singathi,MALE,59,GENERAL,MCPI,,,144,0.1
+106,Warangal East,GENERAL,14,Ravinder Rangaraju,MALE,47,GENERAL,GAAP,,,81,0.05
+107,Waradhanapet,SC,1,Aroori Ramesh,MALE,47,SC,BRS,,,117708,66.15
+107,Waradhanapet,SC,2,Kondeti Shridhar,MALE,41,SC,INC,,,30825,17.32
+107,Waradhanapet,SC,3,Manda Krishna Madiga,MALE,48,SC,MASP,,,20425,11.48
+107,Waradhanapet,SC,4,Nota,,,,NOTA,,,2244,1.26
+107,Waradhanapet,SC,5,Gandham Shiva,MALE,29,SC,BSP,,,1469,0.83
+107,Waradhanapet,SC,6,Ellandula Shobhan Babu,MALE,43,SC,IND,,,1356,0.76
+107,Waradhanapet,SC,7,Bojjapalli Rajaiah,MALE,65,SC,YSRCP,,,1089,0.61
+107,Waradhanapet,SC,8,Jatti Ravikumar,MALE,36,SC,LSP,,,865,0.49
+107,Waradhanapet,SC,9,Ugendar Jatti,MALE,26,SC,AIFB,,,589,0.33
+107,Waradhanapet,SC,10,Ripika Prem Kumar,MALE,30,SC,IND,,,459,0.26
+107,Waradhanapet,SC,11,Ellandula Sudhakar,MALE,38,SC,IND,,,337,0.19
+107,Waradhanapet,SC,12,Mallikarjun Kukkala,MALE,33,SC,IND,,,336,0.19
+107,Waradhanapet,SC,13,Thatikayala Sateesh Babu,MALE,30,SC,IND,,,236,0.13
+108,Bhupalpalle,GENERAL,1,Madhusudana Chary Sirikonda,MALE,57,GENERAL,BRS,,,65113,34.34
+108,Bhupalpalle,GENERAL,2,Gandra Venkata Ramana Reddy,MALE,47,GENERAL,INC,,,57899,30.54
+108,Bhupalpalle,GENERAL,3,Gandra Satyanarayana Rao,MALE,49,GENERAL,BJP,,,57530,30.34
+108,Bhupalpalle,GENERAL,4,Akunuri Baabu,MALE,30,SC,BSP,,,3874,2.04
+108,Bhupalpalle,GENERAL,5,Nota,,,,NOTA,,,1316,0.69
+108,Bhupalpalle,GENERAL,6,Raziya,FEMALE,42,GENERAL,PPOI,,,1054,0.56
+108,Bhupalpalle,GENERAL,7,Anreddy Hamsa Reddy,MALE,54,GENERAL,MCPI,,,532,0.28
+108,Bhupalpalle,GENERAL,8,Nannapu Bharath Kumar,MALE,29,GENERAL,IND,,,513,0.27
+108,Bhupalpalle,GENERAL,9,Pendela Devaraju,MALE,42,GENERAL,IND,,,483,0.25
+108,Bhupalpalle,GENERAL,10,Kodela Sadanandam,MALE,37,GENERAL,IND,,,404,0.21
+108,Bhupalpalle,GENERAL,11,Maheshwarapu Gattaiah,MALE,45,GENERAL,LSP,,,373,0.2
+108,Bhupalpalle,GENERAL,12,Dasari Ramesh,MALE,32,SC,IND,,,268,0.14
+108,Bhupalpalle,GENERAL,13,Marapally Mallaiah,MALE,34,SC,AIFB,,,253,0.13
+109,Mulug,ST,1,Azmeera Chandulal,MALE,63,ST,BRS,,,58325,38.16
+109,Mulug,ST,2,Podem Veeraiah,MALE,48,ST,INC,,,41926,27.43
+109,Mulug,ST,3,Anasuya Dansari,FEMALE,43,ST,TDP,,,39441,25.81
+109,Mulug,ST,4,Digini Sammaiah,MALE,38,ST,CPM,,,2415,1.58
+109,Mulug,ST,5,Lokini Sampathi,MALE,50,ST,YSRCP,,,2214,1.45
+109,Mulug,ST,6,Nota,,,,NOTA,,,1882,1.23
+109,Mulug,ST,7,Dharavath Shankar,MALE,28,ST,PPOI,,,1658,1.08
+109,Mulug,ST,8,China Venkataiah Burka,MALE,64,ST,IND,,,1413,0.92
+109,Mulug,ST,9,Bheemaiah Sankurthul,MALE,39,ST,BSP,,,1209,0.79
+109,Mulug,ST,10,Kalthi Yarraiah,MALE,31,ST,IND,,,1032,0.68
+109,Mulug,ST,11,Pulsam Venkanna,MALE,34,ST,IND,,,723,0.47
+109,Mulug,ST,12,Porika Gopichand,MALE,68,ST,IND,,,596,0.39
+110,Pinapaka,ST,1,Payam Venkateswarlu,MALE,40,ST,YSRCP,,,42475,31.53
+110,Pinapaka,ST,2,Dr.Shankar. N,MALE,36,ST,BRS,,,28410,21.09
+110,Pinapaka,ST,3,Chanda Lingaiah Dora.,MALE,63,ST,BJP,,,28195,20.93
+110,Pinapaka,ST,4,Tholem .Ramesh,MALE,27,ST,CPI,,,19313,14.34
+110,Pinapaka,ST,5,Narasimha Rao Payam,MALE,51,ST,IND,,,4003,2.97
+110,Pinapaka,ST,6,Mukthi. Sathyam,MALE,40,ST,IND,,,3922,2.91
+110,Pinapaka,ST,7,Kaleti. Bhadraiah,MALE,48,ST,BSP,,,1849,1.37
+110,Pinapaka,ST,8,Bhukya. Chitti Babu,MALE,33,ST,PPOI,,,1504,1.12
+110,Pinapaka,ST,9,Nota,,,,NOTA,,,1480,1.1
+110,Pinapaka,ST,10,Komaram Satyanarayana,MALE,44,ST,IND,,,1130,0.84
+110,Pinapaka,ST,11,Sode Venkateswarlu,MALE,26,ST,IND,,,999,0.74
+110,Pinapaka,ST,12,Thati Surya Kala,FEMALE,39,ST,IND,,,871,0.65
+110,Pinapaka,ST,13,Sujatha Nitta.,FEMALE,26,ST,IND,,,546,0.41
+111,Yellandu,ST,1,Koram Kanakaiah,MALE,53,ST,INC,,,44945,29.82
+111,Yellandu,ST,2,Banothu Haripriya,FEMALE,29,ST,TDP,,,33438,22.18
+111,Yellandu,ST,3,Abbaiah Vooke,MALE,58,ST,BRS,,,20865,13.84
+111,Yellandu,ST,4,Gummadi Narsaiah,MALE,58,ST,IND,,,19343,12.83
+111,Yellandu,ST,5,Dr.Gugulothu Ravi Babu,MALE,28,ST,YSRCP,,,13993,9.28
+111,Yellandu,ST,6,Yadallapally Satyam,MALE,41,ST,IND,,,5990,3.97
+111,Yellandu,ST,7,Padiga Yarraiah,MALE,69,ST,IND,,,4401,2.92
+111,Yellandu,ST,8,Subash Chandra Arem,MALE,26,ST,IND,,,2866,1.9
+111,Yellandu,ST,9,Nota,,,,NOTA,,,1173,0.78
+111,Yellandu,ST,10,Vankudoth Koteswar Rao,MALE,29,ST,IND,,,1127,0.75
+111,Yellandu,ST,11,Punem Srinivas,MALE,34,ST,IND,,,794,0.53
+111,Yellandu,ST,12,Messu Raja Shekar,MALE,29,ST,IND,,,448,0.3
+111,Yellandu,ST,13,Moodu Hanuma,MALE,35,ST,AAAP,,,399,0.26
+111,Yellandu,ST,14,Mukthi Raju,MALE,37,ST,JASPA,,,363,0.24
+111,Yellandu,ST,15,Guguloth Vijaya,FEMALE,31,ST,IND,,,300,0.2
+111,Yellandu,ST,16,Amgothu Siva Kumar,MALE,27,ST,IND,,,293,0.19
+112,Khammam,GENERAL,1,Ajay Kumar Puvvada,MALE,48,GENERAL,INC,,,70465,37.91
+112,Khammam,GENERAL,2,Thummala Nageswar Rao,MALE,60,GENERAL,TDP,,,64783,34.85
+112,Khammam,GENERAL,3,Kurakula Nagabhushaiah,MALE,53,GENERAL,YSRCP,,,25032,13.47
+112,Khammam,GENERAL,4,R.J.C Krishna @ Gundala Krishna,MALE,47,GENERAL,BRS,,,14065,7.57
+112,Khammam,GENERAL,5,Ravi Maruth Popuri,MALE,53,GENERAL,LSP,,,4448,2.39
+112,Khammam,GENERAL,6,Nota,,,,NOTA,,,1408,0.76
+112,Khammam,GENERAL,7,Mohammed Asad,MALE,45,GENERAL,AAAP,,,694,0.37
+112,Khammam,GENERAL,8,Karnati Harish Saxena,MALE,29,GENERAL,PPOI,,,661,0.36
+112,Khammam,GENERAL,9,Abdul Kareem Shaik,MALE,34,GENERAL,BSP,,,599,0.32
+112,Khammam,GENERAL,10,Thumati Madhu,MALE,30,SC,IND,,,491,0.26
+112,Khammam,GENERAL,11,Domala Mery,FEMALE,33,SC,IND,,,394,0.21
+112,Khammam,GENERAL,12,Thurikepalli Vara Prasada Rao,MALE,61,GENERAL,IND,,,364,0.2
+112,Khammam,GENERAL,13,Maddisetti Yerrappa,MALE,27,GENERAL,IND,,,346,0.19
+112,Khammam,GENERAL,14,Palakurthi Krishna,MALE,34,GENERAL,IND,,,290,0.16
+112,Khammam,GENERAL,15,Yakubmiya Mohammed,MALE,60,GENERAL,WPOI,,,279,0.15
+112,Khammam,GENERAL,16,Komma Narsaiah,MALE,43,GENERAL,IND,,,248,0.13
+112,Khammam,GENERAL,17,Nerella Srinivas@Nerella Srinivasa Rao,MALE,47,GENERAL,GAAP,,,239,0.13
+112,Khammam,GENERAL,18,Chebrolu Uma Sri,FEMALE,37,GENERAL,IND,,,207,0.11
+112,Khammam,GENERAL,19,Praneeth Chaitanya Bathula,MALE,27,SC,IND,,,151,0.08
+112,Khammam,GENERAL,20,Cherala Jalendhar,MALE,38,GENERAL,IND,,,136,0.07
+112,Khammam,GENERAL,21,Banoth Mangilal Naik,MALE,38,ST,IND,,,135,0.07
+112,Khammam,GENERAL,22,Mende Srinivasa Rao,MALE,43,GENERAL,IND,,,114,0.06
+112,Khammam,GENERAL,23,Akarapu Vijaya Pal,MALE,36,SC,IND,,,109,0.06
+112,Khammam,GENERAL,24,Lingala Ravi Kumar,MALE,38,SC,IND,,,80,0.04
+112,Khammam,GENERAL,25,Miriyala Nagaraju,MALE,26,SC,IND,,,77,0.04
+112,Khammam,GENERAL,26,Akkirala Venkateswarlu @ Manishapal,MALE,35,SC,IND,,,71,0.04
+113,Palair,GENERAL,1,Ramireddy Venkatareddy,MALE,68,GENERAL,INC,,,69707,39.28
+113,Palair,GENERAL,2,Baby Swarna Kumari Maddineni,FEMALE,51,GENERAL,TDP,,,47844,26.96
+113,Palair,GENERAL,3,Pothineni Sudarshan Rao,MALE,52,GENERAL,CPM,,,44245,24.93
+113,Palair,GENERAL,4,Naresh Reddy Ramasahayam,MALE,40,GENERAL,IND,,,5587,3.15
+113,Palair,GENERAL,5,Ravella Ravindra,MALE,41,GENERAL,BRS,,,4041,2.28
+113,Palair,GENERAL,6,Maleedu Nageswara Rao,MALE,51,GENERAL,IND,,,1315,0.74
+113,Palair,GENERAL,7,Chaitanya Chekuri,MALE,26,SC,BSP,,,1278,0.72
+113,Palair,GENERAL,8,Nota,,,,NOTA,,,783,0.44
+113,Palair,GENERAL,9,Kasani Srinivasa Rao,MALE,41,GENERAL,AAAP,,,514,0.29
+113,Palair,GENERAL,10,Thimmidi Saidamma,FEMALE,35,SC,IND,,,463,0.26
+113,Palair,GENERAL,11,Mallaiah Mothe,MALE,62,GENERAL,IND,,,437,0.25
+113,Palair,GENERAL,12,Kaasina Ananda Prasad,MALE,39,GENERAL,PPOI,,,408,0.23
+113,Palair,GENERAL,13,Banothu Laxma Naik,MALE,57,ST,JASPA,,,252,0.14
+113,Palair,GENERAL,14,Aitagani Srinivasa Rao,MALE,35,GENERAL,IND,,,244,0.14
+113,Palair,GENERAL,15,Budancharla Ramaiah,MALE,38,GENERAL,IND,,,177,0.1
+113,Palair,GENERAL,16,Penugonda Venkat Rao,MALE,44,GENERAL,IND,,,166,0.09
+114,Madhira,SC,1,Bhatti Vikramarka Mallu,MALE,53,SC,INC,,,65135,36.81
+114,Madhira,SC,2,Kamal Raju Lingala,MALE,42,SC,CPM,,,52806,29.84
+114,Madhira,SC,3,Mothukupalli Narsimhulu,MALE,59,SC,TDP,,,46044,26.02
+114,Madhira,SC,4,Markapudi Ramadas,MALE,39,SC,TECPI,,,8361,4.73
+114,Madhira,SC,5,Bommera Ramamurthy,MALE,39,SC,BRS,,,1446,0.82
+114,Madhira,SC,6,Nota,,,,NOTA,,,730,0.41
+114,Madhira,SC,7,Karri Krishna,MALE,37,SC,BSP,,,501,0.28
+114,Madhira,SC,8,Kotcherla Guravaiah,MALE,47,SC,PPOI,,,407,0.23
+114,Madhira,SC,9,Naga Raju Thanangi,MALE,29,SC,ICSP,,,348,0.2
+114,Madhira,SC,10,Mallu Shivaram,MALE,37,SC,IND,,,263,0.15
+114,Madhira,SC,11,Ashok Darelli,MALE,36,SC,IND,,,166,0.09
+114,Madhira,SC,12,Konakanchi Francis,MALE,49,SC,IND,,,165,0.09
+114,Madhira,SC,13,Bandaru Veerababu,MALE,34,SC,IND,,,133,0.08
+114,Madhira,SC,14,Kotaiah Tholla,MALE,51,SC,IND,,,131,0.07
+114,Madhira,SC,15,Banka Baburao,MALE,54,SC,IND,,,130,0.07
+114,Madhira,SC,16,Jeedi Biksham,MALE,36,SC,IND,,,101,0.06
+114,Madhira,SC,17,Adimalla Ramulu,MALE,59,SC,IND,,,83,0.05
+115,Wyra,ST,1,Banoth Madan Lal,MALE,50,ST,YSRCP,,,59318,40.35
+115,Wyra,ST,2,Banoth Balaji,MALE,36,ST,TDP,,,48735,33.15
+115,Wyra,ST,3,Dr.Narayana Moodu,MALE,48,ST,CPI,,,27071,18.41
+115,Wyra,ST,4,Dr.Banoth Chandravathi,FEMALE,30,ST,BRS,,,7704,5.24
+115,Wyra,ST,5,Nota,,,,NOTA,,,912,0.62
+115,Wyra,ST,6,Bhukya Bhudesh,MALE,40,ST,PPOI,,,845,0.57
+115,Wyra,ST,7,Banoth Venkatiya,MALE,47,ST,BSP,,,781,0.53
+115,Wyra,ST,8,Bachala Laxmaiah,MALE,55,ST,IND,,,562,0.38
+115,Wyra,ST,9,Duggirala Srinivasa Rao,MALE,34,ST,IND,,,413,0.28
+115,Wyra,ST,10,Tejavath Narasimha Rao,MALE,47,ST,IND,,,387,0.26
+115,Wyra,ST,11,Vasam Ramakrishna Dora,MALE,28,ST,JASPA,,,283,0.19
+116,Sathupalle,SC,1,Sandra Venkata Veeraiah,MALE,46,SC,TDP,,,75490,39.68
+116,Sathupalle,SC,2,Matta Dayanand Vijay Kumar,MALE,50,SC,YSRCP,,,73005,38.37
+116,Sathupalle,SC,3,Chandra Sekhar Sambhani,MALE,61,SC,INC,,,30105,15.82
+116,Sathupalle,SC,4,Pidamarthy Ravi,MALE,40,SC,BRS,,,6666,3.5
+116,Sathupalle,SC,5,Amarlapudi Ramu,MALE,41,SC,IND,,,1361,0.72
+116,Sathupalle,SC,6,Kotaiah Rentapally,MALE,43,SC,PPOI,,,1070,0.56
+116,Sathupalle,SC,7,Akkirala Venkateswarlu @ Manishapal,MALE,35,SC,IND,,,979,0.51
+116,Sathupalle,SC,8,Nota,,,,NOTA,,,905,0.48
+116,Sathupalle,SC,9,Damalla Satyanarayana,MALE,33,SC,BSP,,,684,0.36
+117,Kothagudem,GENERAL,1,Venkat Rao Jalagam,MALE,46,GENERAL,BRS,,,50688,30.67
+117,Kothagudem,GENERAL,2,Vanama Venkateshwara Rao,MALE,69,GENERAL,YSRCP,,,34167,20.67
+117,Kothagudem,GENERAL,3,Koneru Satyanarayana,MALE,47,GENERAL,TDP,,,28363,17.16
+117,Kothagudem,GENERAL,4,Adavalli Krishna,MALE,60,GENERAL,IND,,,22989,13.91
+117,Kothagudem,GENERAL,5,Kunamneni Sambashiva Rao,MALE,57,GENERAL,CPI,,,20994,12.7
+117,Kothagudem,GENERAL,6,Sampath Ponugoti,MALE,26,GENERAL,IND,,,1874,1.13
+117,Kothagudem,GENERAL,7,Nota,,,,NOTA,,,1356,0.82
+117,Kothagudem,GENERAL,8,Gunipati Sudhakar,MALE,42,GENERAL,PPOI,,,1000,0.61
+117,Kothagudem,GENERAL,9,Thandra Venkateshwarlu,MALE,46,SC,BSP,,,904,0.55
+117,Kothagudem,GENERAL,10,Kudikala Anjaneyulu,MALE,43,GENERAL,LSP,,,833,0.5
+117,Kothagudem,GENERAL,11,Ameeruddin,MALE,44,GENERAL,WPOI,,,802,0.49
+117,Kothagudem,GENERAL,12,Pilli Suresh,MALE,26,SC,JAP,,,724,0.44
+117,Kothagudem,GENERAL,13,Satyanarayana Narala,MALE,40,GENERAL,JASPA,,,569,0.34
+118,Aswaraopeta,ST,1,Thati Venkateswarlu,MALE,51,ST,YSRCP,,,49546,34.49
+118,Aswaraopeta,ST,2,Mecha Nageswara Rao,MALE,49,ST,TDP,,,48616,33.84
+118,Aswaraopeta,ST,3,Mitrasena Vageela,MALE,47,ST,INC,,,15101,10.51
+118,Aswaraopeta,ST,4,Adinarayana Jare,MALE,31,ST,BRS,,,13217,9.2
+118,Aswaraopeta,ST,5,Karam Bhadramma(Sandhya),FEMALE,29,ST,IND,,,6731,4.69
+118,Aswaraopeta,ST,6,Bhukya Prasada Rao,MALE,37,ST,IND,,,2688,1.87
+118,Aswaraopeta,ST,7,Jan Babu B.,MALE,37,ST,PPOI,,,1459,1.02
+118,Aswaraopeta,ST,8,Korsa Venkatesh Dora,MALE,37,ST,IND,,,1255,0.87
+118,Aswaraopeta,ST,9,Nota,,,,NOTA,,,1145,0.8
+118,Aswaraopeta,ST,10,Balakrishna Sadiyam,MALE,31,ST,BSP,,,807,0.56
+118,Aswaraopeta,ST,11,Venkata Narasaiah Kanneboina,MALE,48,ST,IND,,,692,0.48
+118,Aswaraopeta,ST,12,Payam Pothaiah,MALE,36,ST,JASPA,,,679,0.47
+118,Aswaraopeta,ST,13,Thati Venkatesh,MALE,49,ST,IND,,,595,0.41
+118,Aswaraopeta,ST,14,Banavath Nanda,MALE,52,ST,IND,,,520,0.36
+118,Aswaraopeta,ST,15,Angothu Krishna,MALE,39,ST,IND,,,324,0.23
+118,Aswaraopeta,ST,16,Podiyam Krishna,MALE,56,ST,IND,,,281,0.2
+119,Bhadrachalam,ST,1,Sunnam Rajaiah,MALE,56,ST,CPM,,,57750,34.78
+119,Bhadrachalam,ST,2,K.P.R.K. Phaneeswaramma,FEMALE,49,ST,TDP,,,55935,33.69
+119,Bhadrachalam,ST,3,Kunja Satyavathi,FEMALE,43,ST,INC,,,22061,13.29
+119,Bhadrachalam,ST,4,Mane Ramakrishna,MALE,45,ST,BRS,,,8728,5.26
+119,Bhadrachalam,ST,5,Venkata Ramana Sunnam,MALE,35,ST,IND,,,5267,3.17
+119,Bhadrachalam,ST,6,Nota,,,,NOTA,,,2499,1.5
+119,Bhadrachalam,ST,7,Kamaraju Irpa,MALE,33,ST,BSP,,,2152,1.3
+119,Bhadrachalam,ST,8,Somini Venkata Purushotham,MALE,35,ST,IND,,,2039,1.23
+119,Bhadrachalam,ST,9,Payam Venkaiah,MALE,45,ST,IND,,,1929,1.16
+119,Bhadrachalam,ST,10,Gondi Venkateswarlu,MALE,36,ST,JASPA,,,1642,0.99
+119,Bhadrachalam,ST,11,Bhukya Parvathi,FEMALE,35,ST,PPOI,,,1425,0.86
+119,Bhadrachalam,ST,12,Marmam Lakshmi Devi,FEMALE,25,ST,IND,,,1156,0.7
+119,Bhadrachalam,ST,13,Kunja Dulaiah,MALE,49,ST,IND,,,1100,0.66
+119,Bhadrachalam,ST,14,G.Chandra,FEMALE,26,ST,IND,,,903,0.54
+119,Bhadrachalam,ST,15,Vislavath Swaroopa Ramu,FEMALE,28,ST,IND,,,893,0.54
+119,Bhadrachalam,ST,16,Pandra Hema Sundar,MALE,29,ST,IND,,,570,0.34
