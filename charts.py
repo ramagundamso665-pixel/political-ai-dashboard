@@ -396,3 +396,28 @@ def rating_by_area(table):
     fig.update_xaxes(range=[1, 5.6])
     fig.update_yaxes(autorange="reversed")
     return _style(fig, max(260, 60 + 34 * len(table)), showlegend=False, margin_t=60)
+
+
+def weekly_spend(weeks, title, color=PARTY_COLORS["Others"]):
+    """Rupees spent per week on election ads, as the ad library reports them."""
+    fig = go.Figure(go.Bar(
+        x=weeks["Week"], y=weeks["Spend_INR"] / 1e5, marker_color=color,
+        hovertemplate="Week of %{x|%d %b %Y}: Rs %{y:,.1f} lakh<extra></extra>",
+    ))
+    fig.update_layout(title=title)
+    fig.update_yaxes(title_text="Rs lakh")
+    return _style(fig, 300, showlegend=False, margin_t=60)
+
+
+def headline_tone(counts):
+    """How many of a rival's headlines read positive, neutral or negative for them."""
+    order = ["positive", "neutral", "negative"]
+    colors = {"positive": "#16a34a", "neutral": "#9e9e9e", "negative": "#dc2626"}
+    fig = go.Figure(go.Bar(
+        x=[counts.get(t, 0) for t in order], y=[t.title() for t in order], orientation="h",
+        marker_color=[colors[t] for t in order], text=[counts.get(t, 0) for t in order], textposition="outside", cliponaxis=False,
+        hovertemplate="%{y}: %{x} headlines<extra></extra>",
+    ))
+    fig.update_layout(title="Headline tone toward the rival")
+    fig.update_yaxes(autorange="reversed")
+    return _style(fig, 220, showlegend=False, margin_t=50)

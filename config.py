@@ -242,6 +242,15 @@ SOURCE_METADATA = {
         "basis": "Public comments on chosen videos via the YouTube Data API; a sample of commenters, not of voters",
         "methodology": "Organic-likelihood flags from channel age and copied or bursty text; sentiment read by a language model. Heuristic, not proof.",
     },
+    "opponent_watch": {
+        "id": "opponent_watch",
+        "name": "Opponent Watch (news feeds, YouTube, Google and Meta political ad libraries)",
+        "type": "external",
+        "refresh": "Live when the page opens; Google's ad file daily, cached 12 hours",
+        "basis": "Public news headlines, public YouTube channel statistics, and the political-ad transparency data Google and Meta publish",
+        "methodology": "Headline tone read by a language model; ad spend as the platforms self-report it (Meta gives ranges). "
+                        "Google's India figures are national, not per state.",
+    },
     "newspaper_clippings": {
         "id": "newspaper_clippings",
         "name": "Local newspaper pages (photographed by staff)",

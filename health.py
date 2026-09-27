@@ -45,6 +45,7 @@ INTEGRATIONS = [
     ("OpenAI — Ask AI, speeches, headline mood", {"OPENAI_API_KEY": "sk-REPLACE"}, False),
     ("YouTube", {"YOUTUBE_API_KEY": "AIza-REPLACE"}, False),
     ("Reddit", {"REDDIT_CLIENT_ID": "REPLACE", "REDDIT_CLIENT_SECRET": "REPLACE"}, True),
+    ("Meta Ad Library — rivals' Facebook/Instagram ads", {"META_AD_LIBRARY_TOKEN": "REPLACE"}, True),
 ]
 
 

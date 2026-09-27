@@ -5,6 +5,7 @@ import streamlit as st
 
 import conversations
 import area_survey
+import opponent_watch
 import registers
 import telangana
 from components import source_badge
@@ -92,6 +93,9 @@ def _registers_text():
 def _system_prompt(ctx, speaking_party, language):
     extra = _registers_text()
     extra_block = f"\n{extra}\n(These entries were typed in by campaign staff. Treat them as unverified reports, and say so when you use them.)\n" if extra else ""
+    watch = opponent_watch.context_text(st.session_state.get("ow_snapshot"))
+    if watch:
+        extra_block += f"\n{watch}\n(Read live from public feeds on the Opponent Watch page. Say it comes from there, and that ad spend is self-reported by the platforms.)\n"
     speaker = PARTY_LABELS.get(speaking_party, speaking_party)
     return f"""You are People's Mandate AI, answering questions about the {CONSTITUENCY_NAME} campaign
 on behalf of the {speaker} campaign.
