@@ -3,6 +3,7 @@ from datetime import date
 import pandas as pd
 import streamlit as st
 
+import area_survey
 import db
 import registers
 from components import empty_state, section
@@ -87,6 +88,34 @@ def _list(url, key, df):
                     st.rerun()
 
 
+@st.cache_data(ttl=60, show_spinner=False)
+def _ratings(url, key):
+    try:
+        return area_survey.prepare(registers.fetch(url, key, "area_ratings"))
+    except Exception:
+        return None
+
+
+def _board(ctx, url, key, df):
+    """Which areas are facing which problems, from everything the team has: logged issues, newspaper items, WhatsApp answers."""
+    known = _divisions(ctx)
+    ratings = _ratings(url, key)
+    board = area_survey.board(df, ratings, known)
+    if board.empty:
+        empty_state("Nothing to show yet. Log issues, upload newspaper pages, or start the WhatsApp survey.")
+        return
+    st.markdown("**Areas, most serious first**")
+    st.dataframe(board, hide_index=True, width="stretch")
+    grid = area_survey.area_by_category(df)
+    if not grid.empty:
+        st.markdown("**Open issues by area and category**")
+        st.dataframe(grid, width="stretch")
+    st.caption(
+        "Logged issues include what staff entered and what was read from newspaper pages. WhatsApp figures are volunteered answers, shown only "
+        f"for areas with at least {area_survey.MIN_RESPONSES} of them. Areas are matched by name against the constituency's divisions."
+    )
+
+
 def render(ctx, sidebar):
     section(
         "Local issues",
@@ -109,7 +138,7 @@ def render(ctx, sidebar):
         c2.metric("Still open", len(openish))
         c3.metric("High severity, open", int((openish["severity"] == "High").sum()))
 
-    tabs = st.tabs(["Issues", "By division", "Add an issue"])
+    tabs = st.tabs(["Issues", "Area board", "Add an issue"])
     with tabs[2]:
         _add_form(ctx, url, key)
     with tabs[0]:
@@ -129,13 +158,5 @@ def render(ctx, sidebar):
                 view = view[view["division"] == div]
             _list(url, key, view)
     with tabs[1]:
-        if df.empty:
-            empty_state("Nothing to group yet.")
-        else:
-            openish = df[~df["status"].isin(["Resolved", "Dropped"])]
-            table = (openish.assign(division=openish["division"].fillna("Not set"))
-                     .groupby("division").agg(Open=("title", "count"), High=("severity", lambda s: int((s == "High").sum())))
-                     .sort_values(["High", "Open"], ascending=False).reset_index().rename(columns={"division": "Division"}))
-            st.dataframe(table, hide_index=True, width="stretch")
-            st.caption("Open issues per division, most serious first.")
+        _board(ctx, url, key, df)
     st.caption("A log kept by your team. Entries are what staff typed in, not verified facts, and Ask AI is told so.")

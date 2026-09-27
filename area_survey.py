@@ -70,3 +70,58 @@ def weekly(df):
     g = df.groupby("week").agg(Answers=("rating", "size"), Average=("rating", "mean")).reset_index().sort_values("week")
     g["Average"] = g["Average"].round(2)
     return g
+
+
+def match_area(name, known):
+    """Map a free-text area to one of the constituency's known divisions when one is named in it, else keep it as written."""
+    low = re.sub(r"\s+", " ", str(name).strip().casefold())
+    for k in known:
+        kk = re.sub(r"\s+", " ", str(k).strip().casefold())
+        if kk and (kk == low or kk in low or low in kk):
+            return k
+    return str(name).strip().title() if str(name).isascii() else str(name).strip()
+
+
+def board(issues, ratings, known=(), min_n=MIN_RESPONSES):
+    """One row per area, from three sources side by side: issues staff logged or read from newspapers, and what WhatsApp
+    respondents rated and named. WhatsApp figures appear only for areas with at least `min_n` answers."""
+    rows = {}
+    if issues is not None and not issues.empty:
+        live = issues[~issues["status"].isin(["Resolved", "Dropped"])]
+        for _, r in live.iterrows():
+            d = r.get("division")
+            area = "Not set" if (d is None or pd.isna(d) or not str(d).strip()) else match_area(d, known)
+            row = rows.setdefault(area, {"Area": area, "issues": [], "high": 0, "waves": []})
+            row["issues"].append(str(r.get("category") or "Other"))
+            row["high"] += str(r.get("severity")) == "High"
+    if ratings is not None and not ratings.empty:
+        for _, r in ratings.iterrows():
+            area = match_area(r["area"], known)
+            rows.setdefault(area, {"Area": area, "issues": [], "high": 0, "waves": []})["waves"].append((r["issue"], int(r["rating"])))
+    out = []
+    for area, r in rows.items():
+        top_logged = pd.Series(r["issues"]).value_counts().index[0] if r["issues"] else ""
+        n = len(r["waves"])
+        wa_ok = n >= min_n
+        out.append({
+            "Area": area, "Open issues logged": len(r["issues"]), "High severity": r["high"], "Most logged": top_logged,
+            "WhatsApp answers": n if wa_ok else (f"under {min_n}" if n else 0),
+            "WhatsApp rating": round(sum(x for _, x in r["waves"]) / n, 2) if wa_ok else None,
+            "Most named on WhatsApp": pd.Series([i for i, _ in r["waves"]]).value_counts().index[0] if wa_ok else "",
+        })
+    df = pd.DataFrame(out)
+    if df.empty:
+        return df
+    return df.sort_values(["High severity", "Open issues logged"], ascending=False).reset_index(drop=True)
+
+
+def area_by_category(issues):
+    """Open issues: area against category, counts."""
+    if issues is None or issues.empty:
+        return pd.DataFrame()
+    live = issues[~issues["status"].isin(["Resolved", "Dropped"])].copy()
+    if live.empty:
+        return pd.DataFrame()
+    live["division"] = live["division"].fillna("Not set")
+    live["category"] = live["category"].fillna("Other")
+    return live.pivot_table(index="division", columns="category", values="title", aggfunc="count", fill_value=0)

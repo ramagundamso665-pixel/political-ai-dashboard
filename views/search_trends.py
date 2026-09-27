@@ -13,6 +13,14 @@ PRESETS = {
     "Civic issues": "water problem, road repair, drainage, garbage, power cut",
     "Welfare and prices": "Rythu Bandhu, ration card, gas cylinder, petrol price, jobs",
 }
+AREAS = "Areas of this constituency"
+
+
+def _divisions(ctx):
+    try:
+        return sorted(ctx.sheets["division_shares"]["Division"].dropna().astype(str).unique())
+    except Exception:
+        return []
 
 
 @st.cache_data(ttl=3600, show_spinner=False)
@@ -26,11 +34,22 @@ def render(ctx, sidebar):
         "What people in Telangana are searching for on Google, compared side by side: leaders, parties, and the local issues behind the votes.",
     )
     c1, c2, c3 = st.columns([1.3, 1, 1])
-    preset = c1.selectbox("Start from", list(PRESETS) + ["My own terms"], key="trend_preset")
+    preset = c1.selectbox("Start from", list(PRESETS) + [AREAS, "My own terms"], key="trend_preset")
     geo_name = c2.selectbox("Where", list(search_trends.GEOS), key="trend_geo")
     span = c3.selectbox("Period", list(search_trends.TIMEFRAMES), index=2, key="trend_span")
-    default = PRESETS.get(preset, st.session_state.get("trend_terms", ""))
-    terms_text = st.text_input(f"Up to {search_trends.MAX_TERMS} search terms, separated by commas", value=default, key=f"trend_terms_{preset}")
+    if preset == AREAS:
+        picked = st.multiselect(
+            f"Pick up to {search_trends.MAX_TERMS} areas to compare", _divisions(ctx), default=_divisions(ctx)[: search_trends.MAX_TERMS],
+            max_selections=search_trends.MAX_TERMS, key="trend_areas",
+        )
+        default = ", ".join(picked)
+        st.caption(
+            "Google has almost no data for searches like 'Shaikpet water problem', so this compares how much people search for each area's name "
+            "and shows what they search for alongside it (see Rising searches). For problems by area, use the Area board under Local Issues."
+        )
+    else:
+        default = PRESETS.get(preset, st.session_state.get("trend_terms", ""))
+    terms_text = st.text_input(f"Up to {search_trends.MAX_TERMS} search terms, separated by commas", value=default, key=f"trend_terms_{preset}_{default if preset == AREAS else ''}")
     st.session_state["trend_terms"] = terms_text
     terms = tuple(t.strip() for t in terms_text.split(",") if t.strip())[: search_trends.MAX_TERMS]
     if not terms:
@@ -76,10 +95,17 @@ def render(ctx, sidebar):
         st.caption('"Growth" is the percentage rise on the previous period; "Breakout" means more than a fivefold rise.')
     with tabs[2]:
         term = st.selectbox("Term", list(terms), key="trend_place_term")
-        places = search_trends.top_places(data["regions"], term)
+        places = search_trends.top_places(data["regions"], term, n=500)
         if places.empty:
-            empty_state("Google gave no place breakdown for this term.")
+            empty_state(
+                "Google has no place-level data for this term. That is usual for local problems ('water problem'): too few searches per place. "
+                "It works for the names of people and parties."
+            )
         else:
+            find = st.text_input("Find a place", placeholder="e.g. Hyderabad, Shaikpet", key="trend_find")
+            if find.strip():
+                places = places[places["Place"].str.contains(find.strip(), case=False, regex=False)]
+            st.caption(f"{len(places)} places with searches for this term")
             st.dataframe(places, hide_index=True, width="stretch")
             st.caption(
                 "Google splits Telangana into sub-regions, roughly mandals and localities. It cannot go down to a pincode "

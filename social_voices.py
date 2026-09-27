@@ -229,3 +229,123 @@ def stance_table(comments):
 def top_issues(comments, n=8):
     counts = Counter(c["issue"] for c in comments if c.get("issue"))
     return counts.most_common(n)
+
+
+# ----------------------------------------------------------------------
+# Facebook and Instagram, and comments from anywhere
+# ----------------------------------------------------------------------
+GRAPH = "https://graph.facebook.com/v20.0"
+
+
+def from_table(df, platform="Uploaded"):
+    """Comments from a spreadsheet or CSV export. Needs a 'text' column; 'author', 'date' and 'likes' are used when present.
+    Column names are matched loosely (message, comment, username, created_time and so on)."""
+    names = {str(c).strip().lower(): c for c in df.columns}
+
+    def col(*options):
+        return next((names[o] for o in options if o in names), None)
+
+    text_col = col("text", "comment", "message", "comment_text", "content", "body")
+    if not text_col:
+        return []
+    author_col = col("author", "username", "user", "name", "from", "author_name")
+    date_col = col("date", "published", "created_time", "timestamp", "created_at", "time")
+    likes_col = col("likes", "like_count", "likecount", "reactions")
+    out = []
+    for _, row in df.iterrows():
+        text = str(row[text_col]).strip()
+        if not text or text.lower() == "nan":
+            continue
+        when = ""
+        if date_col and str(row[date_col]) not in ("", "nan", "NaT"):
+            try:
+                import pandas as pd
+                when = pd.to_datetime(row[date_col], utc=True).isoformat()
+            except Exception:
+                when = ""
+        try:
+            likes = int(float(row[likes_col])) if likes_col and str(row[likes_col]) not in ("", "nan") else 0
+        except (TypeError, ValueError):
+            likes = 0
+        author = str(row[author_col]).strip() if author_col else ""
+        out.append({"video": platform, "author": "" if author == "nan" else author, "channel_id": None, "text": text,
+                    "published": when, "likes": likes})
+    return out
+
+
+def _graph(path, token, params, timeout=15):
+    try:
+        resp = requests.get(f"{GRAPH}/{path}", params={**params, "access_token": token}, timeout=timeout)
+        if resp.status_code >= 400:
+            msg = (resp.json().get("error") or {}).get("message", f"HTTP {resp.status_code}")
+            return None, msg
+        return resp.json(), None
+    except Exception as exc:
+        return None, live_pulse._reason(exc)
+
+
+def fetch_facebook_comments(post_id, token, max_comments=300):
+    """Comments on a post of a Facebook Page you manage. Meta only returns them to an app and token with access to that Page
+    (pages_read_engagement); comments on other people's pages need Meta's app review and are not available this way."""
+    out, url_path, params = [], f"{post_id}/comments", {"fields": "message,created_time,like_count,from", "limit": 100, "filter": "toplevel"}
+    while len(out) < max_comments:
+        data, error = _graph(url_path, token, params)
+        if data is None:
+            return {"ok": bool(out), "error": error, "comments": out}
+        for c in data.get("data", []):
+            who = c.get("from") or {}
+            out.append({"video": f"Facebook {post_id}", "author": who.get("name", ""), "channel_id": who.get("id"), "text": (c.get("message") or "").strip(),
+                        "published": c.get("created_time", ""), "likes": int(c.get("like_count", 0) or 0)})
+        after = ((data.get("paging") or {}).get("cursors") or {}).get("after")
+        if not (data.get("paging") or {}).get("next") or not after:
+            break
+        params = {**params, "after": after}
+    return {"ok": True, "error": None, "comments": [c for c in out if c["text"]]}
+
+
+def fetch_instagram_comments(media_id, token, max_comments=300):
+    """Comments on a post of an Instagram professional account you own, through the Instagram Graph API."""
+    out, params = [], {"fields": "text,timestamp,like_count,username", "limit": 100}
+    path = f"{media_id}/comments"
+    while len(out) < max_comments:
+        data, error = _graph(path, token, params)
+        if data is None:
+            return {"ok": bool(out), "error": error, "comments": out}
+        for c in data.get("data", []):
+            out.append({"video": f"Instagram {media_id}", "author": c.get("username", ""), "channel_id": None, "text": (c.get("text") or "").strip(),
+                        "published": c.get("timestamp", ""), "likes": int(c.get("like_count", 0) or 0)})
+        after = ((data.get("paging") or {}).get("cursors") or {}).get("after")
+        if not (data.get("paging") or {}).get("next") or not after:
+            break
+        params = {**params, "after": after}
+    return {"ok": True, "error": None, "comments": [c for c in out if c["text"]]}
+
+
+# ----------------------------------------------------------------------
+# Ranking
+# ----------------------------------------------------------------------
+def top_comments(comments, n=15, tier="Likely organic"):
+    """The most-liked comments among those that look organic, most liked first."""
+    pool = [c for c in comments if c.get("tier") == tier]
+    return sorted(pool, key=lambda c: (-c["likes"], -c["score"]))[:n]
+
+
+def top_by_stance(comments, per=3):
+    """For each party, its best-liked likely-organic comments: what supporters and critics are saying about it."""
+    out = {}
+    for party in PARTIES:
+        pool = [c for c in comments if c.get("stance") == party and c.get("tier") == "Likely organic"]
+        out[party] = {tone: sorted([c for c in pool if c["tone"] == tone], key=lambda c: -c["likes"])[:per] for tone in ("positive", "negative")}
+    return out
+
+
+def by_source(comments):
+    """Per video or post: how many comments, and the share that look organic."""
+    rows = {}
+    for c in comments:
+        r = rows.setdefault(c["video"], {"Source": c["video"], "Comments": 0, "organic": 0, "Likes": 0})
+        r["Comments"] += 1
+        r["organic"] += c["tier"] == "Likely organic"
+        r["Likes"] += c["likes"]
+    out = [{"Source": r["Source"], "Comments": r["Comments"], "Share organic": f"{r['organic'] / r['Comments'] * 100:.0f}%", "Likes": r["Likes"]} for r in rows.values()]
+    return sorted(out, key=lambda r: -r["Comments"])
