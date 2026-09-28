@@ -160,8 +160,36 @@ VERDICT_STYLE = {"Genuine": st.success, "Edited": st.error, "Partly altered": st
                  "Words match, sound does not": st.warning, "Not in any recording": st.info}
 
 
+@st.cache_data(ttl=3 * 3600, show_spinner=False)
+def _new_videos(name, key):
+    import live_pulse
+    return live_pulse.fetch_youtube_mentions(f'"{name}"', key, max_results=15, days=3)
+
+
+def _watch_list():
+    """New YouTube videos naming the leader: the clips most likely to be forwarded next. WhatsApp cannot be scanned;
+    for that, people forward clips to the bot."""
+    default = next((v for k, v in st.session_state.items() if str(k).startswith("wr_leader_") and v), "")
+    name = st.text_input("Watch YouTube for new videos naming", value=default, key="cc_watch_name")
+    key = health.secret("YOUTUBE_API_KEY")
+    if not (name.strip() and key):
+        return
+    got = _new_videos(name.strip(), key)
+    if not got["ok"]:
+        st.caption(f"YouTube search failed: {got['error']}.")
+    elif not got["videos"]:
+        st.caption("No new news or politics videos name them in the last 3 days.")
+    else:
+        st.dataframe(pd.DataFrame(got["videos"]).rename(columns=str.title), hide_index=True, width="stretch",
+                     column_config={"Url": st.column_config.LinkColumn("Link", display_text="watch")})
+        st.caption("To check one: save the clip (from the channel's own share or a forward) and upload it above. WhatsApp itself cannot be scanned; "
+                   "clips there reach the office when people forward them to the WhatsApp bot.")
+
+
 def _clip_check(api_key, snap):
     st.markdown("Got a clip from TV, YouTube or WhatsApp? It is checked against every full recording in the archive: by its sound, then by its words.")
+    with st.expander("Watch list: new videos naming the leader (last 3 days)"):
+        _watch_list()
     arch = store.rows("speech_archive")
     if not arch:
         st.info("The archive is empty, so there is nothing to check against. Add full recordings under Speech archive first.")
