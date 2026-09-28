@@ -18,6 +18,7 @@ TITLE = "Proof"
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SEAT_INDICATORS = os.path.join(ROOT, "data", "seat_indicators.csv")
+NIGHT_LIGHTS = os.path.join(ROOT, "data", "night_lights.csv")
 HOME = "Jubilee Hills"
 DAY = 24 * 3600
 
@@ -103,10 +104,38 @@ def _pct(a, b):
 # ----------------------------------------------------------------------
 # tabs
 # ----------------------------------------------------------------------
+def _power(seat, snap):
+    """Night-time brightness by year (NASA Black Marble), when pipeline/night_lights.py has been run."""
+    if not os.path.exists(NIGHT_LIGHTS):
+        with st.expander("Power (night lights): not connected yet"):
+            st.markdown(
+                "NASA's Black Marble satellite product measures night-time brightness every year at about 500 m. Brighter nights over years "
+                "mean more electrified homes, streets and business. To switch it on:\n"
+                "1. Create a free account at **urs.earthdata.nasa.gov**.\n"
+                "2. Signed in, open **Generate Token** (top menu) and generate one. Tokens last 60 days.\n"
+                "3. Put it in `.streamlit/secrets.toml` as `EARTHDATA_TOKEN = \"...\"`.\n"
+                "4. Run `.venv/bin/python pipeline/night_lights.py 2014 2018 2023 2024` once (downloads about 1 GB), then commit data/night_lights.csv."
+            )
+        return
+    nl = pd.read_csv(NIGHT_LIGHTS)
+    mine = nl[nl["seat"] == seat].sort_values("year")
+    if mine.empty:
+        return
+    st.markdown("**Power: night-time brightness** (NASA Black Marble, yearly)")
+    st.dataframe(mine.rename(columns={"year": "Year", "mean_radiance": "Average brightness (nW/cm²/sr)", "lit_share": "Share of the seat lit"})
+                 [["Year", "Average brightness (nW/cm²/sr)", "Share of the seat lit"]], hide_index=True, width="stretch")
+    a, b = mine.iloc[0], mine.iloc[-1]
+    snap.append(f"Night lights {int(a['year'])}→{int(b['year'])}: brightness {a['mean_radiance']}→{b['mean_radiance']}, lit share {a['lit_share']:.0%}→{b['lit_share']:.0%}")
+    st.caption("Brightness rises with electrification, street lighting and business. It cannot see a single outage or street, and new city lights can hide rural gaps.")
+
+
 def _sectors(seat, wards, snap):
+    _irrigation_map(seat, wards, snap)
+    st.divider()
     st.markdown("**What satellites can settle, sector by sector, and what they can't**")
     st.dataframe(pd.DataFrame(proof.SECTORS, columns=["Sector", "Satellites show", "Official records that fill the gap", "Neither can prove"]),
                  hide_index=True, width="stretch")
+    _power(seat, snap)
     c1, c2 = st.columns(2)
     run_lc = c1.button("Measure land use 2017–2023", key="pf_lc")
     run_dry = c2.button("Measure irrigation and tanks (dry season, 2019–now)", key="pf_dry")
@@ -146,6 +175,57 @@ def _sectors(seat, wards, snap):
                 "Water then is what tanks and reservoirs still hold before summer. A year with more rain gives both a lift, so compare against rainfall "
                 "before crediting a scheme."
             )
+
+
+@st.cache_data(ttl=30 * DAY, show_spinner=False, persist="disk")
+def _irrigation(seat, wards, area_id, year):
+    return proof.irrigation_map(geo.area(seat, wards), year)
+
+
+@st.cache_data(ttl=30 * DAY, show_spinner=False, persist="disk")
+def _irrigation_zoom(seat, wards, area_id, y0, y1):
+    f = geo.area(seat, wards)
+    a, b = _irrigation(seat, wards, area_id, y0), _irrigation(seat, wards, area_id, y1)
+    if not (a.get("ok") and b.get("ok")):
+        return None
+    box = proof.biggest_new_water(a, b, b["box"], size_km=7)
+    if not box:
+        return None
+    return {y: proof.irrigation_map(f, y, metres=10, cap=700, box=box)["truecolour"] for y in (y0, y1)}
+
+
+def _irrigation_map(seat, wards, snap):
+    st.markdown("**Irrigation map: the dry season painted** (green = standing crops, blue = water)")
+    years = list(range(2017, orbit.this_year() + 1))
+    c1, c2, c3 = st.columns(3)
+    y0 = c1.selectbox("Before", years, index=years.index(2019), key="pf_irr_y0")
+    y1 = c2.selectbox("After", years, index=len(years) - 1, key="pf_irr_y1")
+    y_check = c3.selectbox("Also show (fairness check)", years, index=0, key="pf_irr_yc")
+    if not st.button("Paint the map", key="pf_irr_go"):
+        return
+    aid = st.session_state["pf_area_id"]
+    with st.spinner("Reading three dry seasons (about a minute the first time)"):
+        maps = {y: _irrigation(seat, wards, aid, y) for y in (y_check, y0, y1)}
+        zoom = _irrigation_zoom(seat, wards, aid, y0, y1)
+    bad = [f"{y}: {m['error']}" for y, m in maps.items() if not m.get("ok")]
+    if bad:
+        st.warning("; ".join(bad))
+        return
+    cols = st.columns(2)
+    for col, y in zip(cols, (y0, y1)):
+        m = maps[y]
+        col.image(m["rgb"], caption=f"{y}: water {m['water_ha']:,} ha · green {m['green_ha']:,} ha · {m['coverage']:.0%} of the seat seen clearly", width="stretch")
+    if zoom:
+        st.markdown("**Where the most new water appeared** (the same 7 km square, natural colour)")
+        cols = st.columns(2)
+        for col, y in zip(cols, (y0, y1)):
+            col.image(zoom[y], caption=str(y), width="stretch")
+    c = maps[y_check]
+    st.caption(f"Fairness check: dry-season green depends on that year's rain ({y_check}: {c['green_ha']:,} ha, {y0}: {maps[y0]['green_ha']:,} ha, "
+               f"{y1}: {maps[y1]['green_ha']:,} ha). Water held in February–March is the steadier signal: {c['water_ha']:,} → {maps[y0]['water_ha']:,} → "
+               f"{maps[y1]['water_ha']:,} ha. A poster of this can be made with pipeline/irrigation_poster.py.")
+    snap.append(f"Irrigation map {seat}: dry-season water {maps[y0]['water_ha']} ha ({y0}) → {maps[y1]['water_ha']} ha ({y1}); green {maps[y0]['green_ha']} → {maps[y1]['green_ha']} ha "
+                f"(rain check {y_check}: green {c['green_ha']} ha, water {c['water_ha']} ha)")
 
 
 def _time_machine(seat, wards, snap, ctx):
@@ -347,9 +427,18 @@ def _rank_tab(seat, snap):
         a, b = dry[0], dry[-1]
         d["Irrigated (dry-season green) change %"] = ((d[f"dry_green_{b}_ha"] - d[f"dry_green_{a}_ha"]) / d[f"dry_green_{a}_ha"].replace(0, np.nan) * 100).round(1)
         d["Tank water change %"] = ((d[f"dry_water_{b}_ha"] - d[f"dry_water_{a}_ha"]) / d[f"dry_water_{a}_ha"].replace(0, np.nan) * 100).round(1)
-    metrics = [c for c in d.columns if c.endswith("%")]
+        # a year when clouds hid much of the seat gives a meaningless change: leave those seats out of the dry-season ranks
+        cloudy = (d.get(f"dry_cover_{a}", 1) < 0.9) | (d.get(f"dry_cover_{b}", 1) < 0.9)
+        d.loc[cloudy, ["Irrigated (dry-season green) change %", "Tank water change %"]] = np.nan
+        st.caption(f"{int(cloudy.sum())} seats are left out of the dry-season ranks because clouds hid more than 10% of them in {a} or {b}.")
+    if os.path.exists(NIGHT_LIGHTS):
+        nl = pd.read_csv(NIGHT_LIGHTS).pivot_table(index="seat", columns="year", values="mean_radiance")
+        if nl.shape[1] >= 2:
+            y_a, y_b = nl.columns.min(), nl.columns.max()
+            d = d.merge(((nl[y_b] - nl[y_a]) / nl[y_a] * 100).round(1).rename(f"Night lights change % ({y_a}→{y_b})"), left_on="seat", right_index=True, how="left")
+    metrics = [c for c in d.columns if c.endswith("%") or "%" in c]
     metric = st.selectbox("Rank all seats by", metrics, key="pf_rank_metric")
-    d = d.sort_values(metric, ascending=False).reset_index(drop=True)
+    d = d.dropna(subset=[metric]).sort_values(metric, ascending=False).reset_index(drop=True)
     d["Rank"] = d.index + 1
     st.caption(f"{len(d)} of 119 seats computed so far.")
     if seat in set(d["seat"]):

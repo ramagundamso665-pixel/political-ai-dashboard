@@ -46,6 +46,8 @@ INTEGRATIONS = [
     ("YouTube", {"YOUTUBE_API_KEY": "AIza-REPLACE"}, False),
     ("Reddit", {"REDDIT_CLIENT_ID": "REPLACE", "REDDIT_CLIENT_SECRET": "REPLACE"}, True),
     ("Meta Ad Library — rivals' Facebook/Instagram ads", {"META_AD_LIBRARY_TOKEN": "REPLACE"}, True),
+    ("Instagram — rivals' public accounts", {"META_ACCESS_TOKEN": "REPLACE", "INSTAGRAM_USER_ID": "REPLACE"}, True),
+    ("NASA Earthdata — night lights (power)", {"EARTHDATA_TOKEN": "REPLACE"}, True),
 ]
 
 

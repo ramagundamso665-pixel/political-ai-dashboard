@@ -140,6 +140,43 @@ def _news_tab(w, api_key, snap):
     st.dataframe(df, hide_index=True, width="stretch", column_config={"Link": st.column_config.LinkColumn(display_text="open")})
 
 
+@st.cache_data(ttl=3600, show_spinner=False)
+def _instagram(handle, token, ig_id):
+    import social_watch
+    return social_watch.instagram_account(handle, token, ig_id)
+
+
+def _instagram_tab(w, snap):
+    import social_watch
+
+    token, ig_id = health.secret("META_ACCESS_TOKEN"), health.secret("INSTAGRAM_USER_ID")
+    if not (token and ig_id):
+        st.info(
+            "Instagram is off until two secrets are added: META_ACCESS_TOKEN (a Meta token with instagram_basic and pages_read_engagement) and "
+            "INSTAGRAM_USER_ID (your own Instagram professional account's ID, linked to a Facebook Page). Then any rival's public business or "
+            "creator account can be read: their posts, likes and comment counts. Rivals' Facebook pages are not readable without Meta's app "
+            "review; their Facebook ads are under Ads and spending."
+        )
+        return
+    handle = st.text_input("Rival's Instagram handle", placeholder="e.g. @ktrbrs", key=f"ow_ig_{w['name']}")
+    if not handle.strip():
+        return
+    got = _instagram(handle.strip(), token, ig_id)
+    if not got["ok"]:
+        st.warning(f"Instagram: {got['error']}")
+        return
+    p, s = got["profile"], social_watch.engagement_summary(got["posts"])
+    m = st.columns(4)
+    m[0].metric("Followers", f"{p['followers']:,}" if p.get("followers") else "–")
+    m[1].metric("Posts, last 30 days", s.get("posts_recent", 0))
+    m[2].metric("Typical likes, last 30 days", f"{s['median_likes']:,}" if s.get("median_likes") is not None else "–")
+    m[3].metric("Share that are reels", f"{s['reels_share']}%" if s.get("reels_share") is not None else "–")
+    st.dataframe(pd.DataFrame(got["posts"]), hide_index=True, width="stretch", column_config={"Link": st.column_config.LinkColumn(display_text="open")})
+    if s:
+        snap.append(f"Instagram @{p['username']}: {s.get('posts_recent')} posts in 30 days, median likes {s.get('median_likes')}"
+                    + (f"; top post: {str(s['top'].get('Caption', ''))[:80]} ({s['top'].get('Likes')} likes)" if s.get("top") else ""))
+
+
 def _youtube_tab(w, yt_key, snap):
     if not (yt_key and str(yt_key).isascii()):
         st.info("YouTube is off until YOUTUBE_API_KEY is in the secrets.")
@@ -369,16 +406,18 @@ def render(ctx, sidebar):
     for line in _headline(w, us):
         st.markdown(f"- {line}")
 
-    tabs = st.tabs(["News", "YouTube", "Ads and spending", "Record and booths"])
+    tabs = st.tabs(["News", "YouTube", "Instagram", "Ads and spending", "Record and booths"])
     with tabs[0]:
         _news_tab(w, ctx.api_key, snap)
     with tabs[1]:
         _youtube_tab(w, yt_key, snap)
     with tabs[2]:
+        _instagram_tab(w, snap)
+    with tabs[3]:
         _google_ads_block(w, snap)
         st.divider()
         _meta_block(w, meta_token, snap)
-    with tabs[3]:
+    with tabs[4]:
         _record_tab(w, us, snap)
 
     st.session_state["ow_snapshot"] = {"when": date.today().isoformat(), "rival": w["name"], "party": w["party"], "lines": snap}

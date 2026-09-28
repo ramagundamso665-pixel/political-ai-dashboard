@@ -78,7 +78,7 @@ def season_series(feat, years, which="dry", metres=20):
         coverage = seen.sum() / max(1, fr.inside.sum())
         rows.append({
             "Year": y, "Green (ha)": round(float((s["ndvi"][seen] > GREEN).sum()) * fr.px_ha, 1),
-            "Open water (ha)": round(float((s["mndwi"][seen] > WATER).sum()) * fr.px_ha, 1),
+            "Open water (ha)": round(float(s["water"][seen].sum()) * fr.px_ha, 1),
             "Clear-sky coverage": f"{coverage * 100:.0f}%", "Scenes": ", ".join(s["dates"]),
         })
     return pd.DataFrame(rows), errors
@@ -272,7 +272,7 @@ def lake_watch(feat, year_now=orbit.LULC_YEARS[-1], buffer_m=150, metres=10):
         row = {"Lake": lake["name"], "Historical water (ha)": round(float(was_water.sum()) * fr.px_ha, 1),
                f"Built on it by {year_now} (ha)": round(float((was_water & (lc["classes"][win] == 7)).sum()) * fr.px_ha, 1)}
         if now["ok"]:
-            wet = was_water & (now["mndwi"][win] > WATER)
+            wet = was_water & now["water"][win]
             row["Holding water now (ha)"] = round(float(wet.sum()) * fr.px_ha, 1)
             row["Now water, share of historical"] = f"{wet.sum() / max(1, was_water.sum()) * 100:.0f}%"
         row["OSM"] = lake["osm"]
@@ -345,3 +345,53 @@ def reach_gap(records, households_col="households", beneficiaries_col="beneficia
     median = r["Coverage"].median()
     r["Gap vs typical area"] = ((median - r["Coverage"]) / 100 * r[households_col]).clip(lower=0).round(0)
     return r.sort_values("Gap vs typical area", ascending=False), median
+
+
+# ----------------------------------------------------------------------
+# Irrigation map: dry-season green and water painted over the picture
+# ----------------------------------------------------------------------
+def irrigation_map(feat, year, metres=20, cap=900, box=None):
+    """The dry-season picture with standing green (NDVI > 0.4) painted green and open water painted blue.
+    Returns the image and the hectares of each, inside the area."""
+    fr = Frame(feat, metres, cap)
+    if box is not None:
+        fr.box = box
+        fr.w, fr.h, _ = geo.grid_size(box, metres, cap)
+        fr.inside = geo.mask(feat, box, fr.w, fr.h)
+    s = orbit.sentinel(fr.box, fr.w, fr.h, *orbit.season(year, "dry"), max_cloud=15)
+    if not s["ok"]:
+        return s
+    base = np.nan_to_num(s["rgb"]).mean(axis=-1, keepdims=True).repeat(3, axis=-1) * 0.9     # grey picture underneath
+    img = base.copy()
+    green = (s["ndvi"] > GREEN) & ~np.isnan(s["ndvi"])
+    water = s["water"] & ~np.isnan(s["mndwi"])
+    img[green] = [0.10, 0.70, 0.20]
+    img[water] = [0.10, 0.35, 0.95]
+    img[~fr.inside] *= 0.3
+    seen = fr.inside & ~np.isnan(s["ndvi"])
+    return {"ok": True, "error": None, "rgb": np.clip(img, 0, 1), "truecolour": np.clip(np.nan_to_num(s["rgb"]) * 1.1, 0, 1),
+            "green_ha": round(float((green & seen).sum()) * fr.px_ha), "water_ha": round(float((water & seen).sum()) * fr.px_ha),
+            "coverage": round(float(seen.sum() / max(1, fr.inside.sum())), 3), "dates": s["dates"], "box": fr.box, "water": water, "inside": fr.inside}
+
+
+def biggest_new_water(before, after, box, size_km=8):
+    """A square box (lon/lat) centred on where the most new water appeared between two irrigation maps."""
+    new = after["water"] & ~before["water"] & after["inside"]
+    if not new.any():
+        return None
+    h, w = new.shape
+    minx, miny, maxx, maxy = box
+    win_r = max(3, int(h * size_km / ((maxy - miny) * 110.57)))
+    win_c = max(3, int(w * size_km / ((maxx - minx) * 111.32 * math.cos(math.radians((miny + maxy) / 2)))))
+    csum = new.cumsum(0).cumsum(1)
+    best, at = -1, (0, 0)
+    for r in range(0, max(1, h - win_r), max(1, win_r // 4)):
+        for c in range(0, max(1, w - win_c), max(1, win_c // 4)):
+            r1, c1 = min(h - 1, r + win_r), min(w - 1, c + win_c)
+            total = csum[r1, c1] - (csum[r - 1, c1] if r else 0) - (csum[r1, c - 1] if c else 0) + (csum[r - 1, c - 1] if r and c else 0)
+            if total > best:
+                best, at = total, (r, c)
+    r, c = at
+    lon0 = minx + c / w * (maxx - minx); lat1 = maxy - r / h * (maxy - miny)
+    lon1 = minx + min(w, c + win_c) / w * (maxx - minx); lat0 = maxy - min(h, r + win_r) / h * (maxy - miny)
+    return (lon0, lat0, lon1, lat1)

@@ -44,12 +44,36 @@ def one(seat):
             continue
         seen = fr.inside & ~(s["ndvi"] != s["ndvi"])
         row[f"dry_green_{y}_ha"] = round(float((s["ndvi"][seen] > proof.GREEN).sum()) * fr.px_ha, 1)
-        row[f"dry_water_{y}_ha"] = round(float((s["mndwi"][seen] > proof.WATER).sum()) * fr.px_ha, 1)
+        row[f"dry_water_{y}_ha"] = round(float(s["water"][seen].sum()) * fr.px_ha, 1)
         row[f"dry_cover_{y}"] = round(float(seen.sum() / max(1, fr.inside.sum())), 3)
     return row
 
 
+def refresh_dry():
+    """Recompute only the dry-season columns for every seat already in the file (after a change to the water rule)."""
+    d = pd.read_csv(OUT)
+    for i, r in d.iterrows():
+        feat = geo.area(r["seat"], use_wards=False)
+        fr = proof.Frame(feat, METRES, cap=400, pad=0.002)
+        for y in DRY_YEARS:
+            for attempt in range(3):
+                s = orbit.sentinel(fr.box, fr.w, fr.h, *orbit.season(y, "dry"), max_cloud=20)
+                if s["ok"]:
+                    break
+                time.sleep(5)
+            if not s["ok"]:
+                continue
+            seen = fr.inside & ~(s["ndvi"] != s["ndvi"])
+            d.loc[i, f"dry_green_{y}_ha"] = round(float((s["ndvi"][seen] > proof.GREEN).sum()) * fr.px_ha, 1)
+            d.loc[i, f"dry_water_{y}_ha"] = round(float(s["water"][seen].sum()) * fr.px_ha, 1)
+            d.loc[i, f"dry_cover_{y}"] = round(float(seen.sum() / max(1, fr.inside.sum())), 3)
+        print(r["seat"], "refreshed", flush=True)
+        d.to_csv(OUT, index=False)
+
+
 def main():
+    if "--refresh-dry" in sys.argv:
+        return refresh_dry()
     done = pd.read_csv(OUT) if os.path.exists(OUT) else pd.DataFrame()
     have = set(done["seat"]) if not done.empty else set()
     rows = done.to_dict("records") if not done.empty else []

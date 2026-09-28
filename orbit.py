@@ -95,7 +95,8 @@ def mosaic(collection, items, box, width, height, assets=None, expression=None, 
             hole = np.isnan(out[0])
             out[:, hole] = data[:, hole]
         used.append(it["date"])
-        if not np.isnan(out[0]).any():
+        # stop once 99.5% is filled: the last scattered cloud-masked pixels would cost several more scenes (~3 s each)
+        if np.isnan(out[0]).mean() < 0.005:
             break
     if out is None:
         return {"ok": False, "error": error or "no clear scene in that period", "data": None, "dates": []}
@@ -115,10 +116,10 @@ def sentinel(box, width, height, start, end, max_cloud=20):
     if not found["ok"] or not found["items"]:
         return {"ok": False, "error": found["error"] or f"no Sentinel-2 scene under {max_cloud}% cloud between {start} and {end}"}
     got = mosaic("sentinel-2-l2a", found["items"], box, width, height, assets=S2_BANDS,
-                 bad=lambda d: np.isin(d[5], S2_CLOUD))
+                 bad=lambda d: np.isin(d[5], S2_CLOUD), max_items=12)
     if not got["ok"]:
         return {"ok": False, "error": got["error"]}
-    b2, b3, b4, b8, b11, _ = got["data"]
+    b2, b3, b4, b8, b11, scl = got["data"]
     with np.errstate(divide="ignore", invalid="ignore"):
         ndvi = (b8 - b4) / (b8 + b4)
         ndwi = (b3 - b8) / (b3 + b8)
@@ -126,8 +127,11 @@ def sentinel(box, width, height, start, end, max_cloud=20):
         # modified water index (green vs short-wave infrared): holds up on the green, turbid water of
         # city lakes, where the plain index reads algae and weed as land
         mndwi = (b3 - b11) / (b3 + b11)
+    # open water: the water index and Sentinel's own scene class agree, or the index is unmistakable. The index alone
+    # also fires on damp bare soil in some scenes (Gajwel, Feb 2026: thousands of speckled false hectares).
+    water = ((mndwi > 0) & (scl == 6)) | (mndwi > 0.25)
     rgb = np.clip(np.stack([b4, b3, b2], axis=-1) / 3000, 0, 1)
-    return {"ok": True, "error": None, "ndvi": ndvi, "ndwi": ndwi, "mndwi": mndwi, "ndbi": ndbi, "rgb": rgb, "dates": got["dates"]}
+    return {"ok": True, "error": None, "ndvi": ndvi, "ndwi": ndwi, "mndwi": mndwi, "water": water, "ndbi": ndbi, "rgb": rgb, "scl": scl, "dates": got["dates"]}
 
 
 # ----------------------------------------------------------------------

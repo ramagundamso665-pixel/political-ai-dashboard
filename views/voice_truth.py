@@ -184,6 +184,26 @@ def _watch_list():
                      column_config={"Url": st.column_config.LinkColumn("Link", display_text="watch")})
         st.caption("To check one: save the clip (from the channel's own share or a forward) and upload it above. WhatsApp itself cannot be scanned; "
                    "clips there reach the office when people forward them to the WhatsApp bot.")
+    token, ig_id = health.secret("META_ACCESS_TOKEN"), health.secret("INSTAGRAM_USER_ID")
+    handles = st.text_input("Also watch these Instagram accounts (comma-separated handles)", placeholder="@rival1, @localnewspage", key="cc_watch_ig")
+    if handles.strip():
+        if not (token and ig_id):
+            st.caption("Instagram needs META_ACCESS_TOKEN and INSTAGRAM_USER_ID in the secrets (see Opponent Watch → Instagram).")
+            return
+        import social_watch
+        rows = []
+        for h in [x.strip() for x in handles.split(",") if x.strip()][:6]:
+            got = social_watch.instagram_account(h, token, ig_id)
+            if not got["ok"]:
+                st.caption(f"{h}: {got['error']}")
+                continue
+            for p in got["posts"]:
+                if p["Posted"] and p["Posted"] >= (pd.Timestamp.now() - pd.Timedelta(days=3)).strftime("%Y-%m-%d"):
+                    rows.append({"Account": h, **p})
+        if rows:
+            st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch", column_config={"Link": st.column_config.LinkColumn(display_text="open")})
+        else:
+            st.caption("No new posts from these accounts in the last 3 days.")
 
 
 def _clip_check(api_key, snap):
