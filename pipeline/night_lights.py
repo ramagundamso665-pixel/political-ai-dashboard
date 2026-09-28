@@ -51,6 +51,9 @@ def file_for(year, tile):
     return hits[0] if hits else None
 
 
+HDF5_SIGNATURE = b"\x89HDF\r\n\x1a\n"
+
+
 def download(year, tile, tok):
     os.makedirs(CACHE, exist_ok=True)
     name = file_for(year, tile)
@@ -58,8 +61,13 @@ def download(year, tile, tok):
         raise RuntimeError(f"no {PRODUCT} file for {year} {tile}")
     path = os.path.join(CACHE, name)
     if os.path.exists(path) and os.path.getsize(path) > 1_000_000:
-        return path
-    url = f"{LAADS}/archive/allData/5200/{PRODUCT}/{year}/001/{name}"
+        with open(path, "rb") as fh:
+            if fh.read(8) == HDF5_SIGNATURE:
+                return path
+        os.remove(path)  # a previous run cached something that wasn't really the file; get it again
+    # NASA's own file listing gives the real download prefix as .../api/v2/content/archives/..., not .../archive/...;
+    # the shorter path looks like a normal URL but actually serves an Earthdata Login HTML page, not the data
+    url = f"{LAADS}/api/v2/content/archives/allData/5200/{PRODUCT}/{year}/001/{name}"
     with requests.get(url, headers={"Authorization": f"Bearer {tok}"}, stream=True, timeout=600) as r:
         if r.status_code in (401, 403):
             raise RuntimeError("NASA refused the token (check EARTHDATA_TOKEN, and that it has not expired: tokens last 60 days)")
@@ -67,6 +75,12 @@ def download(year, tile, tok):
         with open(path + ".part", "wb") as fh:
             for chunk in r.iter_content(1 << 20):
                 fh.write(chunk)
+    with open(path + ".part", "rb") as fh:
+        head = fh.read(512)
+    if not head.startswith(HDF5_SIGNATURE):
+        os.remove(path + ".part")
+        hint = head[:200].decode("utf-8", "replace")
+        raise RuntimeError(f"downloaded {name} but it isn't a real data file — NASA sent this instead: {hint!r}")
     os.replace(path + ".part", path)
     return path
 
