@@ -39,6 +39,33 @@ WELCOME = (
 )
 
 
+MEDIA_TEXT = {
+    "en": {
+        "choose": "Got it. What should I do with this?\n1. Check whether this clip of our MLA is genuine\n2. Register it as my complaint",
+        "working": "Checking… this takes about a minute.",
+        "filed": "Your complaint is registered as {no}.\nWe understood: {summary}\nThe office will follow up.",
+        "consent": "Your voice note will be turned into text by a computer service to register your complaint. The recording is not kept. "
+                   "Reply 1 to agree, 2 to cancel.",
+        "cancelled": "Cancelled. Nothing was kept.",
+    },
+    "te": {
+        "choose": "అందింది. దీనితో ఏం చేయాలి?\n1. మా ఎమ్మెల్యే గురించి ఈ క్లిప్ నిజమైనదా అని తనిఖీ చేయండి\n2. దీన్ని నా ఫిర్యాదుగా నమోదు చేయండి",
+        "working": "తనిఖీ చేస్తున్నాం… సుమారు ఒక నిమిషం పడుతుంది.",
+        "filed": "మీ ఫిర్యాదు {no} గా నమోదైంది.\nమేము అర్థం చేసుకున్నది: {summary}\nకార్యాలయం చర్య తీసుకుంటుంది.",
+        "consent": "మీ ఫిర్యాదు నమోదు చేయడానికి మీ వాయిస్ నోట్‌ను కంప్యూటర్ సేవ టెక్స్ట్‌గా మారుస్తుంది. రికార్డింగ్ నిల్వ చేయబడదు. "
+                   "అంగీకరిస్తే 1, రద్దు చేయడానికి 2 పంపండి.",
+        "cancelled": "రద్దు చేయబడింది. ఏదీ నిల్వ చేయలేదు.",
+    },
+}
+
+
+def handle_media(session, media_id, kind):
+    """A forwarded clip or a voice note arrived: remember it and ask what to do. (reply, session)."""
+    session = dict(session or new_session())
+    session.update(pending_media={"id": media_id, "kind": kind}, step="media_choice")
+    return MEDIA_TEXT[session.get("language", "en")]["choose"], session
+
+
 def new_session():
     return {"step": "start", "language": "en", "issue": None, "area": None}
 
@@ -52,11 +79,25 @@ def handle(session, text):
 
     if word in {"stop", "unsubscribe", "ఆపు"}:
         return TEXT[lang]["stopped"], new_session(), "stop"
-    if word in {"hi", "hello", "hai", "start", "నమస్తే", "హాయ్"} or session["step"] == "start":
+    if word in {"hi", "hello", "hai", "start", "నమస్తే", "హాయ్"} or session["step"] == "start" or (session["step"] == "done" and word == "survey"):
         session.update(step="language", issue=None, area=None)
         return WELCOME, session, None
 
     step = session["step"]
+    if step == "media_choice":
+        if word == "1":
+            session["step"] = "done"
+            return MEDIA_TEXT[lang]["working"], session, "verify"
+        if word == "2":
+            session["step"] = "media_consent"
+            return MEDIA_TEXT[lang]["consent"], session, None
+        return MEDIA_TEXT[lang]["choose"], session, None
+    if step == "media_consent":
+        if word == "1":
+            session["step"] = "done"
+            return MEDIA_TEXT[lang]["working"], session, "complaint"
+        session.update(step="done", pending_media=None)
+        return MEDIA_TEXT[lang]["cancelled"], session, None
     if step == "language":
         if word not in {"1", "2"}:
             return WELCOME, session, None

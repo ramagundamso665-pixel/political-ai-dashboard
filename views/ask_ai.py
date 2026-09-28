@@ -96,6 +96,15 @@ def _system_prompt(ctx, speaking_party, language):
     watch = opponent_watch.context_text(st.session_state.get("ow_snapshot"))
     if watch:
         extra_block += f"\n{watch}\n(Read live from public feeds on the Opponent Watch page. Say it comes from there, and that ad spend is self-reported by the platforms.)\n"
+    # what the command pages measured this session: satellite checks, voice & truth, war room, prep
+    found = []
+    for key, label in (("proof_snapshot", "PROOF PAGE (satellite measurements)"), ("voice_snapshot", "VOICE & TRUTH PAGE"),
+                       ("warroom_snapshot", "WAR ROOM PAGE"), ("radar_snapshot", "PRE-VIRAL RADAR"), ("prep_snapshot", "PREP PAGE")):
+        lines = (st.session_state.get(key) or {}).get("lines") or []
+        if lines:
+            found.append(f"{label}:\n" + "\n".join(f"- {l}" for l in lines))
+    if found:
+        extra_block += "\n" + "\n".join(found) + "\n(Measured on those pages this session. Name the page when you use a number from it.)\n"
     speaker = PARTY_LABELS.get(speaking_party, speaking_party)
     return f"""You are People's Mandate AI, answering questions about the {CONSTITUENCY_NAME} campaign
 on behalf of the {speaker} campaign.

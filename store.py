@@ -12,15 +12,21 @@ from datetime import datetime, timezone
 
 import requests
 
-import health
-
 ROOT = os.path.dirname(os.path.abspath(__file__))
 LOCAL_DIR = os.path.join(ROOT, "data", "local_store")
 TABLES = ("speech_archive", "promises", "ledger", "contacts", "field_events", "message_tests", "message_responses", "voice_tickets")
 
 
 def _creds():
-    return health.supabase_credentials()
+    """Environment first (the WhatsApp bot), then the Streamlit secrets (the dashboard)."""
+    url, key = os.environ.get("SUPABASE_URL"), os.environ.get("SUPABASE_SERVICE_KEY")
+    if url and key:
+        return url, key
+    try:
+        import health
+        return health.supabase_credentials()
+    except Exception:
+        return None
 
 
 def _headers(key, prefer=None):

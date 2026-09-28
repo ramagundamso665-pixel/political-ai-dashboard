@@ -70,6 +70,10 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+# the pages a leader opens every day; everything else sits under "More pages"
+MAIN_VIEWS = [prep, war_room, proof, voice_truth, opponent_watch, ask_ai]
+MORE = "More pages…"
+
 VIEWS = [
     ask_ai, prep, war_room, opponent_watch, proof, voice_truth, overview, seats, booths, live_pulse, search_trends, field_reports, mlas, local_issues, newspaper, area_ratings, rti, leaders,
     swing, demographics, survey, backtest, mood_check, simulator, social, social_voices,
@@ -173,12 +177,21 @@ def render_sidebar(ctx):
     with st.sidebar:
         wordmark("People's Mandate AI", CONSTITUENCY_NAME)
 
-        st.markdown('<div class="pm-rail">Navigation</div>', unsafe_allow_html=True)
+        st.markdown('<div class="pm-rail">Command</div>', unsafe_allow_html=True)
         choice = st.radio(
             "Choose a view",
-            [view.TITLE for view in VIEWS],
+            [view.TITLE for view in MAIN_VIEWS] + [MORE],
             label_visibility="collapsed",
+            key="nav_main",
         )
+        if choice == MORE:
+            st.markdown('<div class="pm-rail">Data and records</div>', unsafe_allow_html=True)
+            choice = st.radio(
+                "More pages",
+                [view.TITLE for view in VIEWS if view not in MAIN_VIEWS],
+                label_visibility="collapsed",
+                key="nav_more",
+            )
 
         # claimed here so a view's own sidebar content lands directly under the
         # nav rather than below the data-source list
