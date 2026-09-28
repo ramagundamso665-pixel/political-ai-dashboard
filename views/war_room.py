@@ -7,6 +7,7 @@ import streamlit as st
 
 import charts
 import evidence
+import me
 import health
 import store
 import warroom as wr
@@ -14,36 +15,18 @@ from components import empty_state, fact_card, section
 from config import PARTIES, PARTY_LABELS, SOURCE_METADATA, is_valid_api_key, normalize_party
 from views.opponent_watch import _rivals, _years
 
-TITLE = "War Room"
+TITLE = "Threats"
 HOME = "Jubilee Hills"
 
 
 def leader_picker(ctx, prefix):
-    """Seat, leader and party, shared by War Room and Prep. Defaults to the latest winner of the seat."""
-    seats = sorted(_years()[2023]["seat"].unique())
-    c1, c2, c3 = st.columns([1.2, 1.6, 1])
-    seat = c1.selectbox("Seat", seats, index=seats.index(HOME) if HOME in seats else 0, key=f"{prefix}_seat")
-    winner, wparty = None, None
-    if seat == HOME:
-        try:
-            h = ctx.sheets["historical_results"].copy()
-            h["Year"] = pd.to_numeric(h["Year"], errors="coerce")
-            top = h[h["Year"] == h["Year"].max()].sort_values("Votes", ascending=False).iloc[0]
-            winner, wparty = top["Candidate"], normalize_party(top["Party"]) or top["Party"]
-        except Exception:
-            pass
-    if not winner:
-        c = _years()[2023]
-        top = c[(c["seat"] == seat) & (c["rank"] == 1)].iloc[0]
-        winner, wparty = top["candidate"], top["party"]
-    leader = c2.text_input("Your leader", value=winner, key=f"{prefix}_leader_{seat}")
-    opts = PARTIES + ["Other"]
-    party = c3.selectbox("Party", opts, index=opts.index(wparty) if wparty in opts else len(opts) - 1, key=f"{prefix}_party_{seat}")
-    return seat, leader.strip(), party
+    """Seat, leader and party from the sidebar's 'Working for' choice (shared by every page)."""
+    m = me.get()
+    return m["seat"], m["leader"], m["party"]
 
 
 def _places(ctx, seat):
-    if seat == HOME:
+    if me.has_campaign_data(seat):
         try:
             return sorted(ctx.sheets["division_shares"]["Division"].dropna().unique())
         except Exception:
@@ -313,12 +296,12 @@ def _log(ctx):
 
 
 def render(ctx, sidebar):
-    section("War room", "The next attack, the next story, and the rival's next target, seen before they arrive.")
+    section("Threats", "What rivals will attack you on, which stories are about to blow up, and where rivals are campaigning. Know it before it happens.")
     if not is_valid_api_key(ctx.api_key):
         st.warning("Attack Forecast and Counter-Proof need OPENAI_API_KEY.")
     seat, leader, party = leader_picker(ctx, "wr")
     snap = []
-    tabs = st.tabs(["Attack forecast", "Pre-viral radar", "Opponent targets", "Counter-proof", "Rally impact", "Money to votes", "Grievance calendar", "Event log"])
+    tabs = st.tabs(["What rivals will attack", "Stories about to blow up", "Where rivals campaign", "Answer a rival's claim", "Did our event work?", "Did spending bring votes?", "Problems coming this season", "Log an event"])
     with tabs[0]:
         _attack(ctx, seat, leader, party, snap)
     with tabs[1]:

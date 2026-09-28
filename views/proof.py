@@ -8,13 +8,14 @@ import streamlit as st
 
 import charts
 import geo
+import me
 import mla_history
 import orbit
 import proof
-from components import empty_state, fact_card, section
+from components import empty_state, fact_card, how, section
 from config import SOURCE_METADATA
 
-TITLE = "Proof"
+TITLE = "Proof of Work"
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SEAT_INDICATORS = os.path.join(ROOT, "data", "seat_indicators.csv")
@@ -132,13 +133,13 @@ def _power(seat, snap):
 def _sectors(seat, wards, snap):
     _irrigation_map(seat, wards, snap)
     st.divider()
-    st.markdown("**What satellites can settle, sector by sector, and what they can't**")
-    st.dataframe(pd.DataFrame(proof.SECTORS, columns=["Sector", "Satellites show", "Official records that fill the gap", "Neither can prove"]),
-                 hide_index=True, width="stretch")
+    with st.expander("What satellites can and can't show, sector by sector"):
+        st.dataframe(pd.DataFrame(proof.SECTORS, columns=["Sector", "Satellites show", "Official records that fill the gap", "Neither can prove"]),
+                     hide_index=True, width="stretch")
     _power(seat, snap)
     c1, c2 = st.columns(2)
-    run_lc = c1.button("Measure land use 2017–2023", key="pf_lc")
-    run_dry = c2.button("Measure irrigation and tanks (dry season, 2019–now)", key="pf_dry")
+    run_lc = c1.button("Show land use: building, trees, crops (2017–2023)", key="pf_lc")
+    run_dry = c2.button("Show water & irrigation every year since 2019", key="pf_dry")
     if run_lc or st.session_state.get("pf_lc_done") == seat:
         with st.spinner("Reading seven years of land-cover maps (about 20–40 seconds the first time)"):
             df, errs = _landcover(seat, wards, st.session_state["pf_area_id"])
@@ -153,7 +154,7 @@ def _sectors(seat, wards, snap):
             st.plotly_chart(charts.series_lines(df, "Year", ["Built area", "Trees", "Crops", "Water"], "Land use by year (hectares)", " ha"), width="stretch")
             snap.append(f"Land cover {int(first['Year'])}→{int(last['Year'])}: built {first['Built area']:.0f}→{last['Built area']:.0f} ha, trees {first['Trees']:.0f}→{last['Trees']:.0f} ha, "
                         f"crops {first['Crops']:.0f}→{last['Crops']:.0f} ha, water {first['Water']:.0f}→{last['Water']:.0f} ha")
-            st.caption("Esri / Impact Observatory annual land cover, 10 m. Its own accuracy is about 75–85%, so read small year-to-year wiggles as noise and trust the direction over several years.")
+            how("Esri / Impact Observatory annual land cover, 10 m. Its own accuracy is about 75–85%, so read small year-to-year wiggles as noise and trust the direction over several years.")
     if run_dry or st.session_state.get("pf_dry_done") == seat:
         years = tuple(range(2019, orbit.this_year() + 1))
         with st.spinner("Reading Sentinel-2 for every dry season since 2019 (about a minute the first time)"):
@@ -170,7 +171,7 @@ def _sectors(seat, wards, snap):
             st.dataframe(df, hide_index=True, width="stretch")
             snap.append(f"Dry season (Feb–Mar) {int(first['Year'])}→{int(last['Year'])}: green {first['Green (ha)']:.0f}→{last['Green (ha)']:.0f} ha, "
                         f"open water {first['Open water (ha)']:.0f}→{last['Open water (ha)']:.0f} ha")
-            st.caption(
+            how(
                 "Green in February–March outside forests is mostly irrigated rabi crops, so it is the best free measure of irrigation reaching fields. "
                 "Water then is what tanks and reservoirs still hold before summer. A year with more rain gives both a lift, so compare against rainfall "
                 "before crediting a scheme."
@@ -278,7 +279,7 @@ def _crop_tab(seat, wards, snap):
         snap.append(f"Crop damage {r['before']}→{r['after']}: {r['damaged_acres']} acres, hotspots near {', '.join(c['Near'] for c in r['cells'][:5])}")
     else:
         empty_state("No concentrated crop damage between these passes. Hotspots are 1 km cells where at least 30% of the crop's greenness fell sharply.")
-    st.caption("Damage = plant greenness (NDVI) falling by more than 0.15 on cropland that was green before. Harvest also causes a fall, so check the season before calling it damage.")
+    how("Damage = plant greenness (NDVI) falling by more than 0.15 on cropland that was green before. Harvest also causes a fall, so check the season before calling it damage.")
 
 
 def _heat_tab(seat, wards, snap):
@@ -302,7 +303,7 @@ def _heat_tab(seat, wards, snap):
         st.markdown("**Hottest places** (where to put shade, water points and trees first)")
         st.dataframe(pd.DataFrame(h["hottest"]), hide_index=True, width="stretch")
     snap.append(f"Heat on {h['date']}: average {h['mean']}°C, hottest 5% {h['p95']}°C" + (f"; hottest ward {h['wards'][0]['Ward']} ({h['wards'][0]['Average °C']}°C)" if h["wards"] else ""))
-    st.caption("Ground surface temperature from Landsat's thermal band on one clear afternoon, not air temperature: roofs and bare ground read hotter than the air. The ranking between places is what matters.")
+    how("Ground surface temperature from Landsat's thermal band on one clear afternoon, not air temperature: roofs and bare ground read hotter than the air. The ranking between places is what matters.")
 
 
 def _lakes_tab(seat, wards, snap):
@@ -323,7 +324,7 @@ def _lakes_tab(seat, wards, snap):
     worst = df.iloc[0]
     if worst[built_col] > 0:
         snap.append(f"Lakes: most built-over is {worst['Lake']} with {worst[built_col]} ha of its historical water area now built area")
-    st.caption(
+    how(
         "Historical water = the pixels that held water at least a quarter of the time in 1984–2020 (JRC Global Surface Water). "
         "Built on it = those pixels now classed as built area. 0% water now can mean dry, or covered by weed or hyacinth: check the picture before "
         "calling it encroachment. The official full-tank-level boundaries (HYDRAA / irrigation department) are the legal reference."
@@ -446,26 +447,24 @@ def _rank_tab(seat, snap):
         st.metric(f"{seat}: rank on {metric}", f"{int(me['Rank'])} of {len(d)}", f"{me[metric]}")
         snap.append(f"Seat rank: {seat} is {int(me['Rank'])} of {len(d)} on {metric} ({me[metric]})")
     st.dataframe(d[["Rank", "seat", metric, "area_km2"]].rename(columns={"seat": "Seat", "area_km2": "Area km²"}), hide_index=True, width="stretch")
-    st.caption("Seat outlines are the OpenCity 2018 map at about 60 m per pixel. Percentages on tiny starting values (a city seat's few hectares of trees) swing wildly, so read them with the hectares.")
+    how("Seat outlines are the OpenCity 2018 map at about 60 m per pixel. Percentages on tiny starting values (a city seat's few hectares of trees) swing wildly, so read them with the hectares.")
 
 
 def render(ctx, sidebar):
     section(
-        "Proof",
-        "What changed on the ground, measured from free satellite data anyone can re-check: building, farming, irrigation, lakes, heat and crop damage. "
-        "Where a satellite can't see something, this page says so.",
+        "Proof of work",
+        "What really changed on the ground here, seen from satellites: water for farms, crops, new building, lakes, heat and power. "
+        "Anyone can check it, so opponents can't deny it.",
     )
-    c1, c2 = st.columns([2, 1])
-    seats = geo.seats()
-    seat = c1.selectbox("Seat", seats, index=seats.index(HOME) if HOME in seats else 0, key="pf_seat")
-    wards = bool(geo.SEAT_WARDS.get(seat)) and c2.toggle("Use GHMC wards (more precise)", value=True, key="pf_wards")
+    seat = me.get()["seat"]
+    wards = bool(geo.SEAT_WARDS.get(seat)) and st.toggle("Use GHMC ward boundaries (more precise for this city seat)", value=True, key="pf_wards")
     feat = geo.area(seat, wards)
     # part of every cache key, so a change to how an area is drawn is never served stale results
     st.session_state["pf_area_id"] = feat["properties"]["basis"]
-    st.caption(f"Area analysed: {feat['properties']['basis']} · about {geo.km2(feat):,.0f} km²")
+    how(f"Area measured: {feat['properties']['basis']} · about {geo.km2(feat):,.0f} km²")
 
     snap = []
-    tabs = st.tabs(["By sector", "Time machine", "Crop-loss radar", "Heat", "Lakes", "Ghost works", "Scheme reach", "Roll vs roof", "Seat rank"])
+    tabs = st.tabs(["Farms, water & power", "Then vs now (pictures)", "Crop damage", "Hottest areas", "Lakes", "Check a works list", "Who's missing schemes", "Voter list check", "Rank vs other seats"])
     with tabs[0]:
         _sectors(seat, wards, snap)
     with tabs[1]:

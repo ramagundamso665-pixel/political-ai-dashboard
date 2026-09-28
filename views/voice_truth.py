@@ -16,7 +16,7 @@ import voice_intel as vi
 from components import empty_state, fact_card, section
 from config import SOURCE_METADATA, is_valid_api_key
 
-TITLE = "Voice & Truth"
+TITLE = "People & Promises"
 
 PROMISE_STATUSES = ["Suggested", "Confirmed", "In progress", "Done", "Late", "Dropped", "Rejected"]
 LEDGER_KINDS = ["Meeting", "Spending", "Work sanctioned", "Work completed", "Statement", "Other"]
@@ -380,14 +380,13 @@ def render_public_ledger():
 
 def render(ctx, sidebar):
     section(
-        "Voice & truth",
-        "Citizens speak their problems; the leader's own full recordings settle what was really said and promised; and a public record that "
-        "cannot be quietly edited shows what the office did.",
+        "People & promises",
+        "People's complaints by voice, your promises and whether they're kept, and a way to prove whether a viral video of you is real.",
     )
     if not is_valid_api_key(ctx.api_key):
         st.warning("Speech and language steps need OPENAI_API_KEY. The ledger works without it.")
     snap = []
-    tabs = st.tabs(["Janavani (voice complaints)", "Speech archive", "Clip check", "Promise catcher", "Open office ledger"])
+    tabs = st.tabs(["Voice complaints", "Speech recordings", "Is this video real?", "Promises", "Public record"])
     with tabs[0]:
         _janavani(ctx.api_key, snap)
     with tabs[1]:

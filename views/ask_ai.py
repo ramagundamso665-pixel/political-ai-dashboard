@@ -3,7 +3,12 @@ import random
 
 import streamlit as st
 
+import os
+
+import pandas as pd
+
 import conversations
+import me
 import area_survey
 import opponent_watch
 import registers
@@ -25,7 +30,7 @@ try:
 except ImportError:
     OpenAI = None
 
-TITLE = "Ask AI"
+TITLE = "Ask"
 
 # Deliberately about evidence and fieldwork rather than persuasion — this sits in
 # front of campaign staff every morning and should point them at the data.
@@ -34,7 +39,7 @@ GREETINGS = [
     "Where should the campaign look next?",
     "Which division deserves the next visit?",
     "What has changed since the last round?",
-    "Which way is Jubilee Hills moving?",
+    "Which way is this seat moving?",
     "Who is still undecided?",
     "What are the surveys disagreeing on?",
     "Start with what the data can prove.",
@@ -90,6 +95,53 @@ def _registers_text():
         return ""
 
 
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+@st.cache_data(show_spinner=False)
+def _public_context(seat):
+    """Everything public the app holds for one seat: results in every election on file, turnout, and the
+    satellite and night-light measurements. Used for every seat without the campaign's own workbook."""
+    lines = []
+    for y in (2014, 2018, 2023):
+        try:
+            c = pd.read_csv(os.path.join(ROOT, "data", f"telangana_{y}_candidates.csv"))
+            s = pd.read_csv(os.path.join(ROOT, "data", f"telangana_{y}_seats.csv"))
+        except Exception:
+            continue
+        rows = c[(c["seat"] == seat) & (c["party"] != "NOTA")].sort_values("rank")
+        if rows.empty:
+            continue
+        sr = s[s["seat"] == seat]
+        turnout = f", turnout {sr.iloc[0]['turnout_pct']}%" if not sr.empty and "turnout_pct" in sr else ""
+        lines.append(f"### {y} assembly election, {seat} (Election Commission){turnout}")
+        for _, r in rows.head(6).iterrows():
+            lines.append(f"{y} | rank {int(r['rank'])} | {r['candidate']} | {r['party']} | {int(r['votes_total']):,} votes | {r['pct']}%")
+        if len(rows) >= 2:
+            w, r2 = rows.iloc[0], rows.iloc[1]
+            lines.append(f"{y} | winning margin | {w['party']} over {r2['party']} by {int(w['votes_total'] - r2['votes_total']):,} votes ({w['pct'] - r2['pct']:.2f} points)")
+    try:
+        d = pd.read_csv(os.path.join(ROOT, "data", "seat_indicators.csv")).set_index("seat").loc[seat]
+        lines.append(f"### Satellite measurements, {seat} (public satellite data, approximate outline)")
+        lines.append(f"Built-up land: {d['built_2017_ha']:,.0f} ha in 2017 → {d['built_2023_ha']:,.0f} ha in 2023")
+        lines.append(f"Tree cover: {d['trees_2017_ha']:,.0f} ha in 2017 → {d['trees_2023_ha']:,.0f} ha in 2023")
+        lines.append(f"Cropland: {d['crops_2017_ha']:,.0f} ha in 2017 → {d['crops_2023_ha']:,.0f} ha in 2023")
+        lines.append(f"Water held in tanks and reservoirs in Feb-Mar: {d['dry_water_2019_ha']:,.0f} ha in 2019 → {d['dry_water_2026_ha']:,.0f} ha in 2026")
+        lines.append(f"Green (mostly irrigated crops) in Feb-Mar: {d['dry_green_2019_ha']:,.0f} ha in 2019 → {d['dry_green_2026_ha']:,.0f} ha in 2026 (depends on rain too)")
+    except Exception:
+        pass
+    try:
+        n = pd.read_csv(os.path.join(ROOT, "data", "night_lights.csv"))
+        n = n[n["seat"] == seat].sort_values("year")
+        if not n.empty:
+            lines.append(f"### Night-time brightness, {seat} (NASA satellite; more light = more electrified homes, streets, business)")
+            for _, r in n.iterrows():
+                lines.append(f"{int(r['year'])} | average brightness {r['mean_radiance']} | {r['lit_share'] * 100:.0f}% of the seat lit")
+    except Exception:
+        pass
+    return "\n".join(lines)
+
+
 def _system_prompt(ctx, speaking_party, language):
     extra = _registers_text()
     extra_block = f"\n{extra}\n(These entries were typed in by campaign staff. Treat them as unverified reports, and say so when you use them.)\n" if extra else ""
@@ -106,14 +158,25 @@ def _system_prompt(ctx, speaking_party, language):
     if found:
         extra_block += "\n" + "\n".join(found) + "\n(Measured on those pages this session. Name the page when you use a number from it.)\n"
     speaker = PARTY_LABELS.get(speaking_party, speaking_party)
-    return f"""You are People's Mandate AI, answering questions about the {CONSTITUENCY_NAME} campaign
-on behalf of the {speaker} campaign.
-Below is the COMPLETE dataset, every sheet in full — not a sample.
-
-{build_data_context(ctx)}
+    who = me.get()
+    seat = who["seat"]
+    if me.has_campaign_data(seat):
+        data = "Below is the COMPLETE campaign dataset for this seat, every sheet in full — not a sample.\n\n" + build_data_context(ctx) \
+               + "\n" + _public_context(seat)
+        campaign_rule = result_rule(ctx)
+    else:
+        data = (f"Below is ALL the public data held for {seat}. The campaign's own surveys, division estimates, booth sheet and ground "
+                f"notes exist ONLY for Jubilee Hills and are deliberately NOT given to you: never use or mention Jubilee Hills figures "
+                f"for {seat}.\n\n" + _public_context(seat))
+        campaign_rule = ("- There are no surveys, booth figures, division estimates or ground notes for this seat. If the question needs them, "
+                         "say plainly that the app does not have them for " + seat + " and say what it does have.\n"
+                         "- Always return \"sheet\": \"none\" (the campaign's sheets are about Jubilee Hills, not this seat).")
+    return f"""You are People's Mandate AI, answering questions about {seat} constituency for {who['leader']} of {speaker}.
+Speak plainly, like a sharp political aide talking to a busy leader: short sentences, the number first, no jargon.
+{data}
 {extra_block}
 Rules:
-{result_rule(ctx)}
+{campaign_rule}
 - Answer ONLY using the data above. Never invent numbers, names, or facts not present here.
 - This dataset covers MULTIPLE parties (BRS, Congress/INC, BJP, AIMIM). Every fact is
   attributable to exactly one party — never attribute a fact to a party other than the
@@ -137,7 +200,7 @@ Respond with ONLY minified JSON, no markdown fences, in exactly this shape:
 
 
 @st.cache_data(show_spinner=False)
-def _ask_once(_client, question, party, language, _system):
+def _ask_once(_client, question, party, language, seat, leader, _system):
     resp = _client.chat.completions.create(
         model=ANSWER_MODEL,
         messages=[{"role": "system", "content": _system}, {"role": "user", "content": question}],
@@ -159,10 +222,23 @@ def _render_chart(df, chart):
         st.bar_chart(numeric)
 
 
+PUBLIC_SUGGESTIONS = [
+    "Who won here in 2014, 2018 and 2023, and by how much?",
+    "Is this a safe seat or a close one?",
+    "Has irrigation reached more fields here since 2019?",
+    "Is this seat getting brighter at night, a sign of more power and business?",
+    "How has turnout changed across the three elections?",
+    "Which party has lost the most ground here since 2014?",
+]
+
+
 def _suggestions():
-    """A fresh handful per conversation, so a new chat offers new starting points."""
-    if "suggestions" not in st.session_state:
-        st.session_state.suggestions = random.sample(SUGGESTIONS, SUGGESTIONS_SHOWN)
+    """A fresh handful per conversation and seat, so a new chat offers new starting points that the data can answer."""
+    seat = me.get()["seat"]
+    if st.session_state.get("suggestions_seat") != seat:
+        pool = SUGGESTIONS if me.has_campaign_data(seat) else PUBLIC_SUGGESTIONS
+        st.session_state.suggestions = random.sample(pool, SUGGESTIONS_SHOWN)
+        st.session_state.suggestions_seat = seat
     return st.session_state.suggestions
 
 
@@ -202,14 +278,7 @@ def _sidebar_panel(sidebar, messages):
                         _start_new_chat()
                     st.rerun()
 
-        st.markdown('<div class="pm-rail">Speaking as</div>', unsafe_allow_html=True)
-        party = st.selectbox(
-            "Speaking as",
-            PARTIES,
-            format_func=lambda p: PARTY_LABELS.get(p, p),
-            key="ask_ai_party",
-            label_visibility="collapsed",
-        )
+        party = me.get()["party"]
         st.markdown('<div class="pm-rail">Reply in</div>', unsafe_allow_html=True)
         language = st.selectbox(
             "Reply in", LANGUAGES, key="ask_ai_language", label_visibility="collapsed"
@@ -224,7 +293,7 @@ def _landing():
             {telangana.svg()}
             <div class="pm-landing-inner">
                 <h2>{_greeting()}</h2>
-                <p>Grounded in this campaign's own sheets. Every answer names the source it came from.</p>
+                <p>Ask about {me.get()['seat']} in plain words. Answers use only the data the app holds for this seat.</p>
             </div>
         </div>
         """,
@@ -240,7 +309,8 @@ def _render_message(ctx, msg):
     """
     with st.chat_message(msg["role"]):
         sheet = msg.get("sheet")
-        known = sheet in ctx.raw_sheets
+        # the campaign's sheets are Jubilee Hills data: never show one under an answer about another seat
+        known = sheet in ctx.raw_sheets and me.has_campaign_data()
 
         if known:
             source_type = SOURCE_METADATA.get(SHEET_KEY_MAP.get(sheet, ""), {}).get("type", "internal")
@@ -293,7 +363,8 @@ def render(ctx, sidebar):
 
     try:
         with st.spinner("Reading the sheets..."):
-            result = _ask_once(client, prompt, speaking_party, language, _system_prompt(ctx, speaking_party, language))
+            result = _ask_once(client, prompt, speaking_party, language, me.get()["seat"], me.get()["leader"],
+                               _system_prompt(ctx, speaking_party, language))
     except Exception as exc:
         st.error("Answer generation failed")
         st.exception(exc)

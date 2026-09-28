@@ -12,6 +12,7 @@ import pandas as pd
 import streamlit as st
 
 import conversations
+import me
 import db
 import health
 from analyzer import PoliticalAnalyzer
@@ -32,6 +33,7 @@ from theme import inject_theme
 from views import (
     area_ratings,
     ask_ai,
+    home,
     backtest,
     booths,
     brief,
@@ -71,11 +73,15 @@ st.set_page_config(
 )
 
 # the pages a leader opens every day; everything else sits under "More pages"
-MAIN_VIEWS = [prep, war_room, proof, voice_truth, opponent_watch, ask_ai]
+MAIN_VIEWS = [home, ask_ai, proof, opponent_watch, war_room, voice_truth, prep]
 MORE = "More pages…"
+# pages built entirely from the Jubilee Hills campaign workbook (surveys, division estimates, booth sheet, ground notes):
+# for any other seat they would show Jubilee Hills numbers, so they say so instead
+CAMPAIGN_ONLY = {overview, booths, swing, demographics, survey, backtest, mood_check, simulator, social, recommendations, brief,
+                 data_check, speech, rebuttal, field_reports}
 
 VIEWS = [
-    ask_ai, prep, war_room, opponent_watch, proof, voice_truth, overview, seats, booths, live_pulse, search_trends, field_reports, mlas, local_issues, newspaper, area_ratings, rti, leaders,
+    home, ask_ai, prep, war_room, opponent_watch, proof, voice_truth, overview, seats, booths, live_pulse, search_trends, field_reports, mlas, local_issues, newspaper, area_ratings, rti, leaders,
     swing, demographics, survey, backtest, mood_check, simulator, social, social_voices,
     speech, rebuttal, recommendations, brief, data_check,
 ]
@@ -175,9 +181,12 @@ def render_status():
 
 def render_sidebar(ctx):
     with st.sidebar:
-        wordmark("People's Mandate AI", CONSTITUENCY_NAME)
+        wordmark("People's Mandate AI", "Telangana")
+        # who everything is for: chosen once here, used by every page
+        st.markdown('<div class="pm-rail">Working for</div>', unsafe_allow_html=True)
+        me.picker(ctx)
 
-        st.markdown('<div class="pm-rail">Command</div>', unsafe_allow_html=True)
+        st.markdown('<div class="pm-rail">Pages</div>', unsafe_allow_html=True)
         choice = st.radio(
             "Choose a view",
             [view.TITLE for view in MAIN_VIEWS] + [MORE],
@@ -235,4 +244,10 @@ ctx = init_components()
 view, view_slot = render_sidebar(ctx)
 if ctx.data_problem:
     st.warning(ctx.data_problem)
+me.banner()
+if view in CAMPAIGN_ONLY and not me.has_campaign_data():
+    st.subheader(view.TITLE)
+    st.info(f"This page is built from the Jubilee Hills campaign's own data (surveys, booth sheets, ground notes), so it has nothing for "
+            f"{me.get()['seat']}. Pick Jubilee Hills in the sidebar to use it, or use Home, Ask, Proof of Work and Rivals, which work for every seat.")
+    st.stop()
 view.render(ctx, view_slot)

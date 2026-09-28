@@ -86,3 +86,9 @@ def result_banner(result, prediction):
         f"which was **wrong**. See **Backtest** for how each input did."
     )
     st.info(f"The {result['year']} vote has been held: **{label(result['winner'])}** won by {result['margin']} points ({tally}). {verdict}")
+
+
+def how(text):
+    """The technical 'how we measured it' behind a fold, so the page shows the answer and the method is one click away."""
+    with st.expander("How do we know?"):
+        st.caption(text)

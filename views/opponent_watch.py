@@ -14,7 +14,7 @@ import opponent_watch as ow
 from components import empty_state, fact_card, section
 from config import PARTIES, PARTY_COLORS, PARTY_LABELS, SOURCE_METADATA, is_valid_api_key, normalize_party
 
-TITLE = "Opponent Watch"
+TITLE = "Rivals"
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 YEARS = (2014, 2018, 2023)
@@ -367,17 +367,14 @@ def _headline(w, us):
 
 def render(ctx, sidebar):
     section(
-        "Opponent watch",
-        "Pick a rival. See what the press is saying about them, what they post and spend, and where they can be beaten. Everything here comes from "
-        "official public sources: news feeds, YouTube, Google's and Meta's political ad libraries, and Election Commission results.",
+        "Rivals",
+        "Pick a rival: what the press says about them, what they post and spend on ads, and where they can be beaten.",
     )
-    seats = sorted(_years()[2023]["seat"].unique())
-    c1, c2, c3 = st.columns([1.2, 1, 1.6])
-    seat = c1.selectbox("Seat", seats, index=seats.index(HOME_SEAT) if HOME_SEAT in seats else 0, key="ow_seat")
-    us = c2.selectbox("Your party", PARTIES, format_func=lambda p: PARTY_LABELS.get(p, p), key="ow_us")
+    import me
+    seat, us = me.get()["seat"], me.get()["party"]
     rivals = _rivals(ctx, seat, us)
     labels = [f"{n} ({p})" for n, p in rivals] + [OTHER]
-    pick = c3.selectbox("Rival", labels, key=f"ow_rival_{seat}_{us}")
+    pick = st.selectbox("Which rival?", labels, key=f"ow_rival_{seat}_{us}")
     if pick == OTHER:
         d1, d2 = st.columns([2, 1])
         name = d1.text_input("Rival's name, as used in the news", key="ow_other_name")

@@ -19,7 +19,7 @@ from config import SOURCE_METADATA, is_valid_api_key
 from views.opponent_watch import _rivals
 from views.war_room import leader_picker
 
-TITLE = "Prep"
+TITLE = "Prepare"
 
 
 @st.cache_data(ttl=7 * 24 * 3600, show_spinner=False)
@@ -339,13 +339,13 @@ def _show_brief(b):
 
 
 def render(ctx, sidebar):
-    section("Prep", "Walk in knowing the place, practise against the rival, own the first hour of a crisis, test messages on real people, and start the week with one brief.")
+    section("Prepare", "Get ready: this week's brief, what to say before a visit, debate practice, what to do in a crisis, and which message works best.")
     st.session_state["_api_key"] = ctx.api_key
     if not is_valid_api_key(ctx.api_key):
         st.warning("Most of this page needs OPENAI_API_KEY.")
     seat, leader, party = leader_picker(ctx, "pp")
     snap = []
-    tabs = st.tabs(["Monday brief", "Walk-in brief", "Debate sparring", "Crisis playbook", "Message lab"])
+    tabs = st.tabs(["This week's brief", "Before a visit", "Debate practice", "Crisis: first hour", "Test a message"])
     with tabs[0]:
         _command(ctx, seat, leader, party, snap)
     with tabs[1]:
