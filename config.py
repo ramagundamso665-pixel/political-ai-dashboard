@@ -269,6 +269,15 @@ SOURCE_METADATA = {
         "methodology": "Speech written out by OpenAI transcription; clips matched by audio fingerprint and words; promises and tickets drafted by a "
                         "language model and confirmed by a person; ledger entries chained by SHA-256.",
     },
+    "war_room": {
+        "id": "war_room",
+        "name": "War Room (news and video velocity, Google Trends seasons, campaign records)",
+        "type": "external",
+        "refresh": "Live when scanned; seasons weekly",
+        "basis": "Google News RSS, YouTube Data API, Google Trends, and the campaign's own event log, division estimates, promises and complaints",
+        "methodology": "Speed-up = last 3 days against the usual rate for the month before. Attack and counter-proof drafts may only cite the evidence "
+                        "pack; defences are only what is on record.",
+    },
     "newspaper_clippings": {
         "id": "newspaper_clippings",
         "name": "Local newspaper pages (photographed by staff)",

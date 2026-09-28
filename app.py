@@ -47,6 +47,7 @@ from views import (
     opponent_watch,
     proof,
     voice_truth,
+    war_room,
     overview,
     rebuttal,
     recommendations,
@@ -69,7 +70,7 @@ st.set_page_config(
 )
 
 VIEWS = [
-    ask_ai, opponent_watch, proof, voice_truth, overview, seats, booths, live_pulse, search_trends, field_reports, mlas, local_issues, newspaper, area_ratings, rti, leaders,
+    ask_ai, war_room, opponent_watch, proof, voice_truth, overview, seats, booths, live_pulse, search_trends, field_reports, mlas, local_issues, newspaper, area_ratings, rti, leaders,
     swing, demographics, survey, backtest, mood_check, simulator, social, social_voices,
     speech, rebuttal, recommendations, brief, data_check,
 ]
