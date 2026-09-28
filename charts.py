@@ -421,3 +421,27 @@ def headline_tone(counts):
     fig.update_layout(title="Headline tone toward the rival")
     fig.update_yaxes(autorange="reversed")
     return _style(fig, 220, showlegend=False, margin_t=50)
+
+
+def series_lines(df, x, cols, title, ticksuffix="", height=320):
+    """Several measured quantities over the years, one line each."""
+    fig = go.Figure()
+    palette = ["#2563eb", "#16a34a", "#d97706", "#dc2626", "#7c3aed", "#0891b2"]
+    for i, c in enumerate(cols):
+        fig.add_trace(go.Scatter(x=df[x], y=df[c], name=c, mode="lines+markers", line=dict(color=palette[i % len(palette)], width=2.2),
+                                 hovertemplate="%{x}: %{y:,.1f}" + ticksuffix + "<extra>" + c + "</extra>"))
+    fig.update_layout(title=title)
+    fig.update_yaxes(ticksuffix=ticksuffix, rangemode="tozero")
+    return _style(fig, height, margin_t=70)
+
+
+def heat_grid(celsius, inside, title):
+    """Ground temperature as a map: pixels outside the area are blank, hover shows °C."""
+    import numpy as np
+    z = np.where(inside, celsius, np.nan)
+    fig = go.Figure(go.Heatmap(z=z, colorscale="RdYlBu_r", colorbar=dict(title="°C", thickness=12),
+                               hovertemplate="%{z:.1f} °C<extra></extra>"))
+    fig.update_yaxes(autorange="reversed", showticklabels=False, showgrid=False, scaleanchor="x")
+    fig.update_xaxes(showticklabels=False)
+    fig.update_layout(title=title)
+    return _style(fig, 460, showlegend=False, margin_t=50)

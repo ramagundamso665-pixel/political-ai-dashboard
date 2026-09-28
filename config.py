@@ -251,6 +251,15 @@ SOURCE_METADATA = {
         "methodology": "Headline tone read by a language model; ad spend as the platforms self-report it (Meta gives ranges). "
                         "Google's India figures are national, not per state.",
     },
+    "satellite": {
+        "id": "satellite",
+        "name": "Satellite measurements (Sentinel-2, Landsat, Esri land cover, JRC surface water)",
+        "type": "external",
+        "refresh": "Sentinel-2 every 5 days, Landsat every 8, land cover yearly (2017-2023)",
+        "basis": "Public satellite imagery via Microsoft Planetary Computer; seat outlines and ward maps from OpenCity (public domain); names from OpenStreetMap",
+        "methodology": "Fixed thresholds on standard indices (NDVI > 0.4 green, MNDWI > 0 water) and the Esri 10 m land-cover classes (about 75-85% accurate). "
+                        "Measures land, water and heat, never people.",
+    },
     "newspaper_clippings": {
         "id": "newspaper_clippings",
         "name": "Local newspaper pages (photographed by staff)",

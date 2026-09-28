@@ -45,6 +45,7 @@ from views import (
     newspaper,
     mood_check,
     opponent_watch,
+    proof,
     overview,
     rebuttal,
     recommendations,
@@ -67,7 +68,7 @@ st.set_page_config(
 )
 
 VIEWS = [
-    ask_ai, opponent_watch, overview, seats, booths, live_pulse, search_trends, field_reports, mlas, local_issues, newspaper, area_ratings, rti, leaders,
+    ask_ai, opponent_watch, proof, overview, seats, booths, live_pulse, search_trends, field_reports, mlas, local_issues, newspaper, area_ratings, rti, leaders,
     swing, demographics, survey, backtest, mood_check, simulator, social, social_voices,
     speech, rebuttal, recommendations, brief, data_check,
 ]
