@@ -110,6 +110,8 @@ def build_cards(ctx, who):
 
     # 3. our party's trend
     hist = [(y, v) for y, v in _party_history(seat, party) if v is not None]
+    if mine and year > 2023:
+        hist.append((year, mine[3]))       # a by-election newer than the statewide files
     if len(hist) >= 2:
         (y0, v0), (y1, v1) = hist[0], hist[-1]
         up = v1 >= v0
