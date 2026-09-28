@@ -46,6 +46,7 @@ from views import (
     mood_check,
     opponent_watch,
     proof,
+    voice_truth,
     overview,
     rebuttal,
     recommendations,
@@ -68,7 +69,7 @@ st.set_page_config(
 )
 
 VIEWS = [
-    ask_ai, opponent_watch, proof, overview, seats, booths, live_pulse, search_trends, field_reports, mlas, local_issues, newspaper, area_ratings, rti, leaders,
+    ask_ai, opponent_watch, proof, voice_truth, overview, seats, booths, live_pulse, search_trends, field_reports, mlas, local_issues, newspaper, area_ratings, rti, leaders,
     swing, demographics, survey, backtest, mood_check, simulator, social, social_voices,
     speech, rebuttal, recommendations, brief, data_check,
 ]
@@ -201,6 +202,13 @@ def render_sidebar(ctx):
 
 
 inject_theme()
+
+# the one page anyone may see without the password: the office's public ledger, read-only
+if st.query_params.get("public") == "ledger":
+    from views import voice_truth as _vt
+    _vt.render_public_ledger()
+    st.stop()
+
 require_password()  # nothing below renders until the viewer is authenticated
 
 ctx = init_components()

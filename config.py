@@ -260,6 +260,15 @@ SOURCE_METADATA = {
         "methodology": "Fixed thresholds on standard indices (NDVI > 0.4 green, MNDWI > 0 water) and the Esri 10 m land-cover classes (about 75-85% accurate). "
                         "Measures land, water and heat, never people.",
     },
+    "voice_truth": {
+        "id": "voice_truth",
+        "name": "Voice & Truth (office recordings, voice complaints, public ledger)",
+        "type": "internal",
+        "refresh": "As the team adds recordings and residents call",
+        "basis": "The office's own full recordings of public appearances; complaints spoken by residents with their consent; entries recorded by staff",
+        "methodology": "Speech written out by OpenAI transcription; clips matched by audio fingerprint and words; promises and tickets drafted by a "
+                        "language model and confirmed by a person; ledger entries chained by SHA-256.",
+    },
     "newspaper_clippings": {
         "id": "newspaper_clippings",
         "name": "Local newspaper pages (photographed by staff)",

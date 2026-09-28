@@ -7,3 +7,4 @@ audit_log.json
 chat_history.json
 .claude/
 pipeline/cache/
+data/local_store/
