@@ -7,3 +7,5 @@ openpyxl~=3.1
 plotly~=6.9
 requests~=2.32
 pytrends~=4.9
+imageio-ffmpeg~=0.6
+streamlit_js_eval~=1.0

@@ -48,6 +48,7 @@ from views import (
     proof,
     voice_truth,
     war_room,
+    prep,
     overview,
     rebuttal,
     recommendations,
@@ -70,7 +71,7 @@ st.set_page_config(
 )
 
 VIEWS = [
-    ask_ai, war_room, opponent_watch, proof, voice_truth, overview, seats, booths, live_pulse, search_trends, field_reports, mlas, local_issues, newspaper, area_ratings, rti, leaders,
+    ask_ai, prep, war_room, opponent_watch, proof, voice_truth, overview, seats, booths, live_pulse, search_trends, field_reports, mlas, local_issues, newspaper, area_ratings, rti, leaders,
     swing, demographics, survey, backtest, mood_check, simulator, social, social_voices,
     speech, rebuttal, recommendations, brief, data_check,
 ]
@@ -208,6 +209,11 @@ inject_theme()
 if st.query_params.get("public") == "ledger":
     from views import voice_truth as _vt
     _vt.render_public_ledger()
+    st.stop()
+# and a message-test link: one randomly chosen message and a rating, nothing else
+if st.query_params.get("poll"):
+    from views import prep as _pp
+    _pp.render_public_poll(st.query_params.get("poll"))
     st.stop()
 
 require_password()  # nothing below renders until the viewer is authenticated

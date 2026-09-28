@@ -278,6 +278,14 @@ SOURCE_METADATA = {
         "methodology": "Speed-up = last 3 days against the usual rate for the month before. Attack and counter-proof drafts may only cite the evidence "
                         "pack; defences are only what is on record.",
     },
+    "prep": {
+        "id": "prep",
+        "name": "Prep (walk-in briefs, debate practice, crisis playbooks, message tests, Monday brief)",
+        "type": "internal",
+        "refresh": "When run",
+        "basis": "The office's own record and contacts, OpenStreetMap place search, public news, and real respondents' ratings",
+        "methodology": "Drafts by a language model limited to the record; message tests randomise one version per respondent and report 95% ranges.",
+    },
     "newspaper_clippings": {
         "id": "newspaper_clippings",
         "name": "Local newspaper pages (photographed by staff)",
